@@ -1,6 +1,6 @@
 ---
-path: "/osa-1/3-muuttujat"
-title: "Muuttujat ja ohjelmien kielellistäminen"
+path: "/osa-1/3-piirikytkentä"
+title: "Pakettikytkentä vs piirikytkentä"
 ---
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
