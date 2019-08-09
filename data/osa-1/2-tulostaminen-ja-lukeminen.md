@@ -1,6 +1,6 @@
 ---
-path: '/osa-1/2-tulostaminen-ja-lukeminen'
-title: 'Tulostaminen ja lukeminen'
+path: '/osa-1/2-viipeet'
+title: 'Viipeet'
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
