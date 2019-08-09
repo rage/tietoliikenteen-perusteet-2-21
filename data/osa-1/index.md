@@ -1,6 +1,6 @@
 ---
 path: '/osa-1'
-title: 'Osa 1'
+title: '1 Yleistä'
 overview: true
 ---
 <only-for-course-variant variant="dl">
@@ -31,12 +31,12 @@ overview: true
   <deadline>Kirjaudu sisään nähdäksesi deadlinen tälle osalle</deadline>
 </only-for-not-logged-in>
 
-Tässä osassa opit kirjoittamaan ohjelmia, jotka lukevat käyttäjältä syötettä ja tekevät laskentaa syötteen perusteella. Opit käsitteet muuttuja, ehtolause ja toistolause, ja opit käyttämään näitä ohjelmissasi.
+Tässä osassa käydään läpi verkon yleisiä ominaisuuksia tarkemmin kuin ensimmäisellä kurssilla. Opit mm. käsittelemeen siirtoviiveen muitakin osia laskennallisesti ja hahmottamaan vaihtoehtoisia tietoverkon toteutusperiaatteita.
 
 <please-login></please-login>
 
 <pages-in-this-section></pages-in-this-section>
 
-Yllä oleva sisällysluettelo sisältää kurssin ensimmäisen osan aihealueet. Ensimmäinen osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi. Kuhunkin kurssin osaan on hyvä varata reilusti yli kymmenen tuntia aikaa, riippuen aiemmasta tietokoneen käyttökokemuksesta. Ohjelmointia aiemmin kokeilleet saattavat edetä materiaalissa aluksi nopeamminkin.
+Yllä oleva sisällysluettelo sisältää kurssin ensimmäisen osan aihealueet. Ensimmäinen osa on suunniteltu siten, että siinä on työtä muutamaksi päiväksi.
 
 <exercises-in-this-section></exercises-in-this-section>
