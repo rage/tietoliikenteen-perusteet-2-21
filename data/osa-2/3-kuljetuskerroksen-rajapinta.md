@@ -1,6 +1,6 @@
 ---
-path: '/osa-2/3-metodit'
-title: 'Ohjelman pilkkominen osiin: metodit'
+path: '/osa-2/3-kuljetuskerroksen-rajapinta'
+title: 'Rajapinta ja odotuksen kuljetuskerrokselta'
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
@@ -10,6 +10,8 @@ title: 'Ohjelman pilkkominen osiin: metodit'
 - Osaat luoda parametrillisia ja parametrittomia metodeja, ja osaat luoda metodeja, jotka palauttavat arvon.
 
 </text-box>
+
+-	Kuljetuskerroksen palvelut: tiedon eheys, ajoitukset, suoritusteho, turvallisuus, …
 
 
 Olemme käyttäneet useita erilaisia komentoja Javassa: sijoitusta, laskutoimituksia, vertailuja, if:iä ja whileä. Ruudulle tulostaminen on tehty `System.out.println()`-lauseella ja lukeminen `Integer.valueOf(lukija.nextLine())` lauseella.
