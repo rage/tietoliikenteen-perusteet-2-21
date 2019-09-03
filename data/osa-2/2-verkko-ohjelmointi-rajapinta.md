@@ -1,6 +1,6 @@
 ---
-path: '/osa-2/2-loogiset-operaatiot'
-title: 'Loogiset operaatiot'
+path: '/osa-2/2-verkko-ohjelmointi-rajapinta'
+title: 'Verkko-ohjelmointi ja sovelluksen rajapinta'
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
@@ -10,6 +10,12 @@ title: 'Loogiset operaatiot'
 - Osaat käyttää toistolauseen ehtona totuusarvon palauttavaa lauseketta, jolla päätetään jatketaanko toistoa vaiko ei.
 
 </text-box>
+
+Pistoke, KJ palvelut,  HTT:n päälle selaimen sisään, REST, AJAX  (Pistoke esimerkki,  entä REST esimerkki?)
+
+
+
+
 
 Materiaalin esimerkeissä ja tehtävissä käytetyt ehtolauseet ovat tähän mennessä käyttäneet yksinkertaisia lausekkeita, joilla on tarkasteltu ehtolauseeseen ja toistolauseeseen liittyvän lähdekoodin suorittamista. Esim.
 
