@@ -1,6 +1,6 @@
 ---
-path: '/osa-2/1-ongelmia-ja-ratkaisuja'
-title: 'Ongelman osia ja niiden ratkaisumalleja'
+path: '/osa-2/1-http'
+title: 'Protokollia'
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
@@ -12,6 +12,11 @@ title: 'Ongelman osia ja niiden ratkaisumalleja'
 </text-box>
 
 <quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
+
+
+HTTP,  SMTP  ja DNS
+
+
 
 Samat pienet ongelmat (tai "osaongelmat") toistuvat ohjelmissa yhä uudestaan ja uudestaan: "Lue käyttäjältä syötettä", "Laske lukujen summa", "Laske lukujen keskiarvo",  "Lue käyttäjältä syötettä kunnes", "Montako lukua käyttäjä on syöttänyt.", jne.
 
