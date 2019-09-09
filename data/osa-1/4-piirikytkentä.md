@@ -1,5 +1,5 @@
 ---
-path: "/osa-1/3-piirikytkentä"
+path: "/osa-1/4-piirikytkentä"
 title: "Pakettikytkentä vs piirikytkentä"
 ---
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
