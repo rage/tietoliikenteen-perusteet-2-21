@@ -1,4 +1,4 @@
-# Ohjelmointi 19
+# Add course name here
 
 ## Development environment
 
