@@ -1,5 +1,5 @@
 ---
-path: '/osa-1/2-viipeet-ja-läpäisy'
+path: '/osa-1/3-viipeet-ja-läpäisy'
 title: 'Viipeet ja läpäisy'
 ---
 
