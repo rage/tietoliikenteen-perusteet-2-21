@@ -1,5 +1,5 @@
 ---
-path: "/osa-1/7-yhteenveto"
+path: "/osa-1/4-yhteenveto"
 title: "Yhteenveto"
 ---
 
