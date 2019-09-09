@@ -1,0 +1,33 @@
+---
+path: '/osa-1/2-kertausta'
+title: 'Kertausta'
+---
+
+<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+
+- Osaat kirjoittaa ohjelman, joka tulostaa tekstiä.
+- Tutustut pinnallisesti käsitteeseen muuttuja
+- Osaat luoda merkkijonomuuttujan (String) ja käyttää merkkijonomuuttujaa osana tekstiä tulostavaa ohjelmaa.
+- Osaat luoda uuden merkkijonomuuttujan useampia merkkijonoja yhdistelemällä.
+- Osaat kirjoittaa ohjelman, joka pyytää käyttäjältä tekstimuotoista syötettä.
+
+</text-box>
+
+## Ohjelmarunko
+
+Java-ohjelmat vaativat toimiakseen ohjelmarungon. Ohjelmarunko on seuraavanlainen.
+
+```java
+public class Esimerkki {
+    public static void main(String[] args) {
+        // Tänne kirjoitetaan ohjelman käyttämät lauseet
+        System.out.println("Tulostettava teksti");
+    }
+}
+```
+
+Ohjelmarunkomme sisältää Java-ohjelmointikielelle oleellisia osia. Ohjelman suoritus alkaa riviä `public static void main(String[] args) {` seuraavalta riviltä ja päättyy sulkevaan aaltosulkuun `}`. Lauseet suoritetaan yksi kerrallaan. Tällä hetkellä ainoa suoritettava lause on `System.out.println("Tulostettava teksti");`, mikä tulostaa tekstin "Tulostettava teksti".
+
+Tulemme myöhemmin tutustumaan tarkemmin sanojen `public class` ja `public static void` merkitykseen.
+
+Materiaalin esimerkeissä ei käytetä aina ohjelmarunkoa, mutta voit olettaa, että se tarvitaan aina. Esimerkit voivat siis olla esimerkiksi yhden rivin mittaisia kuten alla oleva tulostusesimerkki.
