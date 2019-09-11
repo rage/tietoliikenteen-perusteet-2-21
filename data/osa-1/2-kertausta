@@ -5,29 +5,14 @@ title: 'Kertausta'
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Osaat kirjoittaa ohjelman, joka tulostaa tekstiä.
-- Tutustut pinnallisesti käsitteeseen muuttuja
-- Osaat luoda merkkijonomuuttujan (String) ja käyttää merkkijonomuuttujaa osana tekstiä tulostavaa ohjelmaa.
-- Osaat luoda uuden merkkijonomuuttujan useampia merkkijonoja yhdistelemällä.
-- Osaat kirjoittaa ohjelman, joka pyytää käyttäjältä tekstimuotoista syötettä.
+- tämä osio on vain kertausta ei varsinaisia oppimistavoitteita
 
 </text-box>
 
-## Ohjelmarunko
+## Osoitteet ja viestinvälitys
 
-Java-ohjelmat vaativat toimiakseen ohjelmarungon. Ohjelmarunko on seuraavanlainen.
+Internetin viestinvälitys on pakettikytkentäinen, jolloin lähettäjä aina lähettää yhten paketin (analogiana toimii kirje), jossa on sisällä siirrettä data ja se ympärillä (kirjekuorena) vastaanottajan tunnistamiseen tarvittavaa tietoa.
 
-```java
-public class Esimerkki {
-    public static void main(String[] args) {
-        // Tänne kirjoitetaan ohjelman käyttämät lauseet
-        System.out.println("Tulostettava teksti");
-    }
-}
-```
+Internetin protokollat on sijoitettu protokollapinon eri kerroksille. Yhdellä kerroksella olevan protokollan ei pidä tietää mitä sen ala- ja yläpuolella on. Sille riittää tarkastella kyseisen protokollan lähettäjän ja vstaanottajan välistä viestien vaihtoa. Tästä automaattisesti seuraa, että kun jokainen kerro laittaa oman viestinsä omaan kirjekuoreen, niin näitä kirjekuoria on useita sisäkkäin.
 
-Ohjelmarunkomme sisältää Java-ohjelmointikielelle oleellisia osia. Ohjelman suoritus alkaa riviä `public static void main(String[] args) {` seuraavalta riviltä ja päättyy sulkevaan aaltosulkuun `}`. Lauseet suoritetaan yksi kerrallaan. Tällä hetkellä ainoa suoritettava lause on `System.out.println("Tulostettava teksti");`, mikä tulostaa tekstin "Tulostettava teksti".
 
-Tulemme myöhemmin tutustumaan tarkemmin sanojen `public class` ja `public static void` merkitykseen.
-
-Materiaalin esimerkeissä ei käytetä aina ohjelmarunkoa, mutta voit olettaa, että se tarvitaan aina. Esimerkit voivat siis olla esimerkiksi yhden rivin mittaisia kuten alla oleva tulostusesimerkki.
