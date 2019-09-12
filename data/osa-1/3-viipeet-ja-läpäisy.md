@@ -5,62 +5,16 @@ title: 'Viipeet ja läpäisy'
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Osaat kirjoittaa ohjelman, joka tulostaa tekstiä.
-- Tutustut pinnallisesti käsitteeseen muuttuja
-- Osaat luoda merkkijonomuuttujan (String) ja käyttää merkkijonomuuttujaa osana tekstiä tulostavaa ohjelmaa.
-- Osaat luoda uuden merkkijonomuuttujan useampia merkkijonoja yhdistelemällä.
-- Osaat kirjoittaa ohjelman, joka pyytää käyttäjältä tekstimuotoista syötettä.
+- Osaat kuvata mistä saomien viivästymiset johtuvat
+- osaat laskea erilaisia viivästymisiä
+- osaat arvioida verkon toimintakykyä ja havaita pullonkauloja
 
 </text-box>
 
-## Ohjelmarunko
+## Viipeet
 
-Java-ohjelmat vaativat toimiakseen ohjelmarungon. Ohjelmarunko on seuraavanlainen.
 
-```java
-public class Esimerkki {
-    public static void main(String[] args) {
-        // Tänne kirjoitetaan ohjelman käyttämät lauseet
-        System.out.println("Tulostettava teksti");
-    }
-}
-```
-
-Ohjelmarunkomme sisältää Java-ohjelmointikielelle oleellisia osia. Ohjelman suoritus alkaa riviä `public static void main(String[] args) {` seuraavalta riviltä ja päättyy sulkevaan aaltosulkuun `}`. Lauseet suoritetaan yksi kerrallaan. Tällä hetkellä ainoa suoritettava lause on `System.out.println("Tulostettava teksti");`, mikä tulostaa tekstin "Tulostettava teksti".
-
-Tulemme myöhemmin tutustumaan tarkemmin sanojen `public class` ja `public static void` merkitykseen.
-
-Materiaalin esimerkeissä ei käytetä aina ohjelmarunkoa, mutta voit olettaa, että se tarvitaan aina. Esimerkit voivat siis olla esimerkiksi yhden rivin mittaisia kuten alla oleva tulostusesimerkki.
-
-```java
-System.out.println("Hei maailma!");
-```
-
-Todellisuudessa yllä oleva esimerkki näyttää Java-kielisellä ohjelmalla kuitenkin seuraavalta.
-
-```java
-public class Esimerkki {
-    public static void main(String[] args) {
-        // Tänne kirjoitetaan ohjelman käyttämät lauseet
-        System.out.println("Hei maailma!");
-    }
-}
-```
-
-## Tulostuskomento
-
-Ensimmäinen komento, jonka opimme on tulostuskomento. Komento `System.out.println("Hei maailma");` tulostaa tekstin "Hei maailma". Tulostettavaa tekstiä voi vaihtaa mielivaltaisesti, kunhan komento `System.out.println("mielivaltainen teksti");` -- eli `System` piste `out` piste `println` sulut auki `(` "teksti" sulut kiinni `)` ja puolipiste `;` pysyy muuttumattomana.
-
-Kuten johdannossa todettiin, _Lause System.out.println on Java-ohjelmointikielen valmiiksi tarjoama komento, jota käytetään merkkijonon tulostamiseen. Komento käytännössä käskee tietokonetta tulostamaan sille sulkeiden sisällä hipsuissa annetun merkkijonon. Komennon pääte ln on lyhenne sanasta line, eli komentoa käyttämällä merkkijonon jälkeen tulostetaan myös rivinvaihto. Lauseen loppuun kirjoitetaan puolipiste ;._
-
-```java
-public class Ohjelma {
-    public static void main(String[] args) {
-        System.out.println("Hei maailma!");
-    }
-}
-```
-
+T
 Alla oleva tekstialue on materiaalissa käytettävä esimerkki ohjelman tuottamaan tulostukseen. Yllä oleva ohjelma tuottaisi siis tulostuksen "Hei maailma!". Voit kokeilla kaikkia materiaalin esimerkkejä ohjelmointiympäristössä olevassa "Hiekkalaatikko"-nimisessä tehtäväpohjassa.
 
 <sample-output>
