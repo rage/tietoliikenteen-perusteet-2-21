@@ -17,10 +17,22 @@ Internetin protokollat on sijoitettu protokollapinon eri kerroksille. Yhdellä k
 
 QUIZZ:   Millä nimellä tällaista kirjekuorta kutsutaan (aluke, lopuke, otsake, viestike, ...)
 
-Eri kerroksilla käytetään eri osoitteita. 
+Eri kerroksilla käytetään eri osoitteita. Ne on käyty läpi edellisellä kurssilla.
 
 QUIZZ: Valitse seuraavista osoitteista mille kerrokselle ne kuuluvat: MAC-osoite, porttinumero, IPv6, numeerisina vastaavia
 
-Pakettikytkentäisen verkon yksi keskeinen piirre on, että paketti liikkuvat aina yhden välin eli etapin kerrallaan. Siksi niitä kutsutaan myös etappivälitteisiksi verkoiksi. Jokaisella välipysäkillä täytyy aina päättää mihin suuntaan paketti seuraavaksi liikahtaa. Tätä kokonaisuutta kutsutaan reititykseksi ja näitä päätöksiä tekeviä laitteita reitittimiksi silloin kun päätöksiä tehdään verkkokerroksella.
+Pakettikytkentäisen verkon yksi keskeinen piirre on, että paketti liikkuvat aina yhden välin eli etapin kerrallaan. Siksi niitä kutsutaan myös etappivälitteisiksi verkoiksi. Jokaisella välipysäkillä täytyy aina päättää mihin suuntaan paketti seuraavaksi liikahtaa. Tätä kokonaisuutta kutsutaan reititykseksi ja näitä päätöksiä tekeviä laitteita reitittimiksi silloin kun päätöksiä tehdään verkkokerroksella. Reititystä tarkastellaan vielä tällä kurssilla myöhemmin.
+
+## Protokollat
+
+Tietoliikenteen protokollat määrittävät viestien vaihdon toiminnallisuuden. Protokollan kuvauksessa kerrotaan siis kuka lähettää, kenelle, mitä ja millä ehdoilla.  Internetin protokollien kuvaukset ovat IETF:n RFC dokumentaatiossa. Esimerkiksi HTTP versio 2 on RFC 7540  https://tools.ietf.org/html/rfc7540. Siinä on kuvattu kaikki HTTP/2:n käyttöön tarvittavat tiedot kuten kehykset, yhteydet ja viestien vaihto. 
+
+Kaikilla muillakin protokollilla on omat dokumentaationsa. Viralliset internetissä käytettävät protokollat on aina kuvattu RFC dokumentaatiossa. Toki kuka tahansa voi rakentaa oman verkko-ohjelman ja käyttää omien ohjelman osien välillä ihan sellaista protokollaa kuin haluaa. Kuitenkin jos tarvitaan laajoja verkkosovelluksia, joilla on toisistaan riippumattomia toteuttajia, niin järjestelmän osien välinen kommunikointi täytyy kuvata ja dokumentoida siten, että se on kaikkien saatavilla.
+
+Tätä teemaa jatketaan lisää kurssin seuraavassa luvussa.
+
+QUIZZ: HTTP protokollaan liittyviä kysymyksiä, jotka olleet esillä jo edellisessä osiossa (tai jotka voi selvittää helposti
+
+
 
 
