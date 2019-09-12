@@ -5,7 +5,7 @@ title: 'Kertausta'
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- tämä osio on vain kertausta ei varsinaisia oppimistavoitteita
+- tämä osio on vain kertausta ei uusia oppimistavoitteita
 
 </text-box>
 
@@ -14,5 +14,13 @@ title: 'Kertausta'
 Internetin viestinvälitys on pakettikytkentäinen, jolloin lähettäjä aina lähettää yhten paketin (analogiana toimii kirje), jossa on sisällä siirrettä data ja se ympärillä (kirjekuorena) vastaanottajan tunnistamiseen tarvittavaa tietoa.
 
 Internetin protokollat on sijoitettu protokollapinon eri kerroksille. Yhdellä kerroksella olevan protokollan ei pidä tietää mitä sen ala- ja yläpuolella on. Sille riittää tarkastella kyseisen protokollan lähettäjän ja vstaanottajan välistä viestien vaihtoa. Tästä automaattisesti seuraa, että kun jokainen kerro laittaa oman viestinsä omaan kirjekuoreen, niin näitä kirjekuoria on useita sisäkkäin.
+
+QUIZZ:   Millä nimellä tällaista kirjekuorta kutsutaan (aluke, lopuke, otsake, viestike, ...)
+
+Eri kerroksilla käytetään eri osoitteita. 
+
+QUIZZ: Valitse seuraavista osoitteista mille kerrokselle ne kuuluvat: MAC-osoite, porttinumero, IPv6, numeerisina vastaavia
+
+Pakettikytkentäisen verkon yksi keskeinen piirre on, että paketti liikkuvat aina yhden välin eli etapin kerrallaan. Siksi niitä kutsutaan myös etappivälitteisiksi verkoiksi. Jokaisella välipysäkillä täytyy aina päättää mihin suuntaan paketti seuraavaksi liikahtaa. Tätä kokonaisuutta kutsutaan reititykseksi ja näitä päätöksiä tekeviä laitteita reitittimiksi silloin kun päätöksiä tehdään verkkokerroksella.
 
 
