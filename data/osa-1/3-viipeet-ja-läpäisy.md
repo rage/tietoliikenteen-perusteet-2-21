@@ -44,7 +44,24 @@ QUIZZ:  Mitkä seuraavista kuvaavat riittävän tarkasti valonnopeutta  3 km sek
 
 ### Jonotusviive
 
-Edelliseltä kurssilta Matkan varrella olevat reitittimet aiheuttavat tuon edellä kuvatun siirtoajan (tai oikeammin siirtoviiveen) lisäksi vielä vähän lisää viivettä. Viestin käsittelyyn menee hiukan aikaa (prosessointiviive). Lisäksi viesti voi joutua odottamaan linkin vapautumista hetkisen ennen kuin se voidaan lähettää (jonotusviive). Viimeinen viive on etenemisviive, joka ottaa huomioon sen miten kauas viesti on menossa. 
+Jonotusviive (engl queuing delay) on näistä viipeistä hankalin, koska se vaihtelee ruuhkan mukana. Jos solmussa ei ole yhtään pakettia jonossa, niin jonotusviivettäkään ei muodostu, kun paketti voidaan välittömästi toimittaa seuraavaan linkkiin.
+Toisaalta jonotusviive voi olla hyvinkin pitkä, jos kyseinen solmu on hyvin ruuhkainen ja paketteja on paljon jonossa. Jonoihin ja jonotukseen liittyy vahvasti matematiikan haara jonoteoria, joka nimenomaan tutkii näitä ilmiöitä. Koska jokainen paketin kokemus jonosta on erilainen, niin jonojen tarkastelussa käytetään nimenomaan tilastollisia suureita kuten keskiarvo, varianssi ja todennäköisyys. 
+Yksinkertainen kaava, jolla jonotuksen kestoa voi arvioida on liikenteen intensiteetti (engl. traffic intensity), on La/R, missä L on paketin koko (yksinkertaisesti oletetaan paketit samankokoisiksi), a on keskimääräinen pakettien jonoon saapumisnopeus (paketteja sekunnissa) ja jakaja R on linkin siirtonopeus (bitteja sekunnissa). Tästä kaavasta on helppo havaita, että jos paketteja saapuu jonoon enemmän kuin linkki voi lähettää (La/R >1), niin jono kasvaa. Jos puskurin koko ei rajoita, niin jono voi kasvaa äärettömästi ja näin ollen myös paketin jonotusviive voi kasvaa äärettömästi. Jos taas puskurin koko rajoittaa jonon kasvua, niin paketteja joudutaan pudottamaan ja ne katoavat pääsemättä koskaan perille.
+Jonoja voi silti muodostua vaikka liikenteen intensiteetti olisikin pienempi tai yhtäsuuri kuin 1 (eli La/R<1). Näin voi käydä jos hetkellisesti pakettien määrä ylittää linkin kapasiteetin esimerkiksi paketteja tulee useammasta linkistä yhtenä ryöppynä. Toisaalta vaikka intensiteetti olisikin lähellä ykköstä, niin jos paketit saapuvat tasaisin väliajoin, niin ne eivät joudu jonottamaan, kun edellinen on juuri saatu lähetettyä ennen seuraavan saapumista.
+Todellisuudessa yhden reitittimen osalta emme pysty ennustamaan pakettien saapumisten jaksollisuutta tai niiden saapumisväli, joten niiden oletetaan saapuvan satunnaisesti (random). Tällöin paketteja saapuu välillä enemmän ja välillä vähemmän, mutta niiden jakaumaa ei tiedetä ennalta.
+
+KUVA ois kiva
+
+
+## Läpäisy
+
+
+
+## Muita käsitteitä näihin liittyen
+
+
+packet jitter or packet delay variation (PDV) 
+
 
 Voit katsoa ohjeet aloittamiseen myös seuraavalta videolta.
 
