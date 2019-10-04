@@ -6,9 +6,9 @@ title: 'Nimipalvelu'
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Huomaat, että ohjelmissa toistuu samankaltaiset osaongelmat kuten syötteen lukeminen tai laskun laskeminen.
-- Tiedät valmiin ratkaisumallin muutamaan osaongelmaan.
-- Harjoittelet osaongelmiin littyvien ratkaisumallien yhdistämistä laajempien ongelmien ratkaisemisessa.
+- Osaat kuvata, mihin nimipalvelua käytetään ja mitä tietoja sen tietueissa on
+- osaat kertoa, mihin DNS protokollaa käytetään
+- osaat sanallisesti kertoa, miten nimeä vastaava IP-osoite löydetään
 
 </text-box>
 
