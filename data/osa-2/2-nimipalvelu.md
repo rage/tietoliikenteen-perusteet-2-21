@@ -1,4 +1,3 @@
-
 ---
 path: '/osa-2/2-nimipalvelu'
 title: 'Nimipalvelu'
@@ -16,3 +15,18 @@ title: 'Nimipalvelu'
 
 
 ## Nimipalvelu DNS
+
+
+
+
+## DNS
+
+Protokollan sisäinen toiminta ja nimipalveluorganisaatio huolellisesti.  Korosta tuotan asiakaan omaan nimipalvelijaa (engl. DNS resolver), joka ei ole osa virallisten nimipalvelijoiden hierarkiaa.
+
+HTTP,  SMTP  ja DNS
+
+
+
+Samat pienet ongelmat (tai "osaongelmat") toistuvat ohjelmissa yhä uudestaan ja uudestaan: "Lue käyttäjältä syötettä", "Laske lukujen summa", "Laske lukujen keskiarvo",  "Lue käyttäjältä syötettä kunnes", "Montako lukua käyttäjä on syöttänyt.", jne.
+
+Tarkastellaan muutamia tällaisia ongelmia sekä niihin liittyviä ratkaisuja.
