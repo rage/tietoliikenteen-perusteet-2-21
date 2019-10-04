@@ -1,5 +1,20 @@
+---
+path: '/osa-2/3-sahkoposti'
+title: 'Sähköposti'
+---
 
+<text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
+- Osaat selittää miksi tietoliikenneverkko pitää olettaa epäluotettavaksi.
+- Ymmärrät miksi verkon kuuntelu on helppoa ja miksi kuuntelulta suojautuminen tapahtuu lähinnä salauksen avulla.
+- Osaat kuvata kuljetuskerroksen palvelut sovelluskerroksen protokollille.
+- Osaat perustella miksi sovelluskerroksella täytyy ottaa kantaa sen tarvitsemiin alemman kerroksen palveluihin.
+
+</text-box>
+
+<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
+
+## Sähköpostipalvelu
 
 
 ## SMTP
@@ -37,3 +52,11 @@ XXXX: Tehtävä mitä hyötyjä / haittoja tästä tietojen kahteen kertaan toim
 HUOM: SMTP:hen käytetään paljon aikaa ja tilaa tällä kurssilla!!!!
 
 
+## Viestien rakenne
+
+
+
+##  Salaus
+
+
+## Allekirjoitus
