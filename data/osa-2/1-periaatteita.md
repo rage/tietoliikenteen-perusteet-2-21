@@ -1,17 +1,26 @@
 ---
 path: '/osa-2/1-http'
-title: 'Protokollia'
+title: 'Verkkosovelluksen toimintaperiaatteita'
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Huomaat, että ohjelmissa toistuu samankaltaiset osaongelmat kuten syötteen lukeminen tai laskun laskeminen.
-- Tiedät valmiin ratkaisumallin muutamaan osaongelmaan.
-- Harjoittelet osaongelmiin littyvien ratkaisumallien yhdistämistä laajempien ongelmien ratkaisemisessa.
+- Osaat selittää miksi tietoliikenneverkko pitää olettaa epäluotettavaksi.
+- Ymmärrät miksi verkon kuuntelu on helppoa ja miksi kuuntelulta suojautuminen tapahtuu lähinnä salauksen avulla.
+- Osaat kuvata kuljetuskerroksen palvelut sovelluskerroksen protokollille.
+- Osaat perustella miksi sovelluskerroksella täytyy ottaa kantaa sen tarvitsemiin alemman kerroksen palveluihin.
 
 </text-box>
 
 <quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
+
+
+## Aiemmalla kurssilla
+
+
+
+## Sovelluskerroksen odotuksia kuljetuskerrokselle
+
 
 
 ## HTTP
