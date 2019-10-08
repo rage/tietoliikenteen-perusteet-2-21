@@ -35,9 +35,13 @@ Todellisuudessa monet laajat verkkosovellukset ovat näiden kahden mallin sekoit
 
 ## Sovelluskerroksen odotuksia kuljetuskerrokselle
 
-Sovelluksen oman kommunikoinnin suunnittelussa täytyy ottaa kantaa siihen millaista palvelua kuljetuskerrokselta halutaan. 
+Sovelluksen oman kommunikoinnin suunnittelussa täytyy ottaa kantaa siihen millaista palvelua kuljetuskerrokselta halutaan. Kuten aiemmin jo havaitsimme itse tietoliikenneverkon toiminta on epäluotettavaa, mutta useimmat sovellukset ja niiden suunnittelijat haluavat luotettavaa viestinvälitystä sovelluksen komponenttien välillä. Tällöin sovellus edellyttää, että kuljetuskerros tarjoaa tällaisen luotettavan viestin välityksen. Sovellus voi myös hoitaa kadonneisiin viesteihin liittyvän toipumisen sovelluksen oman logiikan mukaisesti, jolloin sille voi hyvin riittää epäluotettava kuljetuspalvelu. 
 
+Sovelluksilla on itseassa paljon erilaisia toiveita ja tarpeita viestien kuljetukselle. Kurose-Rossin oppikirjassa nämä on jaoteltu neljään ryhmään: tiedon eheys, ajoitukset, suoritusteho ja turvallisuus. Tiedon eheys (engl. data integrity) -ryhmään kuuluvat ne sovellukset vaatimukset, jotka liittyvät viestinnän luotettavuuteen. Esimerkiksi edellytetään, että sanomat menevät perille juuri sellaisina kuin ne on lähetetty. Ajoitukset (engl. timing) liittyvät esimerkiksi pakettien siirtoaikojen vaihteluun yms. Suoritusteho (engl. throughput) liittyy verkon tarjoamaan kapasiteettiin ja sen riittävyyteen sovelluksen näkökulmasta. Sovellus voi tarvita esimerkiksi tietyn minimikapasiteetin voidakseen toimia hyvin. Turvallisuus (engl. security) kattaa sitten erilaiset tiedon suojaukseen ja salaukseen liittyvät seikat.
 
+Sovelluksen odotuksia ja verkon tarjoamia palveluja voidaan kuvata numeerisesti palvelulaatu-termin (engl. quality of service, QoS) avulla. Pakettikytkentäisen verkon palvelunlaatuun liittyy useita erilaisia numeerisia arvoja, kuten suurin sallittu paketin koko (engl. maximum packet size), siirtonopeuden keskiarvo (engl. mean transfer rate), virhetaajuuden keskiarvo (engl. mean error rate), paketin siirron keston keskiarvo (engl. mean packet transfer delay),  siirtoviive (engl. transmission delay) ja pahin mahdollinen vaihtelu (engl. worst-case jitter).
+
+Vaihtelu (engl- jitter) on varmasti useimmille terminäkin outo. Englanninkielen termi jitter (wikipedia https://fi.wikipedia.org/wiki/Jitter) on valitettavan monitulkintainen ja sillä on paljon erilaisia suomenkielisiä vastineita. Kätän tässä vaihtelua, koska kyse on siitä kuinka paljon kahden eri viestin siirtoajoissa voi olla vaihtelu keskenään. Jos kaikki paketit kulkevat saman ajan, niin vaihtelua ei ole, mutta jos pakettien siirtoajoissa on suuria eroja, niin myös vaihtelu on suurta.
 
 
 
