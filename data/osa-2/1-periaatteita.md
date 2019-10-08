@@ -41,15 +41,13 @@ Sovelluksilla on itseassa paljon erilaisia toiveita ja tarpeita viestien kuljetu
 
 Sovelluksen odotuksia ja verkon tarjoamia palveluja voidaan kuvata numeerisesti palvelulaatu-termin (engl. quality of service, QoS) avulla. Pakettikytkentäisen verkon palvelunlaatuun liittyy useita erilaisia numeerisia arvoja, kuten suurin sallittu paketin koko (engl. maximum packet size), siirtonopeuden keskiarvo (engl. mean transfer rate), virhetaajuuden keskiarvo (engl. mean error rate), paketin siirron keston keskiarvo (engl. mean packet transfer delay),  siirtoviive (engl. transmission delay) ja pahin mahdollinen vaihtelu (engl. worst-case jitter).
 
-Vaihtelu (engl- jitter) on varmasti useimmille terminäkin outo. Englanninkielen termi jitter (wikipedia https://fi.wikipedia.org/wiki/Jitter) on valitettavan monitulkintainen ja sillä on paljon erilaisia suomenkielisiä vastineita. Kätän tässä vaihtelua, koska kyse on siitä kuinka paljon kahden eri viestin siirtoajoissa voi olla vaihtelu keskenään. Jos kaikki paketit kulkevat saman ajan, niin vaihtelua ei ole, mutta jos pakettien siirtoajoissa on suuria eroja, niin myös vaihtelu on suurta.
+Vaihtelu (engl- jitter) on varmasti useimmille terminä outo. Englanninkielen termi jitter (wikipedia https://fi.wikipedia.org/wiki/Jitter) on valitettavan monitulkintainen ja sillä on paljon erilaisia suomenkielisiä vastineita. Käytän tässä vaihtelua, koska kyse on siitä, kuinka paljon kahden eri viestin siirtoajoissa voi olla vaihtelu keskenään. Jos kaikki paketit kulkevat saman ajan, niin vaihtelua ei ole. Jos pakettien siirtoajoissa on suuria eroja, niin myös vaihtelu on suurta. Tilastotieteessä käytettävä termit hajonta ja varianssi kuvaa hiukan samaa ilmiötä, mutta satunnaismuuttujien arvojen vaihtelulle.
+
+Sovelluksen tarpeet yhteyden laadulle liittyvät nimenomaan sovelluksen oman kommunikoinnin ominaisuuksiin. Sovellus saattaa tarvita tietyn siirtonopeuden tason, jotta tarvittavat sovelluksen tiedot saadaan riittävän nopeasti siirrettyä lähttäjältä vastaanottajalle. Taso voidaan määritellä joko kiinteänä minimitasona tai minimikeskiarvona, jolloin sovellus sietää jonkunverran vaihtelua eri pakettien siirtoajoille. Sovellus saattaa myös asettaa ylärajoja erilaisille viiveille ja siirtoaikojen vaihtelulle. Näiden avulla sovellus pyrkii turvaamaan oman toimintansa laadun. Esimerkiksi videota siirtävä sovellus tarvitsee riittävän siirtonopeuden ja rajoitetut viiveet, jotta videokuva näkyisi vastaanottajalla nykimättä.
+
+XXXXXX:  Tehtäviä näihin palvelutasoihin ja vaatimuksiin liittyen!!!
 
 
-
-## HTTP
-
-HTTP (Hypertext Transfer Protocol) on käsitelty jo ensimmäisellä kurssiosalla. Se on yksinkertainen pyyntö-vastaus -protokolla. Asiakas lähettää pyynnön, johon palvelin vastaa.  Protokollan yleisen käyttötapa on www-sivujen siirto palvelimelta selaimelle. Tällöin prokollalla siirretään HTML-kielen mukaisen sivun kuvaus.
-
-HTTP protokollaa käytetään nykyään myös sovellusten omien protokollien kuljettamiseen sovelluksen komponenttien välillä. Se on siis näiden sovelluksen omien protokollien näkökulmasta vain kuljetusprotokolla, vaikka onkin Internetin protokollapinossa sovelluskerroksen protokolla. Tällä kurssillä jätetään nämä HTTP:n päälle rakennetut sovellukset ja niiden ratkaisut kokonaan käsittelemättä, mutta lukijan on hyvä muistaa, että niitä on jo nyt ja niiden määrä luultavsti vain lisääntyy tulevaisuudessa.
 
 ## Liikenteen analysointi
 
@@ -71,15 +69,10 @@ Suosittelen ohjelman käyttöä ja noiden valmiiden aineistojen tarkastelua. Osa
 
 
 
-## Lukemista
-
-
 <quiz id="333846bf-2099-4aca-89e7-1a313babf7a5"></quiz>
 
 
 
 
 **up**
-**never**
-**gonna**
-**let**
+
