@@ -26,14 +26,49 @@ Asiakaskone saa nimipalvelijan osoitteen tyypillisesti DHCP-palvelijalta samalla
 
 Nimipalveluhierarkia on kolmitasoinen puurakenne, jossa juurinimipalvelin on puun juuri ja sen
 
-KUVA:
+KUVA: Hierarkiasta
+
+Juurinimipalvelijoita on itseasiassa useita, koska yksi juurinimipalvelija ei millään ehtisi palvella kaikkia kyselijöitä. Juurinimipalvelijat on nimetty kirjaimilla a-m. Niillä on siis 13 eri kirjainta. Jokaista eri kirjaimella nimettyä juurinimipalvelijaa hallinnoi eri organisaatio.  Näistä jokaisesta on vielä useita täydellisiä kopioita ympäri maailmaa. Verkkosivulla https://root-servers.org/ on kuvattuna kaikki tämän hetkiset nimipalvelijoiden ja niiden kopioiden sijainnit. Sen mukaan lokakuussa 2o19 Suomessa oli 8 nimipalvelijaa.
+
+Quizz:  Millä paikkakunnilla, mitä kirjaimia
 
 
-Kuva: https://fi.wikipedia.org/wiki/DNS#/media/Tiedosto:DNS.png
+## DNS tietue ja viesti
+
+Nimipalvelijoilla tiedot tallennetaan DNS tietuina (engl. DNS record). Tietueessa on aina neljä kenttää (nimi, arvo, tyyppi ja elinaika).
+
+Yleisimmät tyypit ovat:
+Tyyppi = A  (host address)
+       nimi = koneen nimi,  arvo = IP-osoite  (Ipv4)
+       esim: (relay1.bar.foo.com, 145.37.3.126, A, TTL)
+Tyyppi = NS (name server)
+       nimi = aluenimi (domain), arvo = autorisoidun palvelimen nimi
+       esim: (foo.com, ds.foo.com, NS, TTL)
+Tyyppi = CNAME (canonical name)
+       nimi = koneen aliasnimi, arvo=  kanoninen, oikea konenimi
+       esim: (foo.com, relay1.bar.foo.com, CNAME, TTL)
+Tyyppi = MX (mail exchange)
+       nimi = koneen aliasnimi, arvo = postipalvelimen kanoninen nimi
+       esim: (foo.com, mail.bar.com, MX,TTL)
+Tyyppi = AAAA (host address)
+       nimi = koneen nimi,  arvo = IP-osoite  (Ipv6)
+       esim: (relay1.bar.foo.com,    , A, TTL)
+       
+       
+Esimerkki  A-tietueesta ja MX-tietueesta. Muut voi jättää wikipedian ja muiden materiaalien varaan.
+
+Nimipalvelukyselyn ja vastauksen käyttämät viestit ovat rakenteeltaan samanlaisia, joten nimipalvelulssa siirretään vain yhdenlaisia viestejä. Viestissä on erikseen kenttä, jolla lähettäjä kertoo onko kysymyksessä kysely vai vastaus.
+
+
+
+## DNS Kysely
+
 
 ## DNS
 
 Protokollan sisäinen toiminta ja nimipalveluorganisaatio huolellisesti.  Korosta tuotan asiakaan omaan nimipalvelijaa (engl. DNS resolver), joka ei ole osa virallisten nimipalvelijoiden hierarkiaa.
+
+Kuva: https://fi.wikipedia.org/wiki/DNS#/media/Tiedosto:DNS.png
 
 HTTP,  SMTP  ja DNS
 
