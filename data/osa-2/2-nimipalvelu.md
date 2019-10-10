@@ -35,7 +35,7 @@ Quizz:  Millä paikkakunnilla, mitä kirjaimia
 
 ## DNS tietue ja viesti
 
-Nimipalvelijoilla tiedot tallennetaan DNS tietuina (engl. DNS record). Tietueessa on aina neljä kenttää (nimi, arvo, tyyppi ja elinaika).
+Nimipalvelijoilla tiedot tallennetaan DNS:n resurssitietuina (engl. resource record, RR). Tietueessa on aina neljä kenttää (nimi, arvo, tyyppi ja elinaika).
 
 Yleisimmät tyypit ovat:
 Tyyppi = A  (host address)
@@ -68,23 +68,35 @@ Yksittäinen solmu voi tehdä useita nimipalvelukyselyjä ilman, että se on vie
 
 Kuva viestistä: https://en.wikibooks.org/wiki/Communication_Networks/DNS#/media/File:Dns_message.jpg
 
-Vastauksessa on myös mukana lipukkeena tieto siitä, tuleeko vastaus suoraan nimipalveluhierarkiaan kuuluvalta autorisoidulta nimipalvelijalta vai ei. Tässä myös juurinimipalvelimet ja ylätason palvelimet tulkitaan autorisoiduiksi.
-
-Käyttäjän asiakaskoneen tekemiin nimipalvelukyselyihin vastaavat tyypillisesti paikalliset nimipalvelijat, jotka eivät ole autorisoituja. 
+Vastauksessa on myös mukana lipukkeena tieto siitä, tuleeko vastaus suoraan nimipalveluhierarkiaan kuuluvalta autorisoidulta nimipalvelijalta vai ei.
 
 
+Quizz: kysymyksi viestin rakenteesta
 
 
 ## DNS toiminta
 
 
+Käyttäjän asiakaskoneen tekemiin nimipalvelukyselyihin vastaavat tyypillisesti paikalliset nimipalvelijat (ns. resolverit), jotka eivät ole autorisoituja. 
+
+Oheisessa kuvassa on kuvattuna tyypillisen nimipalvelukyselyn vaiheet ja siihen liittyvät koneet.
+
+Kuva: https://fi.wikipedia.org/wiki/DNS#/media/Tiedosto:DNS.png
+
+Käyttäjän tietokone, tai oikeammin sen nimipalvelua käyttävä ohjelmakirjasto, tekee nimipalvelukyselyn paikalliselle nimipalvelijalla, joka kuvassa on nimetty asiakasnimipalvelija. Se ratkoo nimipalvelukyselyn käyttäjän puolesta ja palauttaa aikanaan vastauksen käyttäjän tietokoneelle. Paikallinen nimipalvelija tekee kyselyjä nimipalveluhierarkian koneille vaiheittain ja näin se saa vähitellen vastauksen kyselyyn.
+
+Koska kaikiin nimipalvelun resurssitietueisiin on liitetty niiden elinaika, niin paikallinen nimipalvelija voi säiyttää saamiaan tietuita sen aikaa, kun niiden tiedetään olevan käytettävissä. Tällaista tilapäistä säilyttämistä omassa 'muistissa' kutsutaan  välimuistiksi (engl. cache). Sitä käytetään monessa muussakin tilanteessa sekä laitteistossa että ohjelmistoissa, kun yritetään välttää saman hitaan asian tekemistä toistamiseen. Välimuisteja on jo käsitelty tietokoneen toiminta -kursseilla ja niitä tulee vastaan myös myöhemmillä kursseilla.
+
+Jos siis kysytty tieto on välimuistissa, niin se välitetään samantien kysyjälle vastauksena, eikä paikallinen nimipalvelija tee muuta.
+
+Jos mitään kysyttyyn tietoon liittyviä resurssitietueita ei ole paikallisen nimipalvelijan välimuistissa, niin paikallinen nimpalvelija selvittää vastauksen kyselyyn aloittamalla selvittämien aina jostakin juurisolmusta.
 
 
 ## DNS
 
-Protokollan sisäinen toiminta ja nimipalveluorganisaatio huolellisesti.  Korosta tuotan asiakaan omaan nimipalvelijaa (engl. DNS resolver), joka ei ole osa virallisten nimipalvelijoiden hierarkiaa.
 
-Kuva: https://fi.wikipedia.org/wiki/DNS#/media/Tiedosto:DNS.png
+
+
 
 HTTP,  SMTP  ja DNS
 
