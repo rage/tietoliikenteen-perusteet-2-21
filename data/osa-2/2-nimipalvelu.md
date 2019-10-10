@@ -79,17 +79,21 @@ Quizz: kysymyksi viestin rakenteesta
 
 Käyttäjän asiakaskoneen tekemiin nimipalvelukyselyihin vastaavat tyypillisesti paikalliset nimipalvelijat (ns. resolverit), jotka eivät ole autorisoituja. 
 
-Oheisessa kuvassa on kuvattuna tyypillisen nimipalvelukyselyn vaiheet ja siihen liittyvät koneet.
+Oheisessa kuvassa on kuvattuna tyypillisen nimipalvelukyselyn vaiheet ja siihen liittyvät koneet. Seuraavaksi käydään paikallisen nimipalvelijan toimintaa läpi kuvan esimerkin valossa. Kuvassahan haetaan www.firma.fi nimeä vastaavaa IP-osoitetta.
 
 Kuva: https://fi.wikipedia.org/wiki/DNS#/media/Tiedosto:DNS.png
 
-Käyttäjän tietokone, tai oikeammin sen nimipalvelua käyttävä ohjelmakirjasto, tekee nimipalvelukyselyn paikalliselle nimipalvelijalla, joka kuvassa on nimetty asiakasnimipalvelija. Se ratkoo nimipalvelukyselyn käyttäjän puolesta ja palauttaa aikanaan vastauksen käyttäjän tietokoneelle. Paikallinen nimipalvelija tekee kyselyjä nimipalveluhierarkian koneille vaiheittain ja näin se saa vähitellen vastauksen kyselyyn.
+Käyttäjän tietokone, tai oikeammin sen nimipalvelua käyttävä ohjelmakirjasto aloittaa toiminnon, kun se tekee nimipalvelukyselyn paikalliselle nimipalvelijalla, joka kuvassa on nimetty asiakasnimipalvelija. Nimmipalvelija ratkoo nimipalvelukyselyn käyttäjän puolesta ja palauttaa aikanaan vastauksen käyttäjän tietokoneelle. Paikallinen nimipalvelija tekee kyselyjä nimipalveluhierarkian koneille vaiheittain ja näin se saa vähitellen vastauksen kyselyyn.
 
-Koska kaikiin nimipalvelun resurssitietueisiin on liitetty niiden elinaika, niin paikallinen nimipalvelija voi säiyttää saamiaan tietuita sen aikaa, kun niiden tiedetään olevan käytettävissä. Tällaista tilapäistä säilyttämistä omassa 'muistissa' kutsutaan  välimuistiksi (engl. cache). Sitä käytetään monessa muussakin tilanteessa sekä laitteistossa että ohjelmistoissa, kun yritetään välttää saman hitaan asian tekemistä toistamiseen. Välimuisteja on jo käsitelty tietokoneen toiminta -kursseilla ja niitä tulee vastaan myös myöhemmillä kursseilla.
+Koska kaikiin nimipalvelun resurssitietueisiin on liitetty niiden elinaika, niin paikallinen nimipalvelija voi säiyttää saamiaan tietuita sen aikaa, kun niiden tiedetään olevan käytettävissä. Tällaista tilapäistä säilyttämistä omassa 'muistissa' kutsutaan  https://fi.wikipedia.org/wiki/V%C3%A4limuisti välimuistiksi (engl. cache). Sitä käytetään monessa muussakin tilanteessa sekä laitteistossa että ohjelmistoissa, kun yritetään välttää saman hitaan asian tekemistä toistamiseen. Välimuisteja on jo käsitelty tietokoneen toiminta -kursseilla ja niitä tulee vastaan myös myöhemmillä kursseilla.
 
-Jos siis kysytty tieto on välimuistissa, niin se välitetään samantien kysyjälle vastauksena, eikä paikallinen nimipalvelija tee muuta.
+Jos kysytty tieto (eli kuvassa www.firma.fi:n IP-osoite) on välimuistissa, niin se välitetään samantien kysyjälle vastauksena, eikä paikallinen nimipalvelija tee muuta.
 
-Jos mitään kysyttyyn tietoon liittyviä resurssitietueita ei ole paikallisen nimipalvelijan välimuistissa, niin paikallinen nimpalvelija selvittää vastauksen kyselyyn aloittamalla selvittämien aina jostakin juurisolmusta.
+Jos mitään kysyttyyn tietoon liittyviä resurssitietueita ei ole paikallisen nimipalvelijan välimuistissa, niin paikallinen nimpalvelija selvittää vastauksen kyselyyn aloittamalla selvittämisen aina jostakin juurinimipalvelijasta. Juurinimipalvelijoiden (tai ainakin osan niistä) IP-osoitteita on valmiina nimipalvelijan konfigurointitiedoissa, joten se tietää mistä aloittaa.
+
+Ensiksi siis paikallinen nimipalvelija kysyy juurinimipalvelijalta sen ylätason palvelimen IP-osoitetta, joka vastaa .fi -nimiavaruuden osoitteista. Tämä kysymys on siis DNS viestin mukainen kysely juurinimipalvelijalle. Juuripalvelimen vastauksessa on siis vähintään yksi NS-tyyppinen resurssitietue eli ko. nimiavaruutta hallinoivan ylätason nimipalvelijan nimi.  Mukana voi myös olla A tai AAAA-tyyppinen resurssitietue, jossa on ko. nimipalvelijan IP-osoite.
+
+Seuraavaksi paikallinen nimipalvelija kysyy
 
 
 ## DNS
