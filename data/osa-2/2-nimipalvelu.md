@@ -91,26 +91,35 @@ Jos kysytty tieto (eli kuvassa www.firma.fi:n IP-osoite) on välimuistissa, niin
 
 Jos mitään kysyttyyn tietoon liittyviä resurssitietueita ei ole paikallisen nimipalvelijan välimuistissa, niin paikallinen nimpalvelija selvittää vastauksen kyselyyn aloittamalla selvittämisen aina jostakin juurinimipalvelijasta. Juurinimipalvelijoiden (tai ainakin osan niistä) IP-osoitteita on valmiina nimipalvelijan konfigurointitiedoissa, joten se tietää mistä aloittaa.
 
-Ensiksi siis paikallinen nimipalvelija kysyy juurinimipalvelijalta sen ylätason palvelimen IP-osoitetta, joka vastaa .fi -nimiavaruuden osoitteista. Tämä kysymys on siis DNS viestin mukainen kysely juurinimipalvelijalle. Juuripalvelimen vastauksessa on siis vähintään yksi NS-tyyppinen resurssitietue eli ko. nimiavaruutta hallinoivan ylätason nimipalvelijan nimi.  Mukana voi myös olla A tai AAAA-tyyppinen resurssitietue, jossa on ko. nimipalvelijan IP-osoite.
+Ensiksi siis paikallinen nimipalvelija kysyy juurinimipalvelijalta, mikä ylätason nimipalvelija vastaa .fi -nimiavaruuden osoitteista. Tämä kysymys on siis DNS viestin mukainen kysely juurinimipalvelijalle. Juurinimipalvelijan vastauksessa on vähintään yksi NS-tyyppinen resurssitietue eli ko. nimiavaruutta hallinoivan ylätason nimipalvelijan nimi.  Mukana on yleensä myös A tai AAAA-tyyppinen resurssitietue, jossa on ko. nimipalvelijan nimeen liittyvä IP-osoite. 
 
-Seuraavaksi paikallinen nimipalvelija kysyy
+Seuraavaksi paikallinen nimipalvelija kysyy äskessä vastauksessa saadun tiedon mukaiselta ylätason nimipalvelijalta, mikä alimman tason auktoritäärinen nimipalvelija vastaa www.firma.fi verkkonimen nimipalvelusta. 
 
+Vastauksen saatuaan paikallinen nimipalvelija voi vihdoin kysyä tältä auktoritääriseltä nimipalvelijalta verkkonimeen www.firma.fi liittyvää IP-osoitetta. Kun vastaus saapuu, niin paikallinen nimipalvelija voi vastata omalle asiakkaalleen ja kertoa mikä tuo kysytty IP-osoite on.
 
-## DNS
+Tässä viestien vaihdossa paikalliselle nimipalvelijalle kertyy useita resurssitietueita. Se tyypillisesti varastoi ne kaikki omaan välimuistiinsa ja käyttää näin vähitellen kertyvää tietoa apuna myöhemmissä kyselyissä. Esimerkiksi, jos välimuistista olisi jo löytynyt suoraan joko ylätason palvelijan tai auktoritäärisen palvelijan yhteystiedot, niin kyselyketjussa olisi voitu ohittaa tarpeettomat kyselyt ja näin säätää aikaa ja vähentää verkkoliikennettä.
 
-
-
-
-
-HTTP,  SMTP  ja DNS
+QUIZZ:  Nimipalvelin toimintaan liittyen parikin kysymystä
 
 
+## Nimipalvelun turvallisuus 
 
-Samat pienet ongelmat (tai "osaongelmat") toistuvat ohjelmissa yhä uudestaan ja uudestaan: "Lue käyttäjältä syötettä", "Laske lukujen summa", "Laske lukujen keskiarvo",  "Lue käyttäjältä syötettä kunnes", "Montako lukua käyttäjä on syöttänyt.", jne.
+Nimipalvelu on niin keskeinen osa internetin toimintaa, että se houkuttelee erilaisia pahantahtoisia tahoja tekemään hyökkäyksi joko itse nimipalvelua vastaan tai käyttämään nimipalvelua hyökkäyksissä jotain muuta tahoa vastaan. Aikoinaan valittujen suunnitteluperiaatteiden (kuten hajautettu toiminta, luottamukseen perustuva tietojen vaihto) tekevät siitä varsin haavoittuvan tämän kaltaisiin hyökkäyksiin liittyen. 
 
-Tarkastellaan muutamia tällaisia ongelmia sekä niihin liittyviä ratkaisuja.
+En käy tällä kurssilla läpi kaikkia erilaisia hyökkäyksiä ja niiden mahdollisia haittavaikutuksia tai suojautumista niitä vastaan. Tietoturva asiaa käsitellään kokonaisuutena Cyber security -kurssisarjassa.
+
+TIVIn verkkosivuilla on vuonna 2015 TIVI-lehdessä ilmestynyt artikkeli, jossa on kuvattu erilaisia nimipalvelun haavoittuvuuksia ja suojautumista. https://www.tivi.fi/uutiset/tietoturva-unohtui-kun-dns-syntyi-netin-nimipalvelu-vaatii-uutta-ajattelua/b58e3999-7a0b-329f-b256-f83ac6d599a7
 
 
 ## DNSSEC
 
+Nimipalvelun ongelmat havaittiin varsin pian, kun internet-verkon käyttö laajeni voimakkaasti, eivätkä verkkoon liittyneet organisaatiot enää tienneet keitä muita verkossa liikkui samoihin aikoihin myös erilaiset hyökkäykset ja haittaohjelmat yleistyivät. Alkuperäinen nimipavelun turvallisuuslaajennus (Domain Name System Security Extension, DNSSEC) julkaistiin RFC:ssä numero 2535 https://tools.ietf.org/html/rfc2535  jo vuonna 1999. Vaikka julkaisusta on jo yli kaksikymmentä vuotta, niin edelleenkään kaikkia nimipalvelutietoja ei ole suojattu sillä. 
+
+DNSSEC käyttää julkisen avaimen salausmenetelmään perustuvuu digitaalista allekirjoitusta, jonka avulla DS viestin vastaanottaja voi varmentaa, että sen saama resurssitietue ja siihen liittyvä digitaalinen allekirjoitus tulevat oikealta autoritääriseltä nimipalvelijalta, eikä joltain huijauspalvelimelta. Viestintävirasto on julkaissut suomenkielisen oppaan  DNSSECistä
 https://www.traficom.fi/fi/viestinta/fi-verkkotunnukset/nimipalvelun-tietoturvalaajennus-dnssec
+
+## Lisätietoja .fi-verkkotunnuksista
+
+(Tämä ei ole varsinaisesti kurssimateriaalia, mutta asiasta kiinnostuneiden kannattaa paneutua myös viestintäviraston ohjeistoon.)
+
+Koska Liikenne- ja viestintävirasto Traficom  https://www.traficom.fi/fi/  hallinnoi .fi-verkkotunnuksia, on se määritellyt säännöt siihen, miten näitä .fi-verkkotunnuksia tunnuksia voidaan jakaa ja julkaissut myös ohjeen verkkotunnustenvälittäjille. Tarkempaa tetoa sivustolla https://www.traficom.fi/fi/viestinta/fi-verkkotunnukset
