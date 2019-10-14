@@ -57,27 +57,23 @@ A:   RCPT TO: <kuka123@postipalvelin.com>
 B:   250 recipient <kuka123@ postipalvelin.com > OK
 A:   DATA
 B:   250 OK; enter text, end with .
-A:   Tämä on viestin sisältö.
+A:   Tämä on viestin sisältö. 
 A:   .
 B:   250 postipalvelin.com OK; message accepted for delivery
 A:   QUIT
 
-Tästä esimerkistä käy hyvin ilmi monivaiheinen viestien vaihto. Tässä esimerkissä sähköpostin lähettäminen onnistuu. Protokollassa on määritelty tarkasti myös erilaiset virhetilanteet ja niihin liittyvät viestit. SMTP on HTTP-protokollan tavoin tekstipohjainen, jolloin ihmisen on mahdollista itsekin ottaa TELNET yhteys palvelimeen ja kirjoittaa nuo lähettävän palvelimen viestit ihan suoraan näppäimistöltä. 
-
-Vastaanottajan tieto toimitetaan palvelimelle oikeasti kahteen kertaan. Se on tuolla RCPT TO viestissä, ja sen mukaisesti viesti sijoitetaan vastaanottajan postilaatikkoon. Viestin mukana näkyvä vastaanottaja tieto tulee kuitenkin erikseen osana viestin sisältöä. Näin toimitaan myös lähettäjän osoitteen kanssa.
-
-XXXX: Tehtävä mitä hyötyjä / haittoja tästä tietojen kahteen kertaan toimittamisesta on?
+Tästä esimerkistä käy hyvin ilmi monivaiheinen viestien vaihto. Tässä esimerkissä sähköpostin lähettäminen onnistuu. Protokollassa on määritelty tarkasti myös erilaiset virhetilanteet ja niihin liittyvät viestit. SMTP on HTTP-protokollan tavoin tekstipohjainen, jolloin ihmisen on mahdollista itsekin ottaa TELNET yhteys palvelimeen ja kirjoittaa nuo lähettävän palvelimen viestit ihan suoraan näppäimistöltä. Tällaisessa yhteydessä on toki noudatettava myös niitä sääntöjä, jotka liittyvät itse viestin rakenteeseen. Esimerkissä näistä säännöistä on yksinkertaisuuden vuoksi oikaistu.
 
 
 
-HUOM: SMTP:hen käytetään paljon aikaa ja tilaa tällä kurssilla!!!!
+## Viestin rakenne
 
-
-## Viestien rakenne
+Sähköpostiviestit eivät yleensä ole ihan noin lyhyitä, kun tuossa esimerkissä, jossa viesti on vain yhden rivin mittainen "Tämä on viestin sisältö." Yleensä viestit ovat pidempiä. Koska sähköpostiprotokolla on tekstimuotoinen ja koska viestin on sovittu päättyvän riviin, jossa on vain yksi merkki, piste, on sähköpostiin liitettävä muu kuin ASCII-muotoinen teksi koodattava ASCII-merkistölle sopivaksi.
 
 
 ## Sähköpostin haasteita
 
+Koska lähettäjän osoite on vain tekstiä tuossa viestissä, eikä vastaanottavalla palvelimella ole mitään mahdollisuutta sitä tarkastaa, on tämän osoittautunut yhdeksi mahdolliseksi väyläksi huijata. Varsinainen viestin lähettäjä jää tuntemattomaksi ja viesti näyttää tulevan ihan eri henkilöltä. 
 
 https://fi.wikipedia.org/wiki/Musta_lista_(s%C3%A4hk%C3%B6posti)
 
