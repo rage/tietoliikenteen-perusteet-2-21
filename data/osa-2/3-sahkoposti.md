@@ -42,11 +42,11 @@ HUOM:  Kuvaan liittyvä tarina yhden sähköpostin lähettämisestä ja vastaano
 
 SMTP (Simple Mail Transfer Protocol) on sähköpostijärjestelmässä käytetty siirtoprotokolla, jolla sähköposti siirretään vastaanottajan sähköpostipalvelimelle. Sitä voidaan käyttää myös sähköpostiviestin siirtämiseen viestiä lähettävän käyttäjän sähköpostiohjelmasta lähettäjän omalle sähköpostipalvelimelle viestin edelleenlähetystä varten. SMTP protokolla on suunniteltu vain viestin siirtämiseen lähettäjältä vastaanottajalle.  Siksi sitä ei voida käyttää viestin vastaanottavan käyttäjän sähköpostiohjelmassa viestin noutamiseen lukemista varten. Viestien noutamiseen onkin myöhemmin kehitetty erillisiä protokollia kuten POP3 ja IMAP.
 
-Nykyisin käytössä on lähinnä SMTP:stä edellen kehitetty ESMTP (Extended SMTP).  Tällä kurssilla ei paneuduta tähän laajennukseen, vaan opiskellaan sähköpsotijärjestelmän toimintaperiaate tuon alkuperäisen SMTP:n kanssa. Jos jotakuta laajennus kuitenkin kiinnostaa, niin suomenkielinen wikipedian sivu https://fi.wikipedia.org/wiki/ESMTP on hyvä lähtökohta asian itsenäiselle tutkimiselle.
+Nykyisin käytössä on lähinnä SMTP:stä edellen kehitetty ESMTP (Extended SMTP).  Tällä kurssilla ei paneuduta tähän laajennukseen, vaan opiskellaan sähköpsotijärjestelmän toimintaperiaate tuon alkuperäisen SMTP:n kanssa, vaikka nykyään postipavelimien suositellaan käyttävän aina tuota laajennosta. Jos jotakuta laajennus kuitenkin kiinnostaa, niin suomenkielinen wikipedian sivu https://fi.wikipedia.org/wiki/ESMTP on hyvä lähtökohta asian itsenäiselle tutkimiselle.
 
-SMTP protokollassa on määritelty monivaiheinen viestien vaihto lähettäjän ja vastaanottajan välillä. Niiden täytyy ylläpitää tilatietoa, jotta ne pysyvät kärryillä missä vaiheessa viestien vaihto on menossa. Tässä SMTP poikkeaa HTTP-protokollasta. HTTP:hän oli tilanton, jolloin lähettäjän ja vastaanottajan ei tarvitse tätä tilatietoa ylläpitää.
+SMTP protokollassa on määritelty monivaiheinen viestien vaihto lähettäjän ja vastaanottajan välillä. Niiden täytyy ylläpitää tilatietoa, jotta ne pysyvät kärryillä, missä vaiheessa viestien vaihto on menossa. Tässä SMTP poikkeaa HTTP-protokollasta. HTTP-prptokolla kuten muistamme oli tilaton, jolloin lähettäjän ja vastaanottajan ei tarvinnut tilatietoa ylläpitää.
 
-Oheinen yhteysesimerkki on mukaeltu Visa Hännisen insinöörityössä  [https://www.theseus.fi/bitstream/handle/10024/23284/Hanninen_Visa.pdf?sequence=1&isAllowed=y]{"SMTP-releointipalvelun valvonta ja raportointi"}, Metropolia 2010, olleesta esimerkistä.
+Oheinen yhteysesimerkki, eli yhden sähköpostiviestin siirto lähettävältä palvelimelta vastaanottavalla postipalvelimelle, on mukaeltu Visa Hännisen insinöörityössä  [https://www.theseus.fi/bitstream/handle/10024/23284/Hanninen_Visa.pdf?sequence=1&isAllowed=y]{"SMTP-releointipalvelun valvonta ja raportointi"}, Metropolia 2010, olleesta esimerkistä.
 
 A (lahettava.palvelin.com) avaa TCP-yhteyden B:lle (email.vastaanottaja.com)
 A:   HELO lahettava.palvelin.com
@@ -62,7 +62,7 @@ A:   .
 B:   250 postipalvelin.com OK; message accepted for delivery
 A:   QUIT
 
-Tästä esimerkistä käy hyvin ilmi tuo monivaiheinen viestien vaihto. Tässä esimerkissä sähköpostin lähettäminen onnistuu. Protokollassa on määritelty tarkasti myös erilaiset virhetilanteet ja niihin liittyvät viestit. SMTP on HTTP-protokollan tavoin tekstipohjainen, jolloin ihmisen on mahdollista itsekin ottaa TELNET yhteys palvelimeen ja kirjoittaa nuo lähettävän palvelimen viestit ihan suoraan näppäimistöltä. 
+Tästä esimerkistä käy hyvin ilmi monivaiheinen viestien vaihto. Tässä esimerkissä sähköpostin lähettäminen onnistuu. Protokollassa on määritelty tarkasti myös erilaiset virhetilanteet ja niihin liittyvät viestit. SMTP on HTTP-protokollan tavoin tekstipohjainen, jolloin ihmisen on mahdollista itsekin ottaa TELNET yhteys palvelimeen ja kirjoittaa nuo lähettävän palvelimen viestit ihan suoraan näppäimistöltä. 
 
 Vastaanottajan tieto toimitetaan palvelimelle oikeasti kahteen kertaan. Se on tuolla RCPT TO viestissä, ja sen mukaisesti viesti sijoitetaan vastaanottajan postilaatikkoon. Viestin mukana näkyvä vastaanottaja tieto tulee kuitenkin erikseen osana viestin sisältöä. Näin toimitaan myös lähettäjän osoitteen kanssa.
 
@@ -76,6 +76,10 @@ HUOM: SMTP:hen käytetään paljon aikaa ja tilaa tällä kurssilla!!!!
 ## Viestien rakenne
 
 
+## Sähköpostin haasteita
+
+
+https://fi.wikipedia.org/wiki/Musta_lista_(s%C3%A4hk%C3%B6posti)
 
 ##  Salaus
 
