@@ -5,16 +5,23 @@ title: 'Sähköposti'
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Osaat selittää miksi tietoliikenneverkko pitää olettaa epäluotettavaksi.
-- Ymmärrät miksi verkon kuuntelu on helppoa ja miksi kuuntelulta suojautuminen tapahtuu lähinnä salauksen avulla.
-- Osaat kuvata kuljetuskerroksen palvelut sovelluskerroksen protokollille.
-- Osaat perustella miksi sovelluskerroksella täytyy ottaa kantaa sen tarvitsemiin alemman kerroksen palveluihin.
+- Osaat kuvata sähköpostipalvelun.
+- Osaat kuvata SMTP protokollan toimintaa ja sen käyttöä sähköpostipalvelussa.
+- Osaat perustella miksi lähettäjällä ja vastaanottajalla on käytössään eri protokollat.
 
 </text-box>
 
 <quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
 ## Sähköpostipalvelu
+
+Kaikki me käytämme sähköpostipalvelua, mutta kuinka moni meistä osaa kertoa mitä sähköpostinjärjestelmässä oikeasti tapahtuu. Toki myös lähetämme tavallisia kirjeitä ja postikortteja, emmekä silloinkaan osa tarkasti kertoa miten kortti kulkee lähetyspaikasta vastaanottajalle. Tulevia tietotekniikka-alan osaajina tämän kurssin osallistujien pitää kuitenkin tietää edes yleisperiaatteet sähköpostipalvelun toiminnasta.
+
+Sähköpostipalvelu, kuten useimmat muutkin internetin palvelut, perustuu erillisten sähköpostipalvelimien käyttöön. Nykyään käyttäjät käyttävät näitä palvelimia erityisten asiakasohjelmistojen kautta. Käyttäjän omalla koneella (tai kännykällä) voi olla erillinen sähköpostiohjelma (kuten Thunderbird, Outlook) tai www-selaimessa toimiva sähköpostipalvelu (kuten gmail, operaattorien sähköpostipalvelut). 
+
+Sähköpostipalvelimet välittävät viestejä keskenään käyttäen yksinkertaista sähköpostin välitysprotokollaa (Simple Mail Transfer Protocol, SMTP) tai siitä edelleen kehitettyä laajempaa (Extended SMTP, ESMTP).
+
+
 
 
 ## SMTP
