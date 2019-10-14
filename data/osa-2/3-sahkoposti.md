@@ -17,11 +17,19 @@ title: 'Sähköposti'
 
 Kaikki me käytämme sähköpostipalvelua, mutta kuinka moni meistä osaa kertoa mitä sähköpostinjärjestelmässä oikeasti tapahtuu. Toki myös lähetämme tavallisia kirjeitä ja postikortteja, emmekä silloinkaan osa tarkasti kertoa miten kortti kulkee lähetyspaikasta vastaanottajalle. Tulevia tietotekniikka-alan osaajina tämän kurssin osallistujien pitää kuitenkin tietää edes yleisperiaatteet sähköpostipalvelun toiminnasta.
 
-Sähköpostipalvelu, kuten useimmat muutkin internetin palvelut, perustuu erillisten sähköpostipalvelimien käyttöön. Nykyään käyttäjät käyttävät näitä palvelimia erityisten asiakasohjelmistojen kautta. Käyttäjän omalla koneella (tai kännykällä) voi olla erillinen sähköpostiohjelma (kuten Thunderbird, Outlook) tai www-selaimessa toimiva sähköpostipalvelu (kuten gmail, operaattorien sähköpostipalvelut). 
+Sähköpostipalvelu, kuten useimmat muutkin internetin palvelut, perustuu erillisten sähköpostipalvelimien käyttöön. Nykyään käyttäjät käyttävät näitä palvelimia erityisten asiakasohjelmistojen kautta. Käyttäjän omalla koneella (tai kännykällä) voi olla erillinen sähköpostiohjelma (kuten Thunderbird, Outlook) tai www-selaimessa toimiva sähköpostipalvelu (kuten gmail, operaattorien sähköpostipalvelut). Tällä kurssille oletetaan, että käytetään erillistä sähköpostiohjelmaa. WWW-palvelimen voi ajatella vastaavaan rooliin sähköpostipalvelimien suhteen.
 
-Sähköpostipalvelimet välittävät viestejä keskenään käyttäen yksinkertaista sähköpostin välitysprotokollaa (Simple Mail Transfer Protocol, SMTP) tai siitä edelleen kehitettyä laajempaa (Extended SMTP, ESMTP).
+Sähköpostipalvelimet välittävät viestejä keskenään käyttäen yksinkertaista sähköpostin välitysprotokollaa (Simple Mail Transfer Protocol, SMTP) tai siitä edelleen kehitettyä laajempaa protokollaa (Extended SMTP, ESMTP).
 
+Asiakasohjelma lähettää viestit sähköpostipalvelimelle käyttäen samaa SMTP protokolla kuin sähköpostipalvelin, kun se lähettää sähköpostin toiselle sähköpostipalvelimelle. SMTP-protokolla käytetään siis vain viestin lähettämiseen. Siinä lähettäjä ottaa yhteyden vastaanottajaan ja siirtää sähköpostin vastaanottajalle. Tällaisia protokollia, joissa yhteyden muodostanut lähettäjä 'työntää' viestin vastaanottajalle, kutsutaan englanninkielisen nimen mukaan PUSH-protokolliksi. Valtaosa tällä kurssilla käsiteltävistä protokollista on kuitenkin PULL-protokollia. Niissä yhteyden muudostajaa 'vetää' tietoa itselleen. Myös asiakasohjelman käyttämät protokolla POP3 ja IMAP oat PULL-tyyppisiä protokollia. Niiden avulla asiakasohjelma noutaa käyttäjän sähköpostilaatikon sisällön luettavaksi käyttäjän koneelle.
 
+Käyttäjällä on siis sähköpostiosoite, kuten tiina.niklander@helsinki.fi, jota muut käyttäjät voivat käyttää vastaanottajan osoitteena, kun he haluavat lähettää sähköpostia kyseiselle käyttäjälle. Sähköpostiosoitteessa on kolme elementtiä: käyttäjän tunniste (tiina.niklander), ät-merkki ja postipalvelimen tunniste (helsinki.fi). Ät-merkin käytöstä voit lukeaa lisää kielitoimiston ohjepankista
+http://www.kielitoimistonohjepankki.fi/ohje/20.
+
+Käyttäjän tunnisteet yksilöivät käyttäjät vain yhden sähköpostipalvelimen sisällä. Sama käyttäjätunniste voi olla käytössä useammassa eri sähköpostipalvelimessa. Niitä voi hallinnoida yksi ja sama henkilö tai ne voivat kuulua useammalle eri henkilölle.
+
+Sähköpostipalvelimen tunniste helsinki.fi ei ole sähköpostipalvelimen oma verkkonimi, vaan sähköpostijärjestelmässä käytettävä tunniste. Sähköpostipalvelimen verkkonimen voi selvittää nimipalvelun avulla. Nimipalvelun resurssitietueessa MX tieto siitä, mikä sähköpostipalvelin vastaa tietyn verkkoalueen (kuten helsinki.fi) sähköpostipalvelusta. Sähköpostiosoitteet sitoutuvat siis verkkonimiin siten, että tuo sähköpostipalvelimen tunniste on yleensä samalla verkkoalueen nimi.
+.
 
 
 ## SMTP
