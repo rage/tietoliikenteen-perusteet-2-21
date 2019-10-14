@@ -29,7 +29,13 @@ http://www.kielitoimistonohjepankki.fi/ohje/20.
 Käyttäjän tunnisteet yksilöivät käyttäjät vain yhden sähköpostipalvelimen sisällä. Sama käyttäjätunniste voi olla käytössä useammassa eri sähköpostipalvelimessa. Niitä voi hallinnoida yksi ja sama henkilö tai ne voivat kuulua useammalle eri henkilölle.
 
 Sähköpostipalvelimen tunniste helsinki.fi ei ole sähköpostipalvelimen oma verkkonimi, vaan sähköpostijärjestelmässä käytettävä tunniste. Sähköpostipalvelimen verkkonimen voi selvittää nimipalvelun avulla. Nimipalvelun resurssitietueessa MX tieto siitä, mikä sähköpostipalvelin vastaa tietyn verkkoalueen (kuten helsinki.fi) sähköpostipalvelusta. Sähköpostiosoitteet sitoutuvat siis verkkonimiin siten, että tuo sähköpostipalvelimen tunniste on yleensä samalla verkkoalueen nimi.
-.
+
+QUIZZ:  MIkä on helsinki.fi osoitteiden sähköpostipalvelin  (Tee siis nimipavelukysely, kuten edellisessä osassa)
+
+KUVA: Sähköpostijärjestelmästä, jossa useampi sähköpostipalvelin ja niillä pari postilaatikkoa.
+
+HUOM:  Kuvaan liittyvä tarina yhden sähköpostin lähettämisestä ja vastaanottamisesta.
+
 
 
 ## SMTP
