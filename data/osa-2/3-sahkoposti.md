@@ -68,12 +68,30 @@ Tästä esimerkistä käy hyvin ilmi monivaiheinen viestien vaihto. Tässä esim
 
 ## Viestin rakenne
 
-Sähköpostiviestit eivät yleensä ole ihan noin lyhyitä, kun tuossa esimerkissä, jossa viesti on vain yhden rivin mittainen "Tämä on viestin sisältö." Yleensä viestit ovat pidempiä. Koska sähköpostiprotokolla on tekstimuotoinen ja koska viestin on sovittu päättyvän riviin, jossa on vain yksi merkki, piste, on sähköpostiin liitettävä muu kuin ASCII-muotoinen teksi koodattava ASCII-merkistölle sopivaksi.
+Sähköpostiviestit eivät yleensä ole ihan noin lyhyitä, kun tuossa esimerkissä, jossa viesti on vain yhden rivin mittainen "Tämä on viestin sisältö." Yleensä viestit ovat pidempiä. Koska sähköpostiprotokolla on tekstimuotoinen ja koska viestin on sovittu päättyvän riviin, jossa on vain yksi merkki, piste, on kaikki sähköpostiin liitettävä muu materiaali kuin ASCII-muotoinen teksti koodattava ASCII-merkistölle sopivaksi. 
+
+Sähköpostiviestin rakenteesta on hyvä kuvaus wikipedian sivulla https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6posti
+
+Useimmat sähköpostiohjelmat käyttävät erillisia kenttiä sähköpostin otsaketiedoille, kuten vastaanottaja(t) ja viestin otsikko. Näin ne tukevat käyttäjää siinä, että lähtevän sähköpostiviestin otsaketiedot noudattavat sovittuja käytänteitä.
+
+QUIZZ: Sähköpostiviestin otsakkeista (Kentän tyyppi,  mikä erottaa sähköpostin otsakkeet ja varsinaisen viestinsisällön, ...)
+
+Katso jonkun saamasi sähköpostiviestin otsaketiedot ja etsi sieltä rivit, jotka alkavat "Received:". Huomaa, että jos viesti on tullut saman postipalvelimen joltain toiselta käyttäjältä, niin tuota received riviä ei välttämättä ole lainkaan, kun postipalvelin ei ole sitä lähettänyt toiselle postipalvelimelle vaan on vain laittanut kyseisen käyttäjän postilaatikkoon. Valitse siis tarkasteltavaksi viesti, joka on tullut jonkun toisen postipalvelimen käyttäjältä. Miten näet viestin otsaketiedot, riippuu käyttämästästi sähköpostiohjelmasta. Toiminto voi olal 'view full header', 'view source', 'view original'. Joillakin, erityisesti mobiililaitteiden, sähköpostiohjelmilla tämän tiedon katselu ei välttämättä edes ole mahdollista, kun ohjelmassa ei kyseistä toiminallisuutta ole. Vaihda silloin käyttöösi sellainen käyttöliittymä tai ohjelma, jolla nämä tiedot näet.
+
+QUIZZ: Tuohon äskeiseen liittyvä kysely (joka on aina oikein!!!!)
+
+
+Sähköpostiviestiin voi nykyään liittää myös muuta materiaali kuin vain varsinaisen viestin pelkkänä tekstinä. Tällaiset laajennukset on määritelty MIME-standardissa (wikipedia: https://fi.wikipedia.org/wiki/MIME ja sähköpostin koodausohjeistus https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6posti#MIME). MIME-muotoisessa sähköpostissa on useita osia ja joikainen osa voidaan koodata eri tavalla. Viestin liitteeksi voi laittaa minkä tahansa tiedoston, jonka tyyppi kerrotaan MIME-standardin mukaisissa tiedoissa.  Koska SMTP-protokolla siirtää varmasti vain 7-bittisiä ASCII-merkkejä, on tyypillistä, että erityisesti liitetiedostot ja kuvat koodataan 7-bittiseksi ASCII-koodiksi. Tunnetuin koodaustapa on base64, jossa kolme 8-bittistä tavua (tai merkkiä) koodataan 4:ksi, jotka eivät voi rikkoa sähköpostin siirtoa. Esimerkiksi merkkiyhdistelmä 'rivinvaihto'piste'rivinvaihto' ei ole sallittu, koska se on sovittu SMTP-protokollassa sähköpostiviestin päättäväksi merkiksi. 
+
+QUIZZ: Mimen otsakkeiden kenttänimistä  - Mikä nimi kertoo mitäkin ja vapaakenttä + regexp tarkistus.
 
 
 ## Sähköpostin haasteita
 
 Koska lähettäjän osoite on vain tekstiä tuossa viestissä, eikä vastaanottavalla palvelimella ole mitään mahdollisuutta sitä tarkastaa, on tämän osoittautunut yhdeksi mahdolliseksi väyläksi huijata. Varsinainen viestin lähettäjä jää tuntemattomaksi ja viesti näyttää tulevan ihan eri henkilöltä. 
+
+https://fi.wikipedia.org/wiki/Roskaposti
+https://fi.wikipedia.org/wiki/Haittaohjelma
 
 https://fi.wikipedia.org/wiki/Musta_lista_(s%C3%A4hk%C3%B6posti)
 
