@@ -86,14 +86,16 @@ Sähköpostiviestiin voi nykyään liittää myös muuta materiaali kuin vain va
 QUIZZ: Mimen otsakkeiden kenttänimistä  - Mikä nimi kertoo mitäkin ja vapaakenttä + regexp tarkistus.
 
 
-## Sähköpostin haasteita
+## Sähköpostin ongelmia
 
-Koska lähettäjän osoite on vain tekstiä tuossa viestissä, eikä vastaanottavalla palvelimella ole mitään mahdollisuutta sitä tarkastaa, on tämän osoittautunut yhdeksi mahdolliseksi väyläksi huijata. Varsinainen viestin lähettäjä jää tuntemattomaksi ja viesti näyttää tulevan ihan eri henkilöltä. 
+Huomasithan, että lähettäjän ja vastaanottajan tiedot toimitettiin kahteen kertaan. Toisaalta ne olivat SMTP-protokollan viestien vaihdossa mukana ja toisaalta ne tulivat sitten varsinaisen sähkköpostin alussa otsaketietoina kentissä From: ja To:. 
+Sähköpostin vastaanottava sähköpostipalvelin ei tarkasta, että protokollassa annetut osoitteet ja viestin mukaan tulleet osoitteet ovat samat.  Mieti hetki, että miksi ei! Jos tarkastaisi, niin mitä tapahtuisi, kun viestiä lähetetään postilistalle esim. meidanjoukko@osoite.com.
 
-https://fi.wikipedia.org/wiki/Roskaposti
-https://fi.wikipedia.org/wiki/Haittaohjelma
+Valitettavasti tämä tietojen kirjaaminen kahteen kertaan antaa mahdollisuuden piilottaa todellinen lähettäjä. SMTP-protokollan mukainen lähettäjän tunniste voi siis olla eri kuin viestin mukana olevaan From: kenttään kirjoitettu tunniste. Tietenkään normaalisti toimiva sähköpostiohjelma ei anna käyttäjälle mahdollisuutta näiden erilaisuuteen. Aikoinaan, kun käytettiin yksinkertaista SMTP-protokollaa ja luotettiin viestien lähettäjiin ei ollut mitenkään vaikeaa väärentää viestejä. Nykyisin se on jo hiukan hankalampaa, kun luotettavat sähköpostipalvelimet vaativat tunnistautumista. Sähköpostipalvelin voikin kieltäytyä vastaanottamasta yhteyspyyntöjä ja viestejä epäluotettavilta palvelimilta. Sähköpostipalvelimet voivat itse ylläpitää tällaista mustaa listaa (https://fi.wikipedia.org/wiki/Musta_lista_(s%C3%A4hk%C3%B6posti)) tai ne voivat käyttää jonkun toisen organisaation ylläpitämää mustaa listaa epäluotettavista palvelimista.
 
-https://fi.wikipedia.org/wiki/Musta_lista_(s%C3%A4hk%C3%B6posti)
+Kaikkea roskapostia (https://fi.wikipedia.org/wiki/Roskaposti) tai haittaohjelmien (https://fi.wikipedia.org/wiki/Haittaohjelma) lähettämistä mustien listojen käyttökään ei estä.Sähköpostipalvelimien ylläpitäjä ottavat koko ajan käyttöön uusia suojautusmiskeinoa. Valitettavasti mikään suojautuminen ei tepsi järjestelmän todellisten käyttäjätunnusten väärinkäyttöön. Aina on mahdollista, että luvattomasti käyttöön saatua tunnusta käytetään tällaisten haitallisten sähköpostien lähettämiseen luotettavan sähköpostipalvelimen kautta. Siksi käyttäjien pitää pitää hyvää huolta tunnuksistaan. Vaikka itsellä ei olisikaan arvokasta tietoa, niin tunnuksen luvaton käyttö voi aiheuttaa merkittävää haittaa muille internet-verkon käyttäjille.
+
+
 
 ##  Salaus
 
