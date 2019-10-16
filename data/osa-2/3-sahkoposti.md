@@ -93,11 +93,32 @@ Sähköpostin vastaanottava sähköpostipalvelin ei tarkasta, että protokollass
 
 Valitettavasti tämä tietojen kirjaaminen kahteen kertaan antaa mahdollisuuden piilottaa todellinen lähettäjä. SMTP-protokollan mukainen lähettäjän tunniste voi siis olla eri kuin viestin mukana olevaan From: kenttään kirjoitettu tunniste. Tietenkään normaalisti toimiva sähköpostiohjelma ei anna käyttäjälle mahdollisuutta näiden erilaisuuteen. Aikoinaan, kun käytettiin yksinkertaista SMTP-protokollaa ja luotettiin viestien lähettäjiin ei ollut mitenkään vaikeaa väärentää viestejä. Nykyisin se on jo hiukan hankalampaa, kun luotettavat sähköpostipalvelimet vaativat tunnistautumista. Sähköpostipalvelin voikin kieltäytyä vastaanottamasta yhteyspyyntöjä ja viestejä epäluotettavilta palvelimilta. Sähköpostipalvelimet voivat itse ylläpitää tällaista mustaa listaa (https://fi.wikipedia.org/wiki/Musta_lista_(s%C3%A4hk%C3%B6posti)) tai ne voivat käyttää jonkun toisen organisaation ylläpitämää mustaa listaa epäluotettavista palvelimista.
 
-Kaikkea roskapostia (https://fi.wikipedia.org/wiki/Roskaposti) tai haittaohjelmien (https://fi.wikipedia.org/wiki/Haittaohjelma) lähettämistä mustien listojen käyttökään ei estä.Sähköpostipalvelimien ylläpitäjä ottavat koko ajan käyttöön uusia suojautusmiskeinoa. Valitettavasti mikään suojautuminen ei tepsi järjestelmän todellisten käyttäjätunnusten väärinkäyttöön. Aina on mahdollista, että luvattomasti käyttöön saatua tunnusta käytetään tällaisten haitallisten sähköpostien lähettämiseen luotettavan sähköpostipalvelimen kautta. Siksi käyttäjien pitää pitää hyvää huolta tunnuksistaan. Vaikka itsellä ei olisikaan arvokasta tietoa, niin tunnuksen luvaton käyttö voi aiheuttaa merkittävää haittaa muille internet-verkon käyttäjille.
+Kaikkea roskapostia (https://fi.wikipedia.org/wiki/Roskaposti) tai haittaohjelmien (https://fi.wikipedia.org/wiki/Haittaohjelma) lähettämistä mustien listojen käyttöllä ei voi estää. Sähköpostipalvelimien ylläpitäjä ottavat koko ajan käyttöön uusia suojautusmiskeinoja. Valitettavasti mikään suojautuminen ei tepsi järjestelmän todellisten käyttäjätunnusten väärinkäyttöön. Aina on mahdollista, että luvattomasti käyttöön saatua tunnusta käytetään tällaisten haitallisten sähköpostien lähettämiseen luotettavan sähköpostipalvelimen kautta. Siksi käyttäjien pitää pitää hyvää huolta tunnuksistaan. Vaikka itsellä ei olisikaan arvokasta tietoa, niin tunnuksen luvaton käyttö voi aiheuttaa merkittävää haittaa muille internet-verkon käyttäjille.
 
 
+##  Viestien suojaus ja allekirjoitus (salaus)
 
-##  Salaus
+Jos viestin lähettäjä haluaa varmistua, että vain viestin vastaanottaja voi lukea viestin, täytyy lähettäjän salakirjoittaa viesti jotain salausmenetelmää käyttäen. Vastaanottajan täytyy tietää, miten viesti on salattu, jotta hän voi sen purkaa ja lukea alkuperäisen sisällön. Sähköpostijärjestelmässä viesti kulkee sellaisenaan, joten ilman salausta kuka tahansa, joka viestin saa käsiinsä voi sen lukea.
+
+Viestien salaus ei sinänsä ole sidoksissa sähköpostijärjestelmään, mutta usein sähköpostia käytetää näiden viestien siirtoon lähettäjältä vastaanottajalle. Tässä kuitenkin tarkastellaan asiaa sähköpostipalvelun kautta. Asioiden yleispätevyys on lukijan kuitenkin hyvä huomata.
+
+Sähköpostijärjestelmän MIME-laajennus ja julkisen avaimen salausmenetelmät (https://fi.wikipedia.org/wiki/Julkisen_avaimen_salaus) antoivat riittävän teknisen pohjan PGP-järjestelmälle (https://fi.wikipedia.org/wiki/PGP). PGP oli pitkään suosituin viestein luotettavuuden takaamiseen käytetty menetelmä sähköpostien kanssa. 
+
+Sittemmin MIME:ä laajennettiin myös käsittelemään salattuja viestejä. S/MIMEn (
+https://fi.wikipedia.org/wiki/S/MIME)  versio 3.1 on kuvattu RFC:ssä 3851 https://tools.ietf.org/html/rfc3851
+
+Julkisen avaimen salauksen avulla voidaan varmistua joko vastaanottajasta tai lähettäjästä seuraavasti:
+1) Viestin voi lukea vain oikea vastaanottaja!  Viesti salataan vastaanottajan julkisella avaimella.
+2) Viestin lähettäjä on varmasti oikea!  Viesti salataan lähettäjän salaisella avaimella. Tämä on digitaalinen allekirjoitus.
+
+Digitaalisessa allekirjoituksessa (https://fi.wikipedia.org/wiki/Digitaalinen_allekirjoitus) ei aina ole välttämätöntä suojata koko sisältöä ja siksi usein varsinaisesta sisällöstä lasketaan ns. tiiviste ja sitten salataan (eli allekirjoitetaan) vain tämä tiiviste.
+
+Jos halutaa samaan aikaa varmistaa sekä lähettäjä että vastaanottaja, on viesti salattava useampaan kertaan.
 
 
-## Allekirjoitus
+KUVA:    Muokkaa wikipedian kuvasta, joka ladattuna.
+
+
+QUIZZ:  Kuvaan liittyen ja toinen käsitteistä sekä spostin käsitteitä että salausta.
+
+
