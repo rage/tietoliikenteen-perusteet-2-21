@@ -48,19 +48,19 @@ SMTP protokollassa on määritelty monivaiheinen viestien vaihto lähettäjän j
 
 Oheinen yhteysesimerkki, eli yhden sähköpostiviestin siirto lähettävältä palvelimelta vastaanottavalla postipalvelimelle, on mukaeltu Visa Hännisen insinöörityössä  [https://www.theseus.fi/bitstream/handle/10024/23284/Hanninen_Visa.pdf?sequence=1&isAllowed=y]{"SMTP-releointipalvelun valvonta ja raportointi"}, Metropolia 2010, olleesta esimerkistä.
 
-A (lahettava.palvelin.com) avaa TCP-yhteyden B:lle (email.vastaanottaja.com)
-A:   HELO lahettava.palvelin.com
-B:   250 email.vaastaanottaja.com Helo lahettava.palvelin.com, nice to interact with you
-A:   MAIL FROM: <joku123@ lahettava.palvelin.com>
-B:   250 sender <joku123@ lahettava.palvelin > OK
-A:   RCPT TO: <kuka123@postipalvelin.com>
-B:   250 recipient <kuka123@ postipalvelin.com > OK
-A:   DATA
-B:   250 OK; enter text, end with .
-A:   Tämä on viestin sisältö. 
-A:   .
-B:   250 postipalvelin.com OK; message accepted for delivery
-A:   QUIT
+* A (lahettava.palvelin.com) avaa TCP-yhteyden B:lle (email.vastaanottaja.com)
+* A:   HELO lahettava.palvelin.com
+* B:   250 email.vaastaanottaja.com Helo lahettava.palvelin.com, nice to interact with you
+* A:   MAIL FROM: <joku123@ lahettava.palvelin.com>
+* B:   250 sender <joku123@ lahettava.palvelin > OK
+* A:   RCPT TO: <kuka123@postipalvelin.com>
+* B:   250 recipient <kuka123@ postipalvelin.com > OK
+* A:   DATA
+* B:   250 OK; enter text, end with .
+* A:   Tämä on viestin sisältö. 
+* A:   .
+* B:   250 postipalvelin.com OK; message accepted for delivery
+* A:   QUIT
 
 Tästä esimerkistä käy hyvin ilmi monivaiheinen viestien vaihto. Tässä esimerkissä sähköpostin lähettäminen onnistuu. Protokollassa on määritelty tarkasti myös erilaiset virhetilanteet ja niihin liittyvät viestit. SMTP on HTTP-protokollan tavoin tekstipohjainen, jolloin ihmisen on mahdollista itsekin ottaa TELNET yhteys palvelimeen ja kirjoittaa nuo lähettävän palvelimen viestit ihan suoraan näppäimistöltä. Tällaisessa yhteydessä on toki noudatettava myös niitä sääntöjä, jotka liittyvät itse viestin rakenteeseen. Esimerkissä näistä säännöistä on yksinkertaisuuden vuoksi oikaistu.
 
