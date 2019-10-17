@@ -10,8 +10,6 @@ title: 'Verkko-ohjelmointi ja sovelluksen rajapinta'
 
 </text-box>
 
-Pistoke, KJ palvelut, 
-
 ## Verkkosovelluksen rajapinta
 
 Perinteisesti internetin protokollapinon sovelluskerroksella on ollut erilaisia verkkosovelluksia, jotka ovat käyttäneet suoraan kuljetuskerroksen tarjoamia palveluja. Nämä palvelut ovat muodostaneet sovelluksen tietoliikennerajapinnan ja sovelluskerroksen prosessi on saanut ne käyttöjärjestelmältä erityisten pistokkeiden (engl. socket) kautta.
@@ -55,6 +53,27 @@ Viestin vastaanotto vaiheittain:
 
 Sovellus voi pistokkeen avaamisen yhteydessä määritellä, haluaako se receive-pyynnön yhteydessä jäädä odottamaan viestiä vai ei (engl. blocking vs. non-blocking). 
 
+Pistoke on kaksisuuntainen eli samalla pistokkeella sekä lähetetään että vastaanotetaan. Pistoke on siis prosessin yhteyspiste toisen prosessin kanssa. Molemmilla kommunikointiin osallistuvilla prosesseilla on omat pistokkeensa, jotka ovat yhteydessä toisiinsa. Yhdellä prosessilla voi olla samanaikaisesti käytössä useita pistokkeita eri yhteyksiä varten.
+
+Kuljetuskerros tarjoaa yhteydellisen kuljetuspalvelun TCP-protokollalla ja yhteydettömän UDP-protokollalla. Palvelun mukaan pistokkeet voi vastaavasti olla joko tavuvirtapistokkeita (engl. stream socket) tai tietosähkepistokkeita (engl. datagram socket).
+
+## Päästä-päähän yhteys
+
+Prosessin verkkoyhteys on sidottu tiettyyn pistokkeeseen. Kuljetuskerros kuitenkin tunnistaa yhteyden viestit porttinumeroilla.  Lähtevässä viestissä pitää aina olla vastaanottajan IP-numero ja porttinumero. Verkkokerros käyttää IP-numeroa vastaanottavan koneen löytämiseen. Saapuvan viestin porttinumerolla kuljetuskerros tunnistaa oikean pistokkeen ja osaa välittää viestin oikealle prosessille. 
+
+Osa porttinumeroista on varattu tietyille tunnetuille palveluille. Internet Assigned Numbers Authority (IANA), www.iana.org, hallinnoi internetin IP-numeroita ja myös erilaisten palvelujen porttinumeroita. IANA ylläpitää myös muuta internetin ja sen protokollien käyttöön liittyvää tietoa. 
+
+
+
+
+KUVA: Kalvon 15 kuva
+
+**Kuvaan liittyvä selitys**
+
+
+
+
+## Esimerkki ohjelma
 
 
 wiki https://fi.wikipedia.org/wiki/Pistoke_(tietotekniikka)  - ei juurikaan tietoa.
