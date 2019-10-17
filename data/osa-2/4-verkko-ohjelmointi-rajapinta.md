@@ -65,16 +65,34 @@ Osa porttinumeroista on varattu tietyille tunnetuille palveluille. Internet Assi
 
 
 
-
 KUVA: Kalvon 15 kuva
 
 **Kuvaan liittyvä selitys**
 
 
+## Esimerkki: Tavuvirtapistoke (TCP pistoke)
+
+KUVA:  Luento 3, luento 59
+
+Asiakkaan koodi:
+--java
+from socket import *
+serverName = ’servername’
+serverPort = 12000
+clientSocket = socket(AF_INET, SOCK_STREAM)
+clientSocket.connect((serverName,serverPort))
+sentence = raw_input(‘Input lowercase sentence:’)
+clientSocket.send(sentence)
+modifiedSentence = clientSocket.recv(1024)
+print ‘From Server:’, modifiedSentence
+clientSocket.close()
+--java
 
 
-## Esimerkki ohjelma
 
+Jos verkko-ohjelmointi kiinnostaa enemmänkin, niin voit täysin ylimääräisenä materiaalia tutustua erilaisiin verkosta löytyviin esimerkkiohjelmiin. Oheiset linki vievät englanninkielisille sivuille:
+1) Pistokkeet pythonissa: https://realpython.com/python-sockets/   
+2) Pistokkeet Javassa: https://docs.oracle.com/javase/tutorial/networking/sockets/index.html
+3) Ray Toalin kurssimateriaalissa olevia esimerkkejä javalle: https://cs.lmu.edu/~ray/notes/javanetexamples/ liittyvät kurssiin https://cs.lmu.edu/~ray/classes/it/
 
-wiki https://fi.wikipedia.org/wiki/Pistoke_(tietotekniikka)  - ei juurikaan tietoa.
 
