@@ -75,18 +75,18 @@ KUVA: Kalvon 15 kuva
 KUVA:  Luento 3, luento 59
 
 Asiakkaan koodi:
---java
+```java
 from socket import *
 serverName = ’servername’
 serverPort = 12000
 clientSocket = socket(AF_INET, SOCK_STREAM)
 clientSocket.connect((serverName,serverPort))
-sentence = raw_input(‘Input lowercase sentence:’)
-clientSocket.send(sentence)
-modifiedSentence = clientSocket.recv(1024)
-print ‘From Server:’, modifiedSentence
+viesti = raw_input(‘Kirjoita lähetettävä viesti: ’)
+clientSocket.send(viesti)
+muokattuviesti = clientSocket.recv(1600)
+print ‘Palvelimen vastaus: ’, muokattuviesti
 clientSocket.close()
---java
+```
 
 
 
