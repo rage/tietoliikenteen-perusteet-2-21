@@ -87,8 +87,22 @@ muokattuviesti = clientSocket.recv(1600)
 print ‘Palvelimen vastaus: ’, muokattuviesti
 clientSocket.close()
 ```
-
-
+Palvelijan koodi:
+```java
+from socket import *
+serverPort = 12000
+serverSocket = socket(AF_INET,SOCK_STREAM)
+serverSocket.bind((‘’,serverPort))
+serverSocket.listen(1)
+print ‘Palvelija on valmiina’
+while 1:
+     connectionSocket, addr = serverSocket.accept()
+     
+     viesti = connectionSocket.recv(1600)
+     muunnettuviesti = sentence.upper()
+     connectionSocket.send(muunnettuviesti)
+     connectionSocket.close()
+```
 
 Jos verkko-ohjelmointi kiinnostaa enemmänkin, niin voit täysin ylimääräisenä materiaalia tutustua erilaisiin verkosta löytyviin esimerkkiohjelmiin. Oheiset linki vievät englanninkielisille sivuille:
 1) Pistokkeet pythonissa: https://realpython.com/python-sockets/   
