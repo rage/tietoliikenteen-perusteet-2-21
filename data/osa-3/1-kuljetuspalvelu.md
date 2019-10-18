@@ -31,6 +31,10 @@ Luotettavan kuljetuspalvelun keskeinen tehtävä on siis piilottaa verkkokerroks
 Kuljetuskerros siis piilottaa verkkokerroksen puutteita ja parantaa sovellukselle näkyvän palvelun laatua. Aivan kaikkea kuljetuskerros ei pysty piilottamaan. Esimerkiksi viestien viivästymiset tai verkkoyhteyden katkeaminen ovat tilanteita, jolloin kuljetuskerros ei pysty välittämään viestejä ja näin ne välttämättä näkyvät myös sovelluskerrokselle. 
 
 
+Segmenttien lomitus
+
+- esimerkkikuva
+
 
 
 <quiz id="45b6aea4-2c5f-404e-9143-23a644ebea63"></quiz>
