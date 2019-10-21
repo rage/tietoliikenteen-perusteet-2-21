@@ -1,6 +1,6 @@
 ---
-path: '/osa-3/2-listat'
-title: 'Listamuuttujan käyttö useamman arvon tallentamiseen'
+path: '/osa-3/2-periaatteet'
+title: 'Luotettavan kuljetuspalvelun periaatteet'
 hidden: false
 ---
 
@@ -8,14 +8,15 @@ hidden: false
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
 
-- Tunnet listarakenteen ja osaat käyttää sitä osana ohjelmia.
-- Tunnet käsitteen indeksi, osaat lisätä arvoja listalle ja osaat hakea tietoa listan indeksistä.
-- Osaat käydä listan läpi niin while-toistolausetta ja indeksimuuttujaa käyttäen kuin for-each -toistolausetta käyttäen.
-- Osaat tarkistaa onko arvo listalla ja osaat toisaalta poistaa arvoja listalta.
-- Tiedät, että lista on viittaustyyppinen muuttuja ja tutustut listan käyttöön metodin parametrina.
+- Osaat mallintaa yksinkertaisen protokollan toiminnan.
+- Osaat arvioidan protokollan toiminnallisuutta käsin simuloimalla mallia.
 
 </text-box>
 
+Tämä on kurssin teoreettisen osio. Käytä tähän riittävästi aikaa, jotta oikeasti ymmärrät protokollien suunnitteluu liittyviä periaatteita ja protokollien oikeellisuuden haasteita.
+
+
+## A-protokolla
 
 Ohjelmoidessa tulee vastaan tilanteita, joissa haluamme käsitellä useita arvoja. Epäkäytännöllinen mutta tähän mennessä käytännössä ainoa tapa on ollut määritellä jokaiselle arvolle oma muuttuja.
 
