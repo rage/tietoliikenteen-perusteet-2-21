@@ -44,12 +44,22 @@ KUVA:   Sitten aikaperustainen kaavakuva, jossa yksi viesti katoaa!!!!
 
 ## Vuorottelevan bitin protokolla
 
-Jotta peräkkäiset viestit voidaan erottaa toisistaan ne tyypillisesti numeroidaan ja kuittausviestissä kerrotaan sitten tämä viestin numero. Näin yksittäinen katoava viesti voidaan tunnistaa. Kuljetuskerros voi sitten lähettää tämän kadonneen viestin uudelleen.
+Jotta peräkkäiset viestit voidaan erottaa toisistaan ne tyypillisesti numeroidaan ja kuittausviestissä kerrotaan sitten tämä viestin numero. Näin vastaanottaja voi havaita yksittäisen viesti katoamisen ja raportoida tästä lähettäjälle. Lähettäjä voi sitten lähettää tämän kadonneen viestin uudelleen. Tähän peräkkäisten viestien erottamiseen voidaan käyttä yhtä bittiä. Bitti on joko 0 tai 1, joten kun näitä kahta arvoa vuorotellaan saadaan kaksi peräkkäitä viestiä numeroitua toisistaan poikkeavasti.
+
+Oletaan tässä vielä, että kuljetuskerroksella on aina jotain lähetettävää ja jätetään sovelluskerrokselta tulevat viestit ja sinne toimitettavat viestit pois mallista. Tällainen asioiden lisääminen ja poistaminen on mallinnuksen vahvuus. Meidän tarvitsee ottaa mukaan vain ne toiminnat, joita halutaan tarkastella. Muu toiminnallisuus jätetään pois, jotta malli pysyy mahdollisimman yksinkertaisena.
+
+KUVA. Kattava automaatti, joka huolehtii näistä.
 
 Aikakatkaisua (engl. timeout) käytetään tietoliikenteessä keskeyttämään lähettäjän odotus. Jos lähettäjän lähettämä viesti tai siihen liittyvä kuittaus katoaa matkalla ei lähettäjä saa tästä mitään tietoa. Jotta lähettäjä voisi reagoida tähän katoamiseen on lähettäjän viestin odotus ensin keskeytettävä [ajastimen](https://fi.wikipedia.org/wiki/Ajastin) avulla.  Lähettäjä siis asettaa ajastimen tekemään keskeytys sopivan ajan kuluttua. Keskeytykset ja niiden toiminta on käsitelty tietokoneen toiminta -kurssilla.
 
 
-KUVA. Kattava automaatti, joka huolehtii näistä.
+
 
 
 VIDEO: Jossa tämä tarina kuvattuna  laajenevana automaattina.
+
+
+Tehtävä:  Simulointi tilanteessa, jossa viestien järjestys voi vaihtua. Anna viesti jono ja pyydä vastauksena tila, johon lähettäjä päätyy, vastaanottaja päätyy. Mikä viesti jää pois oikealta paikaltaan, jne....
+
+
+Tehtävä, jossa annetaan automaatti, johon pitää täydentää tarvittavat toiminnallisuudet  (eli osa toiminnoista on X,Y,Z, jne) ja vaihtoehdot tehtävässä
