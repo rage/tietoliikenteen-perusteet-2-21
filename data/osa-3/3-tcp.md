@@ -26,3 +26,6 @@ hidden: false
 
 
 ## Virhetilanteista toipuminen
+
+
+## TCP:n otsaketiedot
