@@ -1,39 +1,20 @@
 ---
 path: '/osa-4'
-title: 'Osa 4'
+title: 'Osa 4: Verkkokerros'
 overview: true
 hidden: false
 ---
 
-<only-for-course-variant variant="dl">
-  <deadline>11.2.2019</deadline>
-</only-for-course-variant>
 
-<only-for-course-variant variant="nodl">
-  <deadline>4.1.2020</deadline>
-</only-for-course-variant>
 
-<only-for-course-variant variant="ohja-dl">
-  <deadline>Tämä osa ei ole osa profiilista valitsemaasi kurssia</deadline>
-</only-for-course-variant>
-
-<only-for-course-variant variant="ohja-nodl">
-  <deadline>Tämä osa ei ole osa profiilista valitsemaasi kurssia</deadline>
-</only-for-course-variant>
-
-<only-for-course-variant variant="kesa-dl">
-  <deadline>3.6.2019</deadline>
-</only-for-course-variant>
-
-<only-for-course-variant variant="kesa-ohja-dl">
-  <deadline>Tämä osa ei ole osa profiilista valitsemaasi kurssia</deadline>
-</only-for-course-variant>
 
 <only-for-not-logged-in>
   <deadline>Kirjaudu sisään nähdäksesi deadlinen tälle osalle</deadline>
 </only-for-not-logged-in>
 
-Tässä osassa tutustut käsitteisiin tiedosto ja tiedostojärjestelmä sekä opit lukemaan merkkijonomuotoista tietoa tiedostosta. Otat ensiaskeleet olio-ohjelmointiin ja opit olio-ohjelmoinnin keskeiset käsitteet kuten luokka ja olio. Opit luomaan luokkia ja olioita sekä käyttämään niitä osana toteuttamiasi ohjelmia.
+Verkkokerros huolehtii viestin siirrosta yhteys kerrallaan lähettäjältä vastaanottajalle. Sen pitää tietää mistä suunnasta vastaanottaja kulloinkin löytyy.
+
+Tässä osiossa tarkastellaan verkkokerroksen palveluja ja toimintaa huomattavasti edellistä kurssijaksoa tarkemmin. Toki vielä paljon yksityiskohtia jää myöhemmille kursseille.
 
 
 <please-login></please-login>
