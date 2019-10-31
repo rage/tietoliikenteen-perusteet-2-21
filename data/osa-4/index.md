@@ -14,7 +14,7 @@ hidden: false
 
 Verkkokerros huolehtii viestin siirrosta yhteys kerrallaan lähettäjältä vastaanottajalle. Sen pitää tietää mistä suunnasta vastaanottaja kulloinkin löytyy.
 
-Tässä osiossa tarkastellaan verkkokerroksen palveluja ja toimintaa huomattavasti edellistä kurssijaksoa tarkemmin. Toki vielä paljon yksityiskohtia jää myöhemmille kursseille.
+Tässä osiossa tarkastellaan verkkokerroksen palveluja ja toimintaa huomattavasti edellistä kurssijaksoa tarkemmin. Käymme läpi mm. IP-osoitteiden eri versiot ja reitityksen.
 
 
 <please-login></please-login>
