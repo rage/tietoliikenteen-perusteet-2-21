@@ -1,6 +1,6 @@
 ---
-path: '/osa-5/2-alkeis-ja-viittaustyyppiset-muuttujat'
-title: 'Alkeis- ja viittaustyyppiset muuttujat'
+path: '/osa-5/2-virheenkorjaus'
+title: 'Virheiden havaitseminen ja korjaaminen'
 hidden: false
 ---
 
