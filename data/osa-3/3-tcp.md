@@ -15,12 +15,15 @@ hidden: false
 
 ## TCP:n toiminnan periaatteet
 
-TCP tarjoaa luotettavan kuljetuspalvelun. Se siis siirtää sovelluskerrokselta saamansa data sellaisenaan vastaanottajalle, jos lähettäjän ja vastaanottajan välillä on verkkoyhteys. Jos yhteyttä ei ole, niin kuljetus ei ole mahdollista ja tästä informoidaan sekä lähettäjää että vastaanottajaa.
+TCP[https://fi.wikipedia.org/wiki/TCP] tarjoaa luotettavan kuljetuspalvelun. Se siis siirtää sovelluskerrokselta saamansa data sellaisenaan vastaanottajalle, jos lähettäjän ja vastaanottajan välillä on verkkoyhteys. Jos yhteyttä ei ole, niin kuljetus ei ole mahdollista ja tästä informoidaan sekä lähettäjää että vastaanottajaa.
 
-Kun sovelluskerros käyttää TCP:tä viestin välityksessä, se pyytää kuljetuskerrokselta ensin yhteydenmuodostamista ja voi sitten tätä muodostettu yhteyttä käyttäen välittää viestejä molempiin suuntiin lähettäjän ja vastaanottajan välillä. Kun kaikki viestit on siirretty sovellus vastaavasti pyytää yhteyden purkamista.
+TCP:n näkokulmasta sovellus pyytää TCP-yhteyden muodostusta, kun se avaa uuden tavuvirtapistokkeen. Vastaavasti sovellus pyytämällä pisteokkeen sulkemista kertoo TCP:lle, että yhteys voidaan purkaa.
+
+Kun yhteys on auki sovellus voi sitä kautta lähettää viestejä molempiin suhtiin lähettäjän ja vastaanottajan välillä. Huomaathan, että yhteys muodostetaan aina vain kahden laitteen välille.
 
 ## Yhteyden muodostus ja purku
 
+TCP:n yhteyden muodostuksessa välitetään kolme viestiä.
 
 ## Vuonvalvonta
 
