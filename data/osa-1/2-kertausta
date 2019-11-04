@@ -29,7 +29,9 @@ Tietoliikenteen protokollat määrittävät viestien vaihdon toiminnallisuuden. 
 
 Kaikilla muillakin protokollilla on omat dokumentaationsa. Viralliset internetissä käytettävät protokollat on aina kuvattu RFC dokumentaatiossa. Toki kuka tahansa voi rakentaa oman verkko-ohjelman ja käyttää omien ohjelman osien välillä ihan sellaista protokollaa kuin haluaa. Kuitenkin jos tarvitaan laajoja verkkosovelluksia, joilla on toisistaan riippumattomia toteuttajia, niin järjestelmän osien välinen kommunikointi täytyy kuvata ja dokumentoida siten, että se on kaikkien saatavilla.
 
-Tätä teemaa jatketaan lisää kurssin seuraavassa luvussa.
+Edellisellä kurssilla meillä oli jo esillä HTTP-protokollan ja IP-protokollan viestien kuvaukset. Ne ovat keskenään hyvin erilaisia, koska protokollien määrittelyt ovat hyvin erilaisia ja kyseessä on myös eri kerrosten protokollat. IP-protokollan otsake on hyvin määrämuotoinen ja jokaisen bitin merkitys on määritelty tarkasti.  HTTP-protokollan otsake puolestaan on sanallisempi ja sille onkin määritelty lähinnä syntaksi, jolla näitä erilaisia määreitä kuvataan.
+
+Asiakkaan lähettämässä HTTP-viestissä ensimmäiselle rivillä on itse pyyntö ja rivi alkaa metodin nimellä. Palvelijan vastauksessa vastaavasti ensimmäinen rivi viestin statustieto. Seuraavat rivit sisältävät  muita pyyntöön tai vastaukseen liittyviä määrittelyjä. Ne siis muodostavat viestin otsakkeen. Näiden rivien määrää ei ole rajoitettu. Varsinainen viestin sisältö alkaa yhden tyhjän rivin jälkeen. 
 
 QUIZZ: HTTP protokollaan liittyviä kysymyksiä, jotka olleet esillä jo edellisessä osiossa (tai jotka voi selvittää helposti
 
