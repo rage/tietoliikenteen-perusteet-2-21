@@ -15,11 +15,11 @@ Internetin viestinvälitys on pakettikytkentäinen, jolloin lähettäjä aina l�
 
 Internetin protokollat on sijoitettu protokollapinon eri kerroksille. Yhdellä kerroksella olevan protokollan ei pidä tietää mitä sen ala- ja yläpuolella on. Sille riittää tarkastella kyseisen protokollan lähettäjän ja vstaanottajan välistä viestien vaihtoa. Tästä automaattisesti seuraa, että kun jokainen kerro laittaa oman viestinsä omaan kirjekuoreen, niin näitä kirjekuoria on useita sisäkkäin.
 
-QUIZZ:   Millä nimellä tällaista kirjekuorta kutsutaan (aluke, lopuke, otsake, viestike, ...)
+<quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>
 
 Eri kerroksilla käytetään eri osoitteita. Ne on käyty läpi edellisellä kurssilla.
 
-QUIZZ: Valitse seuraavista osoitteista mille kerrokselle ne kuuluvat: MAC-osoite, porttinumero, IPv6, numeerisina vastaavia
+<quiz id="ad711046-8a1d-4e03-8b6f-e545ee9bdcd0"></quiz>
 
 Pakettikytkentäisen verkon yksi keskeinen piirre on, että paketti liikkuvat aina yhden välin eli etapin kerrallaan. Siksi niitä kutsutaan myös etappivälitteisiksi verkoiksi. Jokaisella välipysäkillä täytyy aina päättää mihin suuntaan paketti seuraavaksi liikahtaa. Tätä kokonaisuutta kutsutaan reititykseksi ja näitä päätöksiä tekeviä laitteita reitittimiksi silloin kun päätöksiä tehdään verkkokerroksella. Reititystä tarkastellaan vielä tällä kurssilla myöhemmin.
 
