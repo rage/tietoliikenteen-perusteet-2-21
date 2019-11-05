@@ -21,6 +21,8 @@ Nämä viiveet lasketaan aina yhden pakettikytkentaisen verkon solmun näkökulm
 
 XXXXXX   KUVA - Kuten ensimmäisen luentokerran kalvoissa tai kirjan kuva 1.16
 
+<img src="../img/drawings/hashmap.png" alt="Hashmapissa avaimen perusteella saadaan selville arvo."/>
+
 ### Siirtoviive
 
 Siirtoviive (engl. transmission delay) on näistä kaikkien tutuin. Sen laskukaava on  sv = L/R, missä L on paketin (tai siirrettävän datan) koko bitteinä ja R on linkin nopeus bitteinä sekunnissa (bps). Näin saadaan siirtoviive, eli siirron kesto, sekunteina.
@@ -51,6 +53,7 @@ Jonoja voi silti muodostua vaikka liikenteen intensiteetti olisikin pienempi tai
 Todellisuudessa yhden reitittimen osalta emme pysty ennustamaan pakettien saapumisia (jaksollisuutta tai saapumisväliä), joten pakettien oletetaan saapuvan satunnaisesti (random). Tällöin paketteja saapuu välillä enemmän ja välillä vähemmän, mutta niiden jakaumaa ei tiedetä ennalta.
 
 KUVA ois kiva
+<img src="../img/drawings/hashmap.png" alt="Hashmapissa avaimen perusteella saadaan selville arvo."/>
 
 
 ## Läpäisy tai läpimeno
@@ -64,6 +67,7 @@ Nyt tarkastelemme paketin (tai oikeammin bittien) kulkua kokonaisuudessaan lähe
 KUVA, jossa useita linkkejä ja niillä erilaisia liikennöintinopeuksia.  Mukana myös jaettuja yhteyksiä ja useampia lähettäjiä.
 QUIZZ: Kuvaan liittyen muutama kysymys siitä mikä on pullonkaulalinkki näillä yhteysväleillä.
 
+<img src="../img/drawings/hashmap.png" alt="Hashmapissa avaimen perusteella saadaan selville arvo."/>
 
 
 ## Muita käsitteitä näihin liittyen
