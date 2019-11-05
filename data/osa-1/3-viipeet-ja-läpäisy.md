@@ -13,23 +13,20 @@ title: 'Viipeet ja läpäisy'
 
 ## Viipeet
 
-Paketit etenevät sähkövirtana, valona tai sähkömagneettisena säteilynä aina vakionopeudella kyseisellä yhteysvälillä. Lähettäjän ja vastaanottajan pitää toimia paketin siirrossa tällä samalla nopeudella. Eri yhteysväleillä onkin käytössä erilaisia siirtonopeuksia, jotka kuten olemme jo oppineet ilmaistaan bitteinä sekunnissa (bits per second, bps). Vaikka säteily, valo ja sähkävirta siirtyvät vakionopeuksilla, niin eri yhteysvälien siirtonopeudet voiat poiketa toisistaan. Tämä johtuu ennenkaikkea siitä, miten bitit koodataan tälleä fyysiselle siirtotielle. Yksittäisen  bittivirran läehttämiseen voidaan käyttää niin sanottua kantataajuuskaistaan (baseband) perustuvaa lähetystä. Tällöin osa kaistasta kuvaa 0:aa ja osa 1:stä. Jos tarvitaan monimutkaisempaa bittien koodausta, niin sitä kutsutaan [https://fi.wikipedia.org/wiki/Modulaatio_(elektroniikka)](modulaatioksi). Siinä siis muokataan eli moduloidaan 'kantoaaltoa', eli valoa, sähköä tai säteilyä, siten että se voi siirtää mukanaan dataa. Tällä kurssilla emmme opettele näitä modulointitekniikoihin sen tarkemmin, mutta niihin viitataan aina silloin kun se on kurssin sisällön kannalta tarpeellista.
+Paketit etenevät sähkövirtana, valona tai sähkömagneettisena säteilynä aina vakionopeudella yhdellä yhteysvälillä eli linkillä. Lähettäjän ja vastaanottajan pitää tällöin toimia paketin siirrossa tällä samalla nopeudella. Eri yhteysväleillä on käytössä erilaisia siirtonopeuksia, jotka kuten olemme jo oppineet ilmaistaan bitteinä sekunnissa (bits per second, bps). Vaikka säteily, valo ja sähkövirta siirtyvät vakionopeudella, niin eri yhteysvälien siirtonopeudet voivat poiketa toisistaan. Tämä johtuu ennenkaikkea siitä, miten bitit koodataan tälle fyysiselle siirtotielle. Yksittäisen bittivirran lähettämiseen voidaan käyttää kantataajuuskaistaan (baseband) perustuvaa lähetystä. Tällöin osa kaistasta kuvaa 0:aa ja osa 1:stä. Jos tarvitaan monimutkaisempaa bittien koodausta, niin sitä kutsutaan [https://fi.wikipedia.org/wiki/Modulaatio_(elektroniikka)](modulaatioksi). Siinä siis muokataan eli moduloidaan 'kantoaaltoa', eli valoa, sähköä tai säteilyä, siten että se voi siirtää mukanaan dataa. Tällä kurssilla emmme opettele näitä modulointitekniikoihin sen tarkemmin, mutta niihin viitataan aina silloin, kun se on kurssin sisällön kannalta tarpeellista.
 
-Sanoman kulkuun verkossa vaikuttavat erityisesti erilaiset viipeet.  Edellisellä kurssilla Tietoliikenteen perusteet 1 opimme jo kokonaisviipeeseen vaikuttavien neljän viipeen nimet, jotka olivat siirtoviive, prosessointiviive, etenemisviive ja jonotusviive.  Tarkastellaan näitä nyt vähän tarkemmin.
+Sanoman kulkuun verkossa vaikuttavat erityisesti erilaiset viipeet.  Edellisellä kurssilla, Tietoliikenteen perusteet 1, opimme jo kokonaisviipeeseen vaikuttavien neljän viipeen nimet, jotka olivat siirtoviive, prosessointiviive, etenemisviive ja jonotusviive.
+Nämä viiveet lasketaan aina yhden pakettikytkentaisen verkon solmun näkökulmasta. Paketin koko kulkuaika lähettäjältä vastaanottajalle on kaikkien paketin kulkuun vaikuttavien solmujen kokonaisviiveiden summa.
 
-Nämä viiveet lasketaan aina yhden pakettikytkentaisen verkon solmun näkökulmasta. Paketin koko kulkuaika lähettäjältä vastaanottajalle on kaikkien paketin kulkuun vaikuttavien solmuten kokonaisviiveiden summa.
-
-XXXXXX   KUVA - Kuten ensimmäisen luentokerran kalvoissa tai kirjan kuva 1.16
-
-<img src="../img/drawings/hashmap.png" alt="Hashmapissa avaimen perusteella saadaan selville arvo."/>
+<img src="../img/viiveet.svg" alt="Prosessointiviive - paketin käsittely reitittimen sisällä, jonotusviive - paketin odotus reitittimessä kunnes linkki vapautuu, siirtoviive -paketin siirto reitittimestä linkkiin, etenemisviive - paketin kulku linkissä reitittimeltä seuraavalle."/>
 
 ### Siirtoviive
 
-Siirtoviive (engl. transmission delay) on näistä kaikkien tutuin. Sen laskukaava on  sv = L/R, missä L on paketin (tai siirrettävän datan) koko bitteinä ja R on linkin nopeus bitteinä sekunnissa (bps). Näin saadaan siirtoviive, eli siirron kesto, sekunteina.
+Siirtoviive (engl. transmission delay) on näistä kaikkein tutuin. Sen laskukaava on  sv = L/R, missä L on paketin (tai siirrettävän datan) koko bitteinä ja R on linkin nopeus bitteinä sekunnissa (bps). Näin saadaan siirtoviive, eli siirron kesto, sekunteina.
 
-Vastaavia laskuja tehtiin ensimäisessä osiossa arvioina koko tiedoston siirron kestosta. Kun asiaa tarkastellaan vain yhden verkon solmun näkökulmasta, niin siirtoviivekin on vain siirron kesto yhden linkin yli seuraavalle verkon solmulle.
+Vastaavia laskuja tehtiin edellisellä kurssilla arvioina koko tiedoston siirron kestosta. Tällöin oikeastaan lasketaan vain se, kuinka kauan lähettäjältä kestää laittaa kyseinen tiedosto matkaan eli siirtää se linkkiin. Koska verkossa on useita toimijoita, jotka kaikki siirtävät tietoa seuraavalle, niin yhden solmun siirtoviiveen tarkastelulla saadaan vain karkea alaraja-arvio siirron kokonaiskestosta.
 
-
+QUIZZ: Tähän joku laskutoimitus vielä muistin virkistykseksi (tai pari.)
 
 ### Prosessointiviive
 
