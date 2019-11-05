@@ -27,7 +27,9 @@ XXXXXX   KUVA - Kuten ensimmäisen luentokerran kalvoissa tai kirjan kuva 1.16
 
 Siirtoviive (engl. transmission delay) on näistä kaikkien tutuin. Sen laskukaava on  sv = L/R, missä L on paketin (tai siirrettävän datan) koko bitteinä ja R on linkin nopeus bitteinä sekunnissa (bps). Näin saadaan siirtoviive, eli siirron kesto, sekunteina.
 
-Vastaavia laskuja tehtiin ensimäisessä osiossa arvioina koko tiedosto siirron kestosta. Kun asiaa tarkastellaan vain yhden verkon solmun näkökulmasta, niin siirtoviivekin on vain siirron kesto yhden linkin yli seuraavalle verkon solmulle.
+Vastaavia laskuja tehtiin ensimäisessä osiossa arvioina koko tiedoston siirron kestosta. Kun asiaa tarkastellaan vain yhden verkon solmun näkökulmasta, niin siirtoviivekin on vain siirron kesto yhden linkin yli seuraavalle verkon solmulle.
+
+
 
 ### Prosessointiviive
 
@@ -43,6 +45,7 @@ Wikipedian sivulla https://fi.wikipedia.org/wiki/Prosessointiviive on kuvattu mu
 Etenemisviive (engl. propagation delay) on se aika, joka yhdeltä bitiltä kestää kulkea fyysisellä siirtotiellä lähettäjältä vastaanottajalle. Tähän vaikuttaa erityisesti käytettävä siirtomedia ja lähettäjän ja vastaanottajan fyysinen etäisyys. Tämä voidaan ilmaista kaavana ev = D/S, jossa D on etäisyys ja S on bitin etenemisnopeus siirtotiellä. Tällä kursilla käytämme etenemisnopeuden arviona aina valonnopeutta, vaikka joissakin tilanteissa etenemisnopeus on todellisuudessa sitä pienempi.
 
 QUIZZ:  Mitkä seuraavista kuvaavat riittävän tarkasti valonnopeutta  3 km sekunnissa,   jne 30 cm /nanosekunti, ....
+<quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>
 
 ### Jonotusviive
 
@@ -54,6 +57,7 @@ Todellisuudessa yhden reitittimen osalta emme pysty ennustamaan pakettien saapum
 
 KUVA ois kiva
 <img src="../img/drawings/hashmap.png" alt="Hashmapissa avaimen perusteella saadaan selville arvo."/>
+<quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>
 
 
 ## Läpäisy tai läpimeno
@@ -68,6 +72,8 @@ KUVA, jossa useita linkkejä ja niillä erilaisia liikennöintinopeuksia.  Mukan
 QUIZZ: Kuvaan liittyen muutama kysymys siitä mikä on pullonkaulalinkki näillä yhteysväleillä.
 
 <img src="../img/drawings/hashmap.png" alt="Hashmapissa avaimen perusteella saadaan selville arvo."/>
+
+<quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>  - tehtäväksi laskea siirron kesto kolmen linkin yli yhtenä pakettina ja pilkottuna useampaan pieneen pakettiin!
 
 
 ## Muita käsitteitä näihin liittyen
