@@ -28,7 +28,8 @@ Siirtoviive (engl. transmission delay) on näistä kaikkein tutuin. Sen laskukaa
 
 Vastaavia laskuja tehtiin edellisellä kurssilla arvioina koko tiedoston siirron kestosta. Tällöin oikeastaan lasketaan vain se, kuinka kauan lähettäjältä kestää laittaa kyseinen tiedosto matkaan eli siirtää se linkkiin. Koska verkossa on useita toimijoita, jotka kaikki siirtävät tietoa seuraavalle, niin yhden solmun siirtoviiveen tarkastelulla saadaan vain karkea alaraja-arvio siirron kokonaiskestosta.
 
-QUIZZ: Tähän joku laskutoimitus vielä muistin virkistykseksi (tai pari.)
+<quiz id="9ad14940-7b49-4277-949c-cca763aa28ba"></quiz>
+
 
 ### Prosessointiviive
 
