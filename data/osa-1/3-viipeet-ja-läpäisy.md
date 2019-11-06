@@ -42,9 +42,11 @@ Wikipedian sivulla https://fi.wikipedia.org/wiki/Prosessointiviive on kuvattu mu
 
 ### Etenemisviive
 
-Etenemisviive (engl. propagation delay) on se aika, joka yhdeltä bitiltä kestää kulkea fyysisellä siirtotiellä lähettäjältä vastaanottajalle. Tähän vaikuttaa erityisesti käytettävä siirtomedia ja lähettäjän ja vastaanottajan fyysinen etäisyys. Tämä voidaan ilmaista kaavana ev = D/S, jossa D on etäisyys ja S on bitin etenemisnopeus siirtotiellä. Tällä kursilla käytämme etenemisnopeuden arviona aina valonnopeutta, vaikka joissakin tilanteissa etenemisnopeus on todellisuudessa sitä pienempi.
+Etenemisviive (engl. propagation delay) on se aika, joka yhdeltä bitiltä kestää kulkea fyysisellä siirtotiellä lähettäjältä vastaanottajalle. Tähän vaikuttaa erityisesti käytettävä siirtomedia ja lähettäjän ja vastaanottajan fyysinen etäisyys. Tämä voidaan ilmaista kaavana ev = D/S, jossa D on etäisyys ja S on bitin etenemisnopeus siirtotiellä. Tällä kursilla käytämme etenemisnopeuden arviona aina valonnopeutta, vaikka tavallisesti etenemisnopeus on hiukan sitä pienempi.
 
-QUIZZ:  Mitkä seuraavista kuvaavat riittävän tarkasti valonnopeutta  3 km sekunnissa,   jne 30 cm /nanosekunti, ....
+Valonnopeuden tarkempi selitys löytyy wikipediasta https://fi.wikipedia.org/wiki/Valonnopeus. Tämän kurssin tarpeisiin Ursan hyvin tiivis kuvaus https://www.ursa.fi/extra/kosmos/v/valon_nopeus.html on riittävä.
+
+QUIZZ:  Mitkä seuraavista kuvaavat riittävän tarkasti valonnopeutta  3 km sekunnissa,   jne 30 cm /nanosekunti, ....  https://fi.wikipedia.org/wiki/Valonnopeus
 <quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>
 
 ### Jonotusviive
