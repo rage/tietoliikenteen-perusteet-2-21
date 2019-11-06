@@ -68,7 +68,7 @@ Viipeiden kanssa tarkastelimme asiaa yhden verkon solmun kohdalta. Läpimenoakin
 
 Nyt tarkastelemme paketin (tai oikeammin bittien) kulkua kokonaisuudessaan lähettäjältä vastaanottajalle. Pakettihan kulkee matkalla usean eri linkin kautta, joilla on erilaiset nopeudet. Koko reitin läpäisyä rajoittaa hitain linkki. Näin ollen päästä-päähän yhteyden läpäisy on yhtäsuuri kuin hitaimman linkin nopeus. Tässä täytyy huomioida myös linkin jakaminen. Jos tietty lähettäjän ja vastaanottajan välinen liikenne saa vain osan linkistä käyttöönsä, niin silloin tällä yhteydellä tuon linkin nopeus on vain tämä osa koko nopeudesta. Näin jokin näennäisesti nopeampi linkki voikin olla liikennöintinopeutta rajoittava.  Tätä rajoittavaa linkkiä kutsutaan usein "pullonkaulaksi". Jos lähettäjän ja vastaanottajan välistä liikennettä halutaan nopeuttaa, niin nopeutus on kohdistettava nimenomaan pullonkaulaan. Muiden yhteysvälien nopeuttaminen ei auta.  **Mieti miksi näin on.**
 
-<img src="../img/pullonkaula.png" alt="Kuvassa A ja B on yhdistetty reitittimeen R1. C ja D on yhdistetty reitittimeen R2. Reitittimet R1 ja R2 on yhdistetty toisiinsa. Liikennöintinopeudet ovat: A-R1 1Gb/s, B-R1 200 Mb/s, R1-R2 100 Mb/s, R2-C 100 Mb/s ja R2-D 1Gb/s"/>
+<img src="../img/pullonkaula.svg" alt="Kuvassa A ja B on yhdistetty reitittimeen R1. C ja D on yhdistetty reitittimeen R2. Reitittimet R1 ja R2 on yhdistetty toisiinsa. Liikennöintinopeudet ovat: A-R1 1Gb/s, B-R1 200 Mb/s, R1-R2 100 Mb/s, R2-C 100 Mb/s ja R2-D 1Gb/s"/>
 
 KUVA 2: Kuvaan on merkitty eri linkkien maksiminopeudet. Näistä on helppo havaita, että reitittimien välinen linkki (100 Mb/s) on hitain. Näin voidaan olettaa, että se muodostaa tässä verkossa pullonkaulan.
 
