@@ -44,22 +44,19 @@ Wikipedian sivulla https://fi.wikipedia.org/wiki/Prosessointiviive on kuvattu mu
 
 Etenemisviive (engl. propagation delay) on se aika, joka yhdeltä bitiltä kestää kulkea fyysisellä siirtotiellä lähettäjältä vastaanottajalle. Tähän vaikuttaa erityisesti käytettävä siirtomedia ja lähettäjän ja vastaanottajan fyysinen etäisyys. Tämä voidaan ilmaista kaavana ev = D/S, jossa D on etäisyys ja S on bitin etenemisnopeus siirtotiellä. Tällä kursilla käytämme etenemisnopeuden arviona aina valonnopeutta, vaikka tavallisesti etenemisnopeus on hiukan sitä pienempi.
 
-Valonnopeuden tarkempi selitys löytyy wikipediasta https://fi.wikipedia.org/wiki/Valonnopeus. Tämän kurssin tarpeisiin Ursan hyvin tiivis kuvaus https://www.ursa.fi/extra/kosmos/v/valon_nopeus.html on riittävä.
+Valonnopeuden tarkempi selitys löytyy [wikipediasta](https://fi.wikipedia.org/wiki/Valonnopeus). Tämän kurssin tarpeisiin [Ursan hyvin tiivis kuvaus](https://www.ursa.fi/extra/kosmos/v/valon_nopeus.html) on riittävä.
 
-QUIZZ:  Mitkä seuraavista kuvaavat riittävän tarkasti valonnopeutta  3 km sekunnissa,   jne 30 cm /nanosekunti, ....  https://fi.wikipedia.org/wiki/Valonnopeus
-<quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>
+<quiz id="a2261435-811f-4b31-b7a5-d6585422e987"></quiz>
 
 ### Jonotusviive
 
 Jonotusviive (engl queuing delay) on näistä viipeistä hankalin, koska se vaihtelee ruuhkan mukana. Jos solmussa ei ole yhtään pakettia jonossa, niin jonotusviivettäkään ei muodostu, kun paketti voidaan välittömästi toimittaa seuraavaan linkkiin.
-Toisaalta jonotusviive voi olla hyvinkin pitkä, jos kyseinen solmu on hyvin ruuhkainen ja paketteja on paljon jonossa. Jonoihin ja jonotukseen liittyy vahvasti matematiikan haara jonoteoria, joka nimenomaan tutkii näitä ilmiöitä. Koska jokainen paketin kokemus jonosta on erilainen, niin jonojen tarkastelussa käytetään nimenomaan tilastollisia suureita kuten keskiarvo, varianssi ja todennäköisyys. 
+Toisaalta jonotusviive voi olla hyvinkin pitkä, jos kyseinen solmu on hyvin ruuhkainen ja paketteja on paljon jonossa. Jonoihin ja jonotukseen liittyy vahvasti matematiikan haara jonoteoria, joka nimenomaan tutkii näitä ilmiöitä. Koska jokaisen paketin kokemus jonosta on erilainen, niin jonojen tarkastelussa käytetään nimenomaan tilastollisia suureita kuten keskiarvo, varianssi ja todennäköisyys. 
 Yksinkertainen kaava, jolla jonotuksen kestoa voi arvioida on liikenteen intensiteetti (engl. traffic intensity), on La/R, missä L on paketin koko (yksinkertaisesti oletetaan paketit samankokoisiksi), a on keskimääräinen pakettien jonoon saapumisnopeus (paketteja sekunnissa) ja jakaja R on linkin siirtonopeus (bitteja sekunnissa). Tästä kaavasta on helppo havaita, että jos paketteja saapuu jonoon enemmän kuin linkki voi lähettää (La/R >1), niin jono kasvaa. Jos puskurin koko ei rajoita, niin jono voi kasvaa äärettömästi ja näin ollen myös paketin jonotusviive voi kasvaa äärettömästi. Jos taas puskurin koko rajoittaa jonon kasvua, niin paketteja joudutaan pudottamaan ja ne katoavat pääsemättä koskaan perille.
 Jonoja voi silti muodostua vaikka liikenteen intensiteetti olisikin pienempi tai yhtäsuuri kuin 1 (eli La/R<1). Näin voi käydä jos hetkellisesti pakettien määrä ylittää linkin kapasiteetin esimerkiksi paketteja tulee useammasta linkistä yhtenä ryöppynä. Toisaalta vaikka intensiteetti olisikin lähellä ykköstä, niin jos paketit saapuvat tasaisin väliajoin, niin ne eivät joudu jonottamaan, kun edellinen on juuri saatu lähetettyä ennen seuraavan saapumista.
 Todellisuudessa yhden reitittimen osalta emme pysty ennustamaan pakettien saapumisia (jaksollisuutta tai saapumisväliä), joten pakettien oletetaan saapuvan satunnaisesti (random). Tällöin paketteja saapuu välillä enemmän ja välillä vähemmän, mutta niiden jakaumaa ei tiedetä ennalta.
 
-KUVA ois kiva
-<img src="../img/drawings/hashmap.png" alt="Hashmapissa avaimen perusteella saadaan selville arvo."/>
-<quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>
+Lisätietoa kiinnostuneille: Jonot ja jonotus on niin tavallista, että sille on ihan oma jonoteoria. Wikipedian englanninkielinen sivu [Queueing theory](https://en.wikipedia.org/wiki/Queueing_theory) antaa perustiedot asiasta kiinnostuneelle. Tällä kurssilla jonotusta ja sen vaikutuksia ei käsitellä tämän enempää. 
 
 
 ## Läpäisy tai läpimeno
@@ -68,15 +65,22 @@ Englanninkielistä termiä throughput ei valitettavasti vastaa yksi tietty suome
 
 Viipeiden kanssa tarkastelimme asiaa yhden verkon solmun kohdalta. Läpimenoakin voisi tarkastella vain kahden solmun välillä. Silloin se määrittyy suoraan kyseisen linkin nopeudesta, koska se kertoo meille suoraan kuinka monta bittiä kyseisestä linkistä pääsee läpi sekunnissa. 
 
-Nyt tarkastelemme paketin (tai oikeammin bittien) kulkua kokonaisuudessaan lähettäjältä vastaanottajalle. Pakettihan kulkee matkalla usean eri linkin kautta, joilla on erilaiset nopeudet. Koko reitin läpäisyä rajoittaa hitain linkki. Näin ollen päästä-päähän yhteyden läpäisy on yhtäsuuri kuin hitaimman linkin nopeus. Tässä täytyy huomioida myös linkin jakaminen. Jos tietty lähettäjän ja vastaanottajan välinen liikenne saa vain osan linkistä käyttöönsä, niin silloin tällä yhteydellä tuon linkin nopeus on vain tämä osa koko nopeudesta. Näin jokin nopeampi linkki voikin tämän yhteyden osalta olla liikennöintinopeutta rajoittava.  Tämä rajoittaa linkkiä kutsutaan usein "pullonkaulaksi". Jos lähettäjän ja vastaanottajan välistä liikennettä halutaan nopeuttaa, niin nopeutus on kohdistettava nimenomaan pullonkaulaan. Muiden yhteysvälien nopeuttaminen ei auta.  #Mieti miksi näin on.#
+Nyt tarkastelemme paketin (tai oikeammin bittien) kulkua kokonaisuudessaan lähettäjältä vastaanottajalle. Pakettihan kulkee matkalla usean eri linkin kautta, joilla on erilaiset nopeudet. Koko reitin läpäisyä rajoittaa hitain linkki. Näin ollen päästä-päähän yhteyden läpäisy on yhtäsuuri kuin hitaimman linkin nopeus. Tässä täytyy huomioida myös linkin jakaminen. Jos tietty lähettäjän ja vastaanottajan välinen liikenne saa vain osan linkistä käyttöönsä, niin silloin tällä yhteydellä tuon linkin nopeus on vain tämä osa koko nopeudesta. Näin jokin näennäisesti nopeampi linkki voikin olla liikennöintinopeutta rajoittava.  Tätä rajoittavaa linkkiä kutsutaan usein "pullonkaulaksi". Jos lähettäjän ja vastaanottajan välistä liikennettä halutaan nopeuttaa, niin nopeutus on kohdistettava nimenomaan pullonkaulaan. Muiden yhteysvälien nopeuttaminen ei auta.  **Mieti miksi näin on.**
 
-KUVA, jossa useita linkkejä ja niillä erilaisia liikennöintinopeuksia.  Mukana myös jaettuja yhteyksiä ja useampia lähettäjiä.
-QUIZZ: Kuvaan liittyen muutama kysymys siitä mikä on pullonkaulalinkki näillä yhteysväleillä.
+<img src="../img/drawings/pullonkaula.png" alt="Kuvassa A ja B on yhdistetty reitittimeen R1. C ja D on yhdistetty reitittimeen R2. Reitittimet R1 ja R2 on yhdistetty toisiinsa. Liikennöintinopeudet ovat: A-R1 1Gb/s, B-R1 200 Mb/s, R1-R2 100 Mb/s, R2-C 100 Mb/s ja R2-D 1Gb/s"/>
 
-<img src="../img/drawings/hashmap.png" alt="Hashmapissa avaimen perusteella saadaan selville arvo."/>
+KUVA 2: Kuvaan on merkitty eri linkkien maksiminopeudet. Näistä on helppo havaita, että reitittimien välinen linkki (100 Mb/s) on hitain. Näin voidaan olettaa, että se muodostaa tässä verkossa pullonkaulan.
+
+<quiz id="a13067de-805c-4101-95fe-d513928b2598"></quiz> 
+
+
+Paketin koko vaikuttaa viestin kulkuaikaan lähettäjältä vastaanottajalle. Internet on ns. etappivälitteinen (engl. store-and-forward). Perusmallissa paketti vastaanotetaan kokonaisuudessaan ennen kuin sitä käsitellään solmussa sen tarkemmin ja vasta sen jälkeen paketti lähetetään eteenpäin. Uudet reitittimet osaavat käsitellä paketteja jo silloin, kun ne vielä vastaanottavat paketin loppuosaa. Tällainen noepampi edelleenlähetys (engl. fastforward) nopeuttaa erityisesti isojen pakettien kulkua, kun siirtoviiveen vaikutus pienenee. Vaikutus on samankaltainen kuin paketin pilkkominen pienemmiksi paketeiksi.
+
+Oletetaan ensin, että yllä olevassa kuvassa B lähettää  1 megatavun kokoisen tiedoston C:lle yhtenä pakettina. Tällöin paketti siirretään ensin kokonaisuudessaan B:ltä Reitittimelle 1. Tähän siirtoon kuluu (1 megatavu * 8 bittiä / tavu) / (200 kb/s) = 8 000 000 / 200 000 sekuntia =  40 sekuntia. Sitten Reititin 1 siirtää tämän paketin reitittimelle R2, mihin kuluu 80 sekuntia. Lopuksi Reititin 2 siirtää paketin C:lle. Tähänkin kuluu 80 sekuntia. Kokonaisuudessaan siirtoon kuuluu siis 40 sekuntia + 80 sekuntia + 80 sekuntia = 180 sekuntia eli 3 minuuttia.
+
+Oletetaan sitten, että tämä 1 megatavun kokoinen tiedosto pilkotaan 1 kilotavun paketeiksi
 
 <quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>  - tehtäväksi laskea siirron kesto kolmen linkin yli yhtenä pakettina ja pilkottuna useampaan pieneen pakettiin!
-
 
 ## Muita käsitteitä näihin liittyen
 
