@@ -47,10 +47,18 @@ Kuljetuskerros siis piilottaa verkkokerroksen puutteita ja parantaa sovelluksell
 
 Yksinkertaisisa mallinnuksissa ei tyypillisesti oteta kantaa viestien kulkuaikoihin vaan ainoastaan sisällön oikeellisuuteen ja järjestykseen. Yhteyden katkeaminenkin voidaan mallissa ajatella vain todella pitkäksi viivästymiseksi. Kun viivästyminen joskus päättyy, niin viestit kuitenkin pitää välittää sisällön ja järjestyksen mukaan oikein. Malliin on toki mahdollista ottaa mukaan myös aika, mutta tällä kurssilla otamme käyttöön vain ajastimet, emme varsinaisia aika-arvioita viestien kulkemisiin.
 
-Mallintamista tulee lisää seuraavassa aliluvussa.
+Seuraavassa aliluvussa käsitellään kuljetuspalvelun toimintaa ensin mallien avulla.
 
 
-Segmenttien lomitus
+## Segmenttien lomitus
+
+Yksi kuljetupalvelun keskeisistä tehtävistä on saapuvien viestien toimittaminen oikealle sovelluskerroksen vastaanottajalle. Samassa koneessa voi olla samanaikaisesti useita prosesseja, jotka odottavat saapuvia viestejä.
+
+Vastaanottovaiheessa linkkikerros poimii saapuvista viesteistä ne, jotka on sillä kerroksella osoitettu tälle koneelle. Se antaa nämä viestit verkkokerrokselle, joka tarkistaa verkkokerroksen tiedoista viestin varsinaisen vastaanottajana. Jos vastaanottja ei ollut tämä laite, niin viesti reititetään kohti lopullista vastaanottajaa ja annetaan linkkikerrokselle toimitettavaksi eteenpäin. Kun verkkokerroksen mielestä vastaanottaja on tällä koneella, se antaa viestin edelleen kuljetuskerrokselle.
+
+Kun kuljetuskerros saa viestin verkkokerrokselta, on kuljetuskerroksen selvitettävä mille sovelluskerroksen vastaanottajalle viesti on oikeasti menossa. Jokainen verkkokerrokselta saapuva viesti on selvitettävä erikseen. Ne voivat olal menossa eri vastaanottajille.
+
+Vastaavasti sovelluskerrokselta kuljetuskerrokselle tulevat viestit saapuvat eri kohteista ja lähetysvaiheessa ne voivat lomittua keskenään.
 
 - esimerkkikuva
 
