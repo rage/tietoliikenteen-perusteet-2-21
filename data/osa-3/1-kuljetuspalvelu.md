@@ -27,8 +27,27 @@ Luotettavan kuljetuspalvelun keskeinen tehtävä on siis piilottaa verkkokerroks
 * sovelluskerros edellyttää kaksoiskappaleiden karsimista, mutta vekkokerros voi monistaa segmenttejä eli toimittaa useita kopioita samasta segmentistä
 * sovelluskerros edellyttää mielivaltaisen pitkiä sanomia, mutta verkkokerros voi rajoittaa segmentin kokoa
 * verkkokerros voi lisäksi viivyttää segmenttejä satunnaisen pitkän ajan, 
+     
+
+## Mallinnuksesta
+
+Kun mallinnamme tietoliikennejärjestelmän toimintaa, käytämme usein termiä kanava (engl. channel) kuvamaan varsinaista tietoa siirtävää elementtiä. Kanava-termillä mallia ei sidota tiettyyn järjestelmään, vaan se sopii kaikkiin sellaisiin ympäristöihin, joissa kanavalle määritellyt ominaisuudet ovat samoja. Kanava on siis vain joukko ominaisuuksia, jotka kuvaavat miten tieto siirtyy lähettäjältä vastaanottajalle. Kanava voi esimerkiksi kadottaa viestejä, jolloin kaikki lähetetyt viestit eivät pääse perille. Kanava voi myös luvata toimittaa kaikki viestit virheettömästi perille. Mallin suunnittelija määrittelee kanavan ominaisuudet siten, että mallilla saadaan kuvattua haluttua toiminnallisuutta.
         
-Kuljetuskerros siis piilottaa verkkokerroksen puutteita ja parantaa sovellukselle näkyvän palvelun laatua. Aivan kaikkea kuljetuskerros ei pysty piilottamaan. Esimerkiksi viestien viivästymiset tai verkkoyhteyden katkeaminen ovat tilanteita, jolloin kuljetuskerros ei pysty välittämään viestejä ja näin ne välttämättä näkyvät myös sovelluskerrokselle. 
+<img src="../img/sovelluskerros-kuljetuspalvelu.svg" alt="Sovelluskerroksen prosessit lähettävät dataa toisilleen kuljetuskerroksen 'putken' läpi."/>
+
+KUVA: Sovelluskerroksen näkökulmasta kuljetuskerroksen tarjoama kuljetuspalvelu on yhtenäinen luotettava kanava, johon lähettäjä laittaa viestin ja josta se sitten kulkee vastaanottajalle. Kanavassa kaikki viestit etenevät järjestyksessä ja pääsevät myös perille.
+
+Kuljetuskerroksen kuljetuspalvelun näkökulmasta tilanne on paljon monimutkaisempi. Koska verkkokerros ei tarjoa luotettavaa siirtoa, on kuljetuspalvelun itse toteutettava tämä luotettava kuljetus epäluotettavan verkkokerroksen päälle. Tähän tarvitaan kuljetusprotokollaa, jonka pitää huolehtia kaikkien viestien perillemenosta oikeassa järjestyksessä ja oikealla sisällöllä, vaikka kanava sen alapuolella voi kadottaa, muuttaa, monistaa ja sekoittaa viestejä. 
+
+<img src="../img/kuljetuspalvelu-verkkokerros.svg" alt="Kuljetusprotokollan eri päissä (lähettäjä ja vastaanottaja) toimivat protokollan palaset saavat/välittävät dataa sovelluskerrokselle ja lähettävät/vastaanottavat segmenttejä verkkokerroksen 'putkesta'. Verkkokerroksen 'putki' yhdistää nämä protokollan palat toisiinsa."/>
+
+KUVA: Kuljetuspalvelun näkökulmasta verkkokerroksen tarjoama palvelu on epäluotettava kanava, joka voi uuttaa viestin sisältöä, kadottaa viestin, monistaa viestin ja vaihtaa viestien järjestyksen.
+
+Kuljetuskerros siis piilottaa verkkokerroksen puutteita ja parantaa sovellukselle näkyvän palvelun laatua. Aivan kaikkea kuljetuskerros ei kuitenkaan pysty piilottamaan. Esimerkiksi viestien viivästymiset tai verkkoyhteyden katkeaminen ovat tilanteita, jolloin kuljetuskerros ei pysty välittämään viestejä ja näin ne välttämättä näkyvät myös sovelluskerrokselle. 
+
+Yksinkertaisisa mallinnuksissa ei tyypillisesti oteta kantaa viestien kulkuaikoihin vaan ainoastaan sisällön oikeellisuuteen ja järjestykseen. Yhteyden katkeaminenkin voidaan mallissa ajatella vain todella pitkäksi viivästymiseksi. Kun viivästyminen joskus päättyy, niin viestit kuitenkin pitää välittää sisällön ja järjestyksen mukaan oikein. Malliin on toki mahdollista ottaa mukaan myös aika, mutta tällä kurssilla otamme käyttöön vain ajastimet, emme varsinaisia aika-arvioita viestien kulkemisiin.
+
+Mallintamista tulee lisää seuraavassa aliluvussa.
 
 
 Segmenttien lomitus
