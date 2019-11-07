@@ -60,8 +60,9 @@ Kun kuljetuskerros saa viestin verkkokerrokselta, on kuljetuskerroksen selvitett
 
 Vastaavasti sovelluskerrokselta kuljetuskerrokselle tulevat viestit saapuvat eri kohteista ja lähetysvaiheessa ne voivat lomittua keskenään.
 
-- esimerkkikuva
+<img src="../img/lomitus.svg" alt="Kuvassa on kolme laitetta A, B ja C. "/>
 
+KUVA: Kuvassa A:n ja C:n sovelluskerroksen prosessit kommunikoivat keskenään porttien xxx ja yyy kautta. Vastaavasti B:n ja C:n sovelluskerroksen prosessit kommunikoivat keskenään porttien zz ja kk kautta. C:llä on siis kaksi sovellusprosessia (tai yksi, joka kommunikoi useamman portin kautta eri laitteissa olevien sovellusten kanssa), jotka käyttävät eri portteja ja kommunikoivat vastapuoliensa kautta niiden välityksellä.
 
 
 <quiz id="45b6aea4-2c5f-404e-9143-23a644ebea63"></quiz>
