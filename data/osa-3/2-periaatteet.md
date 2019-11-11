@@ -15,6 +15,11 @@ hidden: false
 
 Tämä on kurssin teoreettisin osio. Käytä tähän riittävästi aikaa, jotta oikeasti ymmärrät protokollien suunnitteluun liittyviä periaatteita ja protokollien oikeellisuuden haasteita. Varsinainen äärellisten automaattien ja tilasiirtymäjärjestelmien taustalla oleva teoria käsitellään myöhemmin kurssilla Laskennan mallit. Varsinaiset protokollien verifiointimenetelmät eivät kuulu kandidaatintutkinnon sisältöön.
 
+## Protokollien mallinnuksesta
+
+Protokollia voidaan mallintaa monella eri tavalla ja menetelmällä. Protokollien mallintamiseen on kehitetty useita erilaisia mallinnuskieliä. Tällä kurssilla tarkastellaan kuitenkin protokollien mallintamistan yksikertaisten [äärellisten automaattien](https://fi.wikipedia.org/wiki/%C3%84%C3%A4rellinen_automaatti)avulla. Näistä voidaan käyttää myös nimitystä tila-automaatti. Niissä on tiloja ja niiden välisiä siirtymiä.  Automaatit ovat tuttuja jo Tietorakenteet ja algoritmit kurssilta.
+
+Tietoliikenteessä meidän täytyy mallintaa sekä lähettäjä että vastaanottaja, joten kyseessä on aina kahden automaatin yhteistoiminta. Lähettäjä tai vastaanottaja on aina jossain tilassa odottamassa jotain tapahtumaa, jonka seurauksella sen tila voi vaihtua seuraavaan. Tietoliikenteen automaateissa tyypilliset tapahtumat ovat joko viestin lähetyksiä, jotka merkitään miinus-merkillä, tai viestin vastaanottoja, jotka merkitään +merkillä. Tarvittaessa voidaan ottaa käyttöön myös muita tapahtumia, jotka ovat kyseisen protokollan toiminnan kannalta tarpeellisia, esimerkiksi ajastimen asettaminen ja/tai sen laukeaminen.
 
 ## Yksinkertainen kuljetuspalvelu  (ei kuittauksia)
 
