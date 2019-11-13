@@ -29,6 +29,7 @@ Lähettäjällä kuljetuspalvelu saa sovelluskerrokselta välitettävän viestin
 
 <img src="../img/protokolla-ideaali-tilanne.svg" alt="Kuvassa on kaksi automaattia, toinen on lähettäjän ja toinen vastaanottajan. Lähettäjän automaatissa on kaksi tilaa: L1 j L2. Siirtymä tilasta L1 tilaan L2 on +send ja siirtymä tilasta L2 tilaan L1 on -m. Vastaanottajan automaatissakin on kaksi tilaa V1 ja V2. Vastaanottajalla siirtymä tilasta V1 tilaan V2 on +m ja siirtymä tilasta V2 tilaan V1 on -receive."/>
 KUVA: Kuljetuspalvelun tila-automaatti, kun kanava ei tee mitään virheitä. Tämä on siis ideaalisen kuljetuspalvelun tila-automaatti.
+<br>
 
 Koska tietoliikenteessä yleensä toiminnot liittyvät nimenomaan näihin tilasiirtymiin kahden tilan välillä, on tilasiirtymä mahdollista kirjoittaa automaattiin myös kaksiosaisena, jossa yläpuolinen osa on ehto siirtymän tekemiselle ja alapuolinen osa on toiminto, jonka automaatti tekee siirtymän aikana. Tällaisia automaatteja kutsutaan Mealyn automaateiksi (engl. [Mealy Machine](https://en.wikipedia.org/wiki/Mealy_machine)). Näin tilojen määrä saadaan pienemmäksi ja ehtona olevan tapahtuman (yleensä saapuva viesti) vaikutus näkyy minusta selkeämmin. Siksi käytän tätä merkintätapaa jatkossa.
 
@@ -36,7 +37,7 @@ Piirretään tuo edellisen kuvan automaatti uudelleen, mutta nyt tällä ehto/to
 
 <img src="../img/protokolla-ideaali-tilanne-yksi-tila.svg" alt="Kuvassa on kaksi automaattia, toinen on lähettäjän ja toinen vastaanottajan. Kummallakin on nyt vain yksi tila L1 ja V1, jossa on yksi siirtymä itseensä. Lähettäjällä siirtymä on muotoa +send/-m ja vastaanottajalla muotoa +m/-receive."/>
 KUVA: Lähettäjällä ja vastaanottajalla on kummallakin vain yksi tila ja siirtymä tästä tilasta itseensä. Lähettäjällä siirtymä on muotoa +send/-m ja vastaanottajalla muotoa +m/receive.
-
+<br>
 
 Tällainen kuljetuspalvelu toimii oikein vain, kun voimme luottaa siihen, että viesti m lähettäjältä vastaanottajalle menee aina perille ja että peräkkäiset viestit menevät perille samassa järjestyksessä kuin ne on lähetetty. Kanava ei siis tee mitään virheitä viestin välitykseen. Koska todellisuudessa kanava ei ole näin luotettava, on kuljetuspalvelun toiminnassa otettava huomioon kanavan aiheuttamat ongelmat.
 
@@ -47,7 +48,7 @@ Kun oletetaan, että viestejä kuljettava kanava voi kadottaa yksittäisen viest
 
 <img src="../img/protokolla-ideaali-tilanne-yksi-tila.svg" alt="Lähettäjällä on nyt kaksi tilaa ja siirtymät niiden välillä. Ensimmäinen siirtymä on kuten edellisessä kuvassa +send/-m ja toinen siirtymä on +ack. Vastaanottajalla on edelleen yksi tila, mutta sen siirtymä itseensä on nyt muotoa +m /(-receive, -ack).">
 KUVA: Nyt lähettäjän pitää jokaisen viestin lähetyksen jälkeen vastaanottaa kuittaus (+ack) ennen kuin se voi lähettää seuraavan viestin. Vastaanottajakin lähettää kuittauksen jokaisen viestin vastaanoton jälkeen.
-
+<br>
 
 Tämän automaatin ongelma on se, että se kyllä havaitsee, kun viesti ei ole mennyt perille, mutta se ei osaa toipua tästä tilanteesta.
 Jotta toipuminen on mahdollista, niin meidän täytyy lisätä lähettäjän aautomaattiin mahdollisuus lähettää viesti uudelleen, jos kuittaus ei tule tietyn ajan kuluessa. Tämä voidaan tehdä yksinkertaisesti yhdellä lisäsiirtymällä ajastin/-m. Mieti hetki kumpaan lähettäjän tilaan tämän siirtymä tarvitaan. Ajastin aiheuttaa kellokeskeytyksen, jonka perusteella käyttöjärjestelmä pääsee puuttumaan tilanteeseen. Ajastimista ja keskeytyksistä kerrotaan enemmän Tietokoneen toiminta -kursseilla.
