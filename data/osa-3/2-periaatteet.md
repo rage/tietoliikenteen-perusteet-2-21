@@ -25,21 +25,22 @@ Tietoliikenteessä meidän täytyy mallintaa sekä lähettäjä että vastaanott
 
 Lähettäjällä kuljetuspalvelu saa sovelluskerrokselta välitettävän viestin (kuvassa +send(k)) ja lähettää sen vastaanottajalle (kuvassa -m(k)). Vastaanottajalla kuljetuspalvelu vastaanottaa viestin (kuvassa +m(k)) ja toimittaa sen edelleen sovelluskerrokselle (kuvassa (-receive(k)). Kuten huomaat, niin merkitsemme aina automaatin lähettämiä viestejä miinus-merkillä ja vastaanottamia viestejä plus-merkillä. Näin toimitaan, vaikka toinen osapuoli ei olikaan tietoliikenneverkon takana. Tässähän send ja receive ovat tapahtumia, joiden avulal kuljetuspalvelu kommunikoi sovelluskerroksen prosessin kanssa.
 
-KUVA:  Lähettäjällä ja vastaanottajalla kaksi tilaa, joiden välillä vain nuo neljä siirtymää.
+<img src="../img/protokolla-ideaali-tilanne.svg" alt="Kuvassa on kaksi automaattia, toinen on lähettäjän ja toinen vastaanottajan. Lähettäjän automaatissa on kaksi tilaa. Siirtymä tilasta 1 tilaan kaksi on +send(k) ja siirtymä tilasta kaksi tilaan yksi on -m(k). Vastaanottajan automaatissakin on kaksi tilaa. Vastaanottajalla siirtymä tilasta 1 tilaan 2 on +m(k) ja siirtymä tilasta 2 tilaan 1 on -receive(k)."/>
+KUVA: Kuljetuspalvelun tila-automaatti, kun kanava ei tee mitään virheitä. Tämä on siis ideaalisen kuljetuspalvelun tila-automaatti.
 
-Koska tietoliikenteessä yleensä toiminnot liittyvät nimenomaan näihin tilasiirtymiin kahden tilan välillä, on tila siirtymä mahdollista kirjoittaa automaattiin myös kaksiosaisena, jossa yläpuolinen osa on ehto siirtymän tekemiselle (ms. Mealyn automaatteina, wikipedia (engl.) https://en.wikipedia.org/wiki/Mealy_machine). Näin tilojen määrä saadaan pienemmäksi ja syötteen (=saapuvan viestin vaikutus) näkyy minusta selkeämmin. Siksi käytän tätä merkintätapaa jatkossa.
+Koska tietoliikenteessä yleensä toiminnot liittyvät nimenomaan näihin tilasiirtymiin kahden tilan välillä, on tilasiirtymä mahdollista kirjoittaa automaattiin myös kaksiosaisena, jossa yläpuolinen osa on ehto siirtymän tekemiselle ja alapuolinen osa on toiminto, jonka automaatti tekee siirtymän aikana. Tällaisia automaatteja kutsutaan Mealyn automaateiksi (engl. [Mealy Machine](https://en.wikipedia.org/wiki/Mealy_machine)). Näin tilojen määrä saadaan pienemmäksi ja ehtona olevan tapahtuman (yleensä saapuva viesti) vaikutus näkyy minusta selkeämmin. Siksi käytän tätä merkintätapaa jatkossa.
 
-Katsotaan siis esimerkkinä tuota äskeistä kuvaa, mutta tällä ehto/toiminto -siirtymällä.
+Piirretään tuo edellisen kuvan automaatti uudelleen, mutta nyt tällä ehto/toiminto -siirtymällä. Tällöin sekä lähettäjälle että vastaanottajalle jää enää yksi tila.
 
+<img src="../img/protokolla-ideaali-tilanne-yksi-tila.svg" alt="Kuvassa on kaksi automaattia, toinen on lähettäjän ja toinen vastaanottajan. Kummallakin on nyt vain yksi tila, jossa on yksi siirtymä itseensä. Lähettäjällä siirtymä on muotoa +send(k)/-m(k) ja vastaanottajalla muotoa +m(k)/-receive(k)."/>
 KUVA: Lähettäjällä ja vastaanottajalla on kummallakin vain yksi tila ja siirtymä tästä tilasta itseensä. Lähettäjällä siirtymä on muotoa send(k)/-m(k) ja vastaanottajalla muotoa +m(k)/receive(k).
 
-Tällainen kuljetuspalvelu toimii oikein, kun voimme luottaa siihen, että viesti m lähettäjältä vastaanottajalle menee aina perille ja että peräkkäiset viestit menevät perille samassa järjestyksessä kuin ne on lähetetty.
+Tällainen kuljetuspalvelu toimii oikein, kun voimme luottaa siihen, että viesti m lähettäjältä vastaanottajalle menee aina perille ja että peräkkäiset viestit menevät perille samassa järjestyksessä kuin ne on lähetetty. Kanava ei siis tee mitään virheitä viestin välitykseen. Koska todellisuudessa kanava ei ole näin luotettava, on kuljetuspalvelun toiminnassa otettava huomioon kanavan aiheuttamat ongelmat.
 
-vastaanottajalla taas sovelluskerrokselle. Tällainen kuljetuspalvelun toiminnallisuus on helppo mallintaa lähettäjän ja vastaanottajan tilasiirtyminä.
 
 ## Yksinkertainen kuljetuspalvelu, jossa kuittaukset
 
-Kuljetuspalveluspalvelun täytyy jollain tavalla varmistaa, että viestit menevät perille. Tähän käytetään yleensä kuittauksia eli vastaanottaja kuittaa lähettäjälle saaneensa viestin.
+Kun oletetaan, että viestejä kuljettava kanava voi kadottaa yksittäisen viestin, on kuljetuspalvelun varmistuttava siitä, että jokainen lähetty viesti menee perille vastaanottajalle. Tähän käytetään yleensä kuittauksia eli vastaanottaja lähettää kuittausviestin, jolla se kertoo lähettäjälle saaneensa viestin.
 
 KUVA: Äskeiseen kuvaan mukaan kuittaukset eli kumpaankin automaattiin toinen tila, josta palataan ensimmäiseen kuittausviestin lähetyksellä tai vastanotolla.
 
