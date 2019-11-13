@@ -53,6 +53,8 @@ KUVA: Nyt lähettäjän pitää jokaisen viestin lähetyksen jälkeen vastaanott
 Tämän automaatin ongelma on se, että se kyllä havaitsee, kun viesti ei ole mennyt perille, mutta se ei osaa toipua tästä tilanteesta.
 Jotta toipuminen on mahdollista, niin meidän täytyy lisätä lähettäjän aautomaattiin mahdollisuus lähettää viesti uudelleen, jos kuittaus ei tule tietyn ajan kuluessa. Tämä voidaan tehdä yksinkertaisesti yhdellä lisäsiirtymällä ajastin/-m. Mieti hetki kumpaan lähettäjän tilaan tämän siirtymä tarvitaan. Ajastin aiheuttaa kellokeskeytyksen, jonka perusteella käyttöjärjestelmä pääsee puuttumaan tilanteeseen. Ajastimista ja keskeytyksistä kerrotaan enemmän Tietokoneen toiminta -kursseilla.
 
+Aikakatkaisua (engl. timeout) käytetään siis tietoliikenteessä keskeyttämään lähettäjän odotus. Jos lähettäjän lähettämä viesti tai siihen liittyvä kuittaus katoaa matkalla, ei lähettäjä saa tästä mitään tietoa. Jotta lähettäjä voisi reagoida tähän katoamiseen on lähettäjän viestin odotus ensin keskeytettävä [ajastimen](https://fi.wikipedia.org/wiki/Ajastin) avulla.  Lähettäjä siis asettaa ajastimen tekemään keskeytys sopivan ajan kuluttua.
+
 Nyt yksittäinen viesti voi kadota ja keskeytyksen jälkeen lähettäjä voi lähettää sen uudelleen. Protokollamme toimii oikein, jos kanava voi taata, että viesti menee varmasti perille tietyssä ajassa. Käytännössä tällaista aikatakuuta kanava ei anna, joten on mahdollista, että yksittäinen sanoma viivästyy niin paljon, että lähettäjä ehtii lähettämäään sen uudelleen. Tällöin vastaanottaja saa saman viestin kahteen kertaan. Koska edellisen kuvan automaatissa lähettäjä lähettää kuittauksen kaikille saapuneille viesteille, se kuittaa tämän viestin uudelleen. Tällainen tuplakuittaus voi aiheuttaa ongelmia.
 
 Kun lähettäjä saa kuittauksen tilassa 2 se olettaa kuittauksen koskevan juuri lähettämäänsä viestiä. Jos kuittaus kuitenkin koski jotain aiempaa viestiä, saattaa tämä lähetetty viesti jäädä pois välistä. Tämän korjaamiseksi meidän täytyy numeroida lähetetyt viestit, jotta lähettäjä tietää mitä viestiä kuittaus koskee.
@@ -73,9 +75,12 @@ Oletaan tässä vielä, että kuljetuskerroksella on aina jotain lähetettävä�
 
 KUVA. Kattava automaatti, joka huolehtii näistä.
 
-Aikakatkaisua (engl. timeout) käytetään tietoliikenteessä keskeyttämään lähettäjän odotus. Jos lähettäjän lähettämä viesti tai siihen liittyvä kuittaus katoaa matkalla ei lähettäjä saa tästä mitään tietoa. Jotta lähettäjä voisi reagoida tähän katoamiseen on lähettäjän viestin odotus ensin keskeytettävä [ajastimen](https://fi.wikipedia.org/wiki/Ajastin) avulla.  Lähettäjä siis asettaa ajastimen tekemään keskeytys sopivan ajan kuluttua. Keskeytykset ja niiden toiminta on käsitelty tietokoneen toiminta -kurssilla.
+<img src="../img/AB-protokolla.svg" alt="Lähettäjällä on neljä tilaa. Tilasiirtymät L1:stä L2:een +send/-m0, L2:sta itseensä ajastin/-m0, L2:sta L3:een, +ack0, L3:sta L4:ään +send/-m1, L4:stä itseensä ajastin/-m1, L4:stä L1:een +ack1. Vastaanottajalla on kaksi tilaa. Tilasiirtymät V1:stä V2:een +m0/(-receive, -ack0) ja V2:stä  .">
+KUVA: VUorottelevan bitin protokolla. Lähettäjän ja vastaanottajan välillä kanavassa kulkee siis normaalisti m0, ack0, m1, ack1, ....
+<br>
 
 
+on neöj
 
 
 
