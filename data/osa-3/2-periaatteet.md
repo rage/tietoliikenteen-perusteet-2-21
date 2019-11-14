@@ -85,15 +85,15 @@ Jotta peräkkäiset viestit voidaan erottaa toisistaan ne tyypillisesti numeroid
 
 Yksinkertaisimmillaan riittää, että numeroimme peräkkäiset viestit toisistaan poikkeavasti. Tähän riittää yksi bitti, jonka arvo on joko 0 tai 1. Kun näitä kahta arvoa vuorotellaan saadaan kaksi peräkkäistä viestiä numeroitua toisistaan poikkeavasti. Tästä tulee tuo perinteinen nimi vuorottelevan bitin protokolla (engl. [alternating bit protocol](https://en.wikipedia.org/wiki/Alternating_bit_protocol). Koska protokollalla läheteään yksi viesti ja pysähdytään odottamaan sille kuittaus ennen seuraavan viestin lähetystä käytetään protokollasta ajoittain myös nimitystä yksikertainen stop-and-wait protokolla https://en.wikipedia.org/wiki/Stop-and-wait_ARQ. Tällaista pysähtelyä ja odottamista on monessa muussakin protokollassa, joten aivan kaikki stop-and-wait -mallia noudattavat protokollat eivät ole vuorottelevan bitin protokollia.
 
-<img src="../img/AB-sanomat.svg" alt="Lähettäjän sovelluskerroksen ja kuljetupalvelun välillä on viesti send. Lähettäjän kuljetuspalvelu ja vastaanottajan kuljetuspalvelu on yhdistetty toisiinsa kanavalla, jossa kulkevat viestit m0, ack0, m1 ja ack1. Vastaanottajalla sovelluskerroksen ja kuljetuspalvelun välillä on viesti receive."
+<img src="../img/AB-sanomat.svg" alt="Lähettäjän sovelluskerroksen ja kuljetupalvelun välillä on viesti send. Lähettäjän kuljetuspalvelu ja vastaanottajan kuljetuspalvelu on yhdistetty toisiinsa kanavalla, jossa kulkevat viestit m0, ack0, m1 ja ack1. Vastaanottajalla sovelluskerroksen ja kuljetuspalvelun välillä on viesti receive."/>
 
-KUVA: Kaavakuvasta voi nähdä minkä elementtien välillä viestit kulkevat. 
+KUVA: Kaavakuvasta voi nähdä, minkä elementtien välillä viestit kulkevat. 
 
 Yllä olevassa kuvassa on piirrettynä seuraavan kuvan automaatin ympäristö. Tästä ja automaatin viesteistä näkyy, että lähettäjän päässä kuljetuspalvelu saa send-viestin sovelluskerrokselta. Vastaavasti vastaanottajan päässä kuljetuspalvelu toimittaa receive-viestin vastaanottajalle. Viestien kulkusuunta ei näy tästä kaavakuvasta, mutta se voidaan katsoa automaatin toiminnallisuudesta.
 
 Olisimme voineet yksinkertaistaa mallia ja jättää sovelluskerroksen ja sen viestit kokonaan pois. Tällainen asioiden lisääminen ja poistaminen on mallinnuksen vahvuus. Meidän tarvitsee ottaa mukaan vain ne toiminnat, joita halutaan tarkastella. Muu toiminnallisuus jätetään pois, jotta malli pysyy mahdollisimman yksinkertaisena. Jos sovelluskerroksen viestit jätetään pois, niin silloin oletetaan, että lähettäjän päässä kuljetuspalvelulla on aina lähetettävää, jolloin viestin m0 tai m1 lähettää, kun automaatti on sopivassa tilassa.
 
-<img src="../img/AB-protokolla.svg" alt="Lähettäjällä on neljä tilaa. Tilasiirtymät L1:stä L2:een +send/-m0, L2:sta itseensä ajastin/-m0, L2:sta L3:een, +ack0, L3:sta L4:ään +send/-m1, L4:stä itseensä ajastin/-m1, L4:stä L1:een +ack1. Vastaanottajalla on kaksi tilaa. Tilasiirtymät V1:stä V2:een +m0/(-receive, -ack0) ja V2:stä  .">
+<img src="../img/AB-automaatti.svg" alt="Lähettäjällä on neljä tilaa. Tilasiirtymät L1:stä L2:een +send/-m0, L2:sta itseensä ajastin/-m0, L2:sta L3:een, +ack0, L3:sta L4:ään +send/-m1, L4:stä itseensä ajastin/-m1, L4:stä L1:een +ack1. Vastaanottajalla on kaksi tilaa. Tilasiirtymät V1:stä V2:een +m0/(-receive, -ack0) ja V2:stä  .">
 
 KUVA: VUorottelevan bitin protokolla. Lähettäjän ja vastaanottajan välillä kanavassa kulkee siis normaalisti m0, ack0, m1, ack1, ....
 <br>
