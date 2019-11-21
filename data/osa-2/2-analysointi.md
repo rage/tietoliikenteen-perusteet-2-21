@@ -1,5 +1,18 @@
 
+---
+path: '/osa-2/2-analysointi'
+title: 'Liikenteen analysointi'
+---
 
+<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+
+- Tiedät millaisia lainsäädännöllisiä aspekteja liittyy tietoliikenteen seurantaan verkossa
+- Ymmärrät milloin verkon liikennettä voi kuunnella / kaapata ja miten, jotta ei riko lakia
+- Osaat alkeellisella tasolla käyttää wireshark -ohjelmaa valmiin tallennetun liikenteen analysointiin
+
+</text-box>
+
+<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
 ## Liikenteen analysointi
 
@@ -7,11 +20,41 @@ Tietoliikennettä ja sen protokollien toimintaa voi seurata useilla erilaisissa 
 
 Viestien salaus on ainoa tällä hetkellä tunnettu keino estää muista seuraamasta omien viestien sisältöjä ja silloinkin liikenteen seuraajalla on käytettävissään erilaisia keinoja liikenteen analysointiin.
 
-Tietoliikenteen seuraamiseen on saatavilla valmiita ohjelmia. Wireshark on avoimen lähdekoodin ohjelma, joka on laajasti käytetty. Ohjelman voi ladata wiresharkin omilta sivuilta [https://www.wireshark.org/]{https://www.wireshark.org/}. Sille on myös saatavilla paljon valmiita analysoitavia tiedostoa, jolloin voimme välttää todellisen tietoliikenteen kuuntelun tällä kurssilla kokonaan. 
+Tietoliikenteen seuraamiseen on saatavilla valmiita ohjelmia. Wireshark on ilmainen, avoimen lähdekoodin ohjelma, joka on laajasti käytetty. Ohjelman voi ladata wiresharkin omilta sivuilta [https://www.wireshark.org/]{https://www.wireshark.org/}. Sille on myös saatavilla paljon valmiita analysoitavia tiedostoa, jolloin voimme välttää todellisen tietoliikenteen kuuntelun tällä kurssilla kokonaan. 
 
 Wireshark on erittäin monipuolinen ja tarjoaa paljon vaihtoehtoja tietoliikenteen analysointiin. Tällä kursilla käytämme hyvin pientä osaa sen piireteistä ja tarkastelemme vain muutamaa valmista aineistoa.
 
 
+## Lainsäädännöstä ja etiikasta
+
+salakuuntelu
+Salassapito
+tietoliikenteen häirintä
+tietojärjestelmän häirintä
+tietomurto
+suojauksen purkujärjestelmärikos
+tietosuojarikos    (Tietosuojalaki!)
+identiteettivarkaus
+
+Teknisen suojauksen kiertämiskeinorikos  (eri luvussa!)
+Oikeuksien sähköisten hallinnointitietojen loukkausrikos
+Datavahingonteko
+Viestintärauhan rikkominen
+Salakuuntelu
+
+
+https://www.finlex.fi/fi/laki/ajantasa/1889/18890039001#L38
+
+viestintäsalaisuuden loukkaus!!
+
+Tietosuojalaki: https://www.finlex.fi/fi/laki/ajantasa/2018/20181050
+
+Laki sähköisen viestinnän palveluista https://www.finlex.fi/fi/laki/ajantasa/2014/20140917  (vanhalta nimeltään tietoyhteiskuntakaari)
+
+Laki tietoliikennetiedustelusta siviilitiedustelussa: https://www.finlex.fi/fi/laki/alkup/2019/20190582
+
+
+## Wireshark
 
 ZZZZZZZZ KESKEN!!!!!  ZZZZZZZZZ 
 
