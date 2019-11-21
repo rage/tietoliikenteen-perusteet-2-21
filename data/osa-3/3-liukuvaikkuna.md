@@ -70,10 +70,25 @@ Vastaanottajan toiminnallisuus = tapahtumat, joihin pitää reagoida
 
 Vastaanottajan on tärkeä kuitata kaikki väärällä järjestysnumerolla varustetut viestit. Osa niistä on uudelleenlähetyksiä, joille lähettäjä odottaa kuittausta ja osa on viestejä, joita edeltävät viestit ovat ehkä kadonneet. Lähettäjän on hyvä silloinkin saada tieto siitä, mihin asti vastaanottajalla on täydellinen ketju viestejä.
 
-Miksi vastaanottaja voi kadottaa väärässä järjestyksessä saapuvan viestin? Se voi luottaa siihen, että lähettäjä kuitenkin lähettää viestin uudelleen, jos ja kun edeltävä viesti on kadonnut. Sen ei tarvitse ylläpitää puskuria näille väärässä vaiheessa saapuneille paketeille ja sen toiminnallisuus muuttuu yksinkertaisemmaksi. Sen pitää vain tietää mikä on seuraavaksi odotetun oikean paketin järjestysnumero. Toki on mahdollista, että vastaanottaja puskuroi paketin, mutta silloin oikean paketin saavuttua sen pitää tutkia puskuria ja selvittää, kuinka monta pakettia se voi toimittaa sovelluskerrokselle puskurista.
+Miksi vastaanottaja voi kadottaa väärässä järjestyksessä saapuvan viestin? Se voi luottaa siihen, että lähettäjä kuitenkin lähettää viestin uudelleen, jos ja kun edeltävä viesti on kadonnut. Näin sen ei tarvitse tallettaa puskuriin liian aikaisin saapuneita paketteja ja vastaanottajan toiminta on paljon yksinkertaisempaa. Se pitää tallessa vain tietoa siitä, mikä on seuraavaksi odotetun oikean paketin järjestysnumero. Toki on mahdollista, että vastaanottaja puskuroi paketteja, mutta silloin oikean paketin saavuttua sen pitää tutkia puskuria ja selvittää, kuinka monta pakettia se voi toimittaa sovelluskerrokselle puskurista. Kuittausviestissä menevä järjestysnumero muuttuu sitten tämän tiedon mukaisesti.
 
 KUVA Paketin katoamisesta ja siihen liittyvä toipuminen
 
 ## Valikoiva uudelleenlähetys
 
-Vähän suorituskyky ja algoritmiikka pohdintaa näihin liittyen. Valinta ei ole aina selvä.
+Toinen vaihtoehto katoavien pakettien uudelleenlähetyksiin on lähettää vain kadonnut paketti uudelleen. Näin katoamistapauksessa lähetetään vähemmän paketteja, mutta pakettien ja niiden kuittausten hallinta on monimutkaisempaa kuin tuossa Paluu-N:ään vaihtoehdossa.
+
+Lähettäjä lähettää yhden paketin uudelleen aina kun kyseiseen pakettiin liittyvä ajastin laukeaa. Tällöin joko paketti on kadonnut tai kuittaus on kadonnut. Ajastin on ainoa tässä toistaiseksi ainoa tapa, jolla lähettäjä voi saada tiedon siitä, että paketti täytyy lähettää uudelleen.
+
+Kun käytetään valikoivaa kuittausta, niin lähettäjän saama kuittausviesti kuittaa aina vain kyseisen paketin. Vastaanottajan on siis kuitattava jokainen yksittäinen saapunut paketti silloinkin, kun se saapuu väärässä järjestyksessä. Vastaanottajan täytyy siis kuitata aina kaikki saapuvat paketit myös sellaiset, jotka se on jo saanut aiemmin. Niden kohdalla vastaanottaja olettaa kuittauksen kadonneen, joten sen täytyy lähettää kuittaus, vaikka se on sellaisen jo lähettänyt aiemmin.
+
+Valikoivassa uudelleenlähetyksessa vastaanottajan on välttämätöntä puskuroida kaikki saapuvat paketit, koska lähettäjä ei välttämättä lähetä niitä enää uudelleen. Paluu-N:än kanssa tuo puskurointi on vaapaehtoinen lisäpiirre, mutta tässä vaihtoehdossa siis pakollinen toiminnallisuus.
+
+Puskurista muodostaa vastaanottajalle oma 'liukuvan ikkunan' näkymä tuohon saapuvien viestien jonoon.
+
+KUVA Lähettäjän ja vastaanottajan ikkunoista
+
+Lähettäjän toiminnallisuus:
+* viesti sovelluskerrokselta: 
+
+
