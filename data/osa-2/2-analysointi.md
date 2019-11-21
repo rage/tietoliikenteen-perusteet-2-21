@@ -53,6 +53,7 @@ Laki sähköisen viestinnän palveluista https://www.finlex.fi/fi/laki/ajantasa/
 
 Laki tietoliikennetiedustelusta siviilitiedustelussa: https://www.finlex.fi/fi/laki/alkup/2019/20190582
 
+Tutustu sähköisen viestinnän palvelujen lain lukuun 21 ja lue siitä mitä laissa sanotaan verkkotunnuksista.
 
 ## Wireshark
 
