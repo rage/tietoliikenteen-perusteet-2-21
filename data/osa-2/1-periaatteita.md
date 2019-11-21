@@ -1,5 +1,5 @@
 ---
-path: '/osa-2/1-http'
+path: '/osa-2/1-periaatteita'
 title: 'Verkkosovelluksen toimintaperiaatteita'
 ---
 
