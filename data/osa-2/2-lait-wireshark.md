@@ -1,7 +1,7 @@
 
 ---
-path: '/osa-2/2-analysointi'
-title: 'Liikenteen analysointi'
+path: '/osa-2/2-lait-wireshark'
+title: 'Verkon kuuntelu ja lainsäädäntö'
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
@@ -27,6 +27,21 @@ Wireshark on erittäin monipuolinen ja tarjoaa paljon vaihtoehtoja tietoliikente
 
 ## Lainsäädännöstä ja etiikasta
 
+Tietoliikenteen ammattilaisten ja käyttäjien on hyvä tietää mitä verkossa voi tehdä ja mitä ei. Suomen laki asettaa suomalaisille toimijoille selkeät rajat. Ajankohtaisen kotimaisen lainsäädännön voit aina tarkistaa finlex.fi -palvelusta.
+
+Alalla on myös TIVIAn laatimat ja julkaisemat [etiikan ohjeet](https://tivia.fi/toimiala/etiikan-ohjeet/), joita kaikkien alan ammttilaisten olisi hyvä noudattaa. Nämä ohjeet ovat sen verran lyhyet, että kaikkien hyvä ne lukea ja ymmärtää. Sen sijaan kaikkia tässä osiossa mainittua lakeja ei tarvitse kurssimateriaalina lukea. 
+
+Tietoliikenteeseen liittyy useita lakeja, mutta näistä ehkä kaikkien keskeisin on suhteellisen uusi laki [sähköisen viestinnän palveluista]( https://www.finlex.fi/fi/laki/ajantasa/2014/20140917).  Siinä käydään läpi erilaisten sähköisten palvelujen tarjoajien oikeuksia ja velvollisuuksia. Tähän lakiin perustuu esimerkiksi entisen viestintävirastn nykyisen TrafiComin oikeus hallita .fi ja .ax osoitteita.
+
+Harjoitellaan hiukan lakien lukemista. Tutustu siis sähköisen viestinnän palvelujen lain lukuun 21 ja lue siitä mitä laissa sanotaan verkkotunnuksista.
+
+QUIZZ:  Tarkista tästä laista kuinka pitkä verkkonimen vähintään pitää .fi alueella olla?  Entä mikä on maksimipituus?
+
+Kaikenlaiset väärinkäytöksiin, rikoksiin ja niiden valmisteluun liittyvät säännöt ja rangaistukset on koottu [rikoslakiin](https://www.finlex.fi/fi/laki/ajantasa/1889/18890039001).
+
+QUIZZ: MItkä seuraavista rikoksita on kuvattu rikoslain luvussa 38
+
+
 salakuuntelu
 Salassapito
 tietoliikenteen häirintä
@@ -41,19 +56,13 @@ Oikeuksien sähköisten hallinnointitietojen loukkausrikos
 Datavahingonteko
 Viestintärauhan rikkominen
 Salakuuntelu
+viestintäsalaisuuden loukkaus
 
+Jos hallinnoisimme verkkoa tai sen palvelua siten, että käsittelisimme henkilötietoja, niin meidän täytyisi noudattaa [tietosuojalakia]( https://www.finlex.fi/fi/laki/ajantasa/2018/20181050). Työnantajina ja työntekijöinä on hyvä tietää mitä laissa [yksityisyyden suojasta työelämässä](https://www.finlex.fi/fi/laki/ajantasa/2004/20040759) määrätään.
 
-https://www.finlex.fi/fi/laki/ajantasa/1889/18890039001#L38
+Koska seuraavaksi tutustutaan työkaluun, jolla voi kuunnella tietoliikenneverkossa kulkevia viestejä, on tärkeä tietää milloin tällainen kuunteleminen on sallittua ja milloin ei. Suomen laki asettaa perusrajat verkkokuuntelulle, mutta myös verkon käyttösäännöt vaikuttavat asiaan. Esimerkiksi Helsingin yliopiston käyttösäännöt kieltävät kaiken verkkokuuntelun yliopiston omissa verkoissa. Näin on useimpien palveluntarjoajien käyttösäännöissä. 
 
-viestintäsalaisuuden loukkaus!!
-
-Tietosuojalaki: https://www.finlex.fi/fi/laki/ajantasa/2018/20181050
-
-Laki sähköisen viestinnän palveluista https://www.finlex.fi/fi/laki/ajantasa/2014/20140917  (vanhalta nimeltään tietoyhteiskuntakaari)
-
-Laki tietoliikennetiedustelusta siviilitiedustelussa: https://www.finlex.fi/fi/laki/alkup/2019/20190582
-
-Tutustu sähköisen viestinnän palvelujen lain lukuun 21 ja lue siitä mitä laissa sanotaan verkkotunnuksista.
+Lait myös muuttuvat. Keväällä 2019 tuli uusi laki  [tietoliikennetiedustelusta siviilitiedustelussa](https://www.finlex.fi/fi/laki/alkup/2019/20190582), joka tarkentaa poliisilakia tältä osin. Lisäksi on paljon muitakin lakeja, jotka vaikuttavat erilaisten palvelujen tarjoajiin ja muihin ammattilaisiin ja heidän toimintaansa. 
 
 ## Wireshark
 
