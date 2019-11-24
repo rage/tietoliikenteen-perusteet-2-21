@@ -64,8 +64,30 @@ Koska seuraavaksi tutustutaan työkaluun, jolla voi kuunnella tietoliikenneverko
 
 Lait myös muuttuvat. Keväällä 2019 tuli uusi laki  [tietoliikennetiedustelusta siviilitiedustelussa](https://www.finlex.fi/fi/laki/alkup/2019/20190582), joka tarkentaa poliisilakia tältä osin. Lisäksi on paljon muitakin lakeja, jotka vaikuttavat erilaisten palvelujen tarjoajiin ja muihin ammattilaisiin ja heidän toimintaansa. 
 
+## Tietoliikenteen kaappaus
+
+Tietoliikenneverkon kuuntelu on teknisesti hyvin helppoa. Laitteen verkkoyhteys täytyy vain asettaa tilaan, jossa linkkikerros ei valikoi viestejä laitteen MAC-osoitteen perusteella, vaan ottaa vastaan kaikki saapuvat viestit. Näin ne voidaan ottaa talteen, vaikka niitä ei olisi osoitettukaan tälle laitteelle. Tästä toiminnallisuudesta käytetään englanninkielistä termiä 'promiscuous mode'. TIlan voisi kääntää valikoimaton tai sekalainen, jolla tarkoitetaan sitä, että verkkokortti ei valikoi (tai poimi) kuulemistaan viesteistä vain tälle laitteelle osoitettuja, vaan ottaa tyynesti vastaan kaiken kuulemansa verkkoliikenteen.
+
+Verkkokortin tai verkkoyhteyden toiminnallisuuden muuttaminen edellyttää yleenä laitteen pääkäyttäjän oikeuksia, joten tavallinen käyttäjä ei pääse kuuntelemaan liikennettä.
+
+Perinteinen UNIX / Linux ohjelma, jolla tietoliikennettä on seurattu jo vuosikymmeniä on tcpdump. Ohjelmalla on vain tekstipohjainen käyttöliittymä, joten sen käyttäminen dellyttää erilaisten komentojen opettelua. Yleisesti käytetty valikkoja ja graafistä käyttöliittymää hyödyntävä ohjelma on wireshark. Siitä lisää hetken kuluttua.
+
+Nämä tietoliikenteen kappaamiseen tarkoitetut ohjelmat käyttävät yleensä käyttöjärjstelmän tarjoamaa pcap -rajapintaa, joka on tarkoitettu juuri verkkoliikenteen seurantaan. Englanninkielisellä wikipedian sivulla [Pcap](https://en.wikipedia.org/wiki/Pcap) on lueteltu paljon muitakin ohjelmia, joilla verkkoliikennettä voi kaapata.
+
+Tällä kurssilla emme kaappaa liikennettä, koska kaikilla osallistujilla ei välttämättä ole käytettävissä sellaista tietoliikenneverkkoa, jossa se olisi sallittua.
+
+Wiresharkin sivulta https://wiki.wireshark.org/SampleCaptures löytyy kymmeniä ellei satoja valmiita kaappaustiedostoja, joita voimme käyttää kurssilla kuluessa.
+
+Internetissä on myös joitakin ilmaisia verkossa toimivia kaappaustiedostojen katseluohjelmia  (kuten packettotal.com), joten wiresharkin käyttäminen ei ole millään tavalla pakollista kurssin kuluessa.  Näiden ohjelmien kanssa pitää olla varovainen, koska ne tallettavan kaikki saamansa kaappaukset, joten jos kyseessä on mahdollista yksityistä tietoa sisältävä kaappaus, niin näitä ei pidä käyttää. Noiden wiresharkin valmiiden kaappausten kanssa näiden käyttö on mahdollista. 
+
+Osa näistä ohjelmista näyttää vain pakettien otsaketietoja ja niitäkin rajoitetusta, joten kovin kattavaan mahdollista viestein sisältöjen seurantaan ne eivät tarjoa. Toisaalta kuten tuosta sähköisiä viestintäpalveluja käsittevästä laista pystyimme lukemaan eivät edes verkon ylläpitäjät saa manuaalisesti tutkia viestien sisältöjä.
+
+Tyypillisesti liikenteen kaappaminen ja seuranta on vain ensimmäinen askel verkon laittoman käytön selvittämisessä / estämisessä. Varsinaiset laajemmat [tunkeilijan havaitsemisjärjestelmät](https://fi.wikipedia.org/wiki/Tunkeilijan_havaitsemisj%C3%A4rjestelm%C3%A4) tekevät laajempia analyysejä liikennevirrasta, jotta väärinkäytökset voitaisiin havaita mahdollisimman hyvin. Valitettavasti meillä ei ole tällä kurssilla mahdollisuutta tarkastella näitä järjestelmiä tarkemmin.
+
+
 ## Wireshark
 
-ZZZZZZZZ KESKEN!!!!!  ZZZZZZZZZ 
+Jos haluat asentaa ohjelman omalle koneellesi, niin ladattava tiedosto löytyy wiresharkin omalta sivulta https://www.wireshark.org/
 
-Suosittelen ohjelman käyttöä ja noiden valmiiden aineistojen tarkastelua. Osa harjoitustehtävistäkin perustuu niihin. Esimerkiksi HTTP protokollaan liittyy tiedosto xxx.pcap. Kun avaamme tämän tiedoston wiresharkilla, niin ….
+Älä kokeile liikenteen kaappaamista, ellet ole varma, että se on kyseisessä verkossa sinulle sallittua. Kotiverkossa, jonka ylläpitäjä olet, voit yleensä kokeilla liikenteen kaappaamista, mutta silloinkin on tarpeellista kertoa asiasta kaikille muille verkon käyttäjille.
+Näin vältät mahdolliset yksityisyyden suojan loukkaukset.
