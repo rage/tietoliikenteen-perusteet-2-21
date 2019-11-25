@@ -13,7 +13,7 @@ hidden: false
 </text-box>
 
 
-## Liukuva ikkuna
+## Viestien liukuhihnoitus
 
 Edellä käytiin läpi luotettavan kuljetuspalvelun teoriaa äärellisten tila-automaattien avulla. Saimme niillä kuvattua hyvin yksinkertaisen järjestelmän, jossa lähettäjä lähettää yhden viestin ja pysähtyy odottamaan kuittausta tähän viestiin. Koska lähettäjän ja vastaanottajan väliseen tiedonsiirtoon kuluu aikaa, jolloin lähettäjä vain odottaa. Tämän odotuksen kesto noin kaksi kertaa yhden paketin siirron kesto, koska sanoma kulkee lähettäjältä vastaanottajalle ja sitten kuittaus kulkee takaisinpäin. Tätä aikaa, joka viestin lähetyksessä kuluu viestin kulkuun edestakaisin kutsutaan **kiertoviiveeksi** (engl. roundtrip time, RTT).
 
@@ -90,5 +90,22 @@ KUVA Lähettäjän ja vastaanottajan ikkunoista
 
 Lähettäjän toiminnallisuus:
 * viesti sovelluskerrokselta: 
+
+KESKEN!!!!!!
+
+
+## Viestien numeroinnista
+
+Liukuvan ikkunan protokollassa viestit täytyy numeroida siten, että tiedämme viestien järjestyksen ja kaksi viestiä ei voi koskaan mennä sekaisin. Kuten tuoon vuorottelevan bitin protokollasta huomasimme, tämän erottelun voi tehdä jopa vain yhdellä bitillä. Tietoliikenneprotokollien kanssa meillä on aina käytettävissä vain äärellinen numeroavaruus, koska yleensä protokollien otsakkeessa on varattu kiinteän kokoinen kenttä viestin numerolle. Jos kentän pituus on n bittiä, niin voimme erotella toisistaan 2<sup>n</sup> viestiä, joiden numerot ovat 0,1,2,3,... 2<sup>n</sup>-1.
+
+QUIZZ: Montako viestiä voidaa numeroida, jos kentän pituus on 3,4,8 bittiä?
+
+Oletaan esimerkiksi tilanne, jossa meillä on 4 erilaista numeroa eli 0,1,2 ja 3. Mikä voi silloin olla ikkunan maksimikoko, jotta emme voi sekoittaa viestejä? Missään tapauksessa se ei voi olla suurempi kuin 4, mutta voiko se olla edes 4? Jos ikkunan koko olisi suurempi kuin käytettävissä oleva numeroavaruus, niin ikkunassa olisi sama numero useampaan kertaan eikä lähettäjällä tai vastaanottajalla olisi keinoa erottaa näitä kahta viestiä toisistaan. Tarvittaessa piirrä itsellesi kuva ikkunasta tällaisella tilanteessa.
+
+Itseasiassa pakettien numerointi, ikkunan koko ja protokollan yksityiskohtainen toiminta liittyvät läheisesti toisiinsa. Jos käytämme kadonneen paketin kohdalla toipumiseen Paluu-N:ään, niin silloin riittää, että ikkunassa olevat paketit voidaan erotella toisistaan, koska lähettäjä lähettää aina kadonneen viestin lisäksi kaikki sitä seuraavat viestit uudelleen. Näin eri 'kierrosten' pakettinumerot eivät voi sekaantua toisiinsa.
+
+Valikoivan toiston kanssa sekaantumisen vaara on, jos meillä ei ole turvamarginaalia ikkunan ympärillä. Valikoivan toiston kanssa itseasiassa maksimi ikkunankoko on puolet käytettävästä numeroavaruudesta. Tämä johtuu siitä, että toisaalta valikoivassa toistossa lähettäjä lähettää vain kaikki yksittäiset puuttuviksi kuvittelemansa viestit ja toisaalta vastaanottaja puskuroi aiemmin saapuneita viestejä. Nyt on mahdollista, että vastaanottaja on saanut viestin jo aiemmin, mutta kuittaus katosi. Tällöin lähettäjän pitää lähettää kyseinen viesti uudelleen. Jos nyt vastaanottajan ikkuna on liikahtanut eteenpäin, niin ilman tuota turvamarginaalia olisi mahdollista, että vastaanottaja olettaisi saapuvan viestin kuuluvan jo seuraavaan sarjaan.  Tarvittaessa piirrä itsellesi tapahtumakuvaus, jossa tällainen sekaantuminen pääsee tapahtumaan, kun ikkunan koko vastaan numerointia. Piirrä sen jälkeen vastaava tapahtumasarja tilanteessa, jossa ikkunan koko on puolet numeroavaruudesta ja vakuuta itsesi miksi tässä tilanteessa ei vastaava voi tapahtua.
+
+QUIZZ: KUn oletaan, että käytetään valikoivaa toistoa ja ikkunan koko on yhtä suuri kuin numeroavaruus, niin mikä seuraavista sarjoista aiheuttaa ongelmia?
 
 
