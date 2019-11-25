@@ -1,6 +1,6 @@
 
 ---
-path: '/osa-2/2-lait-wireshark'
+path: '/osa-2/2-laki-ja-kuuntelu.md'
 title: 'Verkon kuuntelu ja lainsäädäntö'
 ---
 
@@ -11,8 +11,6 @@ title: 'Verkon kuuntelu ja lainsäädäntö'
 - Osaat alkeellisella tasolla käyttää wireshark -ohjelmaa valmiin tallennetun liikenteen analysointiin
 
 </text-box>
-
-<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
 ## Liikenteen analysointi
 
@@ -33,16 +31,16 @@ Alalla on myös TIVIAn laatimat ja julkaisemat [etiikan ohjeet](https://tivia.fi
 
 Tietoliikenteeseen liittyy useita lakeja, mutta näistä ehkä kaikkien keskeisin on suhteellisen uusi laki [sähköisen viestinnän palveluista]( https://www.finlex.fi/fi/laki/ajantasa/2014/20140917).  Siinä käydään läpi erilaisten sähköisten palvelujen tarjoajien oikeuksia ja velvollisuuksia. Tähän lakiin perustuu esimerkiksi entisen viestintävirastn nykyisen TrafiComin oikeus hallita .fi ja .ax osoitteita.
 
-Harjoitellaan hiukan lakien lukemista. Tutustu siis sähköisen viestinnän palvelujen lain lukuun 21 ja lue siitä mitä laissa sanotaan verkkotunnuksista.
+Harjoitellaan hiukan lakien lukemista. Tutustu siis sähköisen viestinnän palvelujen lain lukuun 21 ja lue siitä, mitä laissa sanotaan verkkotunnuksista.
 
-QUIZZ:  
-
-a5c757b9-8403-4b31-b773-db24b9cd7b10
+<quiz id="a5c757b9-8403-4b31-b773-db24b9cd7b10"></quiz>
 
 
-Kaikenlaiset väärinkäytöksiin, rikoksiin ja niiden valmisteluun liittyvät säännöt ja rangaistukset on koottu [rikoslakiin](https://www.finlex.fi/fi/laki/ajantasa/1889/18890039001).
+Kaikenlaiset väärinkäytöksiin, rikoksiin ja niiden valmisteluun liittyvät säännöt ja rangaistukset on koottu [rikoslakiin](https://www.finlex.fi/fi/laki/ajantasa/1889/18890039001). Tietotekniikkaan ja tietoliikenteeseen liittyviä rikoksia on kuvattu erityisesti rikoslain luvussa 38, joka käsittelee tieto- ja viestintärikoksia. Toki lain muissakin luvuissa on kuvattu rikoksia, jotka voivat liittyä tietotekniikkaan ja tietoliikenteeseen.
 
 QUIZZ: MItkä seuraavista rikoksita on kuvattu rikoslain luvussa 38
+
+<quiz id="b0b05e15-8cb3-4de1-bd7b-e990d5fe766a"></quiz>
 
 
 salakuuntelu
