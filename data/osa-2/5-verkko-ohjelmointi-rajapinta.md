@@ -1,5 +1,5 @@
 ---
-path: '/osa-2/4-verkko-ohjelmointi-rajapinta'
+path: '/osa-2/5-verkko-ohjelmointi-rajapinta'
 title: 'Verkko-ohjelmointi ja sovelluksen rajapinta'
 ---
 
