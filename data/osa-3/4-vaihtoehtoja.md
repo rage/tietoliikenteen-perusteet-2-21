@@ -35,14 +35,32 @@ Jos halutaan havaitsemisen lisäksi myös tarvittaessa korjata vikaantunut viest
 
 Yksittäisten protokollien käyttämiin menetelmiin tutustutaan näiden protokollien yhteydessä.
 
-## Kuittaukset
-
-Positiiviset ACK, tuplakuittaukset
-Negatiiviset NAK
-
 ## Ajastin
 
-##  Järjestysnumero
-Uudelleenlähetys vai uusi paketti
+Lähettäjä yleensä aina tarvitsee ajastimen, jolla voidaan katkaista liian pitkään kestänyt vastauksen odotus. JOs lähettäjän odotusta ei katkaista ajastimen laukeamisella, protokollan toiminta ei voi edetä. Vastaanottajan odotukseen ajastin ei ole tarpeen, koska vastaanottaja ei kuitenkaan voi edetä ilman saapuvaa viestiä. 
 
-Ikkunat, liukuhihnoitus
+Ajastimen kanssa keskeistä on arvioida mikä on sopiva maksimiodotusaika, jonka jälkeen ajastimen olisi hyvä laueta mikäli vastausta ei ole saapunut.  Liian aikaisin laukeava ajastin aiheuttaa tarpeettoman uudelleenlähetyksen ja tarpeettoman myöhään laukeava viivästää järjestelmän toimintaa. Hyvä lähtökohta on käyttää ajastimen arvona kaksikertaista kiertoviivettä.
+
+
+## Kuittaukset
+
+
+Aiemmissa osioissa on käsitelty niin sanottuja positiivisia kuittauksia (engl. positive ACK). Niillä vastaanottaja kuittaa saapuneita viestejä.
+
+Protokolla voi käyttää positiivisten kuittausten sijasta tai lisäksi myös negatiivisia kuittauksia (engl. negative acknowledge, NAK). Negatiivisella kuittauksella vastaanottaja kertoo, että se ei ole saanut jotain viestiä vaikka se sitä odottaa. Mikäli vastaanottaja käyttää negatiivisia kuittauksia, se saattaa tarvita ajastinta, mutta yleensä vastaanottaja käyttää saapuvia viestejä apuna.
+
+Esimerkiksi valikoivien kuittausten kanssa vastaanottaja voisi lähettää negatiivisen kuittauksen välittömästi, kun joku paketti jää pois välistä eli kyseistä pakettia seuraavan paketin saapuessa. Näin vastaanottaja voisi päästä lähettämään viestin uudelleen paljon aiemmin kuin vasta ajastimen laukeamisen jälkeen.
+
+Järjestelmässä täytyy aina myös varautua ns. tuplakuittauksiin, eli saman kuittauksen lähettämiseen ja vastaanottamiseen useampia kertoja. Tältä ei voi valttyä, koska kun vastaanottaja saa jo saapuneen paketin uudelleen, sen täytyy lähettää kyseiseen pakettiin liittyvä kuittaus uudelleen. Mikäli tätä lähettämistä ei tehtäisi, niin lähettäjä ei ehkä saisi koskaan kuittausta kyseisestä viestistä. 
+
+Toisaalta näitä tuplakuittauksia alkuperäinen lähettäjä voi myös pyrkiä hyödyntämään. Esimerkiksi Paluu-N:ään menetelmässä vastaanottaja kuittaa aina samalla kuittauksia kaikki epäjärjestyksessä saapuvat viestit. Lähettäjä voi hyödyntää tätä tieto ja tehdä uudelleen lähetyksen jo näiden tuplakuittausten perusteelle ennen kuin ajastin laukeaa.
+
+Eri protokolla tai niiden eri versiot käyttävät näitä kaikkia vaihtoehtoja.
+
+##  Järjestysnumero
+
+Protokolla käyttävät viesteissä usein järjestysnumeroa tai tunnistenumeroa, jolla viestit voidaan erottaa toisistaan. Taas protokollan omien tarpeiden mukaan tämän numerointi voi olla vain tunnistamiseen tai myös järjestämiseen.
+
+KUn numeroa käytetään järjestämiseen on tärkeää, että numerointi on yhtäjaksoinen, jotta mahdolliset puuttuvat viestit voidaan havaita. Yhtäjaksoisuus ei kuitenkaan aina tarkoita, että viestinumerot olisivat peräkkäisiä kokonaislukuja. Esimerkiksi TCP numeroi viestinsä siten, että kahden peräkkäisen viestin numeroiden erotus on edellisen viestin datan koko tavuina.
+
+Lähdetään seuraavaksti tutkimaan TCP:n toimintaa tarkemmin.
