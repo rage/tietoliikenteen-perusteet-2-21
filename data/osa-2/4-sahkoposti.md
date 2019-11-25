@@ -1,5 +1,5 @@
 ---
-path: '/osa-2/3-sahkoposti'
+path: '/osa-2/4-sahkoposti'
 title: 'Sähköposti'
 ---
 
