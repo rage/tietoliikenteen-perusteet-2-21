@@ -1,6 +1,6 @@
 
 ---
-path: '/osa-2/2-laki-ja-kuuntelu.md'
+path: '/osa-2/2-laki-ja-kuuntelu'
 title: 'Verkon kuuntelu ja lainsäädäntö'
 ---
 
