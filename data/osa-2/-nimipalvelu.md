@@ -1,5 +1,5 @@
 ---
-path: '/osa-2/2-nimipalvelu'
+path: '/osa-2/3-nimipalvelu'
 title: 'Nimipalvelu'
 ---
 
