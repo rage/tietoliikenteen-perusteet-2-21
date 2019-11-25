@@ -35,7 +35,10 @@ Tietoliikenteeseen liittyy useita lakeja, mutta näistä ehkä kaikkien keskeisi
 
 Harjoitellaan hiukan lakien lukemista. Tutustu siis sähköisen viestinnän palvelujen lain lukuun 21 ja lue siitä mitä laissa sanotaan verkkotunnuksista.
 
-QUIZZ:  Tarkista tästä laista kuinka pitkä verkkonimen vähintään pitää .fi alueella olla?  Entä mikä on maksimipituus?
+QUIZZ:  
+
+a5c757b9-8403-4b31-b773-db24b9cd7b10
+
 
 Kaikenlaiset väärinkäytöksiin, rikoksiin ja niiden valmisteluun liittyvät säännöt ja rangaistukset on koottu [rikoslakiin](https://www.finlex.fi/fi/laki/ajantasa/1889/18890039001).
 
