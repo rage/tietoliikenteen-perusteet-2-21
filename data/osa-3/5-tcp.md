@@ -67,18 +67,37 @@ Katsotaan ensin osittaista esimerkkiä tästä numeroinnnista:
 
 KUVA: TCP segmentti ja kuittausnumeroinnit vain yhteen suuntaan
 
-
 Kun meillä on segmenttejä liikkeellä molempiin suuntiin, niin samassa viestissä voi kulkea sekä uutta dataa että toisen suunnan segmenttiin liittyvä kuittausnumero. Juuri siksi otsakkeessa on erikseen kentät järjestysnumerolle ja kuittausnumerolle.
+
+
 
 KUVA: TCP segmentti ja kuittausnumeroinnit molempiin suuntiin
 - JÄTÄ KUVASTA POIS KUITTAUSNUMEOT JA OSA SEGMENTTINUMEROISTA. LAITA NE TEHTÄVÄSKI HETI PERÄÄN
 
 
+
+
+Kuittaukset pyritään aina kun mahdollista lähettämään varsinaisen datasegmentin yhteydessä kylkiäisenä (engl. piggypacked). Näin vähennetään tarpeetonta tietoliikennettä.
+
+Itseasiassa TCP sallii kuittauksen viivästämisen, siten että yksittäistä kuittausta saa viivyttää korkeintaan 500 millisekuntia ja vain yhden kuittauksen voi jättää pois välistä. Eli joka toinen segmentti on kuitattava välittömästi ja yhden segmentin kuittausta saa viivyttää korkeintaa puoli sekuntia.
+
+Koska kuittausta saa viivyttää, niin lähettäjän aikakatkaisun viiveen pitää olla riittävän pitkä, jottei tapahtu ennenaikaista aikakatkaisua ja siihen liittyvää tarpeetonta uudelleenlähetystä. Toisaalta pitkä viive aiheuttaa sen, että todellisessa katoamisessa segmentin uudelleenlähetys tapahtuu hyvin pitkän ajan kuluttua.
+
+TCP voi käyttää niin sanottua nopeaa uudelleenlähetystä (engl. fast retransmit), jolloin lähettäjä lähettää segmentin uudelleen jo ennen aikakatkaisua. Tässä lähettäjä käyttää apuna saapuvia kuittausnumeroita. TCP:ssä vastaanottaja lähettää kuittauksen vähintään joka toisesta segmentistä, vaikka siltä puuttuisi aiempia segmenttejä. Tässä kuittauksessa se kertoo, mikä on seuraavaksi odotettava tavu. Kaikki nämä puuttuvaa segmenttiä seuraavat segmentit kuitataan siis samalla kuittausnumerolla, joka on puuttuvan segmentin ensimmäisen tavun numero. Näin alkuperäinen vastaanottaja saa useita kuittauksia, jotka kaikki kuittaavat samaa odotettavaa tavua. Kun näitä on tullut tarpeeksi, niin lähettäjä lähettää tuon todennäköisesti puuttuvan segmentin, vaikka ajastin ei olekaan vielä lauennut.
+
+Näitä aiemman kuittauksen kuittausnumeron sisältäviä viestejä kutsutaan toistokuittauksiksi. Kun lähettäjä saa kolmannen toistokuittauksen, se lähettää segmentin uudelleen. 
+
+
+
+QUIZZ
+
+
+
 ## Segmentin katoaminen
 
-TCP käyttää liukuvan ikkunan menetelmää ja kumuloituvaa kuittausta. Jos varsinen datasegmentti katoaa, niin se pitää lähettää uudelleen, koska muuten vastaanottaja ei voi saada dataa. Perusmuodossaan TCP:n käyttää Paluu-N:ään eli se lähettää uudelleen kadonneen segmentin ja sitä seuraavat jo lähetetyt segmentit.
+TCP käyttää liukuvan ikkunan menetelmää ja kumuloituvaa kuittausta. Jos varsinen datasegmentti katoaa, niin se pitää lähettää uudelleen, koska muuten vastaanottaja ei voi saada dataa. Perusmuodossaan TCP:n käyttää Paluu-N:ään. Mutta koska se tallettaa kaikki saapuvat segmentit puskuriin, niin on mahdolliste, että kaikkia kadonnutta seuraavia segmenttejä ei tarvitse lähettää uudelleen. 
 
-Lähettäjän kannalta ei ole merkitystä katoaako varsinainen data segmentti vai siihen liittyvä kuittaus, jos se ei saa tietoa asiasta ennen ajstimen laukeamista. Kun ajastin laukeaa, niin lähettäjä lähettää kyseisen segmentin uudelleen.
+Lähettäjän kannalta ei ole merkitystä katoaako varsinainen datasegmentti vai siihen liittyvä kuittaus, jos se ei saa tietoa asiasta ennen ajstimen laukeamista. Kun ajastin laukeaa, niin lähettäjä lähettää kyseisen segmentin uudelleen.
 
 KUVA
 
@@ -99,7 +118,7 @@ QUIZZ:  Ehkä joku tehtävä näihin kuviin liittyen. Skenaariota lisää ja sii
 
 ## Yhteyden muodostus ja purku
 
-TCP:n yhteyden muodostuksessa välitetään kolme viestiä.
+TCP:n yhteyden muodostuksessa välitetään kolme viestiä ja siitä käytetäänkin usein termiä kolmivaiheinen kättely. [Kättelyksi](https://fi.wikipedia.org/wiki/K%C3%A4ttely_(tietoliikenne)) (engl. handshake) kutsutaan usein protokollan aloitusvaihetta, tai kokonaista protokollaa, eli kaikkia viestejä, jotka tarvitaan ennenkuin varsinaisen datan siirto alkaa.
 
 ## Vuonvalvonta
 
