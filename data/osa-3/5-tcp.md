@@ -53,6 +53,8 @@ Käydään nyt tavuittain läpi TCP:n otsake:
 
 Loput segmentistä on sitten siirrettävää dataa.
 
+Jokaisessa yhteydessä segmenteillä on maksimikoko. Tämä koko voi vaihdella verkon alempien kerrosten ominaisuuksien mukaisesti. Maksimikoolla pyritään välttämään sitä, että alemmat kerrokset joutuvat pilkkomaan kuljetuskerroksen lähettämän segmentin useammaksi paketiksi. Esimerkiksi, jos fyysinen yhteys on ethernetillä, niin silloin segmentin maksimikoko on 1460 tavua, koska ethernetin maksimidata yhdessä kehyksessä on 1500. Tuo erotus 1500-1460 menee TCP:n omaan otsakkeeseen (20 tavua) ja verkkokerroksen IP-protokollan otsakkeeseen (myös 20 tavua).
+
 ## Tavunumerointi
 
 TCP käyttää segmenteissään tavunumerointia. Tavunumeroille on otsakkeessa varattu tilaa yhden 32-bittisen sanan verran eli reilu 4 miljardia eri numeroa.
@@ -132,13 +134,27 @@ Vastaavasti yhteyden purussa käytetään FIN ja ACK viestejä. Purkaessa täyty
 
 Koska palvelimilla on käytettävissään vain rajallinen kapasitetti samanaikaisille TCP-yhteyksille, on hyvin tavallista yrittää palvelunestohyökkäystä siten, että hyökkääjä pyrkii sitomaan kaikki yhteydet, jolloin lailliset asiakkaat eivät saa palvelua. Tällaisia hyökkäystyyppejä on useita, mutta yksinkertaisin niistä on niin sanottu SYN tulva (engl. SYN flood). SYN-hyökkäyksessä hyökkääjä lähettää vain SYN-viestejä, jolloin palvelin ei saa yhteyttä kokonaan muodostettua, mutta joutuu kuitenkin varamaan sille resursseja. 
 
-## Vuonvalvonta
+## TCP:n vuonvalvonta
+
+TCP:ssä lähettäjä ja vastaanottaja käyttävät puskureita ja liukuhihnoitusta.  Lähettäjä voi lähettää useita segmenttejä, jos vastaanottajan puskurissa on tilaa. Vastaanottajahan tallettaa saapuvat segmentit vastaanottopuskuriin, ennen kuin se saa ne toimitettua sovelluskerrokselle. Koska puskurin koko on rajallinen, täytyy lähettäjän pitää huolta että se ei lähetä enempää dataa kuin mitä vastaanottajan puskuriin mahtuu. Lähettäjä siis pyrkii sopeuttamaan lähetysnopeutensa vastaanottajan kapasiteettiin. Tähän se käyttää vuonvalvontaa.
+
+Vuonvalvonta määrää lähettäjän ikkunan koon se mukaan mikä on vastaanottajan puskurin tilanne. Jokaisessa lähettämässään viestissä solmu kertoo, kuinka paljon sen puskuriin vielä mahtuu tavuja.
+
+QUIZZ:  Minkä nimisessä kentässä tämä puskurin koko tietä sijaitsee? Kirjoitan kentän englanninkielinen nimi pienillä kirjaimilla. Avokysymys,
+
+
+Huomaa, että saapuvat kuittaukset siirtävät ikkunaa, mutta eivät muuta sen kokoa. 
+
+JOs vuonvalvonta pudottaa lähettäjän ikkunan koon nollaan, niin lähettäjä alkaa lähettää yhden tavun kokoisia segmenttejä. Näillä se kyselee vastaanottajalta, joko on tilaa lähettää enemmän. Vastaanottajan täytyy nämäkin viestit kuitata normaalien kuittaussääntöjen mukaisesti. Vastaanottaja käyttää toistokuittauksia kertomaan, että itlaa ei ole. Se lähettää normaalin kuittauksen vasta kun se voi samalla kertoa että tilaa on vähintään yhdelle täydelle TCP-segmentille.
 
 
 ## Ruuhkanhallinta
 
 
-## Liukuvan ikkunan toiminta
+## Ajastimen arvo
+
+
+## TCP ja reiluus?
 
 
 
