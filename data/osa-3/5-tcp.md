@@ -38,6 +38,64 @@ TCP pyrkii tukemaan tietoliikenneverkon ja vastaanottajan toimintaa käyttämäl
 
 Wikipedian [TCP-sivulla](https://fi.wikipedia.org/wiki/TCP) on kuva TCP-kehyksestä, jota tällä kurssilla kutsutaan segmentiksi sen englanninkielisen nimen segment mukaisesti. En halua käyttää siitä termiä kehys, koska kehys-termiä käytetään kurssilla myöhemmin linkkikerroksen viesteistä. Yritän eri kerrosten eri nimityksillä auttaa kokonaisuuden hallinnassa.
 
+TCP-segmentissä on otsake (engl. header) ja dataosio. Otsakkeen rakenne määritellään tarkasti protokollan kuvauksessa. TCP:n otsakkeeen pituus on vähintään 20 tavua eli 160 bittiä tai toisin sanoen viisi 32-bittistä sanaa.  JOtta viestin lähettäjä ja vastaanottaja voivat ymmärtää toisensa oikein on jokaisen bitin (tavun, sanan) merkitys sovittava. 
+
+Käydään nyt tavuittain läpi TCP:n otsake:
+* tavut 0 ja 1: lähettäjän porttinumero (engl. sourse port)
+* tavut 2 ja 3: vastaanottajan porttinumero (engl. destination port)
+* tavut 4-7: järjestyssumero (engl. sequence number) tavunumerointina
+* tavut 8-11: kuittausnumero (engl. acknowledgement number)
+* tavut 12 ja 13: on käsiteltävä bitti kerrallaan, koska niihin on keskitetty kaikki tavua pienemmät kentät. Näistä löytyvät mm. kaikki yhden bitin kokoiset kentät, lipukkeet tai liput (engl. flag), jotka antavat oman tietonsa protokollan toimintaan. Jokaisen kentän paikka on määritelty hyvin tarkasti. Emme käy näitä kaikkia läpi, mutta osa (kuten ACK, SYN, FIN) tulee vastaan toiminnallisuuden kuvauksessa.
+* tavut 14 ja 15: vastaanottajan ikkunan eli vastaanottopuskurin koko (engl. receive window)
+* tavut 16 ja 17: tarkistussumma (engl. internet checksum)
+* tavut 18 ja 19: kiireellisyystietä (engl. urgent data pointer)
+* Optio-osa: Tavussa 12 kerrotaan 4:llä bitillä, mikä on otsakkeen täsmällinen pituus sanoina. Minimipituus on 5 sanaa, mutta otsake voi siis olla pidempikin, jolloin tämä optio-osa kattaa pidemmän otsakkeen loput sanat. Huomaathan, että maksimipituus on 15, koska 4:llä bitillä voidaan ilmaista kokonaislukunumerot 0 - 15.
+
+Loput segmentistä on sitten siirrettävää dataa.
+
+## Tavunumerointi
+
+TCP käyttää segmenteissään tavunumerointia. Tavunumeroille on otsakkeessa varattu tilaa yhden 32-bittisen sanan verran eli reilu 4 miljardia eri numeroa.
+
+Otsakkeessa oleva järjestysnumero kertoo segmentin ensimmäisen tavun numeron. Näin ollen kahden peräkkäisen segmentin numeroissa on yhtä suuri eri kuin ensimmäisessä segmentissä on tavuja.
+
+TCp yhteys on kaksisuuntainen ja eri suuntiin liikkuvilla segmenteillä on omat järjestysnumeronsa, joilla ei ole mitään tekemistä keskenään. Yhteyden alussa segmenttien tavunumerointi voi alkaa ihan mistä numerosta tahansa.
+
+Kuittausnumero kertoo, mitä tavua vastaanottaja seuraavaksi odottaa. Vastaanottaja siis kuittaa saaneensa kaikki tavut ennen tätä seuraavaksi odottamaansa tavua.
+
+Katsotaan ensin osittaista esimerkkiä tästä numeroinnnista:
+
+KUVA: TCP segmentti ja kuittausnumeroinnit vain yhteen suuntaan
+
+
+Kun meillä on segmenttejä liikkeellä molempiin suuntiin, niin samassa viestissä voi kulkea sekä uutta dataa että toisen suunnan segmenttiin liittyvä kuittausnumero. Juuri siksi otsakkeessa on erikseen kentät järjestysnumerolle ja kuittausnumerolle.
+
+KUVA: TCP segmentti ja kuittausnumeroinnit molempiin suuntiin
+- JÄTÄ KUVASTA POIS KUITTAUSNUMEOT JA OSA SEGMENTTINUMEROISTA. LAITA NE TEHTÄVÄSKI HETI PERÄÄN
+
+
+## Segmentin katoaminen
+
+TCP käyttää liukuvan ikkunan menetelmää ja kumuloituvaa kuittausta. Jos varsinen datasegmentti katoaa, niin se pitää lähettää uudelleen, koska muuten vastaanottaja ei voi saada dataa. Perusmuodossaan TCP:n käyttää Paluu-N:ään eli se lähettää uudelleen kadonneen segmentin ja sitä seuraavat jo lähetetyt segmentit.
+
+Lähettäjän kannalta ei ole merkitystä katoaako varsinainen data segmentti vai siihen liittyvä kuittaus, jos se ei saa tietoa asiasta ennen ajstimen laukeamista. Kun ajastin laukeaa, niin lähettäjä lähettää kyseisen segmentin uudelleen.
+
+KUVA
+
+Jos kuittaus katoaa, niin kumuloituvien kuittausten kanssa lähettäjä voi seuraavasta saapuvasta kuittauksesta päätellä, että segmentti meni perille, vaikka siihen liittyvä kuittaus ei saapunutkaan.
+
+KUVA!!!
+
+Toisaalta, jos kuittaus saapuu vasta ajastimen laukeamisen jälkeen, niin lähettäjä lähettää segmentin uudelleen. Tällaista tilannetta kutsutaan ennenaikaiseksi aikakatkaisu (engl. premature timeout). Tätä pyritään välttämään käyttämällä riittävän pitkää aikakatkaisua ajastimessa.
+
+KUVA
+
+KUVAT VOI LAITTAA RINNAKKAIN JOS NE MAHTUVAT
+
+
+QUIZZ:  Ehkä joku tehtävä näihin kuviin liittyen. Skenaariota lisää ja siihen liittyvä jatkokysymys
+
+
 
 ## Yhteyden muodostus ja purku
 
@@ -52,7 +110,7 @@ TCP:n yhteyden muodostuksessa välitetään kolme viestiä.
 ## Liukuvan ikkunan toiminta
 
 
-## Virhetilanteista toipuminen
+
 
 
 
