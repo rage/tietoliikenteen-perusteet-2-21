@@ -204,8 +204,17 @@ KUVA: Ruuhkaikkunan koon muutoksista
 QUIZZ - kuvaan liittyen  (teetä tässä vanhan tentti tms.)
 
 
-
 ## Ajastimen arvo
+
+Edellä on vain sanottu, että lähetetään paketti uudelleen, kun ajastin laukeaa ja että ajastimen arvon pitää olla sopivan mittainen. Mikä on sopiva ajastimen arvo?  Liian lyhyt aiheuttaa tarpeettomia uudelleen lähetyksiä ja liian pitkä hidastaa toimintaa, kun uudelleenlähetykseen kestää kauan ja sinä aikana ikkuna ei voi edetä. Liian pitkä ajastimen arvo voi myäs pahentaa ruuhkaa, koska silloin lähettäjä pystyy täyttämään mahdollisesti isomman ikkunan verran verkkoa ennenkuin ajastimen avulla huomaa ruuhkatilanteen syntyneen.
+
+Hyvä perussääntö ja paljon käytetty oletus on, että sopiva ajastimen arvo on noin kaksinkertainen kiertoviiveeseen verrattuna (ajastin = 2 * kiertoviive). Koska tämä on aina oltava jokin kellon aika ja koska yhteyden alussa ei aina ole tiedossa kiertoviiveen kesto, on TCP:n oletusarvo 1 sekunti. Tästä ja tuosta perussäännöstä seuraa suoran jo aiemmin esillä ollut vaatimus, että kuittausta saa viivästää korkeintaan 500 millisekuntia.
+
+Jos ajastin laukeaa, niin kaksinkertaistetaan aikaraja (ns. exponential backoff). Näin lähettäjä pyrkii välttämään tarpeettomia uudelleenlähetyksiä.
+
+
+
+
 
 
 ## TCP ja reiluus?
