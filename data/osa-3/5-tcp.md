@@ -169,7 +169,16 @@ Tilanteesta voidaan toipua vain kun lähettäjä huomaa ongelman ja selkeästi h
 
 Verkko tai siis sen reititin voi tiedottaa lähettää joko erillisellä kontrolliviestillä tai merkitä läpikulkeviin viesteihin lisätietoa ruuhkasta. Erillisellä kontrolliviestillä se siis ilmoittaa lähettäjälle, että "Olen ylikuormittunut" tai "Tukehdun". Lähettäjän odotetaan sitten reagoivan tähän kontrolliviestiin. Jos reititin vain merkitsee välittämiinsä viesteihin tiedon ruuhkautumisesta, niin tämä tieto saavuttaa lähettäjän vasta kun viestin alkuperäinen vastaanottaja lähettää tiedon ruuhkautumisesta alkuperäiselle lähettäjälle. Me emme tällä kurssilla tarkastele näitä ratkaisu, vaan keskitymme tuohon lähettäjän omaan havainnointiin, joka toimii silloinkin, kun verkkoelementit eivät ruuhkasta tiedota.
 
-Keskitytään tässä vain TCP:N ruuhkanhallintaan. Koska kyseessä on lähettäjän omaan viestien lähetykseen liittyvä toimintaperiaate, niin eri kuljetusprotokollilla on hyvin erilaisia tapoja ratkoa omaa ruuhkanhallintaa. TCP:n ruuhkanhallinta sopii TCP:lle, mutta ei välttämättä kaikille muille kuljetusprotokollille.
+Keskitytään tässä vain TCP:n ruuhkanhallintaan. Koska kyseessä on lähettäjän omaan viestien lähetykseen liittyvä toimintaperiaate, niin eri kuljetusprotokollilla on hyvin erilaisia tapoja ratkoa omaa ruuhkanhallintaa. TCP:n ruuhkanhallinta sopii TCP:lle, mutta ei välttämättä kaikille muille kuljetusprotokollille. TCP:ssä on useita erilaisia ruuhkanhallintamenetelmiä, joista tässä tutustumme vain TCP Reno:on.
+
+TCP:n ruuhkanhallinta tehdään säätämällä ruuhkaikkunan (eng. congestion window) kokoa. Ruuhkaikkuna ei ole sama kuin lähetysikkuna, vaikka ne molemmat säätävätkin kuittaamattomien viestien määrää. Tietyllä ajanhetkellä saa olla kuittaamatta korkeintaan min (lähetysikkunan koko, ruuhkaikkunan koko) eli näistä pienempi on aina määräävä.
+
+Ruuhkaikkuna säätää kuittamattomien viestien määrän lisäksi myös sitä kuinka paljon lähettäjä saa kyseisellä ajanhetkellä kuormittaa verkkoa. Lähettäjän on itse pääteltävä oikea ikkunan koko, tietoa ei saada mistään muualta. Päättely perustuu saapuviin viesteihin:
+* jos uudelleenlähetysajastin laukeaa, verkossa on ruuhkaa -> pienennä ikkunan kokoa
+* jos kuittaukset tulevat tasaisesti, verkossa ei ole ruuhkaa -> ikkunan kokoa voisi ehkä suurentaa
+
+Ruuhkaikkunan koko muuttuu dynaamisesti tilanteen mukaan. TCP:n vietien lähetyksessä on eri vaiheita. Lähetyksen alussa, ns hidas aloitus (engl. slow start), TCP kasvattaa ikkunan kokoa nopeasti, kunnes se törmää ruuhkaan. Silloin se pienentää ikkunan kokoa merkittävästi ja pyrkii jatkossa välttämään ruuhkaa. Ruuhkan välttely -vaiheessa (engl. congestion avoidance) TCP kasvattaa ikkunan kokoa hyvin maltillisesti.
+
 
 
 
