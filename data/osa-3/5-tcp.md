@@ -152,7 +152,30 @@ Miksi lähettäjän täytyy lähettää näitä yhden tavun kokoisia segmenttej�
 
 ## Ruuhkanhallinta
 
-Ruuhkanhallinnan tavoitteena on pitää TCP:n segmenttien lähetysnopeus sellaisena, että viestien määrä ei tuki verkon reitittimiä, vaan kaikki viestit voivat päästä perille.
+Ruuhkanhallinnan tavoitteena on pitää TCP:n segmenttien lähetysnopeus sellaisena, että viestien määrä ei ylikuormita verkon reitittimiä, vaan kaikki viestit voivat päästä perille.
+
+Verkon hetkellinen kuormitus vaihtelee ja käytettävissä olevan kaistan nopeus lähettäjän ja vastaanottajan välillä voi olla paljon vähemmän kuin mihin lähettäjä ja vastaanottaja kykenisivät. Pelkkä vuonvalvonta ei huomioi verkon tilannetta. Verkko voi siis olla pullonkaula ja rajoittaa liikennöintinopeutta.
+
+Verkon kuormituksen vaihtelu johtuu yleensä muista verkon käyttäjistä eikä sitä voi kunnolla ennakoida. Etappivälitteisessä verkossa kaikki lähettäjät joutuvat jakamaan yhteisten yhteysvälien kapasiteetin ilman yksityiskohtaisia sopimuksia tai rajoituksia.
+
+Verkon reitittimillä ja muissa verkkoelementeissä on yleensä puskurit, joilla ne voivat hiukan tasata verkon eri osien nopeuseroja. 
+Kun puskuri kasvaa, yksittäisen viestin eteneminen verkossa hidastuu. Se joutuu jonottamaan yhä pidempään reitittimen puskurissa ennen kuin se lähetetään eteenpäin. Tätä käsiteltiin lyhyesti, kun kurssin alussa tarkasteltiin jonotusviivettä.
+
+Jos kuitenkin jonkun elementin puskurit täyttyvät, niin se joutuu pudottamaan saapuvia paketteja, kun sillä ei ole tilaa vastaanottaa pakettia. Tällaisesta saapuvien pakettien pudottamisesta johtuu osa pakettien katoamisista. Kun paketti katoaa, lähettäjä joutuu lähettämään sen uudelleen. Tämä uudelleenlähetys siis lisää jo valmiiksi ylikuormittuneen verkon kuormitusta ja voi pahimmillaan johtaa siihen, että yhä enemmän paketteja putoaa verkosta matkalla. Lisäksi jonotusaikojen kasvaessa, paketin kulkuaika kasvaa ja siitä voi seurata, että lähettäjä lähettää uudelleen sellaisen paketin, joka on vielä matkalla verkon ruuhkatilanteen vuoksi. Tällaisetkin uudelleenlähetykset lisäävät verkon kuormaa ja hidastavat pakettien kulkua entisestään. Tästä syntyy valitettavan helposti itseään ruokkiva noidankehä, jossa kaikki lähettävät paljon paketteja, mutta mitään ei kuitenkaan pääse läpi. Reitittimet vain tekevät yhä enemmän turhaa työtä välittämällä paketteja, jotka joku muu reititin myöhemmin pudottaa puskurin täyttimisen vuoksi.
+
+KUVA:  Graafinen kuva tästä ilmiöstä
+
+Tilanteesta voidaan toipua vain kun lähettäjä huomaa ongelman ja selkeästi hidastaa viestien lähetystä. Näin se omalta osaltaan antaa verkolle mahdollisuuden toipua tästä hetkellisestä ylikuormitustilanteesta. Miten lähettäjä sitten voi havaita tilanteen? Se joko päättelee tilanteen pakettien katoamisesta ja hidastumisesta tai se saa verkolta tietoa tilanteesta.
+
+Verkko tai siis sen reititin voi tiedottaa lähettää joko erillisellä kontrolliviestillä tai merkitä läpikulkeviin viesteihin lisätietoa ruuhkasta. Erillisellä kontrolliviestillä se siis ilmoittaa lähettäjälle, että "Olen ylikuormittunut" tai "Tukehdun". Lähettäjän odotetaan sitten reagoivan tähän kontrolliviestiin. Jos reititin vain merkitsee välittämiinsä viesteihin tiedon ruuhkautumisesta, niin tämä tieto saavuttaa lähettäjän vasta kun viestin alkuperäinen vastaanottaja lähettää tiedon ruuhkautumisesta alkuperäiselle lähettäjälle. Me emme tällä kurssilla tarkastele näitä ratkaisu, vaan keskitymme tuohon lähettäjän omaan havainnointiin, joka toimii silloinkin, kun verkkoelementit eivät ruuhkasta tiedota.
+
+Keskitytään tässä vain TCP:N ruuhkanhallintaan. Koska kyseessä on lähettäjän omaan viestien lähetykseen liittyvä toimintaperiaate, niin eri kuljetusprotokollilla on hyvin erilaisia tapoja ratkoa omaa ruuhkanhallintaa. TCP:n ruuhkanhallinta sopii TCP:lle, mutta ei välttämättä kaikille muille kuljetusprotokollille.
+
+
+
+
+
+
 
 ## Ajastimen arvo
 
