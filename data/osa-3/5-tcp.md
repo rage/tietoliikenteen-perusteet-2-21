@@ -179,10 +179,29 @@ Ruuhkaikkuna säätää kuittamattomien viestien määrän lisäksi myös sitä 
 
 Ruuhkaikkunan koko muuttuu dynaamisesti tilanteen mukaan. TCP:n vietien lähetyksessä on eri vaiheita. Lähetyksen alussa, ns hidas aloitus (engl. slow start), TCP kasvattaa ikkunan kokoa nopeasti, kunnes se törmää ruuhkaan. Silloin se pienentää ikkunan kokoa merkittävästi ja pyrkii jatkossa välttämään ruuhkaa. Ruuhkan välttely -vaiheessa (engl. congestion avoidance) TCP kasvattaa ikkunan kokoa hyvin maltillisesti.
 
+KUVA:  TCP:n viestien lähetys!
+
+Hidas aloitus:
+* Ihan aluksi ruuhkaikkunan koko on 1 - hidas siirtonopeus, koska vain yksi sanoma yhtä kiertoviivettä kohti
+* Exponentiaalinen kasvu - jokaista saapuvaa kuittausta kohti saa lähettää kaksi viestiä (ikkunan koko kasvaa yhdellä). Näin yhden kiertoviiveen aikana ikkunan koko kaksinkertaistuu
+* Jatkuu kunnes ikkunan koko saavuttaa kynnysarvon
+
+Ruuhkanvälttely:
+* Alkaa heti kun ruuhkaikkunan koko saavuttaa kynnysarvon
+* Lineaarinen kasvu - kasvata ruuhkaikkunan kokoa vain yhdellä yhtä kiertoviivettä kohti.
+
+Kynnysarvon tarkoitus on siis toimia ennakkovaroituksena mahdollisesta ruuhkautumisesta ennenkuin lähetysnopeus on liian suuri. Kynnysarvo säätää vaiheita, kun ruuhkaikkuna pienempi kuin kynnysarvo ollaan hitaassa aloituksessa ja ruuhkaikkuna kasvaa yhdellä jokaisesta saapuvasta uudesta kuittauksesta. Kun ruuhkaikkuna on vähintään kynnysarvon suuruinen, niin ollaan ruuhkavälttelyssä ja ruuhkaikkunan koko saa kasvaa enää yhdellä yhden kiertoviiveen keston aikana. 
+
+Jos ajastin laukeaa ja tulee uudelleenlähetys, niin oletaan, että verkko on pahasti ruuhkautunut. Ruuhkaikkunan kooksi asetaan 1 ja toiminta jatkuu hitaalla aloituksella. Samalla uudeksi kynnysarvoksi tulee puolet sen hetkisen ruuhkaikkunan koosta (kynnysarvo = ruuhkaikkuna / 2).
+
+Jos yksittäinen segmentti on kadonnut, niin vastaanottaja lähettää kuittauksia, joissa on saman kuittausnumero.  Yksittäisen paketin katoaminen voi liittyä ruuhkaan, mutta yhtä hyvin paketin siirrossa on saattaut tapahtua bittivirhe, jonka seurauksena paketti on vaurioitunut ja se on hylätty. Saapuvia toistokuittauksia voidaan käyttää ruuhkanhallinnan apuna. Koska kuittauksia edelleen saapuu, niin verkko pystyy vielä välittämään liikennettä, mutta voisi olla hyvä hiukan rauhoittaa tilannetta. 
+
+Kolmen saapuneen toistokuittauksen jälkeen lähettäjä aloittaa sekä nopean toipumisen (engl. fast recovery) että nopean uudelleenlähetyksen (engl. fast retransmit) ja lähettää puuttuvan segmentin. Samalla se puolittaa sekä ruuhkaikkunan koon että asettaa uuden kynnysarvon (kynnysarvo = ruuhkaikkuna / 2). Liikennöinti jatkuu ruuhkavälttelyllä.
 
 
+KUVA: Ruuhkaikkunan koon muutoksista
 
-
+QUIZZ - kuvaan liittyen  (teetä tässä vanhan tentti tms.)
 
 
 
