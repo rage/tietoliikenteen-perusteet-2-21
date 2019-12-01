@@ -206,11 +206,15 @@ QUIZZ - kuvaan liittyen  (teetä tässä vanhan tentti tms.)
 
 ## Ajastimen arvo
 
-Edellä on vain sanottu, että lähetetään paketti uudelleen, kun ajastin laukeaa ja että ajastimen arvon pitää olla sopivan mittainen. Mikä on sopiva ajastimen arvo?  Liian lyhyt aiheuttaa tarpeettomia uudelleen lähetyksiä ja liian pitkä hidastaa toimintaa, kun uudelleenlähetykseen kestää kauan ja sinä aikana ikkuna ei voi edetä. Liian pitkä ajastimen arvo voi myäs pahentaa ruuhkaa, koska silloin lähettäjä pystyy täyttämään mahdollisesti isomman ikkunan verran verkkoa ennenkuin ajastimen avulla huomaa ruuhkatilanteen syntyneen.
+Edellä on vain sanottu, että lähetetään paketti uudelleen, kun ajastin laukeaa ja että ajastimen arvon pitää olla sopivan mittainen. Mikä on sopiva ajastimen arvo?  Liian lyhyt aiheuttaa tarpeettomia uudelleen lähetyksiä ja liian pitkä hidastaa toimintaa, kun uudelleenlähetykseen kestää kauan ja sinä aikana ikkuna ei voi edetä. Tarpeettoman pitkä ajastimen arvo voi myös pahentaa ruuhkaa, koska silloin lähettäjä pystyy täyttämään mahdollisesti isomman ikkunan verran verkkoa ennenkuin ajastimen avulla huomaa ruuhkatilanteen syntyneen.
 
-Hyvä perussääntö ja paljon käytetty oletus on, että sopiva ajastimen arvo on noin kaksinkertainen kiertoviiveeseen verrattuna (ajastin = 2 * kiertoviive). Koska tämä on aina oltava jokin kellon aika ja koska yhteyden alussa ei aina ole tiedossa kiertoviiveen kesto, on TCP:n oletusarvo 1 sekunti. Tästä ja tuosta perussäännöstä seuraa suoran jo aiemmin esillä ollut vaatimus, että kuittausta saa viivästää korkeintaan 500 millisekuntia.
+Hyvä perussääntö ja paljon käytetty oletus on, että sopiva ajastimen arvo on noin kaksinkertainen kiertoviiveeseen verrattuna (ajastin = 2 * kiertoviive). Koska yhteyden alussa ei kiertoviiveen kestoa tiedetä, on TCP:n kuvauksessa määritelty ajastimen oletusarvoksi 1 sekunti. Tästä ja tuosta kaksinkertaisesta kiertoviiveestä seuraa suoraan jo aiemmin esillä ollut vaatimus, että kuittausta saa viivästää korkeintaan 500 millisekuntia.
 
-Jos ajastin laukeaa, niin kaksinkertaistetaan aikaraja (ns. exponential backoff). Näin lähettäjä pyrkii välttämään tarpeettomia uudelleenlähetyksiä.
+Jos ajastin laukeaa, niin kaksinkertaistetaan aikaraja (ns. exponential backoff). Näin lähettäjä pyrkii välttämään tarpeettomia uudelleenlähetyksiä. Tarpeettomien uudelleenlähetystä välttäminen on tärkeämpää kuin mahdollinen toiminnan hidastuminen tarpeettoman pitkän ajastinarvon vuoksi.
+
+Lähettäjä säätää ajastinarvoa saapuvien kuittausten avulla arvioidun kiertoviiveen perusteella. Yksittäisen viestin lähetyksen ja sen kuittauksen saapumisen väli on tähän viestiin liittyvä kiertoviive. Eri viestien näin mitatut kiertoviiveet voivat olla hyvinkin eri suuruisia. 
+
+AJASTINARVON SÄÄTÄMISESTÄ
 
 
 
