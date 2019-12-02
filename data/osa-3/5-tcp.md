@@ -212,17 +212,22 @@ Hyvä perussääntö ja paljon käytetty oletus on, että sopiva ajastimen arvo 
 
 Jos ajastin laukeaa, niin kaksinkertaistetaan aikaraja (ns. exponential backoff). Näin lähettäjä pyrkii välttämään tarpeettomia uudelleenlähetyksiä. Tarpeettomien uudelleenlähetystä välttäminen on tärkeämpää kuin mahdollinen toiminnan hidastuminen tarpeettoman pitkän ajastinarvon vuoksi.
 
-Lähettäjä säätää ajastinarvoa saapuvien kuittausten avulla arvioidun kiertoviiveen perusteella. Yksittäisen viestin lähetyksen ja sen kuittauksen saapumisen väli on tähän viestiin liittyvä kiertoviive. Eri viestien näin mitatut kiertoviiveet voivat olla hyvinkin eri suuruisia. 
+Lähettäjä säätää ajastinarvoa saapuvien kuittausten avulla arvioidun kiertoviiveen perusteella. Edellistä arviota päivitetään uudella mittaustuloksella. Yksittäisen viestin lähetyksen ja sen kuittauksen saapumisen väli on tähän viestiin liittyvä kiertoviive. Eri viestien näin mitatut kiertoviiveet voivat olla hyvinkin eri suuruisia, siksi säätämistä tehdään jatkuvasti. Tämä mitattu kiertoviive, jolla arviota päivitetään, voidaan laskea joko jokaisen kuittauksen yhteydessä tai vähintään kerran yhden kierroksen aikana. Kierroksen kesto on yhden kiertoviiveen verran.
 
-AJASTINARVON SÄÄTÄMISESTÄ
+Näin ollen uusi ajastinarvo on TimeoutInterval = EstimatedRTT + 4* DevRTT, missä <br>
+EstimatedRTT = (1-&alpha;)* EstimatedRTT + (&alpha;)* SampleRTT  ja <br>
+DevRTT = (1-&beta;)* DevRTT + &beta;* |SampleRTT-EstimatedRTT|
+
+* EstimatedRTT on kiertoviiveen arvio
+* DevRTT kuvaa arvojen vaihteluväliä eli poikkeamaa
+* &alpha; ja &beta; ovat painoja, joilla säädetään, kuinka paljon uusi arvo voi muuttaa edellistä arviota. Tyypillisest &alpha; = 1/8 = 0,125 ja  &beta; = 0,25
+
+QUIZZ: Joku ajastin laskutoimitus
 
 
 
 
-
-
-## TCP ja reiluus?
-
+**Jos aikaa jää, niin tänne lisää protokollan käyttäytymisestä ruuhkaisilla yhteysväleillä yhdessä muiden kanssa. Tarkastellaan reiluuttaa (engl. fairness)**
 
 
 
