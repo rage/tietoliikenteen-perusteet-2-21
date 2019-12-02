@@ -1,6 +1,6 @@
 ---
-path: '/osa-4/2-johdatus-olio-ohjelmointiin'
-title: 'Johdatus olio-ohjelmointiin'
+path: '/osa-4/2-IP-protokolla'
+title: 'IP-protokolla'
 hidden: false
 ---
 
