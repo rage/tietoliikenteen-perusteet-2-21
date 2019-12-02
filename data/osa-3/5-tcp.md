@@ -48,12 +48,14 @@ Käydään nyt tavuittain läpi TCP:n otsake:
 * tavut 12 ja 13: on käsiteltävä bitti kerrallaan, koska niihin on keskitetty kaikki tavua pienemmät kentät. Näistä löytyvät mm. kaikki yhden bitin kokoiset kentät, lipukkeet tai liput (engl. flag), jotka antavat oman tietonsa protokollan toimintaan. Jokaisen kentän paikka on määritelty hyvin tarkasti. Emme käy näitä kaikkia läpi, mutta osa (kuten ACK, SYN, FIN) tulee vastaan toiminnallisuuden kuvauksessa.
 * tavut 14 ja 15: vastaanottajan ikkunan eli vastaanottopuskurin koko (engl. receive window)
 * tavut 16 ja 17: tarkistussumma (engl. internet checksum)
-* tavut 18 ja 19: kiireellisyystietä (engl. urgent data pointer)
+* tavut 18 ja 19: kiireellisyystietoa (engl. urgent data pointer)
 * Optio-osa: Tavussa 12 kerrotaan 4:llä bitillä, mikä on otsakkeen täsmällinen pituus sanoina. Minimipituus on 5 sanaa, mutta otsake voi siis olla pidempikin, jolloin tämä optio-osa kattaa pidemmän otsakkeen loput sanat. Huomaathan, että maksimipituus on 15, koska 4:llä bitillä voidaan ilmaista kokonaislukunumerot 0 - 15.
 
 Loput segmentistä on sitten siirrettävää dataa.
 
 Jokaisessa yhteydessä segmenteillä on maksimikoko. Tämä koko voi vaihdella verkon alempien kerrosten ominaisuuksien mukaisesti. Maksimikoolla pyritään välttämään sitä, että alemmat kerrokset joutuvat pilkkomaan kuljetuskerroksen lähettämän segmentin useammaksi paketiksi. Esimerkiksi, jos fyysinen yhteys on ethernetillä, niin silloin segmentin maksimikoko on 1460 tavua, koska ethernetin maksimidata yhdessä kehyksessä on 1500. Tuo erotus 1500-1460 menee TCP:n omaan otsakkeeseen (20 tavua) ja verkkokerroksen IP-protokollan otsakkeeseen (myös 20 tavua).
+
+Tarkistussummaan palataan seuraavassa aliluvussa UDP:n kohdalla.
 
 ## Tavunumerointi
 
