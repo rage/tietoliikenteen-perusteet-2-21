@@ -27,11 +27,16 @@ Verkkokerroksella laitteet tunnistetaan niiden IP-numeroista, joita usein myös 
 
 IP-protokollasta on tällä hetkellä käytössä kaksi versiota perinteinen [IPv4](https://fi.wikipedia.org/wiki/IP) ja uudempi [IPv6](https://fi.wikipedia.org/wiki/IPv6). IPv4 on ollut Internetin verkkokerroksen välitysprotokolla koko Internetin olemassaolon. Vieläkin kun puhutaan pelkästään IP:stä yleensä aina tarkoitetaan IP versiota 4.
 
-Nämä versionumerot 4 ja 6 vaikuttavat oudoilta, mutta internetin dokumentaatiosta löytyy määrittelyt myös protokollan versioille 1,2,3 ja 5. Nämä versiot vain eivät ole käytössä.
+Nämä versionumerot 4 ja 6 vaikuttavat oudoilta, mutta internetin dokumentaatiosta löytyy määrittelyt myös protokollan versioille 1,2,3 ja 5. Ne eivät ole käytössä.
 
 ## IPv4
 
-IPv4:ssä osoitteen pituus on 32-bittiä eli 4 tavua. Osoite ilmoitetaankin yleenä näiden tavujen numeroarvoina eli muodossa 10.12.34.216- Jokai
+IPv4:ssä [IP-osoitteen](https://fi.wikipedia.org/wiki/IP-osoite) pituus on 32-bittiä eli 4 tavua. Osoite ilmoitetaankin yleenä näiden tavujen numeroarvoina eli muodossa 10.12.34.216. Jokaisella internetiin suoraan liitetyllä laitteella täytyy olla uniikki osoite. Kuten jo tiedämme näitä osoitteita maailmanlaajuisesti hallinnoi IANA.
+
+IP-osoite jaetaan aina kahteen osaan. Osoitteen alkuosa kertoo kyseistä osoiteavaruutta hallinnoivan operaattorin. Operaattori voi sitten jakaa hallitsemansa osoiteavaruuden osoitteet verkkolaitteille haluamallaan tavalla. Alunperin näitä jakokohtia oli vain tavujen välissä ja silloin puhuttiin luokista A (ensimmäisen tavun jälkeen), B (toisen tavun jälkeen) ja C (kolmannen tavun jälkeen). Lisäksi joitakin numeroalueita on varattu erityiskäyttöön.
+
+Luokkajaon ongelma on siinä, että jaettavien osoiteavaruuksien lukumäärä ei riittänyt internetin yleistymisen jälkeen. Lisäksi erityisesti A-luokissa oli aivan liian paljon osoitteita yhden operaattorin tarpeisiin.
+
 
 ## Monilähetys ja yleislähetys
 
