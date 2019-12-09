@@ -1,4 +1,3 @@
-
 ---
 path: '/osa-2/2-laki-ja-kuuntelu'
 title: 'Verkon kuuntelu ja lainsäädäntö'
@@ -18,7 +17,7 @@ Tietoliikennettä ja sen protokollien toimintaa voi seurata useilla erilaisissa 
 
 Viestien salaus on ainoa tällä hetkellä tunnettu keino estää muista seuraamasta omien viestien sisältöjä ja silloinkin liikenteen seuraajalla on käytettävissään erilaisia keinoja liikenteen analysointiin.
 
-Tietoliikenteen seuraamiseen on saatavilla valmiita ohjelmia. Wireshark on ilmainen, avoimen lähdekoodin ohjelma, joka on laajasti käytetty. Ohjelman voi ladata wiresharkin omilta sivuilta [https://www.wireshark.org/]{https://www.wireshark.org/}. Sille on myös saatavilla paljon valmiita analysoitavia tiedostoa, jolloin voimme välttää todellisen tietoliikenteen kuuntelun tällä kurssilla kokonaan. 
+Tietoliikenteen seuraamiseen on saatavilla valmiita ohjelmia. Wireshark on ilmainen, avoimen lähdekoodin ohjelma, joka on laajasti käytetty. Ohjelman voi ladata wiresharkin omilta sivuilta [https://www.wireshark.org/]{https://www.wireshark.org/}. Sille on myös saatavilla paljon valmiita analysoitavia tiedostoa, jolloin voimme välttää todellisen tietoliikenteen kuuntelun tällä kurssilla kokonaan.
 
 Wireshark on erittäin monipuolinen ja tarjoaa paljon vaihtoehtoja tietoliikenteen analysointiin. Tällä kursilla käytämme hyvin pientä osaa sen piireteistä ja tarkastelemme vain muutamaa valmista aineistoa.
 
@@ -27,7 +26,7 @@ Wireshark on erittäin monipuolinen ja tarjoaa paljon vaihtoehtoja tietoliikente
 
 Tietoliikenteen ammattilaisten ja käyttäjien on hyvä tietää mitä verkossa voi tehdä ja mitä ei. Suomen laki asettaa suomalaisille toimijoille selkeät rajat. Ajankohtaisen kotimaisen lainsäädännön voit aina tarkistaa finlex.fi -palvelusta.
 
-Alalla on myös TIVIAn laatimat ja julkaisemat [etiikan ohjeet](https://tivia.fi/toimiala/etiikan-ohjeet/), joita kaikkien alan ammttilaisten olisi hyvä noudattaa. Nämä ohjeet ovat sen verran lyhyet, että kaikkien hyvä ne lukea ja ymmärtää. Sen sijaan kaikkia tässä osiossa mainittua lakeja ei tarvitse kurssimateriaalina lukea. 
+Alalla on myös TIVIAn laatimat ja julkaisemat [etiikan ohjeet](https://tivia.fi/toimiala/etiikan-ohjeet/), joita kaikkien alan ammttilaisten olisi hyvä noudattaa. Nämä ohjeet ovat sen verran lyhyet, että kaikkien hyvä ne lukea ja ymmärtää. Sen sijaan kaikkia tässä osiossa mainittua lakeja ei tarvitse kurssimateriaalina lukea.
 
 Tietoliikenteeseen liittyy useita lakeja, mutta näistä ehkä kaikkien keskeisin on suhteellisen uusi laki [sähköisen viestinnän palveluista]( https://www.finlex.fi/fi/laki/ajantasa/2014/20140917).  Siinä käydään läpi erilaisten sähköisten palvelujen tarjoajien oikeuksia ja velvollisuuksia. Tähän lakiin perustuu esimerkiksi entisen viestintävirastn nykyisen TrafiComin oikeus hallita .fi ja .ax osoitteita.
 
@@ -61,9 +60,9 @@ viestintäsalaisuuden loukkaus
 
 Jos hallinnoisimme verkkoa tai sen palvelua siten, että käsittelisimme henkilötietoja, niin meidän täytyisi noudattaa [tietosuojalakia]( https://www.finlex.fi/fi/laki/ajantasa/2018/20181050). Työnantajina ja työntekijöinä on hyvä tietää mitä laissa [yksityisyyden suojasta työelämässä](https://www.finlex.fi/fi/laki/ajantasa/2004/20040759) määrätään.
 
-Koska seuraavaksi tutustutaan työkaluun, jolla voi kuunnella tietoliikenneverkossa kulkevia viestejä, on tärkeä tietää milloin tällainen kuunteleminen on sallittua ja milloin ei. Suomen laki asettaa perusrajat verkkokuuntelulle, mutta myös verkon käyttösäännöt vaikuttavat asiaan. Esimerkiksi Helsingin yliopiston käyttösäännöt kieltävät kaiken verkkokuuntelun yliopiston omissa verkoissa. Näin on useimpien palveluntarjoajien käyttösäännöissä. 
+Koska seuraavaksi tutustutaan työkaluun, jolla voi kuunnella tietoliikenneverkossa kulkevia viestejä, on tärkeä tietää milloin tällainen kuunteleminen on sallittua ja milloin ei. Suomen laki asettaa perusrajat verkkokuuntelulle, mutta myös verkon käyttösäännöt vaikuttavat asiaan. Esimerkiksi Helsingin yliopiston käyttösäännöt kieltävät kaiken verkkokuuntelun yliopiston omissa verkoissa. Näin on useimpien palveluntarjoajien käyttösäännöissä.
 
-Lait myös muuttuvat. Keväällä 2019 tuli uusi laki  [tietoliikennetiedustelusta siviilitiedustelussa](https://www.finlex.fi/fi/laki/alkup/2019/20190582), joka tarkentaa poliisilakia tältä osin. Lisäksi on paljon muitakin lakeja, jotka vaikuttavat erilaisten palvelujen tarjoajiin ja muihin ammattilaisiin ja heidän toimintaansa. 
+Lait myös muuttuvat. Keväällä 2019 tuli uusi laki  [tietoliikennetiedustelusta siviilitiedustelussa](https://www.finlex.fi/fi/laki/alkup/2019/20190582), joka tarkentaa poliisilakia tältä osin. Lisäksi on paljon muitakin lakeja, jotka vaikuttavat erilaisten palvelujen tarjoajiin ja muihin ammattilaisiin ja heidän toimintaansa.
 
 ## Tietoliikenteen kaappaus
 
@@ -79,7 +78,7 @@ Tällä kurssilla emme kaappaa liikennettä, koska kaikilla osallistujilla ei v�
 
 Wiresharkin sivulta https://wiki.wireshark.org/SampleCaptures löytyy kymmeniä ellei satoja valmiita kaappaustiedostoja, joita voimme käyttää kurssilla kuluessa.
 
-Internetissä on myös joitakin ilmaisia verkossa toimivia kaappaustiedostojen katseluohjelmia  (kuten packettotal.com), joten wiresharkin käyttäminen ei ole millään tavalla pakollista kurssin kuluessa.  Näiden ohjelmien kanssa pitää olla varovainen, koska ne tallettavan kaikki saamansa kaappaukset, joten jos kyseessä on mahdollista yksityistä tietoa sisältävä kaappaus, niin näitä ei pidä käyttää. Noiden wiresharkin valmiiden kaappausten kanssa näiden käyttö on mahdollista. 
+Internetissä on myös joitakin ilmaisia verkossa toimivia kaappaustiedostojen katseluohjelmia  (kuten packettotal.com), joten wiresharkin käyttäminen ei ole millään tavalla pakollista kurssin kuluessa.  Näiden ohjelmien kanssa pitää olla varovainen, koska ne tallettavan kaikki saamansa kaappaukset, joten jos kyseessä on mahdollista yksityistä tietoa sisältävä kaappaus, niin näitä ei pidä käyttää. Noiden wiresharkin valmiiden kaappausten kanssa näiden käyttö on mahdollista.
 
 Osa näistä ohjelmista näyttää vain pakettien otsaketietoja ja niitäkin rajoitetusta, joten kovin kattavaan mahdollista viestein sisältöjen seurantaan ne eivät tarjoa. Toisaalta kuten tuosta sähköisiä viestintäpalveluja käsittevästä laista pystyimme lukemaan eivät edes verkon ylläpitäjät saa manuaalisesti tutkia viestien sisältöjä.
 
