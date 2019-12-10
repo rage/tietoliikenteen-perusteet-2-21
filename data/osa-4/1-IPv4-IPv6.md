@@ -1,6 +1,6 @@
 ---
 path: '/osa-4/1-IPv4-IPv6'
-title: 'IPv4 ja IPv6'
+title: 'IPv4 ja IPv6 osoitteet'
 hidden: false
 ---
 
