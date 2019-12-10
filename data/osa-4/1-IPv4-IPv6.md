@@ -68,20 +68,6 @@ QUIZZ:  MIkä on jonkun tietyn laitteen IPv6 osoite?  tai muunnoslasku bittien j
 
 Siirtymä IPv6:n käyttöön on vahvasti käynnissä. Esimerkiksi googlen tilastojen mukaan maailmalaajuisesti jo noin neljännes sen sivuille tulevista yhteyksistä käyttää IPv6:ta. IPv4-osoitteet on kaikki jaettu ja jos operaattorilta loppuvat osoitteet, se joutuu ostamaan niitä lisää joltain muulta. Tämä aiheuttaa näille operaattoreille paineita siirtyä käyttämään IPv6:tta, koska siellä on runsaasti osoitteita. Jos tilastotieto IPv6:den yleisyydestä kiinnostaa, niin verkkosivulta https://www.internetsociety.org/deploy360/ipv6/statistics/ löytyy linkkejä erilaisiin tilastoihin.
 
-## Monilähetys ja yleislähetys
-
-unicast/multicast/broadcast
-
-
-## Tunnelointi
-
-## IPv4 Reititystaulu
-
-## Reititysalgoritmi
-
-## Reitittimen toiminta ja rakenne
-
-## ICMP??
 
 
 
