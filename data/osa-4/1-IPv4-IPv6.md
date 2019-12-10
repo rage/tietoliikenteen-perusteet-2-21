@@ -40,31 +40,37 @@ Alunperin näitä jakokohtia oli vain tavujen välissä ja silloin puhuttiin luo
 Luokkajaon lisäksi sovittiin, että kaikki 127-alkuiset osoitteet ovat käytettävissä paikallisena osoitteena yhden verkkolaitteen sisällä. Tämä voidaan merkitä joko 127.0.0.0/255.0.0.0  tai 127.0.0.0./8.  Näistä erityisesti paikallinen koneen oman sisäinen osoite (engl. localhost) 127.0.0.1 tulee vastaan laitteen konfigurointitiedoissa. 
 
 IPv4:n osoitteista on myös varattu tietyt alueet yksityisissä verkoissa käytettäviksi. Näillä yksityisverkojen osoitteilla ei saa liikennöidä julkisessa internetissä. Toisaalta ne voi ottaa käyttöön omassa suljetussa verkossa sen tarkemmin kysymättä keneltäkään. 
-Näistä ehkä eniten käytettyjä ovat  10.0.0.0/8 ja 192.168.0.0/16, koska ne noudattavat vanhoja luokkarajoja. 
-172.16.0.0/255.240.0.0 (eli 172.16.0.1 – 172.31.255.255)
-192.168.0.0/255.255.0.0
+Näistä ehkä eniten käytettyjä ovat  10.0.0.0/8 ja 192.168.0.0/16, koska ne noudattavat näitä vanhoja luokkarajoja. Kolmas yksityisverkon osoitealue 172.16.0.0/12 (tai 172.16.0.0/255.240.0.0)  eli osoitteet 172.16.0.1 – 172.31.255.255 on luokaton, koska siinä verkon peite katkeaa tavun sisällä.
+
+Luokallisesta osoitteiden hallinnoinnosta siirryttiin luokattomiin osoiterajoihin, koska näin saatiin joustavammin jaettu verkon osoiteavaruutta useammalle operaattoreille. Tätä kutsutaan termillä [luokaton reititys](https://fi.wikipedia.org/wiki/Luokaton_reititys) (engl. Classless InterDomain Routing, CIDR). CIDR:n mukaisesti operaattorin tunnisteen ja verkkolaitteen tunnisteen raja voidaan sijoittaa mihin kohtaan tahansa 32-bittisessä osoitteessa eikä vain tavurajoille. 
 
 
+Osoitteisiin liittyviä tehtäviä:
 <quiz id="3ec7c1cc-27f5-4518-890a-201a9fe6121d"></quiz>
 
-Luokkajaon perusongelma on siinä, että luokkia oli lukumäärällisesti liian vähän internetin yleistymisen jälkeen. Lisäksi erityisesti A luokissa oli aivan liian paljon osoitteita yhden operaattorin tarpeisiin. 
 
-Luokallisesta osoitteiden hallinnoinnosta siirryttiinkin luokattomiin osoiterajoihin. Tällöin operaattorin tunnisteen ja verkkolaitteen tunnisteen raja voidaan sijoittaa mihin kohtaan tahansa 32-bittisessä osoitteessa eikä vain tavurajoille. 
+## IPv6
 
-Tätä kutsutaan termillä [luokaton reititys](https://fi.wikipedia.org/wiki/Luokaton_reititys) (engl. Classless Inter-Domain Routing, CIDR).
+[IPv6](https://fi.wikipedia.org/wiki/IPv6) osoitteet ovat tällä hetkellä käytössä Internetissä rinnan IPv4 osoitteiden kanssa. Valitettavasti nämä kaksi versiota eivät ole yhteensopivia, kuten seuraavassa aliluvussa näemme. 
 
+IPv6 osoitteet ovat 128-bittisiä eli huomattavan pitkiä verrattuna IPv4:n 32-bittisiin osoitteisiin. Tämän seurauksena osoitteita on käytettävissä yli 340 sekstiljoonaa.
 
+IPv6:n osoitteet esitetään kahdeksana hexadesimaaliryhmänä, joissa kukin 4-merkkinen hexadesimaaliluku kuvaa 16 bitin mittaista osiota osoitteesta. Muistathan, että hexadesimaalilukujen kantaluku on 16, joten yhdellä hexadesimaaliluvulla voi kuvata 4-bittisen luvun. Nämä 4-merkkiset hexadesinaaliluvut erotetaan toisistaan kaksoispisteellä. Esimerkki osoitteesta 2001:0DB8:AC10:FE01:0000:0000:0000:0000.  Osoitetta kirjoitettaesssa alkunollat voi jättää pois ja nolla-alueen voi jättää tyhjäksi. Kaikki 8 osiota on kuitenkin tunnistettava, joten kaksoispisteitä ei saa jättää pois. Äskeinen osoite mahdollisimman tiiviisti kirjoitettuna on 2001:DB8:Fe01::::.
+
+Kuva osoitteen purkamisesta: https://upload.wikimedia.org/wikipedia/commons/7/70/Ipv6_address_leading_zeros.svg
+
+Koska IPv6:n osoiteavaruus valtava, on erikseen sovittu, että yksittäistä osoitetta operaattorilta pyytävä reititin saa tyypillisesti oman aliverkon, jonka peite on 64 bittiä. Esimerkiksi juuri edellä kuvatun osoitteen. Tähän aliverkkoon liittyvä laite puolestaan saa reitittimeltä aliverkon tunnisteen ja aliverkon peitteen. Osoitteen loput biti (tyyppillisesti siis jälkimmäiset 64 bittiä) se voi arpa itse. Automaattisessa konfiguroinnissa voidaan käyttää vaikkapa laitteen MAC-osoitetta apuna. MAC-osoitteen tavoitehan on yksilöidä laite linkkikerroksen tasolla. MAC-osoitteen pituus on 48 bittiä, joten se mahtuu vallan hyvin laitteen aliverkossa yksilöivään 64:ään bittiin.
+
+Näiden isojen aliverkkojen tavoitteena on helpottaa iPv6-osoitteiden reititystä ja pitää reititystaulut kooltaan siedettävinä.
+
+QUIZZ:  MIkä on jonkun tietyn laitteen IPv6 osoite?  tai muunnoslasku bittien ja hexalukujen välillä
+<quiz id="3ec7c1cc-27f5-4518-890a-201a9fe6121d"></quiz>
+
+Siirtymä IPv6:n käyttöön on vahvasti käynnissä. Esimerkiksi googlen tilastojen mukaan maailmalaajuisesti jo noin neljännes sen sivuille tulevista yhteyksistä käyttää IPv6:ta. IPv4-osoitteet on kaikki jaettu ja jos operaattorilta loppuvat osoitteet, se joutuu ostamaan niitä lisää joltain muulta. Tämä aiheuttaa näille operaattoreille paineita siirtyä käyttämään IPv6:tta, koska siellä on runsaasti osoitteita. Jos tilastotieto IPv6:den yleisyydestä kiinnostaa, niin verkkosivulta https://www.internetsociety.org/deploy360/ipv6/statistics/ löytyy linkkejä erilaisiin tilastoihin.
 
 ## Monilähetys ja yleislähetys
 
 unicast/multicast/broadcast
-
-
-## IPv4
-
-IPv4 osoitteiden hallinta, hierarkinen osoite, aliverkkojen osoitteet,  CIDR ( Classless interDomain Routing)
-
-## IPv6
 
 
 ## Tunnelointi
