@@ -7,12 +7,26 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Tiedät mitä olio-ohjelmointi tarkoittaa.
-- Olet kuullut käsitteet luokka ja olio.
+- Osaat kuvata IP-protokollan toimintaperiaatteet ja sanomarakenteen.
 
 </text-box>
 
 Aloitamme nyt ensiaskeleet olio-ohjelmointiin hyvin perinteisen teknologian eli diaesityksen kautta. Käy esitys läpi ja vastaa alla olevaan kysymykseen.
+
+## Monilähetys ja yleislähetys
+
+unicast/multicast/broadcast
+
+
+## Tunnelointi
+
+## IPv4 Reititystaulu
+
+## Reititysalgoritmi
+
+## Reitittimen toiminta ja rakenne
+
+## ICMP??
 
 <pdf-slideshow>
 
