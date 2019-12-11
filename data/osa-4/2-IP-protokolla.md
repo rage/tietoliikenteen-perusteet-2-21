@@ -30,13 +30,14 @@ IPv4:n mukaisen paketin kentät ovat seuraavat:
 * **Kolmas sana** eli bitit 64-95
 * sanan ensimmäinen tavu: paketin elinaika, hyppylaskuri, eli kuinka monta edelleenlähetystä paketille saa korkeintaan tehdä. Reititin vähentää tätä aina yhdellä.
 * sanan toinen tavu: Protokollan numero. Mille protokollalle data välitetään. Tyypillisiä arvoja ovat 6-TCP ja 17-UDP.
-* sanan kolmas ja neljäs tavu: Tarkistussumma. Otsikon tarkistussumma, jotta sen oikeellisuus voidaan tarkistaa.
+* sanan kolmas ja neljäs tavu: Tarkistussumma. Otsakkeen tarkistussumma, jotta sen oikeellisuus voidaan tarkistaa.
 * **Neljäs sana** eli bitit 96-127
 * Lähettäjän IPv4 osoite
 * **Viides sana** eli bitit 128-159
 * Vastaanottajan IPv4 osoite
 * **Mahdolliset optiot** Näiden pitää olla myös kokonaisia 32-bittisiä sanoja. Yleensä näitä ei käytetä, joten data alkaa heti 5. sanan jälkeen
 
+Otsakkeen lisäksi paketissa on sitten varsinainen data. Vastaanottajalla verkkokerros antaa tämän datan otsakkeen mukaiselle protokollalle, joka yleensä on kuljetuskerroksen protokolla. Joissakin tilanteisss kyseessä voi myös olla jokin verkkokerroksen omista protokollista. 
 
 
 
