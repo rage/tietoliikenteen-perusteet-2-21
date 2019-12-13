@@ -43,15 +43,15 @@ IPv4:ssä on määritelty, että yhden lähetetyn paketin voi matkalla pilkkoa u
 
 Fragmentointi edellyttää reitittimiltä lisätoiminnallisuutta ja hidastaa pakettien uudelleenlähetystä, kun niitä mitää muokata. Toisaalta fragmentointi on välttämätöntä, jos IP-paketti on suurempi kuin mitä linkkikerros pystyy kuljettamaan yhdessä kehyksessä. Mikäli pakettia ei voisi pilkkoa, sitä ei voisi lähettää eteenpäin, joten viestijöiden näkökulmasta se vain katoaa matkalla.
 
-IPv6:ssa suunnittelun lähtökohtana on ollut pakettien uudelleenlähetyksen mahdollisimman sujuva toiminta ja siksi siitä on jätetty kokonaan pois mahdollisuus pakettien fragmentointiin. Siinä on lähettäjälle tarjolla protokolla, jolla lähettäjä voi tarkistaa mikä on maksimipaketin reitillä lähettäjälä vastaanottajalle. IPv6:ssa reititin vain pudottaa liian suuren paketin, jota se ei voi lähettää eteenpäin. Se lähettää tällaisesta tilanteesta kontrolliprotokollan (Internet Control Message Protocol v6, ICMPv6) mujkaisen viestin paketin alkuperäiselle lähettäjälle. Näin lähettäjä saa tiedon paketin maksimikoosta ja voi jatkossa huolehtia siitä, että lähetettävät paketit ovat tätä pienempiä.
+IPv6:ssa suunnittelun lähtökohtana on ollut pakettien uudelleenlähetyksen mahdollisimman sujuva toiminta ja siksi siitä on jätetty kokonaan pois mahdollisuus pakettien fragmentointiin. Siinä on lähettäjälle tarjolla protokolla, jolla lähettäjä voi tarkistaa mikä on maksimipaketin reitillä lähettäjälä vastaanottajalle. IPv6:ssa reititin vain pudottaa liian suuren paketin, jota se ei voi lähettää eteenpäin. Se lähettää tällaisesta tilanteesta kontrolliprotokollan (Internet Control Message Protocol v6, ICMPv6) mukaisen viestin paketin alkuperäiselle lähettäjälle. Näin lähettäjä saa tiedon paketin maksimikoosta ja voi jatkossa huolehtia siitä, että lähetettävät paketit ovat tätä pienempiä.
 
-
+[IPv6](https://fi.wikipedia.org/wiki/IPv6) pakettien otsakeita on myös virtaviivaistettu. Otsake on kiinteänkokoinen (320 bittiä) eikä sisällä tarkistussummaa. Otsakkeen neljä ensimmäistä bittiä ovat versionumero kuten IPv4:ssä. Tämä on välttämätöntä, jotta pakettia käsittelevä solmu voi tunnistaa kumman protokollan mukainen viesti on kyseessä. IPv6:ssä näiden bittien arvo on siis 6 eli binäärilukuna 0110. Koska tämä kiinteä otsake ei aina riitä, IPv6 sallii, että datan alussa voi olla lisäotsakkeita, joiden tunnistamiseen on kiinteä kenttä. Tämä 'seuraava otsake' kenttä kertoo siis minkä protokollan mukainen otsake on datakentän alussa. Tässä käytetään samoja protokollanumeroita kuin IPv4:n kentässä 'protokolla numero'. Näin IPv6:n otsake saadaan pidettyä selkeänä ja yksinkertaisena reitittimien kannalta. Reitittimien ei tarvitse välittää näistä data-alueen tiedoista. 
 
 
 
 ## Monilähetys ja yleislähetys
 
-unicast/multicast/broadcast
+unicast/multicast/broadcast / anycast
 
 
 ## Tunnelointi
