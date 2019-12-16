@@ -48,23 +48,21 @@ IPv6:ssa suunnittelun lähtökohtana on ollut pakettien uudelleenlähetyksen mah
 [IPv6](https://fi.wikipedia.org/wiki/IPv6) pakettien otsakeita on myös virtaviivaistettu. Otsake on kiinteänkokoinen (320 bittiä) eikä sisällä tarkistussummaa. Otsakkeen neljä ensimmäistä bittiä ovat versionumero kuten IPv4:ssä. Tämä on välttämätöntä, jotta pakettia käsittelevä solmu voi tunnistaa kumman protokollan mukainen viesti on kyseessä. IPv6:ssä näiden bittien arvo on siis 6 eli binäärilukuna 0110. Koska tämä kiinteä otsake ei aina riitä, IPv6 sallii, että datan alussa voi olla lisäotsakkeita, joiden tunnistamiseen on kiinteä kenttä. Tämä 'seuraava otsake' kenttä kertoo siis minkä protokollan mukainen otsake on datakentän alussa. Tässä käytetään samoja protokollanumeroita kuin IPv4:n kentässä 'protokolla numero'. Näin IPv6:n otsake saadaan pidettyä selkeänä ja yksinkertaisena reitittimien kannalta. Reitittimien ei tarvitse välittää näistä data-alueen tiedoista. 
 
 
+## Paketin kuljetus verkossa
 
-## Vastaaottajien määrä?
+Internetin toiminnalle keskeistä on, että verkkokerros osaa kuljettaa IP-paketin lähettäjältä vastaanottajalle. Verkkokerroksella pitää siis olla riittävästi toiminnallisuutta, jotta paketti voi edetä etappikerrallaan kohti vastaanottajaa ja lopulta päästä perille. Tätä verkon toiminnallisuutta kutsutaan reititykseksi. Paketti siis reititetään lähettäjältä vastaanottajalle. Tarkastellaan reitittimien yksityiskohtaisempaa toimintaa seuraavassa aliluvussa.  Koska internetissä ei normaalisti varata reittejä etukäteen, on reitittimillä oltava riittävä tieto verkon rakenteesta, jotta ne osaavat lähettää paketin eteenpäin oikeaan suuntaan. Tätä tietoa säilytetään reititystauluissa. Käymme tällä kurssilla läpi vain IPv4:n mukaiset reititystaulut.
 
-Tällä kurssilla olemme keskittyneet etupäässä viestien siirtoon yhden lähettäjän ja yhden vastaanottajan välillä. Tämän [täsmälähetyksen](https://fi.wikipedia.org/wiki/T%C3%A4sm%C3%A4l%C3%A4hetys) (engl. unicast) lisäksi käytettävissä on myös [yleislähetys](https://fi.wikipedia.org/wiki/Yleisl%C3%A4hetys)(engl. broadcast) ja [ryhmälähetys](https://fi.wikipedia.org/wiki/Ryhm%C3%A4l%C3%A4hetys) (engl. multicast). Nämä kolme viestien lähetystapaa ovat käytössä IPv4:ssä. IPv6:ssa tarjolle tulee monilähetyksen erikoistapaus [jokulähetys](https://fi.wikipedia.org/wiki/Jokul%C3%A4hetys) (engl. anycast) ja poistuu mahdollisuus yleislähetykseen kaikille saman verkon laitteille.
+Toisaalta verkossa liikkuu sekä IPv4:n että IPv6:n mukaisia paketteja. Jos reititin osaa käsitellä niitä molempia, niin silloin sille voi lähettää paketteja välitettäväksi kummalla tahansa versiolla. Jos reititin ei osaa käsitellä kuin IPv4:n mukaisia paketteja, niin sille ei kannata lähettää IPv6:n mukaisia paketteja, koska se vain pudottaa ne pois verkosta. Mikäli paketti pitää välittää verkossa tällaisten reitittimien kautta joudutaan tunneloimaan (engl. tunnelin) eli rakentamaan tunneli, jossa toisen protokollan viesti kulkee toisen protokollan sisällä. Tällainen tunneli muodostetaan siis kahden sellaisen reitittimen välille, jotka hallitsevat kummankin protokollaversion. Tämä tehdään "piilottamalla" tuntematon protokollaversio tunnetun protokollan
 
-Täsmälähetyksessä lähettäjä lähettää viestin täsmälleen yhdelle vastaanottajalle, joka tunnistetaan vastaanottajan IP-osoitteella. Tämä on yleisin tapa viestiä internetissä laitteiden välillä.
+KUVA::  Kuten kirjan kuva 4.12  (jossa on tunneloituna IPv6.
 
-Yleislähetyksessä lähettäjä lähettää viestin kaikille laitteille, jotka voivat teknisesti kuulla sen lähettämät viestit. Tämä kuormittaa verkon toimintaa merkittävästi ja siksi on määritelty, että yleislähetykset ovat sallittuja vain saman aliverkon sisällä. IPv4:ssä on yksi täysin geneerinen yleislähetysosoite 255.255.255.255, jota mikään reititin ei välitä eteenpäin.  Jos samaan aliverkkoon kuuluvia osia on reitittimen eri puolilla ja yleislähetyksen on tarkoitus tavoittaa kaikki kyseisen aliverkon laitteet, niin pitää käyttää kyseisen aliverkon omaa yleislähetysosoitetta, jossa alkuosa on aliverkon tunniste ja loppuosa on pelkkiä ykkösbittejä, kuten tuossa geneerisessä yleislähetysosoitteessakin. Wikipedian sivulla [yleislähetys](https://fi.wikipedia.org/wiki/Yleisl%C3%A4hetys) on yksi esimerkki tästä, käy lukemassa se.
-
-Ryhmälähetystä käytetään silloin, kun lähettäjä haluaa lähettää vain yhden viestin, mutta toivoo sen menevän perille useammalle vastaanottajalle. Tyypillinen ryhmälähetystä käyttävä internetpalvelu on IPTV. Ei ole järkevää, että lähettäjä lähettäisi saman viestin erikseen jokaiselle vastaanottajalle. Se kuormittaisi sekä lähettäjää että verkko tarpeettomasti, kun kuitenkin viestin sisältö on täysin identtinen kaikille vastaanottajille. IPv4:ssä osoitteet 224.0.0.0 – 239.255.255.255 (eli luokka D) on varattu näille ryhmälähetyksille. IPv6:ssa puolestaan ryhmälähetys on otettu huomioon jo protokollan suunnitteluvaiheessa siten, että siinä on tuki useammille erilaisille ryhmille.  IPv4:ssä D-luokan osoitteita voi käyttää ryhmälähetyksissä vain saman aliverkon sisällä. Tällöin käytetään yleensä osoitetta 224.0.0.1. IPv6:ssa on varattu osoite ff02::1::::: tätä vastaavaan käyttöön.
-
-Jokulähetys on tavallaan ryhmälähetyksen tai yleislähetyksen erikoistapaus. Siinä mahdollisia viestin vastaanottajia on useita, mutta yksi viesti päätyy kuitenkin vain yhdelle vastaanottajalle. Lähettäjä ei lähettäessään välitä mille ryhmän jäsenelle viesti päätyy, jokainen niistä osaa asian käsitellä. Tämän tyyppinen viestinlähetys sopii sellaiseen tilanteeseen, jossa palvelin on kuormituksen vuoksi monistettu ja kaikki kopiot ovat toiminnassa. Internetin nimipalvelu on hyvä esimerkki tämän kaltaisesta tilanteesta. Lähettäjä haluaa vastauksen nimipalvelukysymykseensä, mutta sitä ei kiinnosta mikä auktorisoiduista nimipalvelijoista voisi sen vastata.
+### IPv4 Reititystaulu
 
 
-## Tunnelointi
 
-## IPv4 Reititystaulu
+### Tunnelointi
+
+
 
 ## Reititysalgoritmi
 
