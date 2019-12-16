@@ -51,7 +51,13 @@ IPv6:ssa suunnittelun lähtökohtana on ollut pakettien uudelleenlähetyksen mah
 
 ## Monilähetys ja yleislähetys
 
-unicast/multicast/broadcast / anycast
+Tällä kurssilla olemme keskittyneet etupäässä viestien siirtoon yhden lähettäjän ja yhden vastaanottajan välillä. Tämän [täsmälähetyksen](https://fi.wikipedia.org/wiki/T%C3%A4sm%C3%A4l%C3%A4hetys) (engl. unicast) lisäksi käytettävissä on myös [yleislähetys](https://fi.wikipedia.org/wiki/Yleisl%C3%A4hetys)(engl. broadcast) ja [ryhmälähetys](https://fi.wikipedia.org/wiki/Ryhm%C3%A4l%C3%A4hetys) (engl. multicast). Nämä kolme viestien lähetystapaa ovat käytössä IPv4:ssä. IPv6:ssa tarjolle tulee monilähetyksen erikoistapaus [jokulähetys](https://fi.wikipedia.org/wiki/Jokul%C3%A4hetys) (engl. anycast) ja poistuu mahdollisuus yleislähetykseen kaikille saman verkon laitteille.
+
+Täsmälähetyksessä lähettäjä lähettää viestin täsmälleen yhdelle vastaanottajalle, joka tunnistetaan vastaanottajan IP-osoitteella. Tämä on yleisin tapa viestiä internetissä laitteiden välillä.
+
+Yleislähetyksessä lähettäjä lähettää viestin kaikille laitteille, jotka voivat teknisesti kuulla sen lähettämät viestit. Tämä kuormittaa verkon toimintaa merkittävästi ja siksi on määritelty, että yleislähetykset ovat sallittuja vain saman aliverkon sisällä. IPv4:ssä on yksi täysin geneerinen yleislähetysosoite 255.255.255.255, jota mikään reititin ei välitä eteenpäin.  Jos samaan aliverkkoon kuuluvia osia on reitittimen eri puolilla ja yleislähetyksen on tarkoitus tavoittaa kaikki kyseisen aliverkon laitteet, niin pitää käyttää kyseisen aliverkon omaa yleislähetysosoitetta, jossa alkuosa on aliverkon tunniste ja loppuosa on pelkkiä ykkösbittejä, kuten tuossa geneerisessä yleislähetysosoitteessakin. Wikipedian sivulla [yleislähetys](https://fi.wikipedia.org/wiki/Yleisl%C3%A4hetys) on yksi esimerkki tästä, käy lukemassa se.
+
+Ryhmälähetystä käytetään silloin, kun lähettäjä haluaa lähettää vain yhden viestin, mutta toivoo sen menevän perille useammalle vastaanottajalle. Tyypillinen ryhmälähetystä käyttävä internetpalvelu on IPTV. Ei ole järkevää, että lähettäjä lähettäisi saman viestin erikseen jokaiselle vastaanottajalle. Se kuormittaisi sekä lähettäjää että verkko tarpeettomasti, kun kuitenkin viestin sisältö on täysin identtinen kaikille vastaanottajille. IPv4:ssä osoitteet 224.0.0.0 – 239.255.255.255 (eli luokka D) on varattu näille ryhmälähetyksille. IPv6:ssa puolestaan ryhmälähetys on otettu huomioon jo protokollan suunnitteluvaiheessa siten, että siinä on tuki useammille erilaisille ryhmille.  IPv4:ssä D-luokan osoitteita voi käyttää ryhmälähetyksissä vain saman aliverkon sisällä. Tällöin käytetään yleensä osoitetta 224.0.0.1. IPv6:ssa on varattu osoite ff02::1::::: tätä vastaavaan käyttöön.
 
 
 ## Tunnelointi
