@@ -1,6 +1,6 @@
 ---
-path: '/osa-5/4-oliot-ja-viitteet'
-title: 'Oliot ja viitteet'
+path: '/osa-5/4-kytkin'
+title: 'Kytkin'
 hidden: false
 ---
 
