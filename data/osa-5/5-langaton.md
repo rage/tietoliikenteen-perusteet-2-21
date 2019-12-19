@@ -1,6 +1,6 @@
 ---
-path: '/osa-5/5-listat-ja-viitteet'
-title: 'Listat ja viitteet'
+path: '/osa-5/5-langaton'
+title: 'Langaton verkko'
 hidden: false
 ---
 
@@ -12,6 +12,15 @@ hidden: false
 - Osaat käyttää listaa oliomuuttujana.
 
 </text-box>
+
+<b>
+-	Langaton linkki, WLAN, WiFi
+o	kanavat, kätketyn aseman ongelma, ylimääräisen havaitun aseman ongelma
+o	osoitteiden käyttö: langattomalta internetiin, internestistä langattomalle
+o	CDMA
+-	langattomat verkot (Markun ehdotus)
+</b>
+
 
 
 Tarkastellaan vielä olioiden -- tai viittaustyyppisten muuttujien -- käyttöä listalla. Kun olio lisätään listalle, listalle kopioidaan viite. Kuten aiemmin, olion sisäisestä tilasta ei luoda kopiota, vaan listalle lisätään viite olemassa olevaan olioon.
