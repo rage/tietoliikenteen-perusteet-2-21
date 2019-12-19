@@ -1,6 +1,6 @@
 ---
-path: '/osa-5/3-metodien-ja-konstruktorien-kuormittaminen'
-title: 'Metodien ja konstruktorien kuormittaminen'
+path: '/osa-5/3-vuorojen-jakelu'
+title: 'Lähetysvuorojen jakelu'
 hidden: false
 ---
 
@@ -11,6 +11,10 @@ hidden: false
 - Osaat luoda luokkaan useampia samannimisiä metodeja.
 
 </text-box>
+
+## Yhteiskäyttöinen kanava
+
+## Lähetysvuorojen jakelu
 
 
 Palataan jälleen henkilöitä käsittelevän luokan pariin. Luokka `Henkilo` näyttää tällä hetkellä seuraavalta:
