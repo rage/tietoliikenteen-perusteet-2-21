@@ -52,11 +52,59 @@ IPv6:ssa suunnittelun lähtökohtana on ollut pakettien uudelleenlähetyksen mah
 
 Internetin toiminnalle keskeistä on, että verkkokerros osaa kuljettaa IP-paketin lähettäjältä vastaanottajalle. Verkkokerroksella pitää siis olla riittävästi toiminnallisuutta, jotta paketti voi edetä etappikerrallaan kohti vastaanottajaa ja lopulta päästä perille. Tätä verkon toiminnallisuutta kutsutaan reititykseksi. Paketti siis reititetään lähettäjältä vastaanottajalle. Tarkastellaan reitittimien yksityiskohtaisempaa toimintaa seuraavassa aliluvussa.  Koska internetissä ei normaalisti varata reittejä etukäteen, on reitittimillä oltava riittävä tieto verkon rakenteesta, jotta ne osaavat lähettää paketin eteenpäin oikeaan suuntaan. Tätä tietoa säilytetään reititystauluissa. Käymme tällä kurssilla läpi vain IPv4:n mukaiset reititystaulut.
 
-Toisaalta verkossa liikkuu sekä IPv4:n että IPv6:n mukaisia paketteja. Jos reititin osaa käsitellä niitä molempia, niin silloin sille voi lähettää paketteja välitettäväksi kummalla tahansa versiolla. Jos reititin ei osaa käsitellä kuin IPv4:n mukaisia paketteja, niin sille ei kannata lähettää IPv6:n mukaisia paketteja, koska se vain pudottaa ne pois verkosta. Mikäli paketti pitää välittää verkossa tällaisten reitittimien kautta joudutaan tunneloimaan (engl. tunnelin) eli rakentamaan tunneli, jossa toisen protokollan viesti kulkee toisen protokollan sisällä. Tällainen tunneli muodostetaan siis kahden sellaisen reitittimen välille, jotka hallitsevat kummankin protokollaversion. Tämä tehdään "piilottamalla" tuntematon protokollaversio tunnetun protokollan
+Toisaalta verkossa liikkuu sekä IPv4:n että IPv6:n mukaisia paketteja. Jos reititin osaa käsitellä niitä molempia, niin silloin sille voi lähettää paketteja välitettäväksi kummalla tahansa versiolla. Jos reititin ei osaa käsitellä kuin IPv4:n mukaisia paketteja, niin sille ei kannata lähettää IPv6:n mukaisia paketteja, koska se vain pudottaa ne pois verkosta. Mikäli paketti pitää välittää verkossa tällaisten reitittimien kautta joudutaan tunneloimaan (engl. tunnelin) eli rakentamaan tunneli, jossa toisen protokollan viesti kulkee toisen protokollan sisällä. Tällainen tunneli muodostetaan siis kahden sellaisen reitittimen välille, jotka hallitsevat kummankin protokollaversion. Tämä tehdään "piilottamalla" tuntematon protokollaversio tunnetun protokollan sisään.
 
-KUVA::  Kuten kirjan kuva 4.12  (jossa on tunneloituna IPv6.
 
 ### IPv4 Reititystaulu
+
+Kun reititin saa linkistä paketin, niin sen täytyy päättää mihin linkkiin paketti lähetetään seuraavaksi. Tavoitteena reitittimellä on siis lähettää paketti edelleen sellaiseen linkkiin, jonka kautta se voi päästä vastaanottajalle. Päätös linkin valinnasta perustuu reititystaulun sen hetkiseen sisältöön.  Reitittimien lisäksi myös solmuilla (eli käyttäjien tietokoneilla, palvelimilla, yms.) on reititystaulu, jonka perusteella se tekee päätöksiä viestien lähettämisestä. Englanninkielisen wikipedian sivulla [Routing table](https://en.wikipedia.org/wiki/Routing_table) on esimerkki kotiverkkoon liitetyn tietokoneen reititystaulusta:
+
+| Network Destination |	Netmask |	Gateway |	Interface |	Metric |
+| ------------------- | --------------- | ------------- | -------------  | ------ |
+| 0.0.0.0	| 0.0.0.0	    | 192.168.0.1	| 192.168.0.100 |	10 |
+| 127.0.0.0 |	255.0.0.0	| 127.0.0.1	| 127.0.0.1	| 1 |
+| 192.168.0.0 |	255.255.255.0 |	192.168.0.100 |	192.168.0.100 |	10 |
+| 192.168.0.100	| 255.255.255.255 |	127.0.0.1	| 127.0.0.1	| 10 |
+| 192.168.0.1 |	255.255.255.255 |	192.168.0.100	| 192.168.0.100 |	10 |
+
+Tässä reititystaulussa on useita kenttiä. Ensimmäisenä on kohdeverkko (network destination) ja siihen liittyvä verkonpeite (netmask). Näillä yhdessä voidaan tunnistaa IP-paketin vastaanottajan osoitteen perusteella verkko, johon paketti pitää tältä laitteelta toimittaa. Huomaa, että kyseinen verkko ei välttämättä ole vastaanottajan oma verkko, vaan lähinnä suunta, johon tältä laitteelta tuohon osoitteeseen menevät viestit pitää lähettää. Yhdyskäytävä (gateway) kertoo siis "laitteen", jonka kautta kyseisen verkon voi saavuttaa. Rajapinta (interface) auttaa tunnistamaan paikallisen linkin, verkkokortin tai muun paikallinen rajapinnnan, jonka kautta liikenne yhdyskäytävälle kulkee. Viimeinen kenttä kustannus (metric) auttaa valitsemaan useammasta mahdollisesti vaihtoehdosta kustannusten kannalta parhaimman.
+
+Koska tämä reititystaulu on kotiverkon laitteesta, niin siinä näkyy laitteen oma paikallinen, laitteen sisäinen osoite, 127.0.0.1 sekä laitteen oma IP-numero 192.168.0.100, jolla tunnistetaan laitteen oma verkkokortti. Lisäksi tästä reititystaulusta löytyy oletusyhdyskäytävän osoite 192.169.0.1, joka on kotiverkon NAT-reitittimen osoite.
+
+Kuten huomaat, niin tässä reititystaulussa on varsin paljon rivejä. Jos voisimme katsoa internetin syövereissä olevan reitittimen reititystaulua, niin siinä näitä rivejä olisi paljon enemmän.
+
+Käytämme seuraavissa tehtävissä yksinkertaisempaa reititystaulua, jossa kohdeverkko ja verkonpeite on yhdistetty, rajapinta on jätetty kokonaan pois ja yhdyskäytävä on saatettu korvata vain linkin numerolla. Joskus kustannuskin voi puuttua. Ylläoleva reititystaulu tällä tavalla yksinkertaistettuna voisi olla
+
+| Osoite        |	linkki / (yhdyskäytävä/rajapinta) |	
+| ---------------- | --------------------- |
+| x.x.x.x	(default)|  1 (192.168.0.1)	|
+| 127.0.0.0/8 | 0 (127.0.0.1)	|
+| 192.168.0.0/24 | 1  (samassa verkossa) |
+
+Nyt 'x':llä merkityt osat osoitteesta ovat aliverkon sisäisiä laitenumeroita ja vain numerot kertovat reitityksen kannalta merkityksellistä tietoa osoitteesta. Koska käytämme luokatonta reititystä, niin reititin etsii reititystaulusta sen rivin, jonka osoite-kentässä on pisin yhteinen alkuosa etsittävän osoitteen kanssa. Näin kaikki osoitteet, jotka eivät ala 127 tai 191.168.0 ohjataan reitittimelle ja viestit, jotka ovat omaan aliverkkoon kuuluvia 192.168.0.x lähetetään vain verkkoon. Koneen sisäisiä viestejä 127 ei edes lähetetä verkkoon, vaan ne käsitellään koneen sisällä. 
+
+Joskus reititystaulusta (engl. router table) saatetaan käyttää englanniksi nimitystä forwarding table, ja joskus tuo uudelleenlähetystaulu on isommasta kaikki mahdolliset reitit kattavasta reititystaulusta poimittu osa, joka kattaa uudelleenlähetyksessä tarvittavien aktiivisten reittien tiedot. Suomeksi näistä molemmista käytetään yleensä  nimeä reititystaulu.
+
+Seuraavassa tehtävässä tarvitset tätä reititystaulua:
+| Osoite/peite        |	linkki |	
+| ---------------- | -------- |
+| 140.24.7.0/26 |  m0 |
+| 140.24.7.62/26 | m1 |
+| 140.24.7.128/26 | m2 |
+| 140.24.7.192/26 | m3 |
+| 0.0.0.0./0 | m4 |
+
+<quiz id="b2325dad-8de7-43fd-aed5-eb8f16a85487"></quiz>
+
+Koska osoitteiden tulkinnan periaatteena on tuo pisin yhteinen alkuosa, on mahdollista yhdistellä reitittimen rivejä, jos ne kattavat yhdessä koko osoiteavaruuden. Esimerkiksi tuon tehtävässä olleen reititystaulun osoitteet kaikki yhdessä voidaan kattaa osoitteella 140.24.7.0/24, joka voisi siis olla tälle reitittimelle liikennettä ohjaavan reitittimen reititystaulussa.
+
+Luokaton reititys ja pisimmän yhteisen alkuosan käyttäminen antaa myös mahdollisuuden järjestellä verkon arkkitehtuuria uudelleen ilman, että laitteiden julkisia IP-osoitteita tarvitsee vaihtaa.  Edellä joku noista aliverkoista (vaikkapa 140.24.7.128/26) voitaisiin siirtää tästä reitittimestä jollekin muulle reitittimelle, vaikkapa tätä reititintä edeltävälle reitittimelle, jolloin sen reititystaulussa olisikin molemmat osoitealueet 140.24.7.0./24 ja 140.24.7.128/26, vaikka ne ovat päällekkäisiä. Se osaisi kuitenkin päätellä, että laitteelle 140.24.7.165 lähetetty viesti kuuluu lähettää tuon pienemmän osoitealueen 140.24.7.128/26 suuntaan eikä tuohon 140.24.7.0/24 suuntaan, koska sillä pidempi yhteinen alkuosa tuon pienemmän verkon osoitteiden kanssa.  Suosittelen, että muunnat kaikki kolme osoitetta biteiksi ja lasket yhteen sopivien bittien lukumäärät ja näin varmistut siitä, että reititin oikeasti osaa tuon päätöksen tehdä näiden periaatteiden mukaan.
+
+<quiz id="a1421fd0-806a-42c2-bc75-d52afe982742"></quiz>
+
+Edellä jo tarkasteltiinkin osoiteavaruuden 140.24.7.0/24 jakamista neljään yhtäsuureen osaan, joilla kullakin 26 bittinen aliverkon peite, eli aliverkot eroavat toisistaan kahden bitin verran (bitit 24 ja 25, kun bitit numeroidaan alkaen nollasta). Olisimme ihan yhtä hyvin voineen jakaa osoiteavaruuden eri suuruisiin osiin esimerkiksi 140.24.7.0/25, 140.24.7.128/26 ja 140.24.7.192/26  tai 140.24.7.0/26, 140.24.7.62/26 ja 140.24.7.128/25. Nyt yksi alue kattaa puolet osoiteavaruudesta. Tarkasta binäärilukujen avulla, miksi emme voineet yhdistää kahta keskimmäistä aluetta yhdeksi, vaan alueen piti olla joko numeroavaruuden alussa tai lopussa.
+
+<quiz id="a999dbaf-870e-4eb9-a8eb-e0323aa72347"></quiz>
 
 
 
@@ -68,10 +116,14 @@ Piirrä aluksi itsellesi kuva, jossa verkon reunoilla olevilla solmuilla A ja Z 
 
 Kuvassa on siis kuusi solmua A, B, C, X, Y ja Z, jotka on yhdistetty toisiinsa siten, että viestit A:lta voivat päätyä Z:lle ja päinvastoin.
 
-Nyt A lähettää IPv6-paketin Z:lle. Tässä paketissa viestein lähettäjä on A ja vastaanottaja on Z. Koska reitti kulkee B:n kautta, niin tämä paketti ohjataan ensin B:lle. Reititin B ei voi suoraan lähettää viestiä eteenpäin, koska A:n lähettämä viesti on IPv6:n mukainen ja C osaa käsitellä vain IPv4:n mukaisia viestejä. Siksi "muodostetaan tunneli" B:n ja Y:n välille siten, että B laittaa IPv6:n  mukaisen paketin IPv4-paketin sisään dataksi. Tällä IPv4-paketilla lähettäjänä on B ja vastaanottajana Y. Nyt B:n ja Y:n välillä kulkee IPv4:n mukainen paketti, jonka C, X ja muut niiden välillä olevat reitittimet osaavat käsitellä ja ohjata oikeaan suuntaan.
+Nyt A lähettää IPv6-paketin Z:lle. Tässä paketissa viestin lähettäjä on A ja vastaanottaja on Z. Koska reitti kulkee B:n kautta, niin tämä paketti ohjataan ensin B:lle. Reititin B ei voi suoraan lähettää viestiä eteenpäin, koska A:n lähettämä viesti on IPv6:n mukainen ja C osaa käsitellä vain IPv4:n mukaisia viestejä. Siksi "muodostetaan tunneli" B:n ja Y:n välille siten, että B laittaa IPv6:n  mukaisen paketin IPv4-paketin sisään dataksi. Tällä IPv4-paketilla lähettäjänä on B ja vastaanottajana Y. Nyt B:n ja Y:n välillä kulkee IPv4:n mukainen paketti, jonka C, X ja muut niiden välillä olevat reitittimet osaavat käsitellä ja ohjata oikeaan suuntaan.
 
+Kun IPv4-paketti saapuu Y:lle, joka siis on kyseisen paketin vastaanottaja, niin Y havaitsee, että paketissa on sisällä IPv6-paketti. Y purkaa tuon IPv4 kuoren pois ja lähettää paljastuvan IPv6-paketin sen vastaanottajalle eli Z:lle.
 
+Yllä on kuvattu niin sanottu [IP-in-IP](https://en.wikipedia.org/wiki/IP_in_IP) tunnelointi. Jo edeltävällä kurssilla käsittelimme virtuaalista yksityisverkkoa VPN:ää, jonka toiminta perustuu tunnelointiin. VPN:ssä tunnelissa voidaan kuljettaa useita eri protokollia, kun yllä kuvattu esimerkki IPv6:n lähettämisestä IPv4-paketissa koski vain yhtä protokollaa.
 
+Yleensä tunneli toteutetaan käyttäen salavaa [IPSec](https://fi.wikipedia.org/wiki/IPsec)-protokollaa, jolloin tunnelissa kulkeva tieto on salattua ja vain tunnelin muodostava kuori on salaamatonta. Se on tyypillisin protokolla myös VPN:n toteutuksessa. Joissakin suosituksissa korostetaan, että tunnelit pitäisi aina tehdä käyttäen salaavaa protokollaa, jolloin viestinnän turvallisuutta saadaan parannettua.
 
-<quiz id="2b9e2bdd-1bc3-4058-93e0-df0c85713f4b"></quiz>
+<quiz id="b425e36b-8f75-408b-94e9-ee2368bbc257"></quiz>
+
 
