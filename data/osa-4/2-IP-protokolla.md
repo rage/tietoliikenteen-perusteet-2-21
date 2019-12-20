@@ -62,19 +62,16 @@ KUVA::  Kuten kirjan kuva 4.12  (jossa on tunneloituna IPv6.
 
 ### Tunnelointi
 
+Voi halutessasi lukea tunneloinnista lyhyen kuvauksen englanninkielisen wikipedian sivulta [IP Tunnel](https://en.wikipedia.org/wiki/IP_tunnel)
+
+Piirrä aluksi itsellesi kuva, jossa verkon reunoilla olevilla solmuilla A ja Z on IPv6:n mukaiset IP-osoitteet ja ne haluavat kommunikoida keskenään. Ne ovat siis eri aliverkoissa ja eri reunoissa piirrosta. Niiden aliverkot on yhdistetty internetiin reitittimillä (B ja Y), jotka osaavat aliverkon edellyttämää IPv6:sta ja internetin suuntaan ne osaavat myös IPv4:sta, koska reitittimet (C ja X), joiden kautta niiden viestit siirtyvät internetiin on vielä sen verran vanha, että se osaa vain IPv4:ää. Reitti C ja X:n välillä on olemassa, mutta sen yksityiskohdat eivät ole tiedossa.
+
+Kuvassa on siis kuusi solmua A,B,C,X,Y ja Z, jotka on yhdisetty toisiinsa siten, että viestit A:lta voivat päätyä Z:lle ja päinvastoin.
+
+Nyt A lähettää IPv6-paketin Z:lle. Tässä paketissa viestein lähettäjä on A ja vastaanottaja on Z. Koska reitti kulkee B:n kautta, niin tämä paketti ohjataan ensin B:lle. Reititin B ei voi suoraan lähettää viestiä eteenpäin, koska A:n lähettämä viesti on IPv6:n mukainen ja C osaa käsitellä vain IPv4:n mukaisia viestejä. Siksi "muodostetaan tunneli" B:n ja Y:n välille siten, että B laittaa IPv6:n  mukaisen paketin IPv4-paketin sisään dataksi. Tällä IPv4-paketilla lähettäjänä on B ja vastaanottajana Y. Nyt B:n ja Y:n välillä kulkee IPv4:n mukainen paketti, jonka C, X ja muut niiden välillä olevat reitittimet osaavat käsitellä ja ohjata oikeaan suuntaan.
 
 
-## Reititysalgoritmi
 
-## Reitittimen toiminta ja rakenne
-
-## ICMP??
-
-<pdf-slideshow>
-
-[a](../slideshows/johdatus-olio-ohjelmointiin.pdf)
-
-</pdf-slideshow>
 
 <quiz id="2b9e2bdd-1bc3-4058-93e0-df0c85713f4b"></quiz>
 
