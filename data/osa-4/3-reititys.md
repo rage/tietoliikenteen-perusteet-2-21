@@ -21,13 +21,24 @@ Reitittimet käyttävät reititystauluja pakettien edelleenlähetykseen. Jotta r
 
 Reititys voidaan suunnitella myös hierarkisesti, siten että aliverkkojen (eli autonomisten alueiden) välinen reititys suunnitellaan tai sovitaan erikseen tähän sopivalla menetelmällä, joka internetissä on [Boarder Gateray Protocol](https://fi.wikipedia.org/wiki/BGP) (BGP).  Aliverkojen oma, sisäinen reititys on aliverkon oma asia ja se voidaan tehdä millä tahansa aliverkolle sopivalla tavalla. Internetissä tyypilliset verkon sisäiset reititysprotokollat ovat [Routing Information Protocol](https://fi.wikipedia.org/wiki/Routing_Information_Protocol) (RIP) ja [Open Shortest Path First](https://fi.wikipedia.org/wiki/OSPF) (OSPF). 
 
-Jätämme nuo internetin varsinaiset reititysalgoritmit myöhemmille kursseilla 
+Jätämme nuo internetin varsinaiset reititysalgoritmit myöhemmille kursseilla. Tutustutaan nyt kahteen reititysalgoritmiin, joita ainakin osa protokollista käyttää. Nämä eroavat toisistaan erityisesti siinä miten kattavan tiedon verkosta ja linkkien kustannuksista eli solmujen etäisyyksistä ne tarvitsevat.  Linkkitila-algoritmi (engl. link state algorithm)  tarvitsee täydellisen tiedon verkon rakenteesta kun taas etäisyysvektorialgoritmille (engl- distance vectora algorithm) riittää epätäydellinen kuva verkosta. 
+
+Verkkoja ja verkkoalgoritmeja käsitellään laajemmin tietorakenteet ja algoritmit -kurssilla.
+
+Algoritmien näkökulmasta verkko on sellainen tietorakenne, joka sisältää solmuja ja niiden välisiä yhteyksiä eli linkkejä. Tämä voidaan merkitä G=(N,E), missä G on verkko eli graafi, N on solmujen (engl. node) joukko ja E on linkkien (engl. edge) joukko. Lisäksi merkitään, että c(x,y) on solmujen x ja y välisen linkin kustannus (engl. cost). Linkin kustannus voi olla sen nopeus, kaistanleveys, ruuhkaisuus, rahallinen hinta linkin käytöstä, tai jotain muuta, jolla on numeerinen arvo. Näissä esimerkeissä linkin kustannus on siirron kesto tai hinta kyseisen linkin kautta.
+
+Reititysalgoritmin tavoitteena on siis löytää nopeimmat tai halvimmat reitit solmujen välille. Reitti voi kulkea muiden solmujen kautta, kunhan se kokonaiskustannus on mahdollisista reiteistä pienin.
+
+Käydään näiden algoritmien toiminta läpi esimerkin avulla.
+
+KUVA: Piirrä kuva ja vaihtoehtoiseen tekstiin solmut, linkit ja niiden kustannukset.
+
+## Linkkitila-algoritmi
 
 
-##   Tähän nuo pari kurssilla käytössä ollutta algoritmia kuvattuna
 
 
+## Etäisyysvektorialgoritmi
 
-## Internetin reititysalgoritmeja
 
 
