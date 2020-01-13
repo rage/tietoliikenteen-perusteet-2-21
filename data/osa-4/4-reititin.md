@@ -14,6 +14,8 @@ hidden: false
 
 ## Reititin
 
+Reitittimen perustehtävähän on ohjata sille saapuvat paketit oikeaan suuntaan eteenpäin. Tssä osiossa tarkastellaan reitittimen toimintaa ja rakennetta tähän perustehtävään liittyen. Wikipedian sivu [reititin](https://fi.wikipedia.org/wiki/Reititin) luettelee nykyaikaisen kotiverkon reitittimen tai oikeammin monitoimireitittimen muitakin tehtäviä, joista osa käsitellään muualla tällä kurssilla ja osa jätetään myöhemmillä kursseilla käsiteltäväksi.
+
 
 
 
