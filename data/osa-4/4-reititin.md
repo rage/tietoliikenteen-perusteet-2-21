@@ -26,6 +26,15 @@ KUVA:  Kuvan yläosassa kontrollitaso, jossa vain yksi elementti "reitityspäät
 
 ## Sisääntulo
 
+Paketit siis saapuvat reitittimeen sisääntulon kautta. Sisääntulossa on ensin linkin päätepiste, johon paketin sisältö saapuu fyysisen tason signaaleina. Siitä se päätyy linkkikerroksen käsittelyyn, jossa mm. poistetaan linkkikerroksen kehystiedot paketista. Linkkikerrokseen, se toiminnallisuuteen ja linkkikerroksen kehyksen rakenteeseen tutustutaan tarkemmin seuraavassa luvussa. Linkkikerroksen jälkeen meillä on verkkokerrrokselle kuuluva IP-paketti, joka päätyy sisääntulon kolmanteen vaiheeseen. 
+
+Pakettiin kohdistuva reitityspäätös (eli ulosmenon valinta) tehdään yleensä jo sisäänmenon kolmannessa vaiheessa, jotta paketti saadaan mahdollisimman nopeasti eteenpäin. Yksinkertaisessa reitittimessä, joka käsittelee paketteja yksi kerrallaan tämän reitityspäätös voitaisiiin hyvin tehdä osana reitittimen arkkitehtuuria, mutta nykyaikaiset reitittimet osaavat käsitellä sisääntuloja ja ulosmenoja rinnakkain, joten päätös täytyy tehdä ennenkuin paketti ohjataan laitteen arkkitehtuurin mukaisesti oikeaa ulosmenoon.
+
+Reitityspäätöksen yhteydessä myös paketin IP-otsakkeen tarvittavat kentät päivitetään. Reititin päivittää ainakin paketin elinaikaa, jonka vuoksi sen täytyy laskea IP-paketin otsakkeelle uusi tarkistussumma ja päivittää sekin. Huomaathan, että reitittimen pitää tietää, minkä version mukainen paketti on kyseessä, joten jo ennen reitityspäätöstä sen täytyy tarkistaa IP-paketin versionumero, jotta se osaa käsitellä paketin ja sen otsakkeen kentät oikein.
+
+Kun sisääntulossa tiedetään mihin ulosmenoon paketti pitää ohjata se voidaan antaa arkkitehtuurille siirrettäväksi oikeaan ulosmenoon. Tässä vaiheessa paketti saattaa joutua hetken jonottamaan, jos esimerkiksi joku toinen paketti on juuri siirrossa samaan ulosmenoon tai arkkitehtuurissa ei muuten ole vapaata reittiä paketin siirtämiseksi.
+
+Reitittimien suurin haaste ei ole pakettien välitys sinänsä vaan se, että pakettien välitykseen ei saisi kulua juurikaan aikaa. Jotta gigabitin reititin pystyy välittämään liikennettä tällä nopeudella se ei voi käyttää montaakaan nanosekuntia yhden paketin välittämiseen sisääntulon ulkoreunalta ulosmenon ulkoreunalle. Jos jos paketti ei joudu jonottamaan, niin sen pitää päästä reitittimen läpi muutamassa nanosekunnissa. Jos tämän prosessointiviive on paljon suurempi, niin silloin reititin ei pystykään välittämään liikennettä halutulla nopeudella. Hitaammalla nopeudella reitittimellä on enemmän aikaa paketin käsittelyyn ennenkuin seuraava paketti jo saapuu. Prosessointiviiveen päälle tulevat sitten mahdolliset jonotuksen aiheuttamat jonotusviiveet.
 
 
 ## Ulosmeno
@@ -35,3 +44,8 @@ KUVA:  Kuvan yläosassa kontrollitaso, jossa vain yksi elementti "reitityspäät
 ## Arkkitehtuuri  (kytkentä sisäänmenojen ja ulostulojen välilllä)
 
 
+## Jonotuksen syitä
+
+
+
+https://www.cisco.com/c/en/us/products/collateral/routers/small-business-rv-series-routers/datasheet-c78-742350.html
