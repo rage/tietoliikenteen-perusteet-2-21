@@ -39,12 +39,18 @@ Reitittimien suurin haaste ei ole pakettien välitys sinänsä vaan se, että pa
 
 ## Ulosmeno
 
+Ulosmeno huolehtii sitten saapuneen paketin lähettämistä seuraavaan linkkiin. Kun paketti on päätynyt reittimen sisällä tänne asti sille tehdään vastaavia operaatioita kuin sisääntulossa, mutta päinvastaisessa järjestyksessä. Koska sisääntulossa on jo IP-paketin otsaketiedot päivitetty, niin täällä IP-paketti sijoitetaan linkkikerroksen kehyksen sisään. Tämän uuden kehyksen otsaketiedot päivitetään ja kun linkki on vapaa kehys lähetetään sinne. Koska linkki ei aina on heti vapaa, paketti voi joutua jonottamaan myös ulosmenossa kunnes linkki vapautuu.
 
 
 ## Arkkitehtuuri  (kytkentä sisäänmenojen ja ulostulojen välilllä)
 
+Reitittimien toteutukselle on olemassa useita arkkitehtuurivaihtoehtoja.  Reititin voidaan toteuttaa ihan tavallisella tietokoneella, mutta tällöin liikennöintinopeus ei ole ihan yhtä suuri kuin pelkästään reitititystehtävään suunnitellulla laitteella. Tietokoneen toiminta kurssilla on käsitelty muutamaa tapaa siirtää tietoja tietokoneen sisällä. Näissä tieto voitiin siirtää oheislaitteiden (tässä sisääntulo ja ulosmeno) välillä joko suoraan väylää pitkin tai niin että se ensin kopioitiin (väli)muistiin ja sitten sieltä seuraavalle laitteelle. Nämä tavat, muistin (engl. memory) välityksellä tai väylän (engl. bus) kautta, ovat käytössä myös varsinaisissa reitittimissä. Koska niiden perusmallissa vain yksi paketti kerrallaan voidaan siirtää jostain sisääntulosta johonkin ulosmenoon, ei niillä saada välttämättä toteutettu riittävän nopeita reitittimiä tilanteisiin, joissa reittimellä on paljon yhteyksiä, joita sen pitäisi välittää suurella nopeudella. Tällöin voidaan käyttää reitittimena arkkitehtuurina esimerkiksi erityistä kytkentäverkkoa (engl. interconnection network), jolloin eri sisääntuloista voidaan saman aikaisesti siirtää paketteja eri ulosmenoihin, kunhan kaikki sisääntulot ja ulosmenot ovat erillisiä.  Yhteen ulosmenoon voidaan siirtää vain yksi paketti kerrallaan.
+
 
 ## Jonotuksen syitä
+
+Nyt kun olemme hiukan tutustuneet myös reitittimen sisäiseen toimintaan ja rakenteeseen on helpompi hahmottaa erilaisia syitä reitittimessä syntyvälle jonotusviiveelle ja myös sille miksi sen arviointi etukäteen on vaikeaa tai jopa mahdotonta.
+
 
 
 
