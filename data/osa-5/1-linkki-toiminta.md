@@ -17,7 +17,11 @@ hidden: false
 </text-box>
 
 
-##
+## Linkkikerros
+
+Linkkikerros huolehtii viestin välityksestä vain samassa aliverkossa olevien laitteiden välillä. Muistathan, että reitittimet yhdistävät aliverkkoja toisiinsa, joten reitittimen kummallakin puolella on eri aliverkko ja siksi reitittimen täytyy lähetysvaiheessa muodostaa uusi linkkikerroksen kehys seuraavaa aliverkkoa varten.
+
+Nämä laitteet ovat samassa aliverkossa, joten ne voivat suoraan vastaanottaa toisen laitteen lähettämän signaalin. Samassa aliverkossa voi olla muitakin laitteita, tai sitten siinä on vain nämä kaksi laitetta. Samaan linkkiin liittyvien laitteiden lukumäärä riippuu 
 
 Linkkikerros yleisesti
 
