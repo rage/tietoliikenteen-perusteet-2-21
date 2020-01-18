@@ -42,22 +42,16 @@ Koska viesti ei saa muuttua matkalla on linkkikerroksen havaittava mahdolliset v
 
 ## Linkkikerroksen toteutuksesta
 
-kalvo2 Linkkikerroksen tehtävät / linkkikerros
-Laitetoimintoa
-Siirtää paketin fyysistä linkkiä pitkin koneelta (solmulta (node)) toiselle
-bitit sisään, bitit ulos 
-Kapseloi paketin sopivaan siirtomuotoon
-Siirtokehys (frame)
+Linkkikerroksen toteutus on oltava jokaisessa laitteessa, joka on liitettynä internet-verkkoon. Yleensä linkkikerroksen toiminnallisuus  on toteutettu suoraan laitteistolla. Tietokoneessa on tyypillisesti erillinen verkkosovitin, joka muun tietokoneen kannalta on I/O-laite (Nästä tarkemmin Tietokoneen toiminta -kurssilla). Verkkosovitin liitetään tietokoneen päässä koneen sisäiseen väylään kuten muutkin I/O-laitteet. Tietoliikennekaapeli liitetään sitten verkkosovittimella olevaan liittimeen. Nykyisin verkkosovittimet on usein integroitu osaksi tietokoneen emolevyä, mutta aiemmin ne olivat erillisiä verkkokortteja, joita voi poistaa ja lisätä laitteeseen.  Verkkosovittimessa tai verkkokortissa on oma laiteohjain (engl. device controller), joka on usein toteuttu laitteisto-ohjelmistona (engl. firmware), joka huolehtii linkkikerroksen toiminnoista. Käyttöjärjestelmässä puolestaan on laiteajuri (engl. device dirver), joka huolehtii käyttöjärjestelmän ja laiteohjaimen välisestä kommunikoinnista.
+
+Verkkosovittimen ja sen laiteohjaimen tehtävänä on siis huolehtia viestien lähettämisvaiheessa vähintään vuonvalvonnasta ja bittien koodaamisesta ja lähettämisestä fyysisen linkin edellyttämässä muodossa. Lisäksi sen tehtäviin kuuluu kuunnella kanavaa, tunnistaa itselle saapuvat viestit, vastaanottaa ne ja purkaa fyysisestä signaalista viestin bitit. Myös virhetarkistus kuuluu laiteohjaimen tehtäviin. 
+
+Linkkikerroksella käytettävän siirtokehyksen (engl. frame) muodostaminen verkkokerrokselta saapuvan datagrammin ympärille voi olla joko laiteohjaimen tai laiteajurin tehtävä. Eli se voidaan tehdä joko laitteistolla tai ohjelmistolla. Tässä on vaihtelua eri toteutusten väilllä.
   
 
 KUVA: linkkikerros.svg
 
-Kalvo 4: Miten linkkikerros on toteutettu
-Jokaisessa koneessa!
-Linkkikerroksen toteutus usein “sovittimessa” (esim. verkkokortti)
-Linkki ja fyysinen kerros
-joka liitetään koneen väylään
-Yhdistelmä laitteistoa, ohjelmistoa ja laitteisto-ohjelmisto (firmware)
+
 
 ## Ethernet
 
@@ -73,12 +67,7 @@ Kohteen ja lähteen osoittaminen
 
 
 
-Luotettava siirto
-  Langattomilla linkeillä suuri virhetodennäköisyys
-  Linkkitaso huolehtii oikeellisuudesta
-  Miksi tästä täytyy huolehtia vielä kuljetuskerroksella?
-  Jotkut linkkityypit eivät huolehdi lainkaan!
-  Jos kehys hävitettävä .. 
+
 
 
 
