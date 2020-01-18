@@ -41,7 +41,23 @@ Vuonvalvonta, puskurointi
 Yksisuuntainen /kaksisuuntainen liikenne
 Yksisuuntainen: lähetysvuorojen hallinta
 
+kalvo2 Linkkikerroksen tehtävät / linkkikerros
+Laitetoimintoa
+Siirtää paketin fyysistä linkkiä pitkin koneelta (solmulta (node)) toiselle
+langallinen / langaton
+bitit sisään, bitit ulos 
+Kapseloi paketin sopivaan siirtomuotoon
+Siirtokehys (frame)
   
+
+KUVA: linkkikerros.svg
+
+Kalvo 4: Miten linkkikerros on toteutettu
+Jokaisessa koneessa!
+Linkkikerroksen toteutus usein “sovittimessa” (esim. verkkokortti)
+Linkki ja fyysinen kerros
+joka liitetään koneen väylään
+Yhdistelmä laitteistoa, ohjelmistoa ja laitteisto-ohjelmisto (firmware)
 
 ## Ethernet
 
@@ -53,16 +69,6 @@ Kohteen ja lähteen osoittaminen
   Käytössä laitetason MAC-osoite (Medium access control)
   
 
-## Linkkikerroksen toteutuksesta
-
-kalvo2 Linkkikerroksen tehtävät / linkkikerros
-Laitetoimintoa
-Siirtää paketin fyysistä linkkiä pitkin koneelta (solmulta (node)) toiselle
-langallinen / langaton
-bitit sisään, bitit ulos 
-Kapseloi paketin sopivaan siirtomuotoon
-Siirtokehys (frame)
-  
 
 
 
@@ -73,16 +79,6 @@ Luotettava siirto
   Miksi tästä täytyy huolehtia vielä kuljetuskerroksella?
   Jotkut linkkityypit eivät huolehdi lainkaan!
   Jos kehys hävitettävä .. 
-
-Kalvo 4: Miten linkkikerros on toteutettu
-Jokaisessa koneessa!
-Linkkikerroksen toteutus usein “sovittimessa” (esim. verkkokortti)
-Linkki ja fyysinen kerros
-joka liitetään koneen väylään
-Yhdistelmä laitteistoa, ohjelmistoa ja laitteisto-ohjelmisto (firmware)
-
-
-
 
 
 
