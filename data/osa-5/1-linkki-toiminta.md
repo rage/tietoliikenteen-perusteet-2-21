@@ -29,22 +29,22 @@ Nykyisin tähtiverkko on tyypillinen verkontopologia. Siinä verkon keskipistees
 
 ## Linkkikerroksen tehtävät
 
-Linkkikerroksen tehtävänä on siis huolehtia viestin kulkeminen yhden fyysisen kerroksen yhteyden eli linkin yli. Tähän liittyen viesti pitää saada muuttumattomana perille ja oikealle vastaanottajalle. Linkkikerroksellakin tarvitaan siis vastaanottajan tunniste eli osoite. Käytämme tällä kurssilla esimerkkinä vain ethernet-verkkoa, joten myös vastaanottajan tunnisteena on tällä kurssilla ethernet verkossa oleva [MAC-osoite](https://fi.wikipedia.org/wiki/MAC-osoite).
+Linkkikerroksen tehtävät liittyvät nimen omaan viestien siirtoon yhden fyysisen kerroksen yhteyden eli linkin yli. Linkkikerroksen pitää huolehtia, että kukin viesti pääse muuttumattomana linkin yli. Fyysisen kerroksen ominaisuuksista johtuen kanavassa voi kulkea vain yhden viestin tietoja yhdellä ajanhetkellä. 
+
+Linkkikerroksen täytyy hallinoida lähettäjien vuorottelua kanavassa eli vuonvalvontaa. Vuonvalvonnan ratkaisut ovat erilaisia erilaisille fyysisille linkeille. Liikennöinti yhdessä linkissä voi olla yksisuuntaista (engl. half dublex) tai kaksisuuntaista (engl. full dublex), linkki voi olla langallinen tai langaton. Lisäksi kytkimet saattavat joutua puskuroimaan viestejä, koska osa kytkimistä osaa yhdistää samalla kommunikointitekniikalla toteutettuja eri nopeuksisia fyysisiä yhteyksiä toisiinsa. Esimerkiksi ethernet-kytkimessä voi olla nopeudeltaan sekä 10 Mb/s, 100 Mb/s että jopa 1 Gb/s portteja.
+
+Viestin lähettäminen linkkiin ei siis saa häiritä mahdollisia muiden lähettämiä viestejä samassa linkissä. Tämä koskee erityisesti väylätopologiaa, jossa samassa kanavassa voi kulkea useiden eri lähettäjien viestejä. Koska viestit usein lähetetään sähköisinä signaaleina, jotka sekoittuvat toisiinsa helposti, on tärkeää, että kanavassa kulkee vain yhden lähettäjän viesti kerrallaan. Tällöin sanotaan, että lähettäjä on varannut kanavan omaan käyttöönsä. Tällaisia yhteiskäyttöisen kanavan varaamiseen liittyviä menetelmiä tarkastellaan hetken kuluttua aliluvussa lähetysvuorojen jakelu.
+
+Linkkikerroksellakin vastaanottaja pitää tunnistaa, jotta viesti pitää saada oikealle vastaanottajalle. Tunnistamiseen tarvitaan vastaanottajan osoite. Linkkikerroksella tämä osoite on yleensä ethernet-verkon [MAC-osoite](https://fi.wikipedia.org/wiki/MAC-osoite).
 
 Koska viesti ei saa muuttua matkalla on linkkikerroksen havaittava mahdolliset virheet ja tarvittaessa joko korjattava bittivirhe tai pudotettava paketti. Virheiden havaitsemisesta ja korjaamisesta on lisää seuraavassa aliluvussa.
+ 
 
-Viestin lähettäminen linkkiin ei myöskään saa häiritä mahdollisia muiden lähettämiä viestejä samassa linkissä. Tämä koskee erityisesti väylätopologiaa, jossa samassa kanavassa voi kulkea useiden eri lähettäjien viestejä. Koska viestit usein lähetetään sähköisinä signaaleina, jotka sekoittuvat toisiinsa helposti, on tärkeää, että kanavassa kulkee vain yhden lähettäjän viesti kerrallaan. Tällöin sanotaan, että lähettäjä on varannut kanavan omaan käyttöönsä. Tällaisia yhteiskäyttöisen kanavan varaamiseen liittyviä menetelmiä tarkastellaan hetken kuluttua aliluvussa lähetysvuorojen jakelu.
-
-Kalvo3 linkkikerroksen tehtäviä
-Vuonvalvonta, puskurointi
-  Kytkimessä on useita erinopeuksisia linkkejä
-Yksisuuntainen /kaksisuuntainen liikenne
-Yksisuuntainen: lähetysvuorojen hallinta
+## Linkkikerroksen toteutuksesta
 
 kalvo2 Linkkikerroksen tehtävät / linkkikerros
 Laitetoimintoa
 Siirtää paketin fyysistä linkkiä pitkin koneelta (solmulta (node)) toiselle
-langallinen / langaton
 bitit sisään, bitit ulos 
 Kapseloi paketin sopivaan siirtomuotoon
 Siirtokehys (frame)
