@@ -13,8 +13,15 @@ hidden: false
 
 </text-box>
 
+## Yleistä
 
+Virhevalvonta
+  signaali vaimenee, taustakohina häiritsee, ...
+  Kehyksessä on tarkistustietoa (error detection and correction bits)
+  Vastaanottava solmu korjaa, jos pystyy
+  Jos ei pysty, pyytää uudelleen tai hävittää 
 
+## Tarkemmin
 
 Kalvo: bittitason virheet
 Yhden bitin virheitä siellä täällä tai peräkkäisten bittien virheryöppyjä (burst)
