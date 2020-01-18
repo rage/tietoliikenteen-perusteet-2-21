@@ -35,16 +35,18 @@ Linkkikerroksen täytyy hallinoida lähettäjien vuorottelua kanavassa eli vuonv
 
 Viestin lähettäminen linkkiin ei siis saa häiritä mahdollisia muiden lähettämiä viestejä samassa linkissä. Tämä koskee erityisesti väylätopologiaa, jossa samassa kanavassa voi kulkea useiden eri lähettäjien viestejä. Koska viestit usein lähetetään sähköisinä signaaleina, jotka sekoittuvat toisiinsa helposti, on tärkeää, että kanavassa kulkee vain yhden lähettäjän viesti kerrallaan. Tällöin sanotaan, että lähettäjä on varannut kanavan omaan käyttöönsä. Tällaisia yhteiskäyttöisen kanavan varaamiseen liittyviä menetelmiä tarkastellaan hetken kuluttua aliluvussa lähetysvuorojen jakelu.
 
-Linkkikerroksellakin vastaanottaja pitää tunnistaa, jotta viesti pitää saada oikealle vastaanottajalle. Tunnistamiseen tarvitaan vastaanottajan osoite. Linkkikerroksella tämä osoite on yleensä ethernet-verkon [MAC-osoite](https://fi.wikipedia.org/wiki/MAC-osoite).
+Linkkikerroksellakin vastaanottaja pitää tunnistaa, jotta viesti pitää saada oikealle vastaanottajalle. Tunnistamiseen tarvitaan vastaanottajan osoite. Linkkikerroksella tämä osoite on yleensä ethernet-verkon [MAC-osoite](https://fi.wikipedia.org/wiki/MAC-osoite), koska se on jo laitevalmistajan kyseiselle laitteelle etukäteen antama. Se on siis kiinteä laitteistoon liitetty osoite, joka alunperin ei voinut vaihtua. MAC-osoitteen 48 bittiä on jaettu kahteen osaan. Ensimmäiset 24 bittiä on laitevalmistajan tunniste ja jälkimmäiset 24 bittiä laitteen tunniste. Jokaisella valmistetulla laitteella, tai oikeammin verkkosovittimella, on oma maailmanlaajuisesti yksiklöivä tunniste.
 
 Koska viesti ei saa muuttua matkalla on linkkikerroksen havaittava mahdolliset virheet ja tarvittaessa joko korjattava bittivirhe tai pudotettava paketti. Virheiden havaitsemisesta ja korjaamisesta on lisää seuraavassa aliluvussa.
+
+## Osoitteen selvittäminen - ARP
  
 
 ## Linkkikerroksen toteutuksesta
 
 Linkkikerroksen toteutus on oltava jokaisessa laitteessa, joka on liitettynä internet-verkkoon. Yleensä linkkikerroksen toiminnallisuus  on toteutettu suoraan laitteistolla. Tietokoneessa on tyypillisesti erillinen verkkosovitin, joka muun tietokoneen kannalta on I/O-laite (Nästä tarkemmin Tietokoneen toiminta -kurssilla). Verkkosovitin liitetään tietokoneen päässä koneen sisäiseen väylään kuten muutkin I/O-laitteet. Tietoliikennekaapeli liitetään sitten verkkosovittimella olevaan liittimeen. Nykyisin verkkosovittimet on usein integroitu osaksi tietokoneen emolevyä, mutta aiemmin ne olivat erillisiä verkkokortteja, joita voi poistaa ja lisätä laitteeseen.  Verkkosovittimessa tai verkkokortissa on oma laiteohjain (engl. device controller), joka on usein toteuttu laitteisto-ohjelmistona (engl. firmware), joka huolehtii linkkikerroksen toiminnoista. Käyttöjärjestelmässä puolestaan on laiteajuri (engl. device dirver), joka huolehtii käyttöjärjestelmän ja laiteohjaimen välisestä kommunikoinnista.
 
-Verkkosovittimen ja sen laiteohjaimen tehtävänä on siis huolehtia viestien lähettämisvaiheessa vähintään vuonvalvonnasta ja bittien koodaamisesta ja lähettämisestä fyysisen linkin edellyttämässä muodossa. Lisäksi sen tehtäviin kuuluu kuunnella kanavaa, tunnistaa itselle saapuvat viestit, vastaanottaa ne ja purkaa fyysisestä signaalista viestin bitit. Myös virhetarkistus kuuluu laiteohjaimen tehtäviin. 
+Verkkosovittimen ja sen laiteohjaimen tehtävänä on siis huolehtia viestien lähettämisvaiheessa vähintään vuonvalvonnasta ja bittien koodaamisesta ja lähettämisestä fyysisen linkin edellyttämässä muodossa. Lisäksi sen tehtäviin kuuluu kuunnella kanavaa, tunnistaa itselle saapuvat viestit, vastaanottaa ne ja purkaa fyysisestä signaalista viestin bitit. Huomaa, että verkkosovitin ja sen laiteohjain kuulee kaiken liikenteen, mutta se suodataa siitä vain itselle saapuvat viestit. Myös virhetarkistus kuuluu laiteohjaimen tehtäviin. 
 
 Linkkikerroksella käytettävän siirtokehyksen (engl. frame) muodostaminen verkkokerrokselta saapuvan datagrammin ympärille voi olla joko laiteohjaimen tai laiteajurin tehtävä. Eli se voidaan tehdä joko laitteistolla tai ohjelmistolla. Tässä on vaihtelua eri toteutusten väilllä.
   
@@ -54,6 +56,9 @@ KUVA: linkkikerros.svg
 
 
 ## Ethernet
+
+Ethernet on tällä hetkellä yleisin lähiverkon toteutustekniikka.
+https://fi.wikipedia.org/wiki/Ethernet
 
 Kehystys (framing)
   Kehyksen rakenne ja koko riippuu siitä, millainen linkki on kyseessä
