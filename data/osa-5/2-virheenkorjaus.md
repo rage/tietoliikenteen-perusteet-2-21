@@ -20,6 +20,14 @@ Virhevalvonta
   Kehyksessä on tarkistustietoa (error detection and correction bits)
   Vastaanottava solmu korjaa, jos pystyy
   Jos ei pysty, pyytää uudelleen tai hävittää 
+  
+  Luotettava siirto
+  Langattomilla linkeillä suuri virhetodennäköisyys
+  Linkkitaso huolehtii oikeellisuudesta
+  Miksi tästä täytyy huolehtia vielä kuljetuskerroksella?
+  Jotkut linkkityypit eivät huolehdi lainkaan!
+  Jos kehys hävitettävä .. 
+  
 
 ## Tarkemmin
 
