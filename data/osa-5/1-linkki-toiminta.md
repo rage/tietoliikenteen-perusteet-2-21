@@ -61,6 +61,17 @@ Ethernet on tällä hetkellä yleisin lähiverkon toteutustekniikka. Se on tyypi
 
 Ethernet on standardoitu. Itseasiassa sen toteutustekniikka ja nopeus on vuosien varrella muuttunut aina uuden standardin myötä. Tällä hetkellä tyypilliset verkot ovat 100 Mbit/s ja 1 Gbit/s. Wkipedian sivulla [Ethernet](https://fi.wikipedia.org/wiki/Ethernet) on hyvä tiivis kuvaus ethernetin eri versioista.
 
+Ethernetin ensimmäiset versiot käyttivät koaksiaalikaapelia ja noudattivat väylätopologiaa. Näissä käytettiin liikenteen hallinnointiin Carrier Sence Media Access / Collision Detection (CSMA/CD) menetelmää, jossa lähettävän solmun piti ensin kuunnella (Carrier Sence), että väylä (Media Access) on vapaa ja sitten vielä lähetyksen aikana kuunnella, ettei mikään muu solmu lähettänyt samaan aikaan, ns yhteentörmäys (Collision Detection).  Tarkastellaan tämän menetelmän toimintaa tarkemmin vuoronjakelu osassa.
+
+Tämä CSMA/CD on edelleen mukana myös myöhemmissä ethernet-toteutuksissa, joissa verkon topologia on tähti ja käytetään parikaapelia. Yhdessä parikaapelissa ei voi tapahtua yhteentörmäyksiä, koska kumpaankiin suuntaan on oma johdipari, eikä samassa johdinparissa ole muita lähettäjiä. Tähtiverkossa yhteentörmäyksiä voi tapahtua, jos tähden keskipisteenä on [keskitin](https://fi.wikipedia.org/wiki/Keskitin) (engl. hub) eikä kytkin tai reititin. Toisin kuin kytkin, joka toimii linkkikerroksella ja osaa tarvittaessa tilapäisesti puskuroida kehyksiä, keskitin toimii fyysisellä tasolla on vain toistin (engl- repeater), joka toistaa saapuvan liikenteen samantien kaikkiin muihin suuntiin. Keskitin onkin vain usean toistimen muodostama kokonaisuus ja usein näitä termejä käytetäänkin samankaltaisesti. 
+
+
+## Ethernet kehys
+
+
+
+
+
 Kehystys (framing)
   Kehyksen rakenne ja koko riippuu siitä, millainen linkki on kyseessä
   Otsake, data, lopuke
