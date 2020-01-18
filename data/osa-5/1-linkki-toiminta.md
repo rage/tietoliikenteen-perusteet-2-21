@@ -57,15 +57,14 @@ KUVA: linkkikerros.svg
 
 ## Ethernet
 
-Ethernet on tällä hetkellä yleisin lähiverkon toteutustekniikka.
-https://fi.wikipedia.org/wiki/Ethernet
+Ethernet on tällä hetkellä yleisin lähiverkon toteutustekniikka. Se on tyypillinen kotiverkon teknologia, koska markkinoilla on tarjolla paljon monitoimireitittimiä, jotka tarjoavat ethernet-tekniikalla toteutettuja kaksipisteyhteyksiä reitittimen portin ja laitten välille. Kaksipisteyhteys on yleenä toteutettu ns. ethernet-kaapelilla, joka nykyisin on tyypillisesti [parikaapeli](https://fi.wikipedia.org/wiki/Parikaapeli).
+
+Ethernet on standardoitu. Itseasiassa sen toteutustekniikka ja nopeus on vuosien varrella muuttunut aina uuden standardin myötä. Tällä hetkellä tyypilliset verkot ovat 100 Mbit/s ja 1 Gbit/s. Wkipedian sivulla [Ethernet](https://fi.wikipedia.org/wiki/Ethernet) on hyvä tiivis kuvaus ethernetin eri versioista.
 
 Kehystys (framing)
   Kehyksen rakenne ja koko riippuu siitä, millainen linkki on kyseessä
   Otsake, data, lopuke
-Kohteen ja lähteen osoittaminen
-  Yhteiseen linkkiin voi olla liitettynä useita laitteita
-  Käytössä laitetason MAC-osoite (Medium access control)
+Kohteen ja lähteen osoittaminen - MAC osoite
   
 
 
