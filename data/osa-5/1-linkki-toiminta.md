@@ -25,6 +25,11 @@ Yhdessä aliverkossa olevat laitteet voivat havaita muiden saman aliverkon laitt
 
 KUVA: https://fi.wikipedia.org/wiki/Tiedosto:Verkkotopologiat.png
 
+<img src="../img/viiveet.svg" alt="Prosessointiviive - paketin käsittely reitittimen sisällä, jonotusviive - paketin odotus reitittimessä kunnes linkki vapautuu, siirtoviive -paketin siirto reitittimestä linkkiin, etenemisviive - paketin kulku linkissä reitittimeltä seuraavalle."/>
+
+Kuva 1: Kuvassa on neljä laitetta A, B, C ja D, jotka kommunikoivat keskenään reitittimien 1 ja 2 avulla. Verkossa on liikkellä paljon paketteja eri yhteysväleillä. Tähän peruskuvaan on piirretty näkyville myös eri viipeet ja missä vaihessa ne reitittimen 1 osalta tapahtuvat. Saman viiveet toki ovat myös kaikilla laitteilla ja reitittimellä 2, vaikka niitä ei ole kuvaan merkitty.
+
+
 Nykyisin tähtiverkko on tyypillinen verkontopologia. Siinä verkon keskipisteessä on yleensä linkkikerroksen kytkin, joka yhdistää verkon sakaroita toisiinsa. Yhdessä sakarassa on sitten reititin, jonka kautta tämä aliverkko on yhteydessä muualle. Kotiverkoissa usein kytkin ja reititin eivät ole erillisiä laitteita, vaan monitoimireititin toimii verkon keskipisteessä kotiverkon kytkimenä ja samalla reitittimenä ulkoverkon suuntaan. Tähtiverkkoja voidaan laajentaa useamman tähden kokoiseksi, kun yhteen sakaraan kiinnitetään toinen kytkin tai fyysisellä kerroksella toimiva keskitin tai toistin (engl. repeater).
 
 ## Linkkikerroksen tehtävät
@@ -53,6 +58,11 @@ Linkkikerroksella käytettävän siirtokehyksen (engl. frame) muodostaminen verk
 
 KUVA: linkkikerros.svg
 
+<img src="../img/viiveet.svg" alt="Prosessointiviive - paketin käsittely reitittimen sisällä, jonotusviive - paketin odotus reitittimessä kunnes linkki vapautuu, siirtoviive -paketin siirto reitittimestä linkkiin, etenemisviive - paketin kulku linkissä reitittimeltä seuraavalle."/>
+
+Kuva 1: Kuvassa on neljä laitetta A, B, C ja D, jotka kommunikoivat keskenään reitittimien 1 ja 2 avulla. Verkossa on liikkellä paljon paketteja eri yhteysväleillä. Tähän peruskuvaan on piirretty näkyville myös eri viipeet ja missä vaihessa ne reitittimen 1 osalta tapahtuvat. Saman viiveet toki ovat myös kaikilla laitteilla ja reitittimellä 2, vaikka niitä ei ole kuvaan merkitty.
+
+
 
 
 ## Ethernet
@@ -65,11 +75,14 @@ Ethernetin ensimmäiset versiot käyttivät koaksiaalikaapelia ja noudattivat v�
 
 Tämä CSMA/CD on edelleen mukana myös myöhemmissä ethernet-toteutuksissa, joissa verkon topologia on tähti ja käytetään parikaapelia. Yhdessä parikaapelissa ei voi tapahtua yhteentörmäyksiä, koska kumpaankiin suuntaan on oma johdipari, eikä samassa johdinparissa ole muita lähettäjiä. Tähtiverkossa yhteentörmäyksiä voi tapahtua, jos tähden keskipisteenä on [keskitin](https://fi.wikipedia.org/wiki/Keskitin) (engl. hub) eikä kytkin tai reititin. Toisin kuin kytkin, joka toimii linkkikerroksella ja osaa tarvittaessa tilapäisesti puskuroida kehyksiä, keskitin toimii fyysisellä tasolla on vain toistin (engl- repeater), joka toistaa saapuvan liikenteen samantien kaikkiin muihin suuntiin. Keskitin onkin vain usean toistimen muodostama kokonaisuus ja usein näitä termejä käytetäänkin samankaltaisesti. 
 
+Kaikki ethernetin versiot käyttävät saman kokoista kehystä. Ethernet kehyksen alussa on ensin tahdistuskuvio, jolla vastaanottaja voi oman sugnaalinkäsittelynsä tahdista lähettäjän määräämään tahtiin. Siksi tahdistuskuvin 7 ensimmäistä tavua sisältävät vuorotellen bittejä 1 ja 0 eli yksi tavu on aina 10101010. Kuvion viimeistä 8. tavua voidaan kutsua kehyksen aloitukseksi (engl. start of frame, SOG) tai kehyksen alun rajoitteeksi (engl. start frame delimiter, SDF). 8. tavu muuten kuin aiemmat 7 tavua, mutta sen lopussa on kaksi ykköstä, joka kertoo vastaanottajalle, että seuraavaksi tulee kehyksen varsinaista sisältöä, josta ensimmäisenä vastaanottajan MAC-osoite. Sen jälkeen vuorossa on lähettäjän oma MAC-osoite, jota seuraa kahden tavun pituuskenttä. Joissakin ethernetin versioissa tämän pituuskentän arvoa käytetään välitettävän protokollan tyypin kuvaamiseen. Tätä kenttää seuraa varsinainen data-alue. Ethernet-kehyksessä kehyksessä siirrettävällä data-alueella on minimipituus. Jos siirrettävä data on sitä lyhyempi, niin silloin tähän lisätään täytetavuja (engl. pad byte). Vastaanottaja osaa sivuuttaa nämä täytetavut. Kehyksen lopussa data-alueen jälkeen on vielä erillinen lopuke, jossa on 4 tavua CRC-menetelmän mukaan laskettuja tarkistusbittejä.
 
-## Ethernet kehys
+<img src="../img/ethernet-kehys.svg" alt="Ethernet kehyksen rakenne: tahdistuskuvio (preamble 7 tavua ja SOF 1 tavu), vastaanottaja (destination MAC address, 6 tavua), lähettäjä (source MAC address, 6 tavua), pituus (length 2 tavua), data ja täyte (data and pad, 46-1500 tavua, lopuke (FSC, 4 tavua)"/>
+
+Kuva 1: Ethernet kehyksen rakenne.
 
 
-
+TEHTÄVÄ:  Tahdistuskuvion 8. tavun tarkka sisältö bitteinä.
 
 
 Kehystys (framing)
@@ -77,6 +90,7 @@ Kehystys (framing)
   Otsake, data, lopuke
 Kohteen ja lähteen osoittaminen - MAC osoite
   
+
 
 
 
