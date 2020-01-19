@@ -45,7 +45,24 @@ Linkkikerroksellakin vastaanottaja pitää tunnistaa, jotta viesti pitää saada
 Koska viesti ei saa muuttua matkalla on linkkikerroksen havaittava mahdolliset virheet ja tarvittaessa joko korjattava bittivirhe tai pudotettava paketti. Virheiden havaitsemisesta ja korjaamisesta on lisää seuraavassa aliluvussa.
 
 ## Osoitteen selvittäminen - ARP
- 
+
+Verkkokerroksella käytetty IP-osoite täytyy muuntaa MAC-osoitteeeksi, aivan kuten sovelluskerroksella käytetty laitenimi on muutettava IP-osoitteeksi.  IP-osoitetta vastaavan MAC-osoitteen selvittäminen onnistuu siihen tarkoitukseen suunnitellulla [ARP-protokollalla](https://fi.wikipedia.org/wiki/ARP_(protokolla)) (Address Resolution Protocol). 
+
+Laitteen MAC-osoite on pysyvä (tai ainakin sen oletetaan olevan pysyvä). Sen sijaan laitteen IP-osoite vaihtuu ainakin silloin, kun laite vaihtaa yhden organisaation hallinnoimasta verkosta toisen organisaation verkkoon. MAC-osoitetta tarvitaan vain linkkikerrosella eli yhden organisaation aliverkossa liikennöintiin. Verkon kannalta MAC-osoitteita ilmaantuu ja katoaa laitteiden mukana. 
+
+Jokainen laite, joka toimii myös verkkokerroksella, ylläpitää omaa ARP-väimuistia, kutsutaan myös ARP-tauluksi, johon se kokoaa käyttämiää IP-osoite/MAC-osoite pareja. Taulussa on lisäksi jokaiselle osoiteparille oma voimassaoloaika, jonka kuluttua osoitemuunnoksen voi unohtaa. Tyypillinen voimassaoloaika on 20 minuuttia. JOs tieto myöhemmin tarvitaan, niin ARP-kysely on tehtävä uudelleen, kun muunnostieto ei enää ole ARP-taulussa.
+
+HUomaa, että laite kysyy vain samassa verkossa olevan laitten MAC-osoiteita, eli vain niitä osoitteita, jotka aliverkonpeitteen mukaan kuuluvat samaan aliverkkoon. Vain näille se voi lähettää viestejä suoraan linkkikerroksen avulla. Lähettäessään ARP-kyselyn se tietää, että laite jonka osoitetta kysytään on samassa aliverkossa.
+
+ARP-protokollan mukaisesti kysely lähetetään linkkitason yleislähetysosoitteeseen, eli MAC-osoitteeseen FF-FF-FF-FF-FF-FF. Lähettäjä siis lähettää linkkikerroksen kehyksen, jossa vastaanottajana on yleislähetysosoite, lähettäjän oma MAC-osoite ja datana kysytty IP-osoite ("Kenellä on tämä IP xx.yy.zz.vv?"). 
+
+Kaikki verkon laitteet vastaanottavat tämän yleislähetysosoitteeseen saapuvan viestin. Jos viestissä on sisältönä laitteen oman IP-osoite, niin sitten laite vastaa kyselyyn, jolloin lähettäjä saa vastauskehyksestä tietoonsa laitteen MAC-osoitteen.
+
+Koska ARP-taulua käytetään väimuistina, niin kaikkien muiden välimuistien tapaan se on aluksi tyhjä. Tauluun siis lisätään tietoa sitä mukaan, kun laite saa näitä selville.
+
+ARP-protokollaa käytetään vain IPv4-osoitteita vastaavien MAC-osoitteiden selvittämiseen. IPv6:lle määritelty Neighbour Discovery Protocol (NDP) tarjoaa vastaavan toiminnallisuuden IPv6-osoitteille.
+
+
 
 ## Linkkikerroksen toteutuksesta
 
@@ -77,16 +94,13 @@ Kaikki ethernetin versiot käyttävät saman kokoista kehystä. Ethernet kehykse
 
 <img src="../img/ethernet-kehys.svg" alt="Ethernet kehyksen rakenne: tahdistuskuvio (preamble 7 tavua ja SOF 1 tavu), vastaanottaja (destination MAC address, 6 tavua), lähettäjä (source MAC address, 6 tavua), pituus (length 2 tavua), data ja täyte (data and pad, 46-1500 tavua, lopuke (FSC, 4 tavua)"/>
 
-
+KUVA: Ethernet kehys
 
 
 TEHTÄVÄ:  Tahdistuskuvion 8. tavun tarkka sisältö bitteinä.
 
 
-Kehystys (framing)
-  Kehyksen rakenne ja koko riippuu siitä, millainen linkki on kyseessä
-  Otsake, data, lopuke
-Kohteen ja lähteen osoittaminen - MAC osoite
+
   
 
 
