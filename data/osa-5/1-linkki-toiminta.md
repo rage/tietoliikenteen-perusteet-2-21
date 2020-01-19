@@ -25,9 +25,9 @@ Yhdessä aliverkossa olevat laitteet voivat havaita muiden saman aliverkon laitt
 
 KUVA: https://fi.wikipedia.org/wiki/Tiedosto:Verkkotopologiat.png
 
-<img src="../img/viiveet.svg" alt="Prosessointiviive - paketin käsittely reitittimen sisällä, jonotusviive - paketin odotus reitittimessä kunnes linkki vapautuu, siirtoviive -paketin siirto reitittimestä linkkiin, etenemisviive - paketin kulku linkissä reitittimeltä seuraavalle."/>
+<img src="https://fi.wikipedia.org/wiki/Tiedosto:Verkkotopologiat.png" alt="Väylässä laitteet littyvät vuorotellen samaan yhteen fyysiseen kaapeliin. Tähdessä on keskipiste, johon kaikki laitteen yhdistyvät omilla johtimillaan. Renkaassa laitteet on yhdistetty lyhyillä johtimilla suljetuksi ketjuksi"/>
 
-Kuva 1: Kuvassa on neljä laitetta A, B, C ja D, jotka kommunikoivat keskenään reitittimien 1 ja 2 avulla. Verkossa on liikkellä paljon paketteja eri yhteysväleillä. Tähän peruskuvaan on piirretty näkyville myös eri viipeet ja missä vaihessa ne reitittimen 1 osalta tapahtuvat. Saman viiveet toki ovat myös kaikilla laitteilla ja reitittimellä 2, vaikka niitä ei ole kuvaan merkitty.
+Kuva 1: Verkkotopologiat.
 
 
 Nykyisin tähtiverkko on tyypillinen verkontopologia. Siinä verkon keskipisteessä on yleensä linkkikerroksen kytkin, joka yhdistää verkon sakaroita toisiinsa. Yhdessä sakarassa on sitten reititin, jonka kautta tämä aliverkko on yhteydessä muualle. Kotiverkoissa usein kytkin ja reititin eivät ole erillisiä laitteita, vaan monitoimireititin toimii verkon keskipisteessä kotiverkon kytkimenä ja samalla reitittimenä ulkoverkon suuntaan. Tähtiverkkoja voidaan laajentaa useamman tähden kokoiseksi, kun yhteen sakaraan kiinnitetään toinen kytkin tai fyysisellä kerroksella toimiva keskitin tai toistin (engl. repeater).
@@ -56,12 +56,10 @@ Verkkosovittimen ja sen laiteohjaimen tehtävänä on siis huolehtia viestien l�
 Linkkikerroksella käytettävän siirtokehyksen (engl. frame) muodostaminen verkkokerrokselta saapuvan datagrammin ympärille voi olla joko laiteohjaimen tai laiteajurin tehtävä. Eli se voidaan tehdä joko laitteistolla tai ohjelmistolla. Tässä on vaihtelua eri toteutusten väilllä.
   
 
-KUVA: linkkikerros.svg
 
-<img src="../img/viiveet.svg" alt="Prosessointiviive - paketin käsittely reitittimen sisällä, jonotusviive - paketin odotus reitittimessä kunnes linkki vapautuu, siirtoviive -paketin siirto reitittimestä linkkiin, etenemisviive - paketin kulku linkissä reitittimeltä seuraavalle."/>
+<img src="../img/linkkikerros.svg" alt="."/>
 
-Kuva 1: Kuvassa on neljä laitetta A, B, C ja D, jotka kommunikoivat keskenään reitittimien 1 ja 2 avulla. Verkossa on liikkellä paljon paketteja eri yhteysväleillä. Tähän peruskuvaan on piirretty näkyville myös eri viipeet ja missä vaihessa ne reitittimen 1 osalta tapahtuvat. Saman viiveet toki ovat myös kaikilla laitteilla ja reitittimellä 2, vaikka niitä ei ole kuvaan merkitty.
-
+Kuva : Kaavakuva linkkikerroksen sijainnista
 
 
 
@@ -79,7 +77,7 @@ Kaikki ethernetin versiot käyttävät saman kokoista kehystä. Ethernet kehykse
 
 <img src="../img/ethernet-kehys.svg" alt="Ethernet kehyksen rakenne: tahdistuskuvio (preamble 7 tavua ja SOF 1 tavu), vastaanottaja (destination MAC address, 6 tavua), lähettäjä (source MAC address, 6 tavua), pituus (length 2 tavua), data ja täyte (data and pad, 46-1500 tavua, lopuke (FSC, 4 tavua)"/>
 
-Kuva 1: Ethernet kehyksen rakenne.
+
 
 
 TEHTÄVÄ:  Tahdistuskuvion 8. tavun tarkka sisältö bitteinä.
