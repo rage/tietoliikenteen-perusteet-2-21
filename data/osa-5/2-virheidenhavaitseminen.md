@@ -1,5 +1,5 @@
 ---
-path: '/osa-5/2-virheenkorjaus'
+path: '/osa-5/2-virheidenhavaitseminen'
 title: 'Virheiden havaitseminen ja korjaaminen'
 hidden: false
 ---
@@ -7,13 +7,17 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Tunnet käsitteet alkeistyyppinen muuttuja ja viittaustyyppinen muuttuja.
--  Tiedät minkälaisia alkeistyyppisiä muuttujia Javassa on, ja tiedät että erilaisia viittaustyyppisiä muuttujia voi olla käytännössä rajaton määrä.
--  Tiedät miten alkeis- ja viittaustyyppisten muuttujien käyttäytyminen eroaa toisistaan kun muuttujaan asetetaan arvoa ja kun muuttujaa käytetään metodin parametrina.
+- Osaat kuvata miksi tietoliikenteessä virheet ovat mahdollisia.
+- Osaat kuvata virheen havaitsemisen ja korjaamisen periaatteet.
+- Osaat mainita useita virheiden havaitsemiseen käytettyjä menetelmiä ja kuvata niiden tyypillisiä käyttötilanteita.
+- Osaat kertoa UDP/Internet-tarkistussumman ja CRC:n toimintaperiaatteen ja jopa tarvittaessa toteuttaa pienen ohjelman, joka laskee tarkistussumman tällä periaatteella.
 
 </text-box>
 
-## Yleistä
+## Yleistä virheistä ja niiden havaitsemisesta
+
+Koska tietoliikenteessä tietoa siirretään erilaisina signaaleina langallisesti tai langattomasti, niin signaalit voivat muuttua siirron aikana. Nämä muutokset voivat kohdistua vain yhteen bittiin tai useampaan peräkkäiseen bittiin, jolloin niitä kutsutaan virheryöpyksi (engl- burst).
+
 
 Virhevalvonta
   signaali vaimenee, taustakohina häiritsee, ...
@@ -29,7 +33,7 @@ Virhevalvonta
   Jos kehys hävitettävä .. 
   
 
-## Tarkemmin
+
 
 Kalvo: bittitason virheet
 Yhden bitin virheitä siellä täällä tai peräkkäisten bittien virheryöppyjä (burst)
@@ -41,6 +45,8 @@ Yhden bitin virheitä siellä täällä tai peräkkäisten bittien virheryöppyj
  Korjaamiseen enemmän lisäbittejä 
  Forward error correction (FEC) (esim. Hamming-koodi)
  Esim. CD, DVD, Blu-Ray, viivakoodit, satelliittiyhteydet, digitelevisio, ...  (Reed-Salomon-koodi)
+
+## Tarkemmin
 
 Kalvo: pariteettitarkistus
 Pariteettibitti
