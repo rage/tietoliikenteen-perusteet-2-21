@@ -10,9 +10,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210.75952mm"
-   height="34.444942mm"
-   viewBox="0 0 210.75952 34.444942"
+   width="211.09972mm"
+   height="38.035717mm"
+   viewBox="0 0 211.09971 38.035717"
    version="1.1"
    id="svg3760"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
+     inkscape:zoom="1.4"
      inkscape:cx="444.68757"
-     inkscape:cy="90.08756"
+     inkscape:cy="103.65899"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -68,15 +68,16 @@
        y="9.334918" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="4.7247024"
-       y="42.905495"
-       id="text3770"><tspan
+       style="font-style:normal;font-weight:normal;font-size:2.79643822px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.17477739"
+       x="191.11206"
+       y="40.701599"
+       id="text3770"
+       transform="scale(0.66057602,1.5138303)"><tspan
          sodipodi:role="line"
          id="tspan3768"
-         x="4.7247024"
-         y="42.905495"
-         style="stroke-width:0.26458332">Tahdistuskuvio         vast.ottaja      lähettäjä        pituus                 data ja täyte             lopuke</tspan></text>
+         x="191.11206"
+         y="40.701599"
+         style="stroke-width:0.17477739"> </tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -88,5 +89,113 @@
          x="163.28572"
          y="55.839123"
          style="stroke-width:0.26458332" /></text>
+    <rect
+       style="fill:#ff9955;fill-rule:evenodd;stroke-width:0.25844884"
+       id="rect3780"
+       width="43.278275"
+       height="6.9912724"
+       x="1.2095512"
+       y="40.37936" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="6.5012188"
+       y="45.102779"
+       id="text3784"><tspan
+         sodipodi:role="line"
+         id="tspan3782"
+         x="6.5012188"
+         y="45.102779"
+         style="stroke-width:0.26458332">Tahdistuskuvio</tspan></text>
+    <rect
+       style="fill:#ff9955;fill-rule:evenodd;stroke-width:0.2239861"
+       id="rect3780-9"
+       width="32.505955"
+       height="6.9912729"
+       x="44.487827"
+       y="40.37936" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="48.834553"
+       y="44.913784"
+       id="text3812"><tspan
+         sodipodi:role="line"
+         id="tspan3810"
+         x="48.834553"
+         y="44.913784"
+         style="stroke-width:0.26458332">vast.ottaja  </tspan></text>
+    <rect
+       style="fill:#ff9955;fill-rule:evenodd;stroke-width:0.21804728"
+       id="rect3780-9-9"
+       width="30.805061"
+       height="6.9912734"
+       x="76.993782"
+       y="40.37936" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="81.718475"
+       y="45.291759"
+       id="text3831"><tspan
+         sodipodi:role="line"
+         id="tspan3829"
+         x="81.718475"
+         y="45.291759"
+         style="stroke-width:0.26458332">lähettäjä </tspan></text>
+    <rect
+       style="fill:#ff9955;fill-rule:evenodd;stroke-width:0.19094658"
+       id="rect3780-9-9-0"
+       width="23.623514"
+       height="6.9912734"
+       x="107.79884"
+       y="40.37936" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="111.76759"
+       y="44.535809"
+       id="text3850"><tspan
+         sodipodi:role="line"
+         id="tspan3848"
+         x="111.76759"
+         y="44.535809"
+         style="stroke-width:0.26458332">pituus  </tspan></text>
+    <rect
+       style="fill:#ff9955;fill-rule:evenodd;stroke-width:0.31398955"
+       id="rect3780-9-9-9"
+       width="63.877979"
+       height="6.9912734"
+       x="131.42236"
+       y="40.37936" />
+    <rect
+       style="fill:#ff9955;fill-rule:evenodd;stroke-width:0.16202354"
+       id="rect3780-9-9-3"
+       width="17.00893"
+       height="6.9912734"
+       x="195.30034"
+       y="40.37936" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="197.1902"
+       y="45.102776"
+       id="text3875"><tspan
+         sodipodi:role="line"
+         id="tspan3873"
+         x="197.1902"
+         y="45.102776"
+         style="stroke-width:0.26458332">lopuke</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="143.13962"
+       y="44.7248"
+       id="text3879"><tspan
+         sodipodi:role="line"
+         id="tspan3877"
+         x="143.13962"
+         y="44.7248"
+         style="stroke-width:0.26458332">data ja täyte </tspan></text>
   </g>
 </svg>
