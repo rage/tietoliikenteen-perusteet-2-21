@@ -47,65 +47,41 @@ CRC:ssä bittijono tulkitaan 2-kantaiseksi polynomiksi, jossa siis kertoimet ova
 CRC:ssä käytetään useita tarkastusbittejä, kuten kaikissa muissakin luotettavissa menetelmissä. CRC:n tarkastusbittien lukumäärää riippuu käytettävästä virittäjäpolynomista. Virittäjäpolynomin aste  n aina yhden suurempi kuin tarkistusbittien lukumäärä. Polyomin aste vastaa sitä kuvaavan bittijonon pituutta.
 
 Koska CRC käyttää polynomiaritmetiikkaa ja erityisesti polynomien jakolaskua, niin lähettäjän ja vastaanottajan täytyy sopia jakolaskussa käytettävästä jakajasta. Tästä jakajasta käytetään nimitystä virittäjäpolynomi (engl. generator polynomial), koska se sitoo polynomien jakolaskun jakojäännöksen tarkistusbiteiksi. Lähettäjällä jaettavana on alkuperäinen data, johon on katenoitu loppuu tarkistusbittien verran nollia, matemaattisena kaavana tämä voidaan ilmaista D\*2^r XOR R, missä D on alkuperäinen data, R on tarkistustieto ja r on tarkistustiedon bittien lukumäärä. Tarkistustietoa laskettaessa R on nollia. Virheentarkistuksessa se puolestaan on vastaanottajalle saapunut tieto.
- 
+
+Laskennan tehostamiseksi CRC:ssä jätetään yhteenlaskusta pois muistinumero (engl. carry) ja vähennyslaskusta lainaus, jolloin binäärilukujen aritmetiikassa ne supistuvat yksinkertaiseksi XOR-operaatioksi.
+
+TEHTÄVÄ:  XOR laskuja
+
+Nyt ohitetaan CRC:hen liittyvä matematiikka ja sieltä tulevat perustelut sen toimivuudelle. Jos aihe kiinnostaa, niin wikipediasta löytyy artikkeli [Mathematics of CRC](http://en.wikipedia.org/wiki/Mathematics_of_CRC), jossa on kattavasti kerrottu menetelmä matemaattiset perusteet.
+
+Eriksee on vielä sovittu, että virittäjäpolynomin merkitsevin bitti on aina 1 eli niissä ei koskaan ole etunollia. Näin virittäjäpolynomi on mahdollisimman lyhyt ja silloin tarkistubittien määrä on yhden pienempi kuin virittäjäpolynomin oma pituus.
+
+Esimerkiksi, kos mellä on käytössä virittäjäpolynomi G=x^3 + 1 eli bitteinä 1001, niin meillä on 3 tarkistusbittiä. 
+Jos data, johon tarkistusbitit liitetään on 101110, lähettäjä tekee jakolaskun 101110000 : 1001 ja saa jakojäännökseksi 011.
+
+Lähettäjä lähettää siis vastaanottajalle bittijonon 101110011. Tätä kutsutaan usein koodiksi (engl. code), koska alkuperäinen data on koodattu jollain tavalla mukaan tähän lähetettävään koodiin. Samaa termiä ja toimintamallia käytetään myös salausalgoritmeissa. Lähettäjä siis tekee alkuperäiselle datalle jonkin operaation ja lähettää tämän operaation tuloksena syntynen koodin vastaanottajalle, joka puolestaan tekee koodille jonkin (saman tai eri) operaation, ja saa tulokseksi alkuperäisen datan.
+
+Kun vastaannottaja vastaanottaa bittijonon 101110011, se laskee jakolaskun 101110011 : 1001 jakojäännöksen. Jos jakojäännös on pelkkiä nollia, kuten tässä, niin se tietää / olettaa, että kehyksessä ei ole virheitä ja antaa datan 101110 eteenpäin. Jos se on saanut jonkun muun bittikuvion, vaikkapa 010111011, niin jakolaskun lopputulos ei ole nollia, vaan 110, jolloin se tietää että kehyksessä on virheitä ja hylkää sen.
+
+
+KUVA tai mieluummin VIDEO laskutoimituksesta.
+
+
+Laskutoimitus on yksityiskohtaisesti kuvattu englanninkielisellä wikipedian sivulla [Cyclic Redundancy Check](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) 
+
+Koska lähettäjän ja vastaanottajan pitää käyttää samaa virittäjäpolynomia, niin niitä on standardoitu ja eri tilanteisiin on tarkasti määritelty mitä polynomia niissä käytetään.  Muistathan, että tämä virhetarkistus tehdään tyypillisesti laitteistotasolla, jolloin menetelmän vaihtaminen edellyttää laitteistoon tehtäviä muutoksia tai kokonaan uutta laitteistoa. Ethernet käyttää standardoitua virittäjäpolynomia CRC-32, joka on x^32+ x^26 + x^23 + x^22 + x^16 + x^12 + x^11 + x^10 + x^8 + x^7 +x^5 + x^4 + x^2 + x+1 
+eli bitteinä 1 0000 0100 1100 0001 0001 1101 1011 0111. Huomaa, että tässä on 33 bittiä, jolloin tarkistussumman pituus on 32.
+
+Niille joita virheentarkistus kiinnostaa enemmänkin, niin muita stardardoituja virittäjäpolynomeja on luetetu eglanninkielisen wikipedian sivulla [CRC: Polynomial representations](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks). Pariteettibitti voidaan luokitella triviaaliksi 1-bittiseksi CRC:ksi.
+
+
+CRC:ssä käytettävä polynomi kuvaa virheiden jakautumista. Hyvin valittu virittäjäpolynomi maksioi virheiden havaitsemisen samalla kun minimoidaan kaikki ylimääräinen tarkistus. Tietyllä virittäjäpolynomilla voidaan havaita virheryöpyt, joiden pituus on pienempi tai korkeintaan yhtäsuuri kuin virittäjän pituus. Tätä pidemmätkin virheryöpyt voidaan todennäköisesti havaita, mutta huonolla tuurilla osa niistä saattaa myös jäädä havaitsematta. Siksi edellä esimerkissä käyttämämme 4:n pituinen virittäjäpolynomi ei ole riittävän hyvä todelliseen käyttöön, vaan tarvitaan pidempiä polynomeja. Ethernet käyttää 33:n pituista virittäjäpolynomia, jolla havaitaan riittävän luotettavasti ethernet-kehysten virheet.
 
 
 
-## Tarkemmin
-
-  Useita tarkistusbittejä; havaitsee usean bittivirheen ryöpyn. 
-  
-Kalvo: CRC 
-Sovittu virittäjäpolynomi P. P:n aste r+1, jos r tarkistusbittiä. Tällaisia polynomeja on stardardoitu, esim. 
-   CCITT: X^16+x^12+X^5+1.
-Olkoon paketti m bittiä ja tulkitaan se taas polynomiksi M. 
-Lisätään M:ään r bittiä siten, että X^r M + R on tasan jaollinen P:llä. 
-R on M:n tarkistusumma. 
-Kuinka R löydetään? 
-Pitäisi siis olla x^r M + R = nP, jollakin n>0. 
-Siis R on jakojäännös (x^r M)/P. 
-Esim. P=1001 = x^3 + 1, r = 3, 
-M = 101110 = x^5+x^3 + x^2 + x.
-x^3 M = x^8 + x^6 + x^5 + x^4. 
-Jakojäännös (x^3 M)/P on x+1 eli 011.  
-
-Kalvo: standardoituja virittäjäpolynomeja IEEE
-GCRC-12 = x12 + x11 + x3 + x2 + x + 1  (HUOM! potensseja!!!)
-GCRC-16 = x16 + x15 + x2 +1
-GCRC-32=x32+ x26 + x23+…+ x4 + x2 + x+1 
-            =1 0000 0100 1100 0001 0001 1101 1011 0111
-				(r+1=33 bittiä)
-Virittäjäpolynomin merkitsevin bitti aina =1
-
-CRC:n vahvuus on se, että se havaitsee virheryöppyjä varsin tehokkaasti.
-
-Havaitsee
-   kaikki virheryöpyt, joiden pituus < tai =  kuin virittäjän pituus
-   lähes kaikki virheryöpyt, joiden pituus on suurempi
-   
-   
-Kalvo: CRC polynomin määritys
-Polynomi kuvaa virheiden jakautumista
-Maksimoi virheiden havaitseminen
-Minimoi ylimääräinen tarkistus
-CRC hyödyllinen koska se on tehokas toteuttaa ja havaitsee myös purskevirheet (jotka eivät ole tasajakautuneita)
-Ei sovi tietoturvakäyttöön
-Pariteettibitti voidaan nähdä triviaalina 1-bitin CRC:nä
-
-Lisätietoja: http://en.wikipedia.org/wiki/Mathematics_of_CRC
+TEHTÄVÄ: Ainakin pari CRC laskutoimitusta.
 
 
-
- 
-
-
-
-
-
-
-
-
-Tarkastellaan tätä käytännössä. Oletetaan, että käytössämme on seuraava luokka `Henkilo`.
 
 <quiz id='3a28a6ee-2504-44c5-957d-1dbd9e9533af'></quiz>
 
