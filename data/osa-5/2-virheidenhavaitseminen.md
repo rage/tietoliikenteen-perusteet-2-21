@@ -35,28 +35,27 @@ Koska virheet esiintyvät tyypillisesti ryöppyinä ja sekoittavat kehyksen sis�
 Eri yhteyksillä virheiden esiintymistiheyksissä (engl. bit error rate, BER) pn suuria eroja. Jos yhteydellä esiintyy paljon virheitä eli virheiden tiheys on suuri, niin lähetettävien kehyste kokoa kannattaa pienemtää. Näin kasvatetaan todennäköisyyttä, että virhe ei osu kehykseen vain ennen sitä tai sen jälkeen. Suuri kehys on kauan siirtotiellä ja samalla kasvaa todennäköisyys, että kehykseen osuu bittivirhe tai virhepurske.
 
 
-  
+
+## CRC
+
+Linkikerroksella erityisesti ethernet käyttää CRC:tä virheiden havaitsemiseen. CRC on varsin luotettava menetelmä virheiden havaitsemiseen, se on myös helppo toteuttaa laitteistotasolla. CRC tunnetaan mys nimellä polynomikoodi (egl. polynomial code), koska se perustuu polynomien aritmetiikkaan. 
+
+Linkkikerroksella ei käytetä kuljetuskerroksella käytettyä tarkistussummaa, jossa yhteenlasketaan 16 bitin kokonaisuuksia. Lknkkikerroksen kannalta menetelmä ei ole kovin tehokas. Kyseinen menetelmä on kuvattuna kuljetuskerroksen yhteydessä eikä sitä siksi toisteta tässä.
+
+CRC:ssä bittijono tulkitaan 2-kantaiseksi polynomiksi, jossa siis kertoimet ovat vain 0 tai 1. Eli bittijono 101110 voidaan kirjoittaa polynomina 1\*x^5 + 0\*x^4 + 1\*x^3 + 1\*x^2 + 1\*x^1 + 0\*x^0 eli lyhyemmin x^5 + x^3 + x^2 + x^1. Huomaa että \* on kertomerkki ja  ^ on potenssiin korotus. Itseasiaa olemme jo tottuneet käsittelemään bittijonoja polynomeina, koska jos laskemme tämän polynomin arvon arvolle x=2, niin samme binäärilukua 101110 vastaavan 10-järjestelmän luvun 2^5 + 2^3 + 2^2 + 2^1 = 32 + 8 + 4 +2 = 46.
+
+CRC:ssä käytetään useita tarkastusbittejä, kuten kaikissa muissakin luotettavissa menetelmissä. CRC:n tarkastusbittien lukumäärää riippuu käytettävästä virittäjäpolynomista. Virittäjäpolynomin aste  n aina yhden suurempi kuin tarkistusbittien lukumäärä. Polyomin aste vastaa sitä kuvaavan bittijonon pituutta.
+
+Koska CRC käyttää polynomiaritmetiikkaa ja erityisesti polynomien jakolaskua, niin lähettäjän ja vastaanottajan täytyy sopia jakolaskussa käytettävästä jakajasta. Tästä jakajasta käytetään nimitystä virittäjäpolynomi (engl. generator polynomial), koska se sitoo polynomien jakolaskun jakojäännöksen tarkistusbiteiksi. Lähettäjällä jaettavana on alkuperäinen data, johon on katenoitu loppuu tarkistusbittien verran nollia, matemaattisena kaavana tämä voidaan ilmaista D\*2^r XOR R, missä D on alkuperäinen data, R on tarkistustieto ja r on tarkistustiedon bittien lukumäärä. Tarkistustietoa laskettaessa R on nollia. Virheentarkistuksessa se puolestaan on vastaanottajalle saapunut tieto.
  
-  
+
 
 
 ## Tarkemmin
 
-Kalvo: Tarkistussumma
-Internet-checksum
-  Yhteenlasketaan 16 bitin kokonaisuuksia, yhden komplementti
-  Kuljetuskerros laskee ja tarkastaa UDP- ja TCP-protokollissa
-  Huom. IP sekä UDP/TCP ja UDP optionaalinen
-  Ei kovin tehokas;  linkkikerros ei käytä
-CRC (cyclic redundance check)
-  Linkkikerroksella paljon käytetty virheenpaljastusmenetelmä, 
-  helppo toteuttaa laitteistotasolla, luotettava
-  Perustuu polynomien aritmetiikkaan 
-  tunnetaan myös nimellä polynomikoodi (polynomial code)
   Useita tarkistusbittejä; havaitsee usean bittivirheen ryöpyn. 
   
-Kalvo: CRC
-Bittijonot tulkitaan polynomeiksi mod 2, ts. kertoimet ovat 0 tai 1. 
+Kalvo: CRC 
 Sovittu virittäjäpolynomi P. P:n aste r+1, jos r tarkistusbittiä. Tällaisia polynomeja on stardardoitu, esim. 
    CCITT: X^16+x^12+X^5+1.
 Olkoon paketti m bittiä ja tulkitaan se taas polynomiksi M. 
@@ -77,6 +76,9 @@ GCRC-32=x32+ x26 + x23+…+ x4 + x2 + x+1
             =1 0000 0100 1100 0001 0001 1101 1011 0111
 				(r+1=33 bittiä)
 Virittäjäpolynomin merkitsevin bitti aina =1
+
+CRC:n vahvuus on se, että se havaitsee virheryöppyjä varsin tehokkaasti.
+
 Havaitsee
    kaikki virheryöpyt, joiden pituus < tai =  kuin virittäjän pituus
    lähes kaikki virheryöpyt, joiden pituus on suurempi
