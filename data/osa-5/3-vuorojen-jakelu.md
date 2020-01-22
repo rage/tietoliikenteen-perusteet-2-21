@@ -12,26 +12,16 @@ hidden: false
 
 </text-box>
 
-## Yhteiskäyttöinen kanava
+## Yhteiskäyttöinen kanava ja lähetysvuorojen jakelu
 
+Kanava, jolla lähettäjän ja vastaanottajan välinen viesti kulkee, voi olla joko oma tai ajettu. Omaa kanavaa kutsutaan kaksipisteyhteydeksi (engl. point-to-point), koska siinä on vain kaksi päätä lähettäjä ja vastaanottaja. Jos kanava on jaettu, niin silloin se on yleislähetysyhteys (engl. broadcast), jossa voi olla useita lähettäjiä ja vastaanottajia. Kaksipisteyhteys on esimerkiksi tähtiverkon yksi haara ei parikaapeli kytkimen ja isäntäkoneen (engl. host) välillä. Myös puhelinverkossa esimerkiksi kahden modeemin välinen yhteys on kaksipisteyhteys. [Point-to-Point Protocol (PPP)](https://fi.wikipedia.org/wiki/PPP_(tiedonsiirtoprotokolla)) on suunniteltu nimeomaan käytettäväksi tällaisilla yhteyksillä. Nykyisin ethernet on paljolti syrjäyttänyt sen, koska modeemien käyttö on vähentynyt ja etherner-pohjaisten laajakaistayhteyksien käyttö lisääntynyt.
 
-Kalvo: yksikanava - jaettu vai oma?
-Kaksipisteyhteys (point-to-point)
-PPP-protokolla, puhelinyhteys (dial-up access)
-Ethernet-kaapeli kytkimen ja isäntäkoneen välissä
-Yleislähetysyhteys (broadcast)
-Alkuperäinen Ethernet, Ethernet keskittimen ja isäntäkoneen välissä, kaapelimodeemiyhteys (upstream), WLAN, satelliitti, 
+Langaton verkko, väylätopologia ja usein myös tähtitopologia ovat yleislähetysyhteyksiä, koska kaikki voivat lähettää ja kaikki vastaaottajat kuulevat kaiken tai lähes kaiken kanavassa kulkeva liikenteen. Yleislähetysyhteydellä meillä on siis yksi jaettu kanava, jota kaikki kuuntelevat. Lähetys onnistuu virheettömäasti vain jos yksi lähettäjä lähettää kerrallaan. Jos useampi lähettäjä lähettää samanaikaisesti, niin syntyy yhteentörmäys, jolloin viestien signaalit sekoittuva ja vastaanottajalle saapuu epämääräistä "bittimössöä". Vastaanottaja ei siis pysty tästä mössöstä enää erottamaan yhtä virheetöntä viestiä, vaan kaikki törmänneet viestit tuhoutuvat ja ne täytyy lähettää uudelleen. Meidän täytyy siis rakentaa mekanismi, jolla varmistetaa, että vain yksi lähettäjä kerrallaan lähettää.
 
-Kslvo: lähetysvuorojen jakelu
-Yksi yhteinen kanava lähettäjille
-Lähetys onnistuu vain, jos yksi  kerrallaan lähettää
-Jos useampi lähettää yhtäaikaa, syntyy yhteentörmäys
-Kaikki solmut saavat useita signaaleja, “bittimössöä”
-Törmänneet sanomat tuhoutuvat ja ne on lähetettävä uudelleen
-Multiple Access Protocol
-Tapa, jolla solmu päättelee, voiko se lähettää
-Kuinka solmun on toimittava törmäystilanteessa
- Neuvottelu samassa kanavassa!
+Kanavan lähetysvuorojen jakelusta käytetään useita erilaisia englanninkielisiä termejä, ainakin channel access method, multiple-access protocol ja media access control (eli MAC). Ne korostavat hiukan eri asioista tästä vuoronjako problematiikasta. Suomen kielen termmi 'lähetysvuorojen jakelu' on muuten kuvaava, mutta se ei valitettavsti ota kantaa siihen, että usein kyse on nimenomaan lähettäjällä tapahtuvasta päätöksenteosta. Englanninkieliset termit korostavat nimenomaan siitä, että kyse on lähettäjän tai viestin pääsystä (access) kanavalle.
+
+Vuoronjakomenetelmää suuniteltaessa on siis päätettävä miten solmu päättelee voiko se lähettää ja kuinka solmun on toimittava törmäystilanteessa. Huomaa, että tietoliikenteessä meillä on käytettävissä vain tämä yksi kanava, jolloin kaikki tarvittava neuvottelu läehtysvuoroista käydään tässä yhdessä ja samassa kanavassa. Neuvotteluissakin lähetetään ja vastaanotetaan viestejä, joiden lähetysvuoroista pitäisi sopia.
+
 
 Klvo: Multiple access protocol
 Pieni yleisrasite
