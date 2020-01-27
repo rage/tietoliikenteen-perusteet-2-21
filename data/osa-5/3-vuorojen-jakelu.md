@@ -6,9 +6,10 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Tunnet käsitteen kuormittaminen.
-- Osaat luoda luokalle useampia konstruktoreita.
-- Osaat luoda luokkaan useampia samannimisiä metodeja.
+- Osaat kuvata yleisellä tasolla miten kanavan jako ja lähetysvuorojen jakelu voidaan tehdä.
+- Osaat esitellä erilaisia lähetysvuorojen jakeluun liittyviä periaatteellisia ongelmia sekä joitakin niihin liittyviä ratkaisuja
+- Tunnistat mm. lyhenteet CDMA, CSMA/CA
+- Osaat simuloida ethernetin käyttämää lähetysvuorojen jakelumenetelmää erilaisissa tilanteissa.
 
 </text-box>
 
