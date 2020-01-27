@@ -6,10 +6,10 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Osaat kuvata yleisellä tasolla miten kanavan jako ja lähetysvuorojen jakelu voidaan tehdä.
+- Osaat kuvata yleisellä tasolla, miten kanavan jakaminen ja lähetysvuorojen jakelu voidaan tehdä.
 - Osaat esitellä erilaisia lähetysvuorojen jakeluun liittyviä periaatteellisia ongelmia sekä joitakin niihin liittyviä ratkaisuja
-- Tunnistat mm. lyhenteet CDMA, CSMA/CA
-- Osaat simuloida ethernetin käyttämää lähetysvuorojen jakelumenetelmää erilaisissa tilanteissa.
+- Tunnistat mm. lyhenteet TDMA, FDMA, CDMA, CSMA/CD, CSMA/CA, jne.
+- Osaat simuloida Ethernetin käyttämää lähetysvuorojen jakelumenetelmää erilaisissa tilanteissa.
 
 </text-box>
 
@@ -21,20 +21,19 @@ Langaton verkko, väylätopologia ja usein myös tähtitopologia ovat yleislähe
 
 Kanavan lähetysvuorojen jakelusta käytetään useita erilaisia englanninkielisiä termejä, ainakin channel access method, multiple-access protocol ja media access control (eli MAC). Ne korostavat hiukan eri asioista tästä vuoronjako problematiikasta. Suomen kielen termmi 'lähetysvuorojen jakelu' on muuten kuvaava, mutta se ei valitettavsti ota kantaa siihen, että usein kyse on nimenomaan lähettäjällä tapahtuvasta päätöksenteosta. Englanninkieliset termit korostavat nimenomaan siitä, että kyse on lähettäjän tai viestin pääsystä (access) kanavalle.
 
-Vuoronjakomenetelmää suuniteltaessa on siis päätettävä miten solmu päättelee voiko se lähettää ja kuinka solmun on toimittava törmäystilanteessa. Huomaa, että tietoliikenteessä meillä on käytettävissä vain tämä yksi kanava, jolloin kaikki tarvittava neuvottelu läehtysvuoroista käydään tässä yhdessä ja samassa kanavassa. Neuvotteluissakin lähetetään ja vastaanotetaan viestejä, joiden lähetysvuoroista pitäisi sopia.
+Vuoronjakomenetelmää suuniteltaessa on siis päätettävä miten solmu päättelee voiko se lähettää ja kuinka solmun on toimittava törmäystilanteessa. Huomaa, että tietoliikenteessä meillä on käytettävissä vain tämä yksi kanava, jolloin kaikki tarvittava neuvottelu lähetysvuoroista käydään tässä yhdessä ja samassa kanavassa. Neuvotteluissakin lähetetään ja vastaanotetaan viestejä, joiden lähetysvuoroista pitäisi sopia. Tässä siis sekä kontrolli (engl. control) että data kulkevat samassa kanavassa. 
+
+Yhteiskäyttöisen kanavan vuorojenjakomenetelmä valitaan siten, että saamme mahdollisimman suuren osa kanavasta hyötykäyttöön. Tällöin menetelmän aiheuttama yleisrasite on pieni ja lähetysvuoroista sopiminen tehdään kustannustehokkaasti. Menetelmä on tällöin yleensä myös yksinkertainen ja halpa toteuttaa.
+
+Kun kanavassa on vain yksi lähettäjä kerrallaan, se pystyy hyödyntämään kanavan koko siirtonopeuden eli siirtämään tietoa kanavan 'maksiminopeudella' R bittiä sekunnissa. Pidemmällä aikavälillä tarkasteltuna, kun meillä on M lähettäjää, niin jokainen niistä saa keskimäärin saman osuuden linjan siirtonopeudesta eli R/M bittiä sekunnissa.
+
+Vuoronjakomenetelmän keskeinen ongelma onkin se, että miten voimme varmistaa, että yksi lähettäjä ei voi kaapata kanavaa itselleen, vaan että kaikilla lähettäjillä on tasapuolisesti mahdollisuus saada kanava käyttöön ja lähettää viesti sitä pitkin. Haluamme siis välttää yksittäisen lähettäjän nälkiintymisen (engl. starvation). Tietojenkäsittelyteoriassa nälkiintyminen tarkoittaa, että kyseinen entiteetti (tässä sanoman lähettäjä) ei saaa koskaan tarvitsemaansa resurssia (tässä kanava). Jotta nälkiintymistä ei tapahdu, niin kanavanjako menetelmän täytyy olla tasapuolinen. Toisaalta myöskään lukkiutumista (engl. deadlock), eli että mikään lähettäjä ei voisi enää lähettää, ei saa esiintyä. Menetelmän mitää siis olla kaikilta ominaisuuksillaan hyvin toimintavarma.
 
 
-Klvo: Multiple access protocol
-Pieni yleisrasite
-Kun vain yksi lähettää, se pystyy hyödyntämään koko kanavan siirtonopeuden R bps
-Tasapuolisuus
-Kun M lähettäjää, kukin saa keskimäärin saman osuuden linjan siirtonopeudesta (R/M bps)
-Toimintavarmuus
-Yksikään solmu ei ole erikoisasemassa, koordinaattorina
-Ei kellojen sykronointia tms
-Hajautettu vuoroista sopiminen
-Kustannustehokkuus
-Yksinkertainen ja halpa toteuttaa
+
+### Lähetysvuorojen jakaminen
+
+Lähetysvuorojen jakaminen yhdellä kanavalla voidaan tehdä usealla eri tavalla. Kanavanjakoprotokollilla (channel partiotioning protools) oimme jakaa kanava osiin ja antaa yhden osan yhden lähettäjän käyttöön. Voimme ottaa käyttöön jonkun v
 
 Kalvo: lähetysvuorojen jakelu
 1) Kanavanjakoprotokollat (channel partitioning protocol)
@@ -50,6 +49,9 @@ Kalvo: lähetysvuorojen jakelu
 Jaa käyttövuorot jollakin sovitulla tavalla:
 vuorokysely (polling), vuoromerkki, ...
 “Minä ensin, sinä sitten.”
+
+
+
 
 Klvo: Kanavajako TDMA
 Vuorotellen:
@@ -71,6 +73,13 @@ Radiolinjoilla käytettävä koodinjakoon perustuva protokolla
  Kaikkien signaalit saavat yhdistyä linkillä
  Asemat pystyvät erottelemaan yhteissignaalista itselleen kuuluvat bitit (yksilöllinen koodaustapa)
  Signaali levitetään laajalle spektrialueelle
+
+
+### Kilpailuprotokollat
+
+
+Multiple Access Protocol -menetelmissä ei myöskään ole yhtä tiettyä koordinaattoria tai kellojen synkronointia. Kanavanjakaminen eri lähettäjille voidaan toki tehdä keskitetysti, jolloin keskitetty koordinaattori kertoo, milloin solmu saa lähettää. Mikäli tiedämme riittävän luotettavasti, että kaikkien kanavan laitteiden kellot ovat synkronissa, niin silloin kanava voitaisiin jakaa aikaperustaisesti. Huomaa, että Multiple Access Protocol  -menetelmien kanssa kumpaakaan oletusta ei voi käyttää, vaan lähetysvuorot tulee saada aikaiseksi ilman keskitettyä palvelua. Päätös pitää siis tehdä jokaisessa lähettäjässä paikallisen tiedon varassa. 
+
 
 Kalvo: Kilpailuprotokollat (random access protocols)
 Kun asema haluaa lähettää
