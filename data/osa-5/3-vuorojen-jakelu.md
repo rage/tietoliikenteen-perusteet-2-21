@@ -27,29 +27,21 @@ Yhteiskäyttöisen kanavan vuorojenjakomenetelmä valitaan siten, että saamme m
 
 Kun kanavassa on vain yksi lähettäjä kerrallaan, se pystyy hyödyntämään kanavan koko siirtonopeuden eli siirtämään tietoa kanavan 'maksiminopeudella' R bittiä sekunnissa. Pidemmällä aikavälillä tarkasteltuna, kun meillä on M lähettäjää, niin jokainen niistä saa keskimäärin saman osuuden linjan siirtonopeudesta eli R/M bittiä sekunnissa.
 
-Vuoronjakomenetelmän keskeinen ongelma onkin se, että miten voimme varmistaa, että yksi lähettäjä ei voi kaapata kanavaa itselleen, vaan että kaikilla lähettäjillä on tasapuolisesti mahdollisuus saada kanava käyttöön ja lähettää viesti sitä pitkin. Haluamme siis välttää yksittäisen lähettäjän nälkiintymisen (engl. starvation). Tietojenkäsittelyteoriassa nälkiintyminen tarkoittaa, että kyseinen entiteetti (tässä sanoman lähettäjä) ei saaa koskaan tarvitsemaansa resurssia (tässä kanava). Jotta nälkiintymistä ei tapahdu, niin kanavanjako menetelmän täytyy olla tasapuolinen. Toisaalta myöskään lukkiutumista (engl. deadlock), eli että mikään lähettäjä ei voisi enää lähettää, ei saa esiintyä. Menetelmän mitää siis olla kaikilta ominaisuuksillaan hyvin toimintavarma.
+Vuoronjakomenetelmän keskeinen ongelma onkin se, että miten voimme varmistaa, että yksi lähettäjä ei voi kaapata kanavaa itselleen, vaan että kaikilla lähettäjillä on tasapuolisesti mahdollisuus saada kanava käyttöön ja lähettää viesti sitä pitkin. Haluamme siis välttää yksittäisen lähettäjän nälkiintymisen (engl. starvation). Tietojenkäsittelyteoriassa nälkiintyminen tarkoittaa, että kyseinen entiteetti (tässä sanoman lähettäjä) ei saaa koskaan tarvitsemaansa resurssia (tässä kanava). Jotta nälkiintymistä ei tapahdu, niin kanavanjako menetelmän täytyy olla tasapuolinen. Toisaalta myöskään lukkiutumista (engl. deadlock), eli että mikään lähettäjä ei voisi enää lähettää, ei saa esiintyä. Menetelmän mitää siis olla kaikilta ominaisuuksiltaan hyvin toimintavarma.
 
 
+Lähetysvuorojen jakaminen yhdellä kanavalla voidaan tehdä usealla eri tavalla. Kanavanjakoprotokollilla (engl. channel partitioning protocols) voimme jakaa kanava osiin ja antaa yhden osan yhden lähettäjän käyttöön. Vuorotteluprotokollilla (engl. taking-turns protocols) voimme jakaa käyttövuorot ennalta sovitun periaatteen mukaisesti vuoronperään eri lähettäjille. Kilpailuprotokollilla (engl. random access protocols) lähettäjät joutuvat kilpailemaan lähetysvuorosta. Vuorot jakautuvat niille satunnaisemmin ja lähetysvuoron odottamiseen kuluva aika on vaikeammin ennustettava.
 
-### Lähetysvuorojen jakaminen
+### Kanavanjakoprotokollat
 
-Lähetysvuorojen jakaminen yhdellä kanavalla voidaan tehdä usealla eri tavalla. Kanavanjakoprotokollilla (channel partiotioning protools) oimme jakaa kanava osiin ja antaa yhden osan yhden lähettäjän käyttöön. Voimme ottaa käyttöön jonkun v
+Kanavan jaolla annetaan jokaiselle lähettäjälle oma pala kanavasta. Lähettäjä saa tässä palasessa lähettää omia viestejä ilman, että muiden lähettäjien viestien signaalit häiritsevät lähetystä. Näin kukin solmu saa oman viipaleensa. Voimme jakaa kanavan paloihin ajan tai taajuuden perusteella. Lisäksi on mahdollista käyttää erilaisia bittien 
 
-Kalvo: lähetysvuorojen jakelu
+
 1) Kanavanjakoprotokollat (channel partitioning protocol)
      Jaa kanavan käyttö 'viipaleisiin' (time slots, frequency, code)
      Kukin solmu saa oman viipaleensa
      TDMA, FDMA, CDMA
      “Käytä sinä tätä puolta, minä tätä toista”
-2) Kilpailuprotokollat (random access protocols)
-   “Se ottaa, joka ehtii.”
-    Jos sattuu törmäys, yritä myöhemmin uudelleen.
-    Aloha,CSMA, CSMA/CD
-3) Vuoronantoprotokollat (taking-turns protocols)
-Jaa käyttövuorot jollakin sovitulla tavalla:
-vuorokysely (polling), vuoromerkki, ...
-“Minä ensin, sinä sitten.”
-
 
 
 
@@ -73,6 +65,37 @@ Radiolinjoilla käytettävä koodinjakoon perustuva protokolla
  Kaikkien signaalit saavat yhdistyä linkillä
  Asemat pystyvät erottelemaan yhteissignaalista itselleen kuuluvat bitit (yksilöllinen koodaustapa)
  Signaali levitetään laajalle spektrialueelle
+ 
+ 
+### Vuorotteluprotokollat
+3) Vuoronantoprotokollat (taking-turns protocols)
+Jaa käyttövuorot jollakin sovitulla tavalla:
+vuorokysely (polling), vuoromerkki, ...
+“Minä ensin, sinä sitten.”
+
+ 
+Kalvo: vuoronantoprotokollat
+Yhdistä edellisten parhaita puolia
+Älä pidä kapasiteettia turhaan varattuna
+Älä aiheuta törmäystä
+Vuorokysely, pollaus
+Isäntäasema kyselee vuorotellen jokaiselta asemalta, onko sillä lähetettävää (polling)
+Isäntä kuuntelee signaalia, osaa päätellä, milloin lähetys loppuu
+Vuoromerkki (token)
+Se, jolla on vuoromerkki, saa lähettää 
+Jos ei ole lähetettävää, niin vuoromerkki siirtyy seuraavalle
+Kummastakin useita versioita
+Ongelmia: lisäviive, 'single point of failure', ..
+Montako kehystä yhdessä vuorossa saa lähettää
+
+
+### Kilpailuprotokollat
+2) Kilpailuprotokollat (random access protocols)
+   “Se ottaa, joka ehtii.”
+    Jos sattuu törmäys, yritä myöhemmin uudelleen.
+    Aloha,CSMA, CSMA/CD
+
+
 
 
 ### Kilpailuprotokollat
@@ -91,6 +114,8 @@ Protokolla määrittää
 Miten törmäys huomataan
 Miten törmäyksestä toivutaan
 Esim. (viipaloitu)ALOHA, CSMA, CSMA/CD, CSMA/CA
+
+#### Aloha ja viipaloitu aloha
 
 Kalvo: aloha
 Kehitetty radiotietä varten70-luvulla Hawaijilla
@@ -116,6 +141,8 @@ Yhteentörmäys: Solmu yrittää lähetystä uudelleen seuraavassa aikaviipalees
 *Suorituskyky* kaksinkertaistuu (Alohaan verrattuna) 
 Jos paljon lähettäjiä  max. ~37 % tehokkuus
 Siis  37% tyhjiä, 37% onnistumisia, 26% törmäyksiä 
+
+### Lähetyskanavan kuuntelu CSMA
 
 Kalvo: kilpailuprotokollat -lhhetyskanavan kuuntelu CSMA (Carrier Sense Multiple Access)
 *Kuuntele ennen kuin lähetät*
@@ -143,26 +170,5 @@ Kauanko kuunneltava?
 2* maksimi etenemisviive solmujen välillä (A ei saa lopettaa lähetystä ennenkuin  törmäyssignaali olisi ehtinyt tulla!
 )
 
-Kalvo: vuoronantoprotokollat
-Yhdistä edellisten parhaita puolia
-Älä pidä kapasiteettia turhaan varattuna
-Älä aiheuta törmäystä
-Vuorokysely, pollaus
-Isäntäasema kyselee vuorotellen jokaiselta asemalta, onko sillä lähetettävää (polling)
-Isäntä kuuntelee signaalia, osaa päätellä, milloin lähetys loppuu
-Vuoromerkki (token)
-Se, jolla on vuoromerkki, saa lähettää 
-Jos ei ole lähetettävää, niin vuoromerkki siirtyy seuraavalle
-Kummastakin useita versioita
-Ongelmia: lisäviive, 'single point of failure', ..
-Montako kehystä yhdessä vuorossa saa lähettää
-
-
-
-
-
-
-
-## Lähetysvuorojen jakelu
 
 
