@@ -36,26 +36,17 @@ Lähetysvuorojen jakaminen yhdellä kanavalla voidaan tehdä usealla eri tavalla
 
 Kanavan jaolla annetaan jokaiselle lähettäjälle oma pala kanavasta. Lähettäjä saa tässä palasessa lähettää omia viestejä ilman, että muiden lähettäjien viestien signaalit häiritsevät lähetystä. Näin kukin solmu saa oman viipaleensa. Voimme jakaa kanavan paloihin ajan tai taajuuden perusteella. Lisäksi on mahdollista käyttää erilaisia bittien koodaustapoja, jolloin samassa kanavassa voidaan samanaikaisesti lähettää useita eri viestejä, jotka vastaaottaja pystyy edelleen erottamaan toisistaan.
 
-Tässä siis oleellista on se, että lähettäjän käyttäessä sinne varattua osaa kanavasta, ei yhteentörmäyksiä tapahdu, jolloin kyseinen osa kanavasta on aina lähettäjän käytettävissä. Näin kyseinen osa kanavasta on varattuna tälle lähettäjälle silloinkin, kun se ei sitä tarvitse. 
+Tässä siis oleellista on se, että lähettäjän käyttäessä sille varattua osaa kanavasta, ei yhteentörmäyksiä tapahdu, jolloin kyseinen osa kanavasta on aina lähettäjän käytettävissä. Näin kyseinen osa kanavasta on varattuna tälle lähettäjälle silloinkin, kun se ei sitä tarvitse. 
 
 Aikaviipaloidussa kanavassa, ns. [aikajakokanavointi](https://fi.wikipedia.org/wiki/TDMA) (engl. time-division multiple access, #TDMA#), jaetaan tietty aikajakso vakiokokoisiin aipaviipaleisiin siten, että aikaviipaleen pituus on yhden kehyksen lähetysaika ja jokainen lähettäjä saa (yhden) aikaviipaleen kerran tämän aikajakson kuluessa.
 
 KUVA:  Kanava jaettu aikaviipaleisiin ja niissä lähettäjät. Viereen sama kanava, mutta myt taajuusjaoteltuna
 
-[Taajuusjakokanavoinnissa](https://fi.wikipedia.org/wiki/FDMA) (eng. Frequency division multiple access, FDMA) jaetaan ajan sijasta käytettävää taajuusaluetta. Tämä muistuttaa esimerkiksi radio- tai tv-kanavien jakoperustetta, kun kyseessä on radiosignaalia käyttävä lähetys. Tässä jokaiselle lähettäjälle varataan kiinteä taajuusalue, joka on vain osa koko kanavan taajuusalueesta.
+[Taajuusjakokanavoinnissa](https://fi.wikipedia.org/wiki/FDMA) (eng. Frequency division multiple access, FDMA) jaetaan ajan sijasta käytettävää taajuusaluetta. Tämä muistuttaa esimerkiksi radio- tai tv-kanavien jakoperustetta, kun kyseessä on radiosignaalia käyttävä lähetys. Tässä jokaiselle lähettäjälle varataan kiinteä taajuusalue (fixed frequency band), joka on vain osa koko kanavan taajuusalueesta. Koska taajuusalue varataan yhdelle lähettäjälle, niin sitä eivät muut voi käyttää sinä aikana kun varaus on voimassa. Näin, jos lähetettävää ei kyseisellä lähettäjällä ole, niin se osa kanavan kapasiteetistä jää käyttämättä, vaikka muilla olisikin lähetettävää.
 
-Klvo: Kanavajako TDMA
-Vuorotellen:
- Vakiokokoinen aikaviipale (time slot) kullekin kanavaan kytketylle asemalle (station) kerran jaksossa
- Aikaviipaleen pituus on yhden kehyksen lähetysaika
- Varattuna, vaikka ei lähetettävää
- Esim 6 solmua:  viipaleissa 1,3,4 on paketteja ja viipaleissa 2,5,6 ei ole 
+Sekä aikajaossa että taajuusjaossa lähettävä solmu (tai asema) saa käyttöönsä vain osan kanavan kapasiteetista. JOs kanavan kapasiteetti R bittiä sekunnissa jaetaan tasan kaikille M:lle lähettäjälle niin jokainen voi lähettää keskimäärin R/M bittiä sekunnissa, jos se käyttää kaikki sille varatut osat kanavasta.
 
-Kalvo: FDMA
-Kanavan taajuusalueet jaettu kanavan käyttäjien (varaajien) kesken
-Jokainen asema saa kiinteän taajuusalueen (fixed frequency band), vain osa kanavasta (R/M bps)
- Varattuna, vaikka ei lähetettävää
- Esim. alueilla 1,3,4 on paketteja, ja alueilla 2,5,6 ei 
+[Koodijakokanavoinnissa](https://fi.wikipedia.org/wiki/CDMA) (engl. code division multiple access, CDMA) voidaan koko kanavan kapasiteetti antaa kaikkien lähettäjien käyttöön samanaikaisesti. Tätä käytetään lähinnä radiotiellä, jossa jokaisella asemalla on yksilöllinen (ja muiden kanssa ortogonaalinen) tapa koodata bitit 1 ja 0. Nyt kaikkien asemien lähettämät signaalit voivat vapaasti sekoittua radioaalloilla. Vastaanottajan pitää vain tietää, millä koodauksella sille tulevat viestit on koodattu ja se voi tämän avulla erotella saapuvasta yhteissigmaalista itselleen kuuluvat bitit.
 
 Kalvo: CDMA
 Radiolinjoilla käytettävä koodinjakoon perustuva protokolla
