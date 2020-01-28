@@ -48,106 +48,68 @@ Sekä aikajaossa että taajuusjaossa lähettävä solmu (tai asema) saa käyttö
 
 [Koodijakokanavoinnissa](https://fi.wikipedia.org/wiki/CDMA) (engl. code division multiple access, CDMA) voidaan koko kanavan kapasiteetti antaa kaikkien lähettäjien käyttöön samanaikaisesti. Tätä käytetään lähinnä radiotiellä, jossa jokaisella asemalla on yksilöllinen (ja muiden kanssa ortogonaalinen) tapa koodata bitit 1 ja 0. Nyt kaikkien asemien lähettämät signaalit voivat vapaasti sekoittua radioaalloilla. Vastaanottajan pitää vain tietää, millä koodauksella sille tulevat viestit on koodattu ja se voi tämän avulla erotella saapuvasta yhteissigmaalista itselleen kuuluvat bitit.
 
-Kalvo: CDMA
-Radiolinjoilla käytettävä koodinjakoon perustuva protokolla
- Kullakin asemalla oma yksilöllinen tapansa koodata bitit 1 ja 0 
- Asemat voivat lähettää yhtäaikaa koko kanavan taajuudella
- Kaikkien signaalit saavat yhdistyä linkillä
- Asemat pystyvät erottelemaan yhteissignaalista itselleen kuuluvat bitit (yksilöllinen koodaustapa)
- Signaali levitetään laajalle spektrialueelle
- 
  
 ### Vuorotteluprotokollat
-3) Vuoronantoprotokollat (taking-turns protocols)
-Jaa käyttövuorot jollakin sovitulla tavalla:
-vuorokysely (polling), vuoromerkki, ...
-“Minä ensin, sinä sitten.”
 
- 
-Kalvo: vuoronantoprotokollat
-Yhdistä edellisten parhaita puolia
-Älä pidä kapasiteettia turhaan varattuna
-Älä aiheuta törmäystä
-Vuorokysely, pollaus
-Isäntäasema kyselee vuorotellen jokaiselta asemalta, onko sillä lähetettävää (polling)
-Isäntä kuuntelee signaalia, osaa päätellä, milloin lähetys loppuu
-Vuoromerkki (token)
-Se, jolla on vuoromerkki, saa lähettää 
-Jos ei ole lähetettävää, niin vuoromerkki siirtyy seuraavalle
-Kummastakin useita versioita
-Ongelmia: lisäviive, 'single point of failure', ..
-Montako kehystä yhdessä vuorossa saa lähettää
+Vuorotteluprotokollia (engl. taking-turns protocols) kutsutaan myös vuoronantoprotokolliksi, koska niille on tyypillistä se, että kanavan käyttövuorot jaetaan jollakin etukäteen sovitulla tavalla (kuten vuorokysely tai vuoromerkki), mutta vain niille, joilla on jotain lähetettävää. Näin vätetään kanavan pitäminen turhaan varattuna. Toisaalta, kun lähettäjällä on lähetysvuoro, niin kaikki tietävät sen, eikä viestien yhteentörmäyksiä kanavassa pääse syntymään.
 
+Vuorokyselyssä erityinen isäntäsolmu kyselee vuorotellen (engl. polling) jokaiselta solmulta, onko sillä lähetettävää. Jos solmulla on lähetettävää se voi kyselyn saatuaan lähettää yhden viestin. Isäntä kuuntelee signaalia ja osaa päätellä milloin lähetys loppui. Sitten se kysyy seuraavalta vuorossa olevalta solmulta, onko sillä lähetettävää. Näin lähetys vuoro kiertää solmulta toiselle.
 
-### Kilpailuprotokollat
-2) Kilpailuprotokollat (random access protocols)
-   “Se ottaa, joka ehtii.”
-    Jos sattuu törmäys, yritä myöhemmin uudelleen.
-    Aloha,CSMA, CSMA/CD
+Vuoromerkkinä (engl. token) voidaan käyttää isäntäsolmun sijaan. Se soveltuu erityisesti rengastopologiaan. Kun solmulla on vuoromerkki, se saa lähettää vietin, jonka jälkeen se antaa vuoromerkin renkaassa seuraavana olevalle solmulle. Jos solmulla ei ole lähetettävää, kun se saa vuoromerkin, se antaa merkin välittömästä eteenpäin. Näin kanavan kapasiteetti tulee käyttöön tehokkaammin kuin kanavanjakoon perustuvissa menetelmissä.
 
+Näistä on olemassa erilaisia versioita, joissa voidaan määritellä tarkemmin esimerkiksi miten kauan vuoromerkkiä saa pitää, kuinka monta kehystä yhdessä vuorossa voi lähettää, jne. Esimerkiksi [Token Ring](https://fi.wikipedia.org/wiki/Token_Ring) on vuorottelua käyttävä verkko.
+
+Näissä vuorottelumenetelmissä on yksi iso ongelma, ns. 'single point of failure'. Menetelmä toimii hyvin vain niin kauan kuin vuoromerkki tai kyselyjä hoitava isäntäkone ei katoa.  Jos tällainen vikaantuminen kuitenkin tapahtuu, niin mikään solmu ei voi lähettää kanavasssa ja päädytään lukkiutuneeseen tilaan. Tästä voidaan toipua vain ensin havaitsemalla tilanne ja sitten joko valitsemalla uusi isäntäsolmu tai ottamalla käyttöön uusi vuoromerkki. Tällainen toipuminen on hidasta ja sen aikana viestit eivät kulje.
 
 
 
 ### Kilpailuprotokollat
 
+Kilpailuprotokollissa (engl. random access protocols). Näisä käytetään englanniksi myös termiä multiple access protocols. Lähettäjiä on useita ja ne kilpailevat lähetysvuoroista. Lähettäessään niiden pitää noudattaa tiettyjä sääntöjä, mutta etukäteen ei ole tiedossa milloin ja missä järjestyksessä lähettäjät voivat toimia. Periaatteena on siis yksinkertaisesti "kuka ensin ehtii". 
 
-Multiple Access Protocol -menetelmissä ei myöskään ole yhtä tiettyä koordinaattoria tai kellojen synkronointia. Kanavanjakaminen eri lähettäjille voidaan toki tehdä keskitetysti, jolloin keskitetty koordinaattori kertoo, milloin solmu saa lähettää. Mikäli tiedämme riittävän luotettavasti, että kaikkien kanavan laitteiden kellot ovat synkronissa, niin silloin kanava voitaisiin jakaa aikaperustaisesti. Huomaa, että Multiple Access Protocol  -menetelmien kanssa kumpaakaan oletusta ei voi käyttää, vaan lähetysvuorot tulee saada aikaiseksi ilman keskitettyä palvelua. Päätös pitää siis tehdä jokaisessa lähettäjässä paikallisen tiedon varassa. 
+Koska mitään keskistettyä jakoa tai vuorottelua ei ole, niin jokaisen solmun pitää siis tehdä päätös viestin lähettämisestä tai odottamisesta pelkästään sen hetkisen paikallisen tiedon varassa. Kun solmu haluaa lähettää, niin se ensin kuuntelee, onko joku muu solmu jo lähettämässä. Jos ei ole, niin solmu aloittaa oman lähetyksensä. Kaikki lähetykset tehdään aina kanavan täydellä nopeudella.
 
+Koska lähettäjät kilpailevat kanavasta, niin on mahdollista, että kaksi lähettäjää yrittää lähettää samaanaikaan ja tapahtuu törmäys. Mikäli kahden lähettäjän viestit ovat kanavassa samaan aikaan, niin kumpikin viesti tuhoutuu, koska niiden signaaleja ei voi sekoittumisen jälkeen enää erottaa. Kun tällainen viestien törmäys tapahtuu, niin molemmat lähettäjät joutuvat lähettämään omat viestinsä myöhemmin uudelleen.
 
-Kalvo: Kilpailuprotokollat (random access protocols)
-Kun asema haluaa lähettää
-Se kuuntelee ensin, onko joku muu asema jo lähettämässä
-Jos ei, lähettää heti täydellä nopeudella
-Jos kaksi aloittaa yhtäaikaa => törmäys
-Odota satunnainen aika ja yritä uudestaan (random access)
-Protokolla määrittää
-Miten törmäys huomataan
-Miten törmäyksestä toivutaan
-Esim. (viipaloitu)ALOHA, CSMA, CSMA/CD, CSMA/CA
+Solmun pitää tavalla tai toisella havaita törmäys. Tässä suhteessan eri protokollat toimmivat eri tavalla. Niissä on myös eroja siinä mien törmäyksestä toivutaan eli miten ja milloin uudelleenlähetys tapahtuu. Tyypillisesti törmäyksen jälkeen solmu odottaa satunnaisen (engl. random) ajan ja yrittää uudelleen. 
+
 
 #### Aloha ja viipaloitu aloha
 
-Kalvo: aloha
-Kehitetty radiotietä varten70-luvulla Hawaijilla
-Lähetä heti, kun on lähetettävää
-Ei mitään kuuntelua ennen lähetystä
-Kuuntele sitten, onnistuiko lähetys
-Lähiverkossa törmäys havaitaan 'heti', sillä siirtoviive on pieni  (toisin kuin satelliitilla)
-Jos törmäys, niin odota satunnainen aika ja  yritä uudelleen
-Törmäyksen td. suuri 
-Max tehokkuus ~ 18% 
+Aloitetaan historiasta ja ihan ensimmäisestä langattoman verkon läehtysvuorojen jakoprotokollasta, jonka nimi on [ALOHA](https://en.wikipedia.org/wiki/ALOHAnet). Vaikka ALOHA kehitettiin nimenomaan langatonta radioteitse tapahtuvaa viestintää varten 1971 Havaijilla, niin sitä käytettiin myös kaapeliyhteyksillä.
 
-Kalvo: viipaloitu aloha
-*Oletukset:*
-Kaikki siirtokehykset samankokoiset
-Aikaviipale yhden kehyksen lähetysaika
-Solmu aloittaa lähetyksen aina aikaviipaleen alusta
-Solmut ja niiden kellot on synkronoitu
-Kaikki solmut havaitsevat yhteentörmäykset (collision)
-*Toiminta*
-Valmis siirtokehys lähetetään heti seuraavassa aikaviipaleessa 
-Ei yhteentörmäystä: Solmu voi lähettää seuraavan kehyksen seuraavassa aikaviipaleessa
-Yhteentörmäys: Solmu yrittää lähetystä uudelleen seuraavassa aikaviipaleessa todennäköisyydellä p. Yrittää niin kauan kunnes onnistuu.
-*Suorituskyky* kaksinkertaistuu (Alohaan verrattuna) 
-Jos paljon lähettäjiä  max. ~37 % tehokkuus
-Siis  37% tyhjiä, 37% onnistumisia, 26% törmäyksiä 
+Alkuperäinen ALOHA ei ollut kovin tehokas, koska jokainen solmu sai lähettää viestin heti, kun sillä oli lähetettävää. Se ei siis  etukäteen kuunnellut onko radiotiellä jo viesti kulkemassa. Solmu kuunteli vasta lähetyksen jälkeen onnistuiko lähetys. Jos törmäys tapahtui, niin solmun piti odottaa satunnainen aika ja yrittää sitten uudelleen.
+
+Koska solmut eivät kuunnelleet etukäteen ja koska viestien pituutta ei ollut rajoitettu, niin alkuperäisessä ALOHAssa törmäyksen todennäköisyys oli niin suuri, että vain noin 18% kanavan koko kapasiteetista saatiin käyttöön. Suurin osa kanavan kapasiteetista kului siis tärmäysten vuoksi hukkaan. Katso tuolta englanninkielisestä wikipediasta kuvia, joista selviää miksi yhteentörmäykset veivät noin suuren osan kanavan kapasiteetista.
+
+ALOHAsta tehtiin paranneltu versio, jossa karsittiin osittain päällekkäiset yhteentörmäykset pois. Viipaloidussa ALOHAssa kanavan sovittiin, että siirrettävät kehykset ovat keskenään samankokoisia. Lisäksi kanava jaettiin aikaviipaleisiin, siten että yhdessä aikaviipaleessa voi lähettää yhden kehyksen. Nyt kaikki solmut aloittivat lähetyksensä aina aikaviipaleen alusta eikä kesken toisen solmun lähetystä. Tämä onnistui, kun solmut ja niiden kellot saatiin synkronoitua. Kaikki (lähettävät) solmut havaitsevat yhteentörmäykset.
+
+Kun siirtokehys on valmis, niin solmu lähettää sen heti seuraavassa aikaviipaleessa. Jos ei tullut yhteenörmäystä, niin solmu voi lähettää seuraavan kehyksen heti seuraavassa aikaviipaleessa. Jos lähetyksessä tuli yhteentörmäys, niin solmu yrittää lähetystä uudelleen seuraavassa aikaviipaleessa jollakin todennäköisyydellä p.
+
+Viipaloidulla ALOHAssa saadaan kanavan kapasiteetista käyttöön noin 37%, mikä on kaksinkertainen määrä alkuperäiseen ALOHAan verrattuna. Englanninkielisessä wikipediassa on hyvin kuvattu matemaattinen päättelyketju tämän tehokkuusluvun laskennassa. 
+
+Viipaloitua ALOHAa käytetään edelleen tietyissä erikoistilanteissa, koska se on toteutukseltaan ja toiminnaltaan hyvin yksinkertainen ja koska se sallii yhden lähettäjän lähettää täydellä nopeudella, jos muita lähettäjiä ei samanaikaisesti ole.
+
+
+TEHTÄVÖ:  Kuinka paljon 1 Gigabitiä sekunnissa kanavan kapasiteetista saadaan ylläolevien tehokkuus lukujen perusteella käyttöön a) ALOHAssa b) viipaloidussa ALOHAssa
+
+Simuloi viipaloitua alohaa (Anna lähetettävän kehykset, todennäköisyydet yms, jolloin simulointi on kaikilla samanlaianen ja tee sitten kymys  mitä missäkin viipaleessa tapahtuu (tyhjä, yhteentörmäys, a,b,c,d,e)
+
 
 ### Lähetyskanavan kuuntelu CSMA
 
-Kalvo: kilpailuprotokollat -lhhetyskanavan kuuntelu CSMA (Carrier Sense Multiple Access)
-*Kuuntele ennen kuin lähetät*
-Asema tutkii, onko kanava jo käytössä (carrier sense)
-Jos siirtotie on vapaa, saa lähettää
-Jos siirtotie on varattu, odota satunnainen aika ja yritä uudelleen
-Ei aina paljasta jo alkanutta lähetystä
-*Aina huomaaminen ei ole mahdollista*
-Esim.  satelliittikanavan kuuntelu ei paljasta, onko jokin muu maa-asema jo aloittanut lähetyksen
-Langattomassa lähiverkossa lähettäjän ympäristön kuuntelu ei kerro, onko vastaanottaja saamassa sanomia muilta
-*Yhteentörmäyksiä voi tapahtua* Etenemisviiveen takia ei huomata toisen signaalia ajoissa
-Yhteentörmäyksen seuraus: Paketin lähetys epäonnistuu ja lähetysaika menee hukkaan
-	Solmujen etäisyydet ja etenemisviiveet vaikuttavat yhteentörmäysten todennäköisyyteen  
+[Lähetyskanavan kuuntelu](https://en.wikipedia.org/wiki/Carrier-sense_multiple_access) (engl. Carrier Sense Multiple Access, CSMA) on ALOHAn jälkeen kehitetty menetelmä, jossa keskeistä on, että lähettäjän täytyy ennen omaan lähetystään varmistaa, että kanava on tyhjä. Ajastus on siis että solmu kuuntelee kanavaa ennen kuin lähettää ja lähettää vain jos kanava on tyhjä. Jos kanava on tyhjä, niin voi lähettää samantien. Jos kanava on varattuna, niin solmun pitää odottaa hetki ja sitten voi yrittää uudelleen. Odotuksen kesto riippuu CSMAn toteutusvaihtoehdosta. Aika tavallista on odottaa satunnainen aika ja sitten tarkistaa onko kanava vapaa. Odottaminen voi myös olla aktiivista, jolloin solmu aktiivisesti kuuntelee kanavan vapautusta ja lähettää heti kun kanava on vapaa.
+
+Etukäteen tapahtumvalla kanavan kuuntelulla ei kuitenkaan voi havaita kaikkia muiden lähetyksiä joko lainkaan tai riittävän nopeasti, joten yhteentörmäykset ovat edelleen mahdollisia. Esimerkiksi kaapelissa etenemisviiveen takia kaksi lähettäjää voivat molemmat havaita kanavan tyhjäksi ja aloittaa lähetyksen samaanaikaan. Langattomassa lähiverkossa lähettäjän ympäristön kuuntelu ei kerro, onko vastaanottaja saamassa sanomia muilta, joita lähettäjä ei voi etäisyyden takia kuulla. Vastaavasti satelliittikanavan kuuntelu ei paljasta, onko jonkin muu maa-asema jo aloittanut lähetyksen. Muistathan, että sateelliittien kautta tapahtuvassa viestinnässä etenemisviiveet voivat olla hyvinkin suuria.
+
+Mikäli yhteentörmäys tapahtuu, niin pakettien lähetykset epännistuvat ja ne joudutaan lähettämään uudelleen. Tällöin paketin lähettämiseen käytetty aiak menee hukkaan. Solmujen väliset etäisyydet ja etenemisviiveet vaikuttavat yhteentörmäysten todennäköisyyteen, koska jos solmu ei voi havaita toisen solmun jo aloittamaan lähetystä, niin se voi aloittaa oman lähetyksensä samaan aikaan tuon toisen solmun kanssa.
+
+ 
     
 Kalvo: CSMA/CD (Carrier Sense Multiple Access with Collision Detection)
+
+https://fi.wikipedia.org/wiki/CSMA/CD
+
 Asema kuuntelee myös lähettämisen jälkeen
 Langallinen LAN: törmäys => signaalin voimakkuus muuttuu 
 Esim. Ethernet
@@ -160,5 +122,5 @@ Kauanko kuunneltava?
 2* maksimi etenemisviive solmujen välillä (A ei saa lopettaa lähetystä ennenkuin  törmäyssignaali olisi ehtinyt tulla!
 )
 
-
+CSMA/CA https://fi.wikipedia.org/wiki/CSMA/CA
 
