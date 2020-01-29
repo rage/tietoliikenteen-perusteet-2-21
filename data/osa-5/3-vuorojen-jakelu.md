@@ -100,27 +100,18 @@ Simuloi viipaloitua alohaa (Anna lähetettävän kehykset, todennäköisyydet ym
 
 [Lähetyskanavan kuuntelu](https://en.wikipedia.org/wiki/Carrier-sense_multiple_access) (engl. Carrier Sense Multiple Access, CSMA) on ALOHAn jälkeen kehitetty menetelmä, jossa keskeistä on, että lähettäjän täytyy ennen omaan lähetystään varmistaa, että kanava on tyhjä. Ajastus on siis että solmu kuuntelee kanavaa ennen kuin lähettää ja lähettää vain jos kanava on tyhjä. Jos kanava on tyhjä, niin voi lähettää samantien. Jos kanava on varattuna, niin solmun pitää odottaa hetki ja sitten voi yrittää uudelleen. Odotuksen kesto riippuu CSMAn toteutusvaihtoehdosta. Aika tavallista on odottaa satunnainen aika ja sitten tarkistaa onko kanava vapaa. Odottaminen voi myös olla aktiivista, jolloin solmu aktiivisesti kuuntelee kanavan vapautusta ja lähettää heti kun kanava on vapaa.
 
-Etukäteen tapahtumvalla kanavan kuuntelulla ei kuitenkaan voi havaita kaikkia muiden lähetyksiä joko lainkaan tai riittävän nopeasti, joten yhteentörmäykset ovat edelleen mahdollisia. Esimerkiksi kaapelissa etenemisviiveen takia kaksi lähettäjää voivat molemmat havaita kanavan tyhjäksi ja aloittaa lähetyksen samaanaikaan. Langattomassa lähiverkossa lähettäjän ympäristön kuuntelu ei kerro, onko vastaanottaja saamassa sanomia muilta, joita lähettäjä ei voi etäisyyden takia kuulla. Vastaavasti satelliittikanavan kuuntelu ei paljasta, onko jonkin muu maa-asema jo aloittanut lähetyksen. Muistathan, että sateelliittien kautta tapahtuvassa viestinnässä etenemisviiveet voivat olla hyvinkin suuria.
+Etukäteen tapahtuvalla kanavan kuuntelulla ei kuitenkaan voi havaita kaikkia muiden lähetyksiä joko lainkaan tai riittävän nopeasti, joten yhteentörmäykset ovat edelleen mahdollisia. Esimerkiksi kaapelissa etenemisviiveen takia kaksi lähettäjää voivat molemmat havaita kanavan tyhjäksi ja aloittaa lähetyksen samaanaikaan. Langattomassa lähiverkossa lähettäjän ympäristön kuuntelu ei kerro, onko vastaanottaja saamassa sanomia muilta, joita lähettäjä ei voi etäisyyden takia kuulla. Vastaavasti satelliittikanavan kuuntelu ei paljasta, onko jonkin muu maa-asema jo aloittanut lähetyksen. Muistathan, että sateelliittien kautta tapahtuvassa viestinnässä etenemisviiveet voivat olla hyvinkin suuria.
 
-Mikäli yhteentörmäys tapahtuu, niin pakettien lähetykset epännistuvat ja ne joudutaan lähettämään uudelleen. Tällöin paketin lähettämiseen käytetty aiak menee hukkaan. Solmujen väliset etäisyydet ja etenemisviiveet vaikuttavat yhteentörmäysten todennäköisyyteen, koska jos solmu ei voi havaita toisen solmun jo aloittamaan lähetystä, niin se voi aloittaa oman lähetyksensä samaan aikaan tuon toisen solmun kanssa.
+Mikäli yhteentörmäys tapahtuu, niin pakettien lähetykset epännistuvat ja ne joudutaan lähettämään uudelleen. Tällöin paketin lähettämiseen käytetty aika menee hukkaan. Solmujen väliset etäisyydet ja etenemisviiveet vaikuttavat yhteentörmäysten todennäköisyyteen, koska jos solmu ei voi havaita toisen solmun jo aloittamaan lähetystä, niin se voi aloittaa oman lähetyksensä samaan aikaan tuon toisen solmun kanssa.
 
- 
-    
-Kalvo: CSMA/CD (Carrier Sense Multiple Access with Collision Detection)
+CSMA:sta on useita erilaisia versioita esimerkiksi CSMA/CA:ssa (engl. Collision Aoidance, CA) pyritään ensi sijaisesti välttämään törmäyksiä. Törmäysten välttämistä käytetään esimerkiksi WLANien käyttämässä standardissa [IEEE 802.11](https://fi.wikipedia.org/wiki/IEEE_802.11). Langattomassa liikennöinnissä solmun on vaikea samaan aikaan sekä lähettää että kuunnella mahdollista yhteentörmäystä. Sen takia siinä pyritään ensi sijaisesti välttämään törmäyksiä. Tämä voidaan tehdä esim. lähettämällä varaussignaali ennen varsinaista kehystä tai kuten IEEE 802.11:sta odottamalla satunnainen aika vapaata kanavaa seuraten ennen varsinaista lähetystä. Näin, jos kaksi solmua haluaa lähettää samaan aikaan, on todennäköistä että toinen niistä aloittaa ensin ja toinen joutuukin odottamaan pidempään.
 
-https://fi.wikipedia.org/wiki/CSMA/CD
+Ethernetissä käytetään [CSMA/CD:tä](https://fi.wikipedia.org/wiki/CSMA/CD) (engl. Collision Detection). Siinä solmu voi aloittaa lähettämisen heti kun se havaitsee kanavan olevan vapaana, mutta sen täytyy samanaikaisesti kuunnella kanavaa, jotta se voi havaita yhteentörmäyksen. Koska liikennöinti tapahtuu kaapelissa, niin voimme olla varmoja, että solmu voi yhteentörmäyksen havaita. Havaitseminen voidaan tehdä esimerkiksi signaalin voimakkuuden muutoksesta. Langattomassa verkossa törmäystä ei aina voida havaita, koska lähettäjät eivät välttämättä voi kuulla toisiaan esimerkiksi liian suuren etäisyyden aiheuttaman signaalin vaimenemisen vuoksi.
 
-Asema kuuntelee myös lähettämisen jälkeen
-Langallinen LAN: törmäys => signaalin voimakkuus muuttuu 
-Esim. Ethernet
-Langaton LAN: hankalaa
-Jos törmäys, keskeytä lähettäminen heti
-ja yritä uudestaan satunnaisen ajan kuluttua
-Näin törmäyksen aiheuttama hukka-aika pienenee
+CSMA/CD:ssä solmun pitää keskeyttää kehyksen lähettäminen heti (minimipituuden jälkeen), jos se havaitsee törmäyksen. Tällä nopealla keskeytyksellä pienennetään törmäyksen aiheuttaa hukka-aikaa ja lyhennetään kanavan varauksen kesto tässä epäonnistuneessa lähetystilanteessa. Tämä on CSMA/CD:n keskeinen ero perus CSMA:han, jossa solmu saa lähettää koko kehyksen, vaikka se olisi havainnut törmäyksen.
 
-Kauanko kuunneltava?
-2* maksimi etenemisviive solmujen välillä (A ei saa lopettaa lähetystä ennenkuin  törmäyssignaali olisi ehtinyt tulla!
-)
+Jos  kehyksen lähetys epäonnistui törmäyksen vuoksi, niin solmu odottaa satunnaisen ajan ja yrittää lähettämistä sen jälkeen uudelleen. Tällöinkin se voi lähettää vasta kun kanava on vapaa.
 
-CSMA/CA https://fi.wikipedia.org/wiki/CSMA/CA
+Iso kysymys erityisesti CSMA/CD:ssä on, että kuinka paljon pitää vähintään lähettää ja toisaalta, kuinka kauan on kuunneltava oman lähetyksen aloituksen jälkeen. Ajatellaan, että A:n ja B:n etäisyys on kyseisessä kaapelissa mahdollisimman suuri. Tällöin ne ovat kaapelin eri päissä. Niiden välisessä kaapelissa voi olla muitakain solmuja. Vaikka A on jo aloittanut lähettämisen, niin B kuulee vielä hetken aikaa tyhjän kanavan ja voi aloittaa oman lähetyksensä. Tämä aika on etenemisviive A:lta B:lle. Jotta A voi havaita törmäyksen, niin sen pitää kuulla B:n lähetys, johon menee vielä toinen etenemisviive. Näin ollen pisin aika, jonka kuluessa mikä tahansa solmu voi havaita törmäysken on 2 * maksimi etenemisviive solmujen välillä.  Jotta etenemisviive ei kasvaisi kohtuuttomaksi, niin ethernet-kaapeloinneilla on ollut maksimipituus rajoituksia. Varmistaankseen yhteentörmäyksen havaitsemisen, niin solmu ei saa lopettaa omaa lähetystään ennen kuin törmäysignaali olisi ehtinut tulla. Näin ollen pienin sallittu lähetettävän kehyksen koko on se, jonka lähettäminen kestää vähintään 2 * maksimietenemisviiveen verran. , kunhan lähetettävä kehys on riittävän pitkä, jotta sen lähetys kestää riittävän kauan.
 
+TEHTÄVÄ: Joku yksinkertainen CSMA/CD tehtävä.
