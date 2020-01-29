@@ -7,15 +7,15 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Kertaat luokkien ja olioiden toimintaa.
-- Tiedät mikä on `null`-viite ja tiedät mistä virhe NullPointerException johtuu.
-- Osaat käyttää olioita oliomuuttujana ja metodin parametrina.
-- Osaat luoda metodin, joka palauttaa olion.
-- Osaat luoda equals-metodin, jolla voi tarkastaa onko kaksi samantyyppistä oliota sisällöllisesti samat.
+- Osaat kuvata kytkimen toiminnan ja miten se eroaa reitittimen ja keskittimen/toistimen toiminnasta
+- Osaat kertoa miten kytkin pitää kirjaa aliverkon laitteista ja miten se tietää missä osassa aliverkko laite sijaitsee.
 
 </text-box>
 
 
+## Kytkin (js keskitin)
+
+Kytkin toimii linkkikerroksella ja keskitin (engl. hub) fyysisellä kerroksella.
 
 <img src="../img/drawings/olio-joan.png"/>
 
