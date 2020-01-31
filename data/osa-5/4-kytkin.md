@@ -13,10 +13,71 @@ hidden: false
 </text-box>
 
 
-## Kytkin (js keskitin)
+## Keskitin, kytkin ja reititin
 
-Kytkin toimii linkkikerroksella ja keskitin (engl. hub) fyysisellä kerroksella.
+Kytkin, keskitin ja reititin on valitttavan helppo sekoittaa toisiinsa, koska niitä kaikkia käytetään yhdistämään tietoliikenneverkon eri osia toisiinsa. Muistathan, että reititin toimii verkkokerroksella. Tästä eri kerroksilla toimimisista on se seuraus, että kun reititin vastaanottaa paketin se purkaa siitä pois linkkikerroksen kehyksen ja tarkastelee esiin kuorittua IP-pakettia. Sen jälkeen se lähettää paketin edelleen haluttuun suuntaan. Tässä vaiheessa IP-paketti kääritään uuteen linkkikerroksen kehykseen, jossa on tämän kehyksen mukaisen lähettäjän ja vastaanottajan osoitteet.
 
-<img src="../img/drawings/olio-joan.png"/>
+[Kytkin](https://fi.wikipedia.org/wiki/Kytkin_(tietoliikenne)) toimii linkkikerroksella, joten se käsittelee aina linkkikerroksen kehystä. Se siis toimii kehyksen otsakkeesta saamiensa tietojen mukaan. Näin ollen kytkin osaa tunnistaa laitteiden MAC-osoitteita, mutta ei IP-osoitteita. Koska kytkin sanana suomenkielessä on käytössä sekä valokytkimissä että auton vaihteistossa, niin tarvittaessa voidaan käyttää termiä tietoliikennekytkin tai verkkokytkin erotuksenä näistä sanan muista käyttöyhteyksistä. Tietoliikennealan sisällä kuitenkin puhutaan yksinkertaisesti kytkimistä.
+
+[Keskitin](https://fi.wikipedia.org/wiki/Keskitin) on usemmasta toistimesta muodostettu fyysisen kerroksen laite, joka yksinkertaisimmillaan vain toistaa yhdestä portista saamansa tiedon kaikkiin muihin portteihin. Tällaista viestin toistamista tarvitaan, koska pitkillä siirtoyhteyksillä signaalit vaimenevat, eivätkä ne välttämättä olisi enää perillä tunnistettavia. Matkan varrelle sijoitetut toistimet (engl. repeater) generoivat saamansa signaalin uudelleen ja näin vahvistavat sen tasoja ja samalla poistavat häiritsevää taustakohinaa. 
+
+Keskitin siis toistaa saamansa signaalit sellaisenaan kaikkiin ulosmeneviin yhteyksiin. Se ei voi muuttaa signaalin nopeutta, joten se soveltuu yhdistämään vain saman teknologian samalla nopeudella toimivia verkon osia toisiinsa. Keskittimet eivät näy linkkikerrokselle, joten ne voivat pidentää viestin kulkuaikaa kyseisellä yhteydellä ja näin lisätä etenemisviivettä kahden ko. yhteyttä käyttävän solmun välillä.
+
+
+## Kytkin
+
+Kytkin voi suodattaa liikennettä linkkikerroksen MAC-osoitteiden perusteella. Toisin kuin keskitin, niin se voi suodattaa (engl. filter) sen läpi kulkevia viestejä ja lähettää viestin vain siihen porttiin, jossa se vastaanottajan MAC-osoitteen perusteella tietää vastaanottajan olevan. Lisäksi useimmat kytkimet osaavat myös tilapäisesti puskuroida viestejä, jolloin ne voivat liikennöitä eri solmujen kanssa eri nopeuksilla.
+
+Verkkokerroksen (eli reitittimien ja verkon ulkoreunoilla olevien solmujen) kannalta kytkimen toiminta on ihan yhtä näkymätöntä kuin keskittimien ja toistimien toiminta on näkymätöntä kytkimelle. 
+
+Koska kytkin suodattaa kehyksiä ja ohjaa saapuvan kehyksen vain siihen porttiin, jossa kehyksen vastaanottaja on.  Se tarvitsee oman kytkintaulun (engl. switch table), jonka avulla se voi päätellä, mihin porttiin kehys pitää ohjata. Kytkin käyttää kehyksen ohjaukseen vastaanottajan MAC-osoitetta. Sillä on siis omassa kytkintaulussaan (MAC-osoite, porttinumero) -pareja, joista se voi tarkistaa mihin suuntaa kyseinen kehys pitää ohjata.
+
+Koska kytkimen pitää välittää kehykset samantien, niin sillä ei ole aikaa kysyä missä päin verkkoa tietty MAC-osoite sijaitsee. Jos se ei löydä tietoa kytkintaulusta, niin se toimii kuten keskitin ja lähettää kehyksen kaikkiin portteihin, paitsi sinne mistä kehys tuli. Näin se tulvittaa (engl. flooding) kyseisen kehyksen kaikkialle verkossa ja voi olla varma, että vastaanottaja saa sen.
+
+Omaa kytkintauluaan se päivittää saapuvien kehysten tiedoilla. Aina kun sille tulee kehys se tarkistaa kytkintaulusta vastaanottajan osoitteen lisäksi myös lähettäjän MAC-osoitteen. Jos lähettäjän MAC-osoitetta ei löydy kytkintaulusta, niin kytkin lisää tauluun lähettäjän MAC-osoitteen ja sen portin numeron, josta kehys saapui. Näin se oppii liikennettä seuraamalla missä portissa mihin laite sijaitsee. Tästä käytetään joskus termiä 'takaperin oppiminen' (engl. backward learning) korostamaan sitä, että toisin kuin yleensä tässä tarkastellaan ja päivitetään lähettäjän tietoja. Yleensä tietoliikenteessä ollaan kiinnostuneita vain vastaanottajasta, mutta kytkintaulun päivityksessä kiinnostavaa on nimenomaan lähettäjä.
+
+Tästä vaiheittaisesta kytkitaulun päivityksestä on se hyöty, että kytkimeen voidaan helposti liittää uusia laitteita ja kytkin oppii itsenäisesti missä portissa laite on. Jotta kytkintaulu pysyisi riittävän pienenä, niin kytkin poistaa kytkitaulusta käyttämättöämiä tietoja, eli jos tietystä MAC-osoitteesta ei ole vähään aikaan liikennöity, niin se poistetaan. 
+
+
+KUVA. Verkossa käytetään tähtitopologiaa. Tähden keskuksena on kytkin. Kytkimeen tulee ainakin neljää yhteyttä, joista kaksi tulee suoraan solmulta ja kahdessa kytkin on esin liitetty keskittimeen, joista toiseen on liitty 2 ja toiseen 3 solmua. Näin meillä on verkon reunoilla kaikkiaan 7 laitetta ja keskemmällä kaksi keskitintä ja yksi kytkin. A ja B on kiinni keskittimessä H1, H1 ja C on yhdistetty kytkimeen K, H1 porttiin 1 ja C porttiin 2. Toisella puolella kytkintä portissa 3 on H2, jossa on kiinni solmut E,F ja G. Lisäksi kytkimessä on vielä kiinni solmu I portissa 4.
+ 
+ <img src="../img/drawings/olio-joan.png"/>
+ 
+ 
+
+Kytkin siis käsittelee kytkintauluaan seuraavasti aina kun sille saapuu kehys
+
+- Onko lähettäjän MAC-osoite taulussa?
+    on: päivitä aikaleima
+    ei: lisää tauluun (MAC, porttinumero, aikaleima)
+- Onko vastaanottajan MAC-osoite taulussa?
+    ei:  tulvita (eli lähetä kaikkialle muualle paitsi tuloporttiin)
+    on: Jos portti eri kuin tuloportti, niin lähetä ko. porttiin. Jos portti sama kuin tuloportti, niin unohda.
+
+
+Esimerkiksi oheisessa kuvassa, jos oletetaan, että kytkintaulu on tyhjä ja A lähettää kehyksen B:lle, niin mitä tapahtuu. A:n kehys päätyy keskittimelle, joka lähettää sen kaikkiin suuntiin eteenpäin, eli kehys päätyy sekä B:lle että kytkimelle. Koska kytkimen kytkintaulu on tyhjä, niin se lisää sinne (A,1). Koska B ei ole vielä kytkintaulussa, niin kytkin lähettää viestin kaikkiin portteihin paitsi porttiin 1, koska kehys saapui sieltä.
+
+Jatketaan esimerkki: Nyt I lähettää viestin A:lle. Viesti menee suoraan kytkimelle, joka tarkistaa kytkintaulustaan sekä I:n että A:n. I ei ei ole taulussa, joten se lisätään sinne (I,4). Vastaanottaja A  on taulussa, joten kehys ohjataan vain porttiin 1.
+
+
+TEHTÄVÄ tuohon kuvaan liittyen.
+
+
+
+Kehysten tulvituksen liittyy aina riski siitä, että kehys jää ikuisesti kiertämään verkossa. Näin voi tapahtua, jos verkon rakenteessa on silmukka. Tehdään tuohon äskeiseen esimerkkiin silmukka esimerkiksi yhdistämällä keskittimet H1 ja H2 toisiinsa joko suoraan tai uuden kytkimen avulla. Nyt jos kytkin lähettää kehyksen A:le porttiin 1, niin keskittimet toistavat viestin ja se päätyy takaisin kytkimelle portista 3. Kytkin siis lähettää viestin uudelleen porttiin 1 ja näin meillä on ikuisesti verkossa liikkuva viesti. Tällainen silmukka pudottaa tehokkaasti verkon tehokkuutta, kun suurin osa siirrettävistä kehyksistä on näitä turhia jo moneenkertaan lähetettyjä.
+
+Voimme välttyä silmukoilta muodostamalla tällaiseen verkkoon virittävän puun, jota pitkin kytkimet voivat siirtää kehyksiä. Tämä voidaan tehdä esimerkiksi reitityksen yhteydessä käsitellyllä linkkitila-algoritmilla. Silmukka on ihan yhtä hankala, onpa se reitittimien muodostamassa verkossa tai kytkinten muodostamassa verkossa. Samat periaatteet pätevät niihin molempiin. Verkkoja tutkitaan myös hyvin teoreettisesti, jotta niiden tällaiset yleiset ominaisuudet voidaan havaita ja niiden ratkaisemiseen kehittää yleisiä algoritmeja.
+
+
+
+Kytkimien ohessa saatetaan joskus puhua myös [silloista](https://fi.wikipedia.org/wiki/Silta_(tietoliikenne)). Kytkin on internetiin ja erityisesti ethernet-verkkoihin liittyvä termi. Silta on mikä tahansa kahta verkkoa linkkikerroksella yhdistävä laite, mutta nykyisin kun käytetään lähinnä ethernet-verkkoja, niin silta -termi on jäämässä taustalle. Silta -termiä käytetään erityisesti silloin kun yhdistetään eri teknologioilla toimivia verkkoja toisiinsa nimenomaan linkkikerroksella. Kytkin jokaa osaa useita eri ethernet-versioita on myös silta. 
+
+Tyypillisesti termiin silta tai oikeastaan sen muunnokseen siltaus tai siltaava saattaa törmätä ADSL-modeemin tai muun verkkolaitteen yhteydessä. Tällainen laite voi olla joko reitittävässä tai siltaavassa tilassa. Reitittävä tila tarkoittaa siis sitä, että laite toimii verkkokerroksen reitittimenä ja suorittaa verkkokerroksen tehtäviä. Siltaava tila puolestaan tarkoittaa, että laite toimii kuin linkkikerroksen kytkin eli että se ei käsittele IP-pakettia lainkaan vaain lähettää kaikki verkkokerroksen paketin suoraan laitten läpi kuten kytkin.
+
+
+
+TEHTÄVÄ
+
+
 
 
