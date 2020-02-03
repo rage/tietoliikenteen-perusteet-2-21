@@ -15,9 +15,22 @@ hidden: false
 
 ## Paketin lähettäminen toiseen verkkoon
 
-Olemme useammassa kohdassa kurssi tutustuneet reitittimen toimintaan eri näkökulmista. Nyt kun myös linkkikerroksen toiminnallisuus on käsitelty, niin voimme vihdoin yhdistää kaikki kurssilla käydyt teemat ja tarkastella yksityiskohtaisesti, mitä tapahtuu kun reitittimelle saapuu paketti ja se lähettää sen eteenpäin toiseen aliverkkoon.
+Olemme jo useammassa kohdassa kurssia tutustuneet reitittimen toimintaan eri näkökulmista. Nyt kun myös linkkikerroksen toiminnallisuus on käsitelty, niin voimme katsoa tätä myös linkkikerroksen näkökulmasta. Samalla voimme yhdistää kaikki kurssilla käydyt teemat ja tarkastella yksityiskohtaisesti, mitä tapahtuu kun reitittimelle saapuu paketti ja se lähettää sen eteenpäin toiseen aliverkkoon.
 
-Otetaan käyttöön 
+
+Piirrä KUVA: Kuvassa on  kaksi aliverkkoa, jotka on yhdistetty kolmannella reitittimen välisellä aliverkolla. Ensimmäisessä on A ja B, jotka on yhdistetty reitittimeen R1 ja toisessa reititin R2 on yhdistetty C:hen ja D:hen. Reitittimet on yhdistetty toisiinsa. A:n IP-osoite on 192.68.12.4 ja MAC-osoite 11-22-33-44-55-66. B:n IP-osoite on 192.168.12.6 ja MAC-osoite 77-88-99-AA-BB-CC. Reitittimillä on kaksi rajapintaa, joten niillä on myös useampia IP- ja MAC-osoitteita. aliverkon suuntaan R1:n IP-osoite on 192.168.12.1 ja MAC 12-12-12-12-12-12. Toisen reitittimen suuntaan R1:n IP-osoite on 111.111.111.1 ja MAC 12-12-12-12-12-13. Reitittimet yhdistävässä aliverkossa R2:n IP-osoite on 111.111.111.2 ja MAC 23-23-23-23-23-01. Aliverkon suuntaan R2:n IP-osoite on 10.0.0.1 ja MAC 23-23-23-23-23-03. C:n IP-osoite on 10.0.0.2 ja MAC A1-A1-A1-A1-A1-A1. D:n IP-osoite on 10.0.0.3 ja MAC 12-13-14-15-16-17.
+
+KUVA: Kuvassa on kaksi aliverkkoja ja niitä yhdistävät reitittimet. Kummallakin aliverkolla on oma reititin. Tällöin reitittimien välinen yhteys muodostaa vielä kolmannen aliverkon. Huomaa, että kaikki IP ja MAC-osoitteet ovat muodoltaan oikeita, mutta tätä esimerkkiä varten keksittyjä. Lisäksi IP-osoitteet ovat yksityisverkon osoitteita, joita ei voi yleisessä internetissä käyttää.
+
+
+Oletetaan, nyt että A haluaa lähettää yhden paketin D:lle. Tämä voisi olla vaikkapa UDP-paketti tai TCP-yhteyden aloittava ACK, mutta koska viestin sisältö on vain A:n ja D:n kannalta merkityksellinen, niin jätetään se tästä tarkastelusta pois. A siis laittaa kuljetuskerroksen viestin IP-pakettiin, jossa lähettäjänä on A:n oma IP eli 192.162.12.4 ja vastaanottajana D:n IP eli 10.0.0.3. A näkee omasta reititystaulustaan, että tämä paketti pitää ohjata R1:lle, joka osaa käsitellä 10.x verkkoon menevät viestit.  Aloitetaan tarkastelu sen sijaan siitä, kun tämän A:n D:lle osoittama viesti saapuu R1:lle.
+
+KUVA: Kehys, jonka sisällä IP-paketti. Kehyksessä vastaanottajan MAC R!, lähettäjän A. IP-paketissa lähettäjä A ja vastaanottaja D.
+
+KUVA: Kuvassa on A:n lähettämän kehyksen sisältöä. Tämän esimerkin kannalta meitä kiinnostavat erityisesti osoitteet sekä kehyksessä että IP-paketissa.
+
+
+
 
 
 
