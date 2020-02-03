@@ -45,20 +45,3 @@ TEHTÄVÄ: Simuloi nyt R2:n toimintaa ja vastaa seuraaviin kysymyksiin.
 Kun paketti aikanaan saavuttaa D:n siis silloin kaikki kerrokset käsitellään vuorollaan alhaalta ylöspäin. Eli linkkikerros poistaa ensin oman kehyksensä, koska viesti oli tulossa tälle laitteelle. Verkkokerros tarkistaa vastaanottajan IP:n ja päättää että viesti on nyt perillä eikä sitä tarvitse enää lähettää eteenpäin. Se purkaa sitten IP-paketin ja antaa sisältä löytyvän segmentin kuljetuskerrokselle. Kuljetuskerros puolestaan välittää varsinaisen sovelluskerroksen viestin oikealle sovellukselle pistokkeen ja siihen liitetyn porttinumeron avulla.
 
 
-
-## Yksikkötestaus
-
-
-
-<br/>
-
-
-
-Testimetodit toteutetaan tyypillisesti siten, että testimetodissa käytetään testattavaa yksikköä -- esimerkiksi metodia tai luokkaa -- ja sitten testataan, että testattavan yksikön palauttama syöte on toivottu. Syötteen tarkastamiseen on tällä hetkellä käytössä kolme metodia, jotka ovat seuraavat:
-
-- `assertEquals`, joka saa kaksi parametria. Ensimmäisenä parametrina on odotettu arvo, ja toisena parametrina testattavan yksikön palauttama arvo. Metodi tuottaa JUnit-kirjaston ymmärtämän virheviestin mikäli arvot eivät ole samat eli testi ei mene läpi.
-
-- `assertTrue`, joka saa yhden `boolean`-tyyppisen parametrin. Mikäli parametrina saatu arvo ei ole `true`, metodi tuottaa JUnit-kirjastolle virheviestin, joka kertoo ettei testi mennyt läpi.
-
-- `assertFalse`, joka saa yhden `boolean`-tyyppisen parametrin. Mikäli parametrina saatu arvo ei ole `false`, metodi tuottaa JUnit-kirjastolle virheviestin, joka kertoo ettei testi mennyt läpi.
-
