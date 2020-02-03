@@ -25,8 +25,8 @@ Mitä muistat vielä aiemmasta osiosta:
 
 <quiz id="b0dd9db6-8cd7-4e67-bd32-e9cca664b918"></quiz>
 
-Seuraavaksi käydän läpi pikakertaus keskeisimmistä käsitteistä.
-Lisäksi tässä osiossa käydään tarkemmin läpi paketin siirtoon liittyviä yleisiä seikkoja, kuten viiveet. Lisäksi tutustumaan vaihtoehtoiseen tapaan, piirikytkentään, muodostaa verkkoyhteys lähettäjän ja vastaanottajan välillä. 
+Seuraavaksi käymme läpi pikakertauksen keskeisimmistä käsitteistä.
+Lisäksi tässä osiossa käymme tarkemmin läpi paketin siirtoon liittyviä yleisiä seikkoja, kuten viiveet. Tutustumme myös vaihtoehtoiseen tapaan, piirikytkentään, muodostaa verkkoyhteys lähettäjän ja vastaanottajan välillä. 
 
 
 

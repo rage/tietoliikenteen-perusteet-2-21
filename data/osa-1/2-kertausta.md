@@ -11,17 +11,17 @@ title: 'Kertausta'
 
 ## Osoitteet ja viestinvälitys
 
-Internetin viestinvälitys on pakettikytkentäinen, jolloin lähettäjä aina lähettää yhten paketin (analogiana toimii kirje), jossa on sisällä siirrettä data ja se ympärillä (kirjekuorena) vastaanottajan tunnistamiseen tarvittavaa tietoa.
+Internetin viestinvälitys on pakettikytkentäinen, mikä tarkoittaa että lähettäjä aina lähettää yhden paketin (analogiana toimii kirje), jossa on sisällä siirrettävä data ja se ympärillä (kirjekuorena) vastaanottajan tunnistamiseen tarvittavaa tietoa.
 
-Internetin protokollat on sijoitettu protokollapinon eri kerroksille. Yhdellä kerroksella olevan protokollan ei pidä tietää mitä sen ala- ja yläpuolella on. Sille riittää tarkastella kyseisen protokollan lähettäjän ja vstaanottajan välistä viestien vaihtoa. Tästä automaattisesti seuraa, että kun jokainen kerro laittaa oman viestinsä omaan kirjekuoreen, niin näitä kirjekuoria on useita sisäkkäin.
+Internetin protokollat on sijoitettu protokollapinon eri kerroksille. Yhdellä kerroksella olevan protokollan ei tarvitse tietää mitä sen ala- ja yläpuolella on. Sille riittää tarkastella kyseisen protokollan lähettäjän ja vastaanottajan välistä viestien vaihtoa. Tästä automaattisesti seuraa, että kun jokainen kerros laittaa oman viestinsä omaan kirjekuoreen, niin näitä kirjekuoria on useita sisäkkäin.
 
 <quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>
 
-Eri kerroksilla käytetään eri osoitteita. Ne on käyty läpi edellisellä kurssilla.
+Eri kerroksilla käytetään eri osoitteita. Ne on käyty läpi edellisellä kurssilla. (TODO pitäisiköhän näitä käydä tässä vähän läpi)
 
 <quiz id="ad711046-8a1d-4e03-8b6f-e545ee9bdcd0"></quiz>
 
-Pakettikytkentäisen verkon yksi keskeinen piirre on, että paketti liikkuvat aina yhden välin eli etapin kerrallaan. Siksi niitä kutsutaan myös etappivälitteisiksi verkoiksi. Jokaisella välipysäkillä täytyy aina päättää mihin suuntaan paketti seuraavaksi liikahtaa. Tätä kokonaisuutta kutsutaan reititykseksi ja näitä päätöksiä tekeviä laitteita reitittimiksi silloin kun päätöksiä tehdään verkkokerroksella. Reititystä tarkastellaan vielä tällä kurssilla myöhemmin.
+Pakettikytkentäisen verkon yksi keskeinen piirre on, että paketit liikkuvat aina yhden välin eli etapin kerrallaan. Siksi niitä kutsutaan myös etappivälitteisiksi verkoiksi. Jokaisella välipysäkillä täytyy aina päättää mihin suuntaan paketti seuraavaksi liikahtaa. Tätä kokonaisuutta kutsutaan reititykseksi ja näitä päätöksiä tekeviä laitteita reitittimiksi silloin kun päätöksiä tehdään verkkokerroksella. Reititystä tarkastellaan vielä tällä kurssilla myöhemmin.
 
 ## Protokollat
 
