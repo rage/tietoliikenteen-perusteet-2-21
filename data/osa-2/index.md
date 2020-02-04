@@ -9,7 +9,7 @@ hidden: false
 
 Tässä osassa käydään läpi sovelluskerroksen toiminta tietoliikenteen asiantuntijalta edellytettävällä tasolla. Käyttäjän näkökulma oli jo edellisellä Tietoliikenteen perusteet 1 -kurssilla.
 
-Tarkastellaan siis protokollien ja viestien yksityiskohtia, sovelluksen ohjelmointirajapintaa tietoliikenteeseen ja tietoliikennettä käyttävien sovellusten perusideaa. Kurssilla ei kuitenkaan opetella tietoliikenneohjelmointia vaan ainoastaan ne periaatteet joiden varassa tuollaista ohjelmontia voi myöhemmin opiskella.
+Tarkastellaan siis protokollien ja viestien yksityiskohtia, sovelluksen ohjelmointirajapintaa tietoliikenteeseen ja tietoliikennettä käyttävien sovellusten perusideaa. Kurssilla ei kuitenkaan opetella tietoliikenneohjelmointia vaan ainoastaan ne periaatteet joiden varassa tuollaista ohjelmointia voi myöhemmin opiskella.
 
 
 <please-login></please-login>
