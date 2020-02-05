@@ -68,7 +68,7 @@ IEEE 802.11 -tekniikalla toteutettu WLAN verkko on kotiverkoille tyypillinen lan
 Näistä verkoista ja niiden laitteista käytetään usein myös Wi-Fi nimitystä. Wi-Fi on rekisteröity tavaramerkki, jota hallinnoi Wi-Fi alliance (verkkosivu https://www.wi-fi.org/). Se myöntää yrityksille (maksua vastaan) oikeuden käyttää Wi-Fi sertifioitu merkkiä yrityksen valmistamissa verkkolaitteissa.
 
 
-IEEE 802.11 -verkkoen tukiasemat palvelevat kukin omaa erillistä joukkoa laitteita. 
+IEEE 802.11 -verkkojen tukiasemat palvelevat kukin omaa erillistä joukkoa laitteita. Tukiasemat on tyypillisesti yhdistetty langalliseen verkkoon.  
 
 
 
