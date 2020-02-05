@@ -41,7 +41,34 @@ Ad hoc -verkon koneet voivat siis suoraan kommunikoida vain omalla kuuluvuusalue
 
 Ad hoc -verkkojen käyttö tiettyihin specifeihin tarkoituksiin on vuosien varrella selvitelty paljonkin. WLANin toteutuksessa käytetyllä tekniikalla toteutettujan ad hoc -verkkoja kutsutaan usein  [mobiileiksi ad hoc -verkoiksi](https://fi.wikipedia.org/wiki/Mobile_ad-hoc_network) (MANET). Autoja ajatellaan on myös pohdittu erityisten [vehicular ad hoc -verkkojen](https://en.wikipedia.org/wiki/Vehicular_ad-hoc_network) toiminnallisuutta. Näiden verkkojen erityispiirre on vekon solmujen suuri liikenopeus.
 
+## Langattoman verkon ongelmia
 
+Signaalin heijastuminen ja siitä aiheutuva viive voi pahimmillaan sekoittaa alkuperäisen suoraan menevän ja heijastunutta reittiä hiukan kauemmin kulkevan signaalin siten, että vastaanottaja ei pysty enää selvittämään viestin sisältöä tästä yhteissignaalista. Usein heijastunut signaali on kuitenkin vaimentunut sen verran, että alkuperäinen signaali erottuu vastaanottajan kannalta riittävästi.
+
+Koska signaali kulkee ilmateitse, niin maaston muodot voivat jopa kokonaan estää signaalin kulkemisen vastaanottajalle. Langattoman verkon toimnnan kannalta signaalin esteetön kulku on välttämätöntä ainakin lähettäjän ja vastaanottajan välillä. 
+
+Langattomista verkoista on tunnistettu kaksi yleistä ongelmatilannetta, jota kutsutaan kätketyn aseman ja näkyvän aseman ongelmiksi. 
+
+Kätketyn aseman (engl. hidden terminal) ongelmassa kaksi laitetta yrittää samanaikasesti viestiä kolmannelle. Nämä kaksi eivät kuitenkaan voi kuulla toistensa viestejä, koska ne eivät ole toistensa kuuluvuusalueella. Tämä voi johtua esimerkiksi maastoesteestä niiden välillä tai siitä, että ne ovat eri puolilla laitetta, jonka kanssa ne yrittävät kommunikoida.
+
+
+KUVA pari. Joista toisesa kätketyn aseman ongelma ja toisessa näkyvän aseman ongelma
+
+Näkyvän aseman (engl. exposed terminal) ongelmassa puolestaan laite kuulee toisen laitteen lähetyssignaalin ja jättää lähettämättä oman signaalinsa, vaikka signaalit eivät vastaanottajien kannalta mene sekaisin. Tällöin asemat ovat toistensa kuuluvuusalueella, mutta viestien vastaanottajat eivät kuulisi toisen aseman viestejä, joten niiden kannalta signaalien sekoittumista ei tapahtuisi.
+
+Molemmat ongelmat heikentävät verkon toimintaa. Kätketyn asemant apauksessa molemmat lähetetyt viestit vaurioituvat ja se pitää lähettää myöhemmin uudelleen. Näkyvän aseman tapauksessa taas kaista jää käyttämättä, vaikka viesti olisi mennyt virheettömästi perille.
+
+Koska näitä ongelmia ei voi langattomista verkoista poistaa, niin useimmissa verkoissa edellytetään, että kaikki virheettömästi vastaanotetut viestit kuitataan jo linkkikerroksen kuittauksella. Muistathan, että kuljetuskerroksen TCP-protokollakin käytti kuittauksia viestien perillemenon varmistamiseen. Nyt kuittauksia käytetään linkkikerroksella varmistamaan, että viesti meni perille. Kuittaukset lisäävät verkon liikennettä, mutta koska lähettäjällä ei langattomassa verkossa ole mahdollisuutta itse varmistua viestin perillemenosta, niin se joutuu turvautumaan vastaanottajan lähettämään kuittaukseen asian varmistamiseksi.
+
+
+## WLAN / IEEE 802.11
+
+IEEE 802.11 -tekniikalla toteutettu WLAN verkko on kotiverkoille tyypillinen langaton verkko. Myös yritysten omat sisäiset ja niiden asiakkailleen tarjoamat avoimet WLAN-verkot on toteutettu jollain IEEE 802.11 standardin versiolla.
+
+Näistä verkoista ja niiden laitteista käytetään usein myös Wi-Fi nimitystä. Wi-Fi on rekisteröity tavaramerkki, jota hallinnoi Wi-Fi alliance (verkkosivu https://www.wi-fi.org/). Se myöntää yrityksille (maksua vastaan) oikeuden käyttää Wi-Fi sertifioitu merkkiä yrityksen valmistamissa verkkolaitteissa.
+
+
+IEEE 802.11 -verkkoen tukiasemat palvelevat kukin omaa erillistä joukkoa laitteita. 
 
 
 
@@ -49,10 +76,8 @@ Ad hoc -verkkojen käyttö tiettyihin specifeihin tarkoituksiin on vuosien varre
 
 <b>
 -	Langaton linkki, WLAN, WiFi
-o	kanavat, kätketyn aseman ongelma, ylimääräisen havaitun aseman ongelma
 o	osoitteiden käyttö: langattomalta internetiin, internestistä langattomalle
 o	CDMA
--	langattomat verkot (Markun ehdotus)
 </b>
 
 
