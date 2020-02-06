@@ -90,7 +90,19 @@ Kuten monet avoimia Wi-Fi -verkkoja käyttäneet jo tietävätkin, niin monet pa
 
 Laitteen sijaan langattoman verkon haltija voi edellyttää käyttäjän tunnistamista. Tällöin tukiasema käyttää erillistä tunnistuspalvelua, johon käyttäjän pitää tunnistautua esimerkiksi käyttäjätunnuksella ja salasanalla. Tunnistautumisen jälkeen käyttäjän laitteella voi liikennöidä verkossa. Jätämme erilaisten käyttäjän tunnistuksen menetelmien tarkemman tarkastelun tietoturvakursseille, kuten Cyber security.
 
-IEEE 802.11 standardin mukaan toimivat verkot käyttävät kehysten yhteentörmäysten välttämiseen CSMA/CA menetelmää, johon jo tustuimme aiemmin. Siinähän lähettäjän piti odottaa hetki vapaata kanavaa kuunnellen ennenkuin lähetys voi alkaa. 
+### Lähetysvuorojen jakely
+
+IEEE 802.11 standardin mukaan toimivat verkot käyttävät kehysten yhteentörmäysten välttämiseen CSMA/CA menetelmää, johon jo tustuimme lyhyesti aiemmin. Siinähän tavoitteena oli erityisesti välttää yhteentörmäyksiä.   Katsotaan nyt tarkemmin miten tämä WLAN-verkoissa tehdään.
+
+CSMA/CA:ssa edellytään, että lähettäjän pitää aina odottaa pieni hetki vapaata kanavaa kuunnellen ennenkuin lähetys voi alkaa. Näitä odotusaikoja on itseasiassa määritelty kaksi eri mittaista. SIFS (Short Inter-frame Spacing) on lyhyt ajanjakso, jota käytetään odotuksessa silloin, kun lähettäjä jo ennalta tietää että seuraavan kehyksen lähetysvuoro on oikeastaan sillä. Esimerkiksi datan vastaanottokuittauksien lähetys käyttää tätä lyhyempää odotusta. Lyhyt odotus tarvitaan jo pelkästään siihen, että alkuperäisen datan lähettäjän vaihtaa omat antenninsa lähetystilasta vastaanottotilaan.  Jos lähettäjä pyrkii lähettämään uuden datakehyksen, niin silloin se käyttää odotuksen kestona pidempää DIFS:iä (Distributed Inter-frame Spacing), jolla siis erotellaan eri lähettäjien eri datakehyksiä toisistaan. Koska SIFS on lyhyempi kuin DIFS, niin erilaiset kuittausviestit yms. saavat prioriteetin, jolloin ne lähetetään ensin ja pidemmät datakehykset joutuvan odottamaan hiukan kauemmin.
+
+WLAN-verkkojen käyttämässä CSMA/CA:ssa lähettäjän yleisesti käyttävät lisäksi myös kanavan varausta. Koska varauskehykset ja niiden kuittaukset ovat huomattavan paljon lyhyempiä kuin varsinaiset datakehykset, niin yhteentörmäykset varauskehysten kesken ovat nopeita selvittää. Lähettäjähän ei kuuntele tuliko yhteentörmäys, joten jos yhteentörmäys tulee pitkän datakehyksen aikana, niin lähettäjä kuitenkin lähettää kehyksen kokonaan. Kätketyn aseman ongelman vuoksi tällainen yhteentörmäys on mahdollinen. Nyt varausviestien kanssa lähettäjä, odotettuaan tuon DIFS aikaa, lähettääkin varsinaisen ison datakehyksen sijaan pienen varauskehyksen (Request To Send, RTS), jossa se kertoo kuinka ison kehyksen se haluaa lähettää ja kuinka kauan lähetys tulee kestämään. Vastaanottaja vahvistgaa tämän varauksen erillisellä vahvistusviestillä (Clear To Send, CTS), jonka se lähettää heti SIFS ajan jälkeen, jolloin mikään muu asema ei vielä voi lähettää. Koska kuittaus tulee ison kehyksen vastaanottajalta, niin se tavoittaa kaikki ne laitteet, joiden mahdollinen lähetys voisi häiritä datakehyksen lähetystä. Ne osaavat nyt tämän kuittausviestin tietojen avulla odottaa koko datakehyksen lähetyksen ajan ennenkuin ne edes yrittävät omaa lähetystään. Näin alkuperäiseltä lähettäjältä kätkössä oleva asema saa tiedon lähetyksestä, jota ei itse muuten pysty havaitsemaan.
+
+
+KUVA: Kirjan kuvasta 6.12 (editio 6) jonkunlainen oma versio  - liittyy siis tuohon edelliseen kappaleeseen
+
+KUVA: Kuvassa on yhden data kehyksen lähetykseen liittyvät viestit eli ensin varaus ja varauksen vahvistus ja sitten varsinainen datakahys ja lopuksi vielä sen kuittaus.
+
 
 ### Langattoman verkon kehys
 
