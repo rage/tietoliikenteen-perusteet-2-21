@@ -25,7 +25,7 @@ Toinen yleinen langaton verkko on [matkapuhelinverkko](https://fi.wikipedia.org/
 
 Matkapuhelinverkkojen, joita kutsutaan myös mobiiliverkoiksi, kehitystä on jaettu sukupolviin. Toisen sukupolven (2G) verkot käyttivät GSM-tekniikkaa. Sen jälkeen siirryttiin [3G](https://fi.wikipedia.org/wiki/3G)-verkkoihin. Nyt on jo käytössä [4G](https://fi.wikipedia.org/wiki/4G)-verkkoja, mutta ne eivät vielä ole käytettävissä kaikkialla. Tällä hetkellä standardointi kohdistuu tulevan 5G-verkon tekniikoihin. Tavoitteena on sekä nopeuttaa signaalin kulkua verkossa (pienentää etenemisviivettä) että samanaikaisesti lisätä siirrettävän datan määrää aikayksikköä kohti (eli kasvattaa verkon nopeutta).
 
-Muita tunnettuja langattomia standardoituja verkkoja ovat Bluetooth ja ZigBee. 
+Muita tunnettuja langattomia standardoituja verkkoja ovat [Bluetooth](https://fi.wikipedia.org/wiki/Bluetooth) ja [ZigBee](https://fi.wikipedia.org/wiki/ZigBee). 
 
 Tarkastelemme tällä kurssilla kuitenkin lähinnä WLAN-verkkojen toimintaa. Yleiset langattomaan liikennöintiin liittyvät seikat kuitenkin soveltuvat kaikille langattomille verkoille.
 
@@ -84,8 +84,18 @@ Vaihtoehtoisesti laite voi ennen liittymistään aktiivisesti lähettää kysely
 
 Standardit eivät millään tavalla määrittele kriteerejä, joiden mukaisesti laitteen pitäisi tukiaema valita. Laite saa tehdä valinnan haluallaan tavalla. Useimmiten laitevalmistajat käyttävät valintaperusteena signaalin voimakkuutta.
 
+Kun laite on päättänyt, mihin tukiasemaan se haluaa kiinnittyä, niin se lähettää erityisen kiinnittymispyynnön (engl. association request frame), jonka tukiasema hyväksyy vastausviestillään. Nyt laite voi linkkikerroksen näkökulmasta liikennöidä muun verkon kanssa tukiaseman kautta, mutta ylempien kerrosten kannalta se ei vielä ole liittyneenä internetiin. Siltä puuttuu esimerkiksi vielä IP-osoite. Toki laitteen tarvitsevat varkkoyhteyteen liittyvät tiedot voi jo olla asetettuna laitteen konfigurointitietoihin, mutta yleensä langattomaan verkkoon liittyvä laite pyytää näitä tietoja DHCP-protokollalla.
+
+Kuten monet avoimia Wi-Fi -verkkoja käyttäneet jo tietävätkin, niin monet palveluntarjoajat rajoittavat langattoman verkon käyttöä, jolloin tukiasemaan liittymisen yhteydessä voidaan edellyttää laitteen tai sen käyttäjän tunnistamista. Laitteen tunnistaminen voidaan tehdä käyttämällä ns. langattoman verkon salasanaa. Tällöin tukiasema hyväksyy kiinnittymispyynnön vain sellaisilta laitteilta, jotka osaavat antaa silleä oikealla salausmenetelmällä salatun oikean salasanan. Useimmat operaattorin myymät Wi-Fi -tukiasemat on nykyisin oletuarvoisesti suojattu tällä menetelmällä. Tällöin tukiaseman tunniste ja salasana on usein valmiina tukiaseman pohjassa olevassa tarrassa. Tukiasema voi tunnistaa laitteen myös laitteen käyttämän MAC-osoitteen avulla. Tällöin tukiasemalle on etukäteen kerrottu sallittujen laitteiden MAC-osoitteet.  Tätä ei enää pidetä kovin turvallisena vaihtoehtona, koska pahantahtoinen toimija voi helposti verkkoa kuuntelemalla saada selville sallittuja MAC-osoitteet. Koska nykyään laitteen MAC-osoite on helposti vaihdettavissa, pahantahtoisen toimijan on helppo kiinnittyä tällaiseen pelkästään MAC-osoitteilla suojattuun verkkoon.
+
+Laitteen sijaan langattoman verkon haltija voi edellyttää käyttäjän tunnistamista. Tällöin tukiasema käyttää erillistä tunnistuspalvelua, johon käyttäjän pitää tunnistautua esimerkiksi käyttäjätunnuksella ja salasanalla. Tunnistautumisen jälkeen käyttäjän laitteella voi liikennöidä verkossa. Jätämme erilaisten käyttäjän tunnistuksen menetelmien tarkemman tarkastelun tietoturvakursseille, kuten Cyber security.
+
+IEEE 802.11 standardin mukaan toimivat verkot käyttävät kehysten yhteentörmäysten välttämiseen CSMA/CA menetelmää, johon jo tustuimme aiemmin. Siinähän lähettäjän piti odottaa hetki vapaata kanavaa kuunnellen ennenkuin lähetys voi alkaa. 
+
+### Langattoman verkon kehys
 
 
+###
 
 
 <b>
