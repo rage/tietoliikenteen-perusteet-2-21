@@ -107,12 +107,18 @@ KUVA: Kuvassa on yhden data kehyksen lähetykseen liittyvät viestit eli ensin v
 ### Langattoman verkon kehys
 
 
-Langattoman verkon kehyksessä (katso kuva englanninkielisestä wikipediasta https://en.wikipedia.org/wiki/IEEE_802.11#Layer_2_%E2%80%93_Datagrams) on neljä osoitetta. Muistathan, että langallisen ethernet-verkon kehyksessä oli vain kaksi osoitetta (vastaanottajan MAC ja lähettäjän MAC). Langattomassa verkossa kehykselle on määriteltä neljä osoitekenttää, joista tosin yleensä ei käytetä kuin kolmea. Muista, että nämä kehykset ovat linkkikerroksella, jolloin kehysten osoitetiedot ovat MAC-osoitteita.
+Langattoman verkon kehyksessä (katso kuva englanninkielisestä wikipediasta https://en.wikipedia.org/wiki/IEEE_802.11#Layer_2_%E2%80%93_Datagrams) on neljä osoitetta. Muistathan, että langallisen ethernet-verkon kehyksessä oli vain kaksi osoitetta (vastaanottajan MAC ja lähettäjän MAC). Langattomassa verkossa kehykselle on määritelty neljä osoitekenttää, joista tosin yleensä ei käytetä kuin kolmea. Muista, että nämä kehykset ovat linkkikerroksella, jolloin kehysten osoitetiedot ovat MAC-osoitteita. Osoitekenttien tulkinnat vaihtelevat sen mukaan mille laitteelle (eli mihin suuntaan) kehys on menossa.
 
-- osoite 1 on 
-- osoite 2 on 
-- osoite 3 on 
-- osoite 4 on käytössä vain ad hoc -verkoissa, jolloin sillä voidaan 
+Kehyksen alussa on joukko kehyksen tulkintaan vaikuttavia kenttiä, joista kentät ToDS ja FromDS määrittävät näiden 4 osoitekentän tulkinnat. Tuo DS nimessä on lyhenne englanninkielen sanoista Distribution system ja tässä se tarkoittaa tämä langattoman yhteyden (eli lähettäjän ja vastaanottajan) ulkopuolista verkkoa kokonaisuudessaan. Muistathan, että tarkastelemme asioita linkkitasolla, ja kahden langattoman laitteen välinen viestintä ei vielä muodosta verkkokerroksen näkökulmasta yhtä ehjää linkkiväliä verkkokerroksen lähettäjältä seuraavalle verkkokerroksen vastaanottajalle, ellei tukiasema ole samalla myös reititin. Jos viesti on tulossa kauempaa, niin FromDS on 1 ja jos viesti on menossa kauemmas niin ToDS on 1. Näin saadaan 4 erilaista yhdistelmää. 00 - näiden kahden laitteen välinen viesti, tyypillisesti kontrolliviesti, 01- menossa eteenpäin, 10- tulossa kauempaa, 11 - tulossa kauempaa ja menossa eteenpäin.  Tätä luokkaa 11 käytetään lähinnä ad hod -verkoissa, jotka tekevät kehysten reititystä linkkikerroksella.
+
+
+| ToDS  | FromDS  | Osoite 1  | Osoite 2  | Osoite 3  | Osoite 4  | 
+| ----- | --------- | ---------- | ---------------------- | ------------------------- | ---------------------- |
+| 0   | 0     | vastaanottajan MAC  | lähettäjän MAC    | tukiaseman id        |  ei käytössä         |
+| 0   | 1     | vastaanottajan MAC  | tukiaseman MAC  | lähettäjän MAC (esim. reititin)    | ei käytössä      |
+| 1   | 0    |  tukiaseman MAC | lähettäjän MAC    | vastaanottajan MAC (esim. reititin)   | ei käytössä      |
+| 1   | 1     | vastaanottavan tukiaseman MAC  | lähettävän tukiaseman MAC   | vastaanottajan MAC        | lähettäjän MAC    |
+
 
 
 
