@@ -107,13 +107,22 @@ KUVA: Kuvassa on yhden data kehyksen lähetykseen liittyvät viestit eli ensin v
 ### Langattoman verkon kehys
 
 
-###
+Langattoman verkon kehyksessä (katso kuva englanninkielisestä wikipediasta https://en.wikipedia.org/wiki/IEEE_802.11#Layer_2_%E2%80%93_Datagrams) on neljä osoitetta. Muistathan, että langallisen ethernet-verkon kehyksessä oli vain kaksi osoitetta (vastaanottajan MAC ja lähettäjän MAC). Langattomassa verkossa kehykselle on määriteltä neljä osoitekenttää, joista tosin yleensä ei käytetä kuin kolmea. Muista, että nämä kehykset ovat linkkikerroksella, jolloin kehysten osoitetiedot ovat MAC-osoitteita.
+
+- osoite 1 on 
+- osoite 2 on 
+- osoite 3 on 
+- osoite 4 on käytössä vain ad hoc -verkoissa, jolloin sillä voidaan 
+
+
+
+
+
 
 
 <b>
--	Langaton linkki, WLAN, WiFi
 o	osoitteiden käyttö: langattomalta internetiin, internestistä langattomalle
-o	CDMA
+
 </b>
 
 
