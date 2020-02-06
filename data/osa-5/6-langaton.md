@@ -68,7 +68,21 @@ IEEE 802.11 -tekniikalla toteutettu WLAN verkko on kotiverkoille tyypillinen lan
 Näistä verkoista ja niiden laitteista käytetään usein myös Wi-Fi nimitystä. Wi-Fi on rekisteröity tavaramerkki, jota hallinnoi Wi-Fi alliance (verkkosivu https://www.wi-fi.org/). Se myöntää yrityksille (maksua vastaan) oikeuden käyttää Wi-Fi sertifioitu merkkiä yrityksen valmistamissa verkkolaitteissa.
 
 
-IEEE 802.11 -verkkojen tukiasemat palvelevat kukin omaa erillistä joukkoa laitteita. Tukiasemat on tyypillisesti yhdistetty langalliseen verkkoon.  
+IEEE 802.11 -verkkojen tukiasemat palvelevat kukin omaa erillistä joukkoa laitteita. Jokainen tukiasema on erikseen yhdistetty langalliseen verkkoon.  Jokainen laite kommunikoi vain yhden tukiaeman kanssa. Jokaisella tukiasemalla on tunniste (Service Set ID, SSID) ja MAC-osoite. Tukiasema myös kommunikoi siihen liittyneiden laitteiden kanssa tietyllä kanavalla.
+
+IEEE 802.11. jakaa käytettävän taajuusalueen (yleensä joko 2,4 giga hertsiä (GHz) tai 5 GHz) kanaviin, joita 2,4 GHx:n alueella on vähintään 11 (USA). Euroopassa kanavia on 13 ja Japanissa 14. Kanavilla varatut kapeat taajuuskaistat ovat limittäin (eli ne menevät osittain päällekkäin), jolloin vierekkäisillä kanavilla kommunikoivien laitteiden viestit voivat häiritä toisiaan. Kanavat 1, 6 ja 11 eivät ole keskenään päällekkäin, joten niitä voidaan käyttää vaikka laitteet kuulisivat toistensa viestejä. 
+
+Tukiaseman kanava konfiguroitavissa. Jos mahdollista, niin tukiaseman kanava kannattaa valita niin, että se on mahdollisimman kaukana sen kuulemien tukiasemine kanavista. Näin kommunikointi tukiaseman ja siihen yhdistyneiden laitteiden välillä on mahdollisimman häiriötöntä.  HUomaa, että naapuritukiasemilla voi olla käytössä sama kanava. Tämä on yleisin syy siihen, että kotiverkon langaton tukiasema tuntuu pätkivän tai toimivan kovin hitaasti. Erityisesti kerrostaloissa tai kahviloissa tukiasema voi kuulla useiden muiden tukiasemien signaaleja. Jos niistä yksi tai useampia on samalla (tai hyvin läheisellä) kanavalla, niin ne eivät voi lähettää samaanaikaan, jolloin lähetyksiin tulee viiveitä. Ne voivat kyllä käyttää samaa kanavaa, mutta viestien lähetykset täytyy tehdä vuorotellen, jotta viestit voidaan vastaanottaa oikein. Jos siis havaitset ongelmia langattomassa liikenteess, niin kannattaa tarkistaa millä kanavilla kyseiseen kohtaan kuuluvat tukiasemat liikennöivät ja valita oman tukiaseman kanava mahdollisimman kauas muista sille kuuluvien tukiasemien kanavista. 
+
+Koska WLANissa ei ole mitään koordinointia, niin usein tukiasemian samanaikaista kuulumista kutsutaan joskus Wi-Fi viidakoksi (engl. Wi-Fi jungle). Kun tällaisessa viidakossa yrittää yhdistää omaa tietokonettaan internetiin, niin valittavana voi olla useita langattomia lähiverkkoja ja niiden tukiasemia. 
+
+Kun laite haluaa tällaisessa usean tukiaseman viidakossa liittyä verkkoon, niin sen pitää kiinnittyä (engl. associate) yhteen tukiasemaan. Se sisi tavallaan rakentaa 'näkymättömän langan' itsensä ja tukiaseman välille. Kaikki laitteen liikennöinti tapahtuu vain ja ainoastaan tämän tukiaseman kanssa. 
+
+Ennen liittymistään laite voi vain passiivisesti hetken kuunnella liikennettä kaikilla kanavilla ja etsiä sieltä erityisiä merkkikehyksiä (engl. beacon frame). Niillä tukiasemat'mainostavat itseään.  Merkkikehyksessä on tukiaseman tunniste (SSID, service set ID) ja MAC-osoite. Näistä laite voi sitten valita haluamansa tukiaseman.
+
+Vaihtoehtoisesti laite voi ennen liittymistään aktiivisesti lähettää kyselykehyksen (engl. probe), johon tukiasemat sitten vastaavat.
+
+Standardit eivät millään tavalla määrittele kriteerejä, joiden mukaisesti laitteen pitäisi tukiaema valita. Laite saa tehdä valinnan haluallaan tavalla. Useimmiten laitevalmistajat käyttävät valintaperusteena signaalin voimakkuutta.
 
 
 
