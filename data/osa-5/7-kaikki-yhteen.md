@@ -5,7 +5,14 @@ hidden: false
 ---
 
 
-Viidennessä osassa syvennyttiin olioiden maailmaan. Tarkastelimme alkeis- ja viittaustyyppisten muuttujien eroa. Tutustuimme metodien ja konstruktorien kuormittamiseen, harjoittelimme olioiden käyttöä oliomuuttujina sekä metodin parametrina ja paluuarvona. Harjoittelimme olioiden vertailuun käytettävien metodien luomista, ja käsittelimme olioita listalla sekä listoja oliomuuttujana.
+## Kaikki yhteen
+
+Kurssi on nyt lähestymässä loppuaan. Olmme tarkastelleet viestien välitystä internetissä ja käytössä olevia erilaisia tekniikoita. 
+
+Käydään vielä näin lopuksi yksi kokoava esimerkki, jossa yhdistellään eri osioissa käsitellyt asiat toisiinsa, koska tietoliikenne on kuitenkin yksi kokonaisuus.
+
+
+Tämä tehdään siis rainan ja tehtävien avulla.
 
 
 Vastaa vielä alla olevaan kyselyyn.
