@@ -1,6 +1,6 @@
 ---
-path: '/osa-5/7-yhteenveto'
-title: 'Yhteenveto'
+path: '/osa-5/7-kaikki-yhteen'
+title: 'Kaikki yhteen'
 hidden: false
 ---
 
