@@ -16,7 +16,7 @@ Verkko voidaan myös toteuttaa piirikytkentäisenä, jolloin aina lähettäjän 
 
 Piirikytkentäisessä verkossa paketit eivät voi kärsiä ruuhkasta, koska niille on varattu oma yhteys, jota ei jaeta muiden kanssa (engl. no sharing). Jos verkko on täynnä, niin lähettäjä ei voi muodostaa yhteyttä eikä pääse lainkaan lähettämään, mutta kun yhteys on muodostettu, niin liikennöinti sen sisällä etenee sujuvasti. Piirikytkentäinen verkko takaa siis tasaisen siirtonopeuden koko reitille.
 
-Toisaalta, koska reitti varataan koko yhteyden ajaksi, on reitti varattuna myös silloin kun lähettäjällä ei ole mitään lähetettävää. Resussi on siis varattuna tälle lähettäjälle, vaikka sitä ei käytetä. Näin 'hukataan' verkon resursseja, koska joku muu saattaisi haluta lähettää juuri tuolla hetkellä.
+Toisaalta, koska reitti varataan koko yhteyden ajaksi, on reitti varattuna myös silloin kun lähettäjällä ei ole mitään lähetettävää. Resurssi on siis varattuna tälle lähettäjälle, vaikka sitä ei käytetä. Näin 'hukataan' verkon resursseja, koska joku muu saattaisi haluta lähettää juuri tuolla hetkellä.
 
 Yksittäinen linkki voidaan jakaa useampaan kanavaan, jolloin varausvaiheessa yhdelle yhteydelle varataan vain yksi kanava eikä koko linkkiä. Tätä kutsutaan kanavoinniksi (engl. multiplexing). Jokainen yhteys varaa käyttöönsä yhden tai useamman kanavan, ja saa näin kiinteän osan koko linkin kapasiteetista. Muut kanavat voidaan samanaikaisesti varata käyttöönsä muita kanavia. (TODO viimeinen lause)
 
@@ -32,6 +32,6 @@ QUIZZ:
 
 
 
-KUVA:  Linki jako kanaviin aikajakona ja taajuusjakona (katso kalvo 2017, luento 1, 28).
+KUVA:  Linkin jako kanaviin aikajakona ja taajuusjakona (katso kalvo 2017, luento 1, 28).
 
 

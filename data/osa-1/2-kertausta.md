@@ -25,13 +25,13 @@ Pakettikytkentäisen verkon yksi keskeinen piirre on, että paketit liikkuvat ai
 
 ## Protokollat
 
-Tietoliikenteen protokollat määrittävät viestien vaihdon toiminnallisuuden. Protokollan kuvauksessa kerrotaan siis kuka lähettää, kenelle, mitä ja millä ehdoilla.  Internetin protokollien kuvaukset ovat IETF:n RFC dokumentaatiossa. Esimerkiksi HTTP versio 2 on [https://tools.ietf.org/html/rfc7540](RFC7540). Siinä on kuvattu kaikki HTTP/2:n käyttöön tarvittavat tiedot kuten kehykset, yhteydet ja viestien vaihto. 
+Tietoliikenteen protokollat määrittävät viestien vaihdon toiminnallisuuden. Protokollan kuvauksessa kerrotaan siis kuka lähettää, kenelle, mitä ja millä ehdoilla.  Internetin protokollien kuvaukset ovat IETF:n RFC dokumentaatiossa. Esimerkiksi HTTP versio 2 on [https://tools.ietf.org/html/rfc7540](RFC7540). Siinä on kuvattu kaikki HTTP/2:n käyttöön tarvittavat tiedot kuten kehykset, yhteydet ja viestien vaihto.
 
-Kaikilla muillakin protokollilla on omat dokumentaationsa. Viralliset internetissä käytettävät protokollat on aina kuvattu RFC dokumentaatiossa. Toki kuka tahansa voi rakentaa oman verkko-ohjelman ja käyttää omien ohjelman osien välillä ihan sellaista protokollaa kuin haluaa. Kuitenkin jos tarvitaan laajoja verkkosovelluksia, joilla on toisistaan riippumattomia toteuttajia, niin järjestelmän osien välinen kommunikointi täytyy kuvata ja dokumentoida siten, että se on kaikkien saatavilla.
+Kaikilla muillakin protokollilla on omat dokumentaationsa. Viralliset internetissä käytettävät protokollat on aina kuvattu RFC-dokumentaatiossa. Toki kuka tahansa voi rakentaa oman verkko-ohjelman ja käyttää omien ohjelman osien välillä ihan sellaista protokollaa kuin haluaa. Kuitenkin jos tarvitaan laajoja verkkosovelluksia, joilla on toisistaan riippumattomia toteuttajia, niin järjestelmän osien välinen kommunikointi täytyy kuvata ja dokumentoida siten, että se on kaikkien saatavilla.
 
 Edellisellä kurssilla meillä oli jo esillä HTTP-protokollan ja IP-protokollan viestien kuvaukset. Ne ovat keskenään hyvin erilaisia, koska protokollien määrittelyt ovat hyvin erilaisia ja kyseessä on myös eri kerrosten protokollat. IP-protokollan otsake on hyvin määrämuotoinen ja jokaisen bitin merkitys on määritelty tarkasti.  HTTP-protokollan otsake puolestaan on sanallisempi ja sille onkin määritelty lähinnä syntaksi, jolla näitä erilaisia määreitä kuvataan.
 
-Asiakkaan lähettämässä HTTP-viestissä ensimmäiselle rivillä on itse pyyntö ja rivi alkaa metodin nimellä. Palvelijan vastauksessa vastaavasti ensimmäinen rivi viestin statustieto. Seuraavat rivit sisältävät  muita pyyntöön tai vastaukseen liittyviä määrittelyjä. Ne siis muodostavat viestin otsakkeen. Näiden rivien määrää ei ole rajoitettu. Varsinainen viestin sisältö alkaa yhden tyhjän rivin jälkeen. 
+Asiakkaan lähettämässä HTTP-viestissä ensimmäiselle rivillä on itse pyyntö ja rivi alkaa metodin nimellä. Palvelijan vastauksessa vastaavasti ensimmäinen rivi viestin statustieto. Seuraavat rivit sisältävät  muita pyyntöön tai vastaukseen liittyviä määrittelyjä. Ne siis muodostavat viestin otsakkeen. Näiden rivien määrää ei ole rajoitettu. Varsinainen viestin sisältö alkaa yhden tyhjän rivin jälkeen.
 
 QUIZZ: HTTP protokollaan liittyviä kysymyksiä, jotka olleet esillä jo edellisessä osiossa (tai jotka voi selvittää helposti
 
