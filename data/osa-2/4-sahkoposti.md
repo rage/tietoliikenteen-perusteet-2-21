@@ -112,7 +112,7 @@ Julkisen avaimen salauksen avulla voidaan varmistua joko vastaanottajasta tai l�
 
 [Digitaalisessa allekirjoituksessa](https://fi.wikipedia.org/wiki/Digitaalinen_allekirjoitus) ei aina ole välttämätöntä suojata koko sisältöä ja siksi usein varsinaisesta sisällöstä lasketaan ns. tiiviste ja sitten salataan (eli allekirjoitetaan) vain tämä tiiviste.
 
-Jos halutaa samaan aikaa varmistaa sekä lähettäjä että vastaanottaja, on viesti salattava useampaan kertaan.
+Jos halutaan samaan aikaa varmistaa sekä lähettäjä että vastaanottaja, on viesti salattava useampaan kertaan.
 
 
 KUVA: Muokkaa wikipedian kuvasta, joka ladattuna.
