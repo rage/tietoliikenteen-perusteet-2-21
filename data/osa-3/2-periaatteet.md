@@ -9,7 +9,7 @@ hidden: false
 
 
 - Osaat mallintaa yksinkertaisen protokollan toiminnan.
-- Osaat arvioidan protokollan toiminnallisuutta käsin simuloimalla mallia.
+- Osaat arvioida protokollan toiminnallisuutta käsin simuloimalla mallia.
 
 </text-box>
 
@@ -19,15 +19,15 @@ Tämä on kurssin teoreettisin osio. Käytä tähän riittävästi aikaa, jotta 
 
 Protokollia voidaan mallintaa monella eri tavalla ja menetelmällä. Protokollien mallintamiseen on kehitetty useita erilaisia mallinnuskieliä. Tällä kurssilla tarkastellaan kuitenkin protokollien mallintamista yksikertaisten [äärellisten automaattien](https://fi.wikipedia.org/wiki/%C3%84%C3%A4rellinen_automaatti) avulla. Näistä voidaan käyttää myös nimitystä tila-automaatti, koska niissä on tiloja ja tilojen välisiä tilasiirtymiä.  Automaatti pysyy yhdessä tilassa, kunnes tilasiirtymään liittyvän tapahtuman perusteella se siirtyy seuraavaan tilaan. Tilat ja tapahtumat voidaan nimetä tai numeroida vapaasti.
 
-Tietoliikenteessä meidän täytyy mallintaa sekä lähettäjä että vastaanottaja, joten kyseessä on aina kahden automaatin yhteistoiminta. Lähettäjän ja vastaanottajan automaatit ovat aina jossain tilassa odottamassa tiettyä tapahtumaa, jonka seurauksena mallinnetun automaatin tila voi vaihtua seuraavaan. Yhdestä tilasta voi olla useita siirtymiä, joihin liittyy eri tapahtumat. 
+Tietoliikenteessä meidän täytyy mallintaa sekä lähettäjä että vastaanottaja, joten kyseessä on aina kahden automaatin yhteistoiminta. Lähettäjän ja vastaanottajan automaatit ovat aina jossain tilassa odottamassa tiettyä tapahtumaa, jonka seurauksena mallinnetun automaatin tila voi vaihtua seuraavaan. Yhdestä tilasta voi olla useita siirtymiä, joihin liittyy eri tapahtumat.
 
-Tietoliikenteen tila-automaateissa tyypilliset tapahtumat ovat joko viestin lähetyksiä, jotka merkitään miinus-merkillä, tai viestin vastaanottoja, jotka merkitään plus-merkillä. Nämä merkinnät on helppo muistaa kun ajattelee, että sanoman lähettäminen vähentää jotain ja sanoman vastaanottaminen vastaavasti lisää. Tarvittaessa voidaan ottaa käyttöön myös muita tapahtumia, jotka ovat kyseisen protokollan toiminnan kannalta tarpeellisia, esimerkiksi ajastimen asettaminen ja/tai sen laukeaminen.
+Tietoliikenteen tila-automaateissa tyypilliset tapahtumat ovat joko viestin lähetyksiä, jotka merkitään miinusmerkillä, tai viestin vastaanottoja, jotka merkitään plusmerkillä. Nämä merkinnät on helppo muistaa kun ajattelee, että sanoman lähettäminen vähentää jotain ja sanoman vastaanottaminen vastaavasti lisää. Tarvittaessa voidaan ottaa käyttöön myös muita tapahtumia, jotka ovat kyseisen protokollan toiminnan kannalta tarpeellisia, esimerkiksi ajastimen asettaminen ja/tai sen laukeaminen.
 
-Tässä materiaalissa automaateissa ei ole merkittynä aloitustilaa vaan sen oletetaan olevan tila 1. Yleisesti automaattien aloitustila voidaan merkitä pienellä tähän tilaan johtavalla nuolella. Aloitstilalla on merkitystä, koska erityisesti tietoliikenteen automaattien kohdalla olemme kiinnostuneita niiden yhteistoiminnasta. 
+Tässä materiaalissa automaateissa ei ole merkittynä aloitustilaa vaan sen oletetaan olevan tila 1. Yleisesti automaattien aloitustila voidaan merkitä pienellä tähän tilaan johtavalla nuolella. Aloitustilalla on merkitystä, koska erityisesti tietoliikenteen automaattien kohdalla olemme kiinnostuneita niiden yhteistoiminnasta.
 
 ## Yksinkertainen kuljetuspalvelu (ei kuittauksia)
 
-Lähettäjällä kuljetuspalvelu saa sovelluskerrokselta välitettävän viestin (kuvassa +send) ja lähettää sen vastaanottajalle (kuvassa -m). Vastaanottajalla kuljetuspalvelu vastaanottaa viestin (kuvassa +m) ja toimittaa sen edelleen sovelluskerrokselle (kuvassa (-receive). Kuten huomaat, niin merkitsemme aina automaatin lähettämiä viestejä miinus-merkillä ja vastaanottamia viestejä plus-merkillä. Näin toimitaan, vaikka toinen osapuoli ei olikaan tietoliikenneverkon takana. Tässähän send ja receive ovat tapahtumia, joiden avulla kuljetuspalvelu kommunikoi sovelluskerroksen prosessin kanssa.
+Lähettäjällä kuljetuspalvelu saa sovelluskerrokselta välitettävän viestin (kuvassa +send) ja lähettää sen vastaanottajalle (kuvassa -m). Vastaanottajalla kuljetuspalvelu vastaanottaa viestin (kuvassa +m) ja toimittaa sen edelleen sovelluskerrokselle (kuvassa (-receive). Kuten huomaat, niin merkitsemme aina automaatin lähettämiä viestejä miinusmerkillä ja vastaanottamia viestejä plusmerkillä. Näin toimitaan, vaikka toinen osapuoli ei olisikaan tietoliikenneverkon takana. Tässähän send ja receive ovat tapahtumia, joiden avulla kuljetuspalvelu kommunikoi sovelluskerroksen prosessin kanssa.
 
 <img src="../img/protokolla-ideaali-tilanne.svg" alt="Kuvassa on kaksi automaattia, toinen on lähettäjän ja toinen vastaanottajan. Lähettäjän automaatissa on kaksi tilaa: L1 j L2. Siirtymä tilasta L1 tilaan L2 on +send ja siirtymä tilasta L2 tilaan L1 on -m. Vastaanottajan automaatissakin on kaksi tilaa V1 ja V2. Vastaanottajalla siirtymä tilasta V1 tilaan V2 on +m ja siirtymä tilasta V2 tilaan V1 on -receive."/>
 
@@ -54,10 +54,10 @@ Kun oletetaan, että viestejä kuljettava kanava voi kadottaa yksittäisen viest
 
 KUVA: Nyt lähettäjän pitää jokaisen viestin lähetyksen jälkeen vastaanottaa kuittaus (+ack) ennen kuin se voi lähettää seuraavan viestin. Vastaanottajakin lähettää kuittauksen jokaisen viestin vastaanoton jälkeen.
 
-Molemmat automaatit aloittavat tilasta 1 eli eriteltyinä lähettäjä tilasta L1 ja vastaanottaja tilasta V1. Vastaanottajan automaatti voi tehdä tilasiirtymän vain saadessaan viestin m, joten se vain odottaa. Lähettäjän automaatti voi tehdä tilasiirtymän tilasta L1 tilaan L2, kun se saa viestin send. Jos siis mitään viestejä ei ole liikkeellä, niin kumpikan automaatti ei voi vaihtaa tilaansa. Oletetaan siis, että kuljetuskerrokselta tulee viesti send. Tällöin lähettäjän automaatti tekee tilasiirtymän tilasta L1 tilaan L2 ja lähettää sanoman m. Nyt vastaaanottajan automaatti voi tehdä tilasiirtymän tilasta V1 tilaan V1 ja lähettää viestit receive ja ack. Kmalloska lähettäjän automaatti on tilasssa L2, se voi tämän ack viestin saatuaan siirtyä tilaan L1. Näin se pääsee taas käsittelemään seuraavaa send viestiä. 
+Molemmat automaatit aloittavat tilasta 1 eli eriteltyinä lähettäjä tilasta L1 ja vastaanottaja tilasta V1. Vastaanottajan automaatti voi tehdä tilasiirtymän vain saadessaan viestin m, joten se vain odottaa. Lähettäjän automaatti voi tehdä tilasiirtymän tilasta L1 tilaan L2, kun se saa viestin send. Jos siis mitään viestejä ei ole liikkeellä, niin kumpikaan automaatti ei voi vaihtaa tilaansa. Oletetaan siis, että kuljetuskerrokselta tulee viesti send. Tällöin lähettäjän automaatti tekee tilasiirtymän tilasta L1 tilaan L2 ja lähettää sanoman m. Nyt vastaaanottajan automaatti voi tehdä tilasiirtymän tilasta V1 tilaan V1 ja lähettää viestit receive ja ack. Koska lähettäjän automaatti on tilasssa L2, se voi tämän ack-viestin saatuaan siirtyä tilaan L1. Näin se pääsee taas käsittelemään seuraavaa send-viestiä.
 
-Jos vastaanottajan lähettämä ack -viesti katoaa, ei lähettäjän tila-automaatti koskaan saa sitä eikä vo siirtyä pois tilasta L2. Ihan vastaavasti tapahtuu, jos lähettäjän lähettämä m-viesti katoaa. Tällöin vastaanottaja ei saa sitä, eikä voi lähettää viestiä ack. 
-Huomaa, että lähettäjä on viestin lähetettyään siirtynyt tilaan L2, eikä sillä ole mitään keinoa selvittää katosiko matkalla sen lähettämä viestä m vai vastaanottajan lähettämä kuittaus. Tämä periaate pätee kaikkeen tietoliikenteeseen, eli lähettäjä EI voi saada tietoa lähettämänsä viestin kohtalosta muuta kuin myöhemmin saapuvien (tai saapumatta jäävien) viestien välityksellä.
+Jos vastaanottajan lähettämä ack-viesti katoaa, ei lähettäjän tila-automaatti koskaan saa sitä eikä voi siirtyä pois tilasta L2. Ihan vastaavasti tapahtuu, jos lähettäjän lähettämä m-viesti katoaa. Tällöin vastaanottaja ei saa sitä, eikä voi lähettää viestiä ack.
+Huomaa, että lähettäjä on viestin lähetettyään siirtynyt tilaan L2, eikä sillä ole mitään keinoa selvittää katosiko matkalla sen lähettämä viesti m vai vastaanottajan lähettämä kuittaus. Tämä periaate pätee kaikkeen tietoliikenteeseen, eli lähettäjä EI voi saada tietoa lähettämänsä viestin kohtalosta muuta kuin myöhemmin saapuvien (tai saapumatta jäävien) viestien välityksellä.
 
 Tämä keskeneräinen malli ei siis vielä osaa toipua viestin katoamisesta.
 Jotta toipuminen on mahdollista, niin meidän täytyy lisätä lähettäjän automaattiin mahdollisuus lähettää viesti uudelleen, jos kuittaus ei tule tietyn ajan kuluessa. Tämä voidaan tehdä yksinkertaisesti yhdellä lisäsiirtymällä ajastin/-m. Koska lähettäjä odottaa tietoa viestin kohtalosta nimenomaan tilassa L2, on viestin uudelleenlähetys liitettävä siihen tilaan. Ajastin aiheuttaa kellokeskeytyksen eli tapahtuman, johon automaatti voi reagoida. Ajastimista ja keskeytyksistä kerrotaan enemmän Tietokoneen toiminta -kursseilla.
@@ -65,11 +65,11 @@ Jotta toipuminen on mahdollista, niin meidän täytyy lisätä lähettäjän aut
 Ajastimen avulla tehtyä aikakatkaisua (engl. timeout) käytetään siis tietoliikenteessä keskeyttämään lähettäjän odotus. Jos lähettäjän lähettämä viesti tai siihen liittyvä kuittaus katoaa matkalla, ei lähettäjä saa tästä mitään tietoa. Jotta lähettäjä voisi reagoida tähän katoamiseen, on lähettäjän viestin odotus ensin keskeytettävä [ajastimen](https://fi.wikipedia.org/wiki/Ajastin) avulla.  Viestin lähetyksen yhdyessä lähettäjä siis asettaa ajastimen tekemään keskeytys sopivan ajan kuluttua.
 
 
-<img src="../img/protokolla-kuittaus-ajastin.svg" alt="Lähettäjällä on nyt kaksi tilaa ja siirtymät niiden välillä L1:stä L2:een +send/--m ja L2:sta L1:een on +ack. Lisäksi lähettäjällä on uusi siirtymä L2:sta itseensä ajastin/-m. Vastaanottajalla on edelleen yksi tila, jossa siirtymä itseensä +m /(-receive, -ack).">
+<img src="../img/protokolla-kuittaus-ajastin.svg" alt="Lähettäjällä on nyt kaksi tilaa ja siirtymät niiden välillä L1:stä L2:een +send/-m ja L2:sta L1:een on +ack. Lisäksi lähettäjällä on uusi siirtymä L2:sta itseensä ajastin/-m. Vastaanottajalla on edelleen yksi tila, jossa siirtymä itseensä +m/(-receive, -ack).">
 
-KUVA: Edelliseen kuvaan on lisätty ajastimen aiheuttama siirtymä ajastin /-m tilasta L2 tilaan L2.
+KUVA: Edelliseen kuvaan on lisätty ajastimen aiheuttama siirtymä ajastin/-m tilasta L2 tilaan L2.
 
-Nyt yksittäinen viesti voi kadota ja ajastimen laukeamisen jälkeen lähettäjä voi lähettää viestin uudelleen. Protokollamme toimii oikein, jos kanava voi taata, että viesti menee varmasti perille tietyssä ajassa. Käytännössä tällaista aikatakuuta kanava ei anna, joten on mahdollista, että yksittäinen sanoma viivästyy niin paljon, että lähettäjä ehtii lähettämäään sen uudelleen. Tällöin vastaanottaja saa saman viestin kahteen kertaan. Koska edellisen kuvan automaatissa lähettäjä lähettää kuittauksen kaikille saapuneille viesteille, se kuittaa tämän viestin uudelleen. Tällainen tuplakuittaus voi aiheuttaa ongelmia.
+Nyt yksittäinen viesti voi kadota ja ajastimen laukeamisen jälkeen lähettäjä voi lähettää viestin uudelleen. Protokollamme toimii oikein, jos kanava voi taata, että viesti menee varmasti perille tietyssä ajassa. Käytännössä kanava ei anna tällaista aikatakuuta, joten on mahdollista, että yksittäinen sanoma viivästyy niin paljon, että lähettäjä ehtii lähettämään sen uudelleen. Tällöin vastaanottaja saa saman viestin kahteen kertaan. Koska edellisen kuvan automaatissa lähettäjä lähettää kuittauksen kaikille saapuneille viesteille, se kuittaa tämän viestin uudelleen. Tällainen tuplakuittaus voi aiheuttaa ongelmia.
 
 Kun lähettäjä saa kuittauksen tilassa 2 se olettaa kuittauksen koskevan juuri lähettämäänsä viestiä. Jos kuittaus kuitenkin koski jotain aiempaa viestiä, saattaa tämä lähetetty viesti jäädä pois välistä. Tämän korjaamiseksi meidän täytyy numeroida lähetetyt viestit, jotta lähettäjä tietää mitä viestiä kuittaus koskee.
 
@@ -81,13 +81,13 @@ QUIZZ: Erilaisia viestiketjuja lähettäjän ja vastaanottajan välillä. Mikä 
 
 ## Vuorottelevan bitin protokolla
 
-Jotta peräkkäiset viestit voidaan erottaa toisistaan ne tyypillisesti numeroidaan ja kuittausviestissä kerrotaan sitten tämä viestin numero. Näin vastaanottaja voi havaita yksittäisen viesti katoamisen ja raportoida tästä lähettäjälle. Lähettäjä voi sitten lähettää tämän kadonneen viestin uudelleen. Koska haluamme pitää automaatin äärellisenä, niin emme voi käyttää ääretöntä viestien nuemrointia. Äärettömällä automaatilla olisi äärettömän monta tilaa ja sen analysointi olisi haastavaa. 
+Jotta peräkkäiset viestit voidaan erottaa toisistaan, ne tyypillisesti numeroidaan ja kuittausviestissä kerrotaan sitten tämä viestin numero. Näin vastaanottaja voi havaita yksittäisen viesti katoamisen ja raportoida tästä lähettäjälle. Lähettäjä voi sitten lähettää tämän kadonneen viestin uudelleen. Koska haluamme pitää automaatin äärellisenä, niin emme voi käyttää ääretöntä viestien numerointia. Äärettömällä automaatilla olisi äärettömän monta tilaa ja sen analysointi olisi haastavaa.
 
-Yksinkertaisimmillaan riittää, että numeroimme peräkkäiset viestit toisistaan poikkeavasti. Tähän riittää yksi bitti, jonka arvo on joko 0 tai 1. Kun näitä kahta arvoa vuorotellaan saadaan kaksi peräkkäistä viestiä numeroitua toisistaan poikkeavasti. Tästä tulee tuo perinteinen nimi vuorottelevan bitin protokolla (engl. [alternating bit protocol](https://en.wikipedia.org/wiki/Alternating_bit_protocol). Koska protokollalla läheteään yksi viesti ja pysähdytään odottamaan sille kuittaus ennen seuraavan viestin lähetystä käytetään protokollasta ajoittain myös nimitystä yksikertainen stop-and-wait protokolla https://en.wikipedia.org/wiki/Stop-and-wait_ARQ. Tällaista pysähtelyä ja odottamista on monessa muussakin protokollassa, joten aivan kaikki stop-and-wait -mallia noudattavat protokollat eivät ole vuorottelevan bitin protokollia.
+Yksinkertaisimmillaan riittää, että numeroimme peräkkäiset viestit toisistaan poikkeavasti. Tähän riittää yksi bitti, jonka arvo on joko 0 tai 1. Kun näitä kahta arvoa vuorotellaan, saadaan kaksi peräkkäistä viestiä numeroitua toisistaan poikkeavasti. Tästä tulee tuo perinteinen nimi vuorottelevan bitin protokolla (engl. [alternating bit protocol](https://en.wikipedia.org/wiki/Alternating_bit_protocol). Koska protokollalla lähetetään yksi viesti ja pysähdytään odottamaan sille kuittaus ennen seuraavan viestin lähetystä, käytetään protokollasta ajoittain myös nimitystä yksikertainen [stop-and-wait -protokolla](https://en.wikipedia.org/wiki/Stop-and-wait_ARQ). Tällaista pysähtelyä ja odottamista on monessa muussakin protokollassa, joten aivan kaikki stop-and-wait -mallia noudattavat protokollat eivät ole vuorottelevan bitin protokollia.
 
-<img src="../img/AB-sanomat.svg" alt="Lähettäjän sovelluskerroksen ja kuljetupalvelun välillä on viesti send. Lähettäjän kuljetuspalvelu ja vastaanottajan kuljetuspalvelu on yhdistetty toisiinsa kanavalla, jossa kulkevat viestit m0, ack0, m1 ja ack1. Vastaanottajalla sovelluskerroksen ja kuljetuspalvelun välillä on viesti receive."/>
+<img src="../img/AB-sanomat.svg" alt="Lähettäjän sovelluskerroksen ja kuljetuspalvelun välillä on viesti send. Lähettäjän kuljetuspalvelu ja vastaanottajan kuljetuspalvelu on yhdistetty toisiinsa kanavalla, jossa kulkevat viestit m0, ack0, m1 ja ack1. Vastaanottajalla sovelluskerroksen ja kuljetuspalvelun välillä on viesti receive."/>
 
-KUVA: Kaavakuvasta voi nähdä, minkä elementtien välillä viestit kulkevat. 
+KUVA: Kaavakuvasta voi nähdä, minkä elementtien välillä viestit kulkevat.
 
 Yllä olevassa kuvassa on piirrettynä seuraavan kuvan automaatin ympäristö. Tästä ja automaatin viesteistä näkyy, että lähettäjän päässä kuljetuspalvelu saa send-viestin sovelluskerrokselta. Vastaavasti vastaanottajan päässä kuljetuspalvelu toimittaa receive-viestin vastaanottajalle. Viestien kulkusuunta ei näy tästä kaavakuvasta, mutta se voidaan katsoa automaatin toiminnallisuudesta.
 
@@ -95,10 +95,10 @@ Olisimme voineet yksinkertaistaa mallia ja jättää sovelluskerroksen ja sen vi
 
 <img src="../img/AB-automaatti.svg" alt="Lähettäjällä on neljä tilaa. Tilasiirtymät L1:stä L2:een +send/-m0, L2:sta itseensä ajastin/-m0, L2:sta L3:een, +ack0, L3:sta L4:ään +send/-m1, L4:stä itseensä ajastin/-m1, L4:stä L1:een +ack1. Vastaanottajalla on kaksi tilaa. Tilasiirtymät V1:stä V2:een +m0/(-receive, -ack0) ja V2:stä  .">
 
-KUVA: VUorottelevan bitin protokolla. Lähettäjän ja vastaanottajan välillä kanavassa kulkee siis normaalisti m0, ack0, m1, ack1, ....
+KUVA: Vuorottelevan bitin protokolla. Lähettäjän ja vastaanottajan välillä kanavassa kulkee siis normaalisti m0, ack0, m1, ack1, ....
 <br>
 
- 
+
 
 
 
