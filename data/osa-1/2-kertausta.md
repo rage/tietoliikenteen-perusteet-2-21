@@ -33,8 +33,7 @@ Edellisellä kurssilla meillä oli jo esillä HTTP-protokollan ja IP-protokollan
 
 Asiakkaan lähettämässä HTTP-viestissä ensimmäiselle rivillä on itse pyyntö ja rivi alkaa metodin nimellä. Palvelijan vastauksessa vastaavasti ensimmäinen rivi sisältää viestin statustiedon. Seuraavat rivit sisältävät muita pyyntöön tai vastaukseen liittyviä määrittelyjä. Kaikki nämä rivit yhdessä muodostavat viestin otsakkeen. Huomaa, että rivien lukumäärää ei ole rajoitettu. Siksi emme voikaa käyttää otsakkeen koko tai rivien määrää kertomaan viestin vastaanottajalle milloin viestin sisältö vaihtuu otsaketiedosta vaarsinaiseen sisältöön. HTTP:ssä on määritelty, että varsinainen viestin sisältö alkaa yhden tyhjän rivin jälkeen.
 
-QUIZZ: HTTP protokollaan liittyviä kysymyksiä, jotka olleet esillä jo edellisessä osiossa (tai jotka voi selvittää helposti
 
-
+<quiz id="b10758e2-8cf9-421c-8e48-ea03d08148a8"></quiz>
 
 
