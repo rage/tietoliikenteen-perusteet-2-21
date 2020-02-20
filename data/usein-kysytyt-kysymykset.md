@@ -12,12 +12,12 @@ Tässä usein kysyttyjä kysymyksiä ja ongelmia. Jos et löydä kysymykseesi va
 
 ### Löysin materiaalista virheen
 
-Avaa joko issue tai muutosehdoitus kurssin Github-repossa: https://github.com/rage/ohjelmointi-19.
+Avaa joko issue tai muutosehdoitus kurssin Github-repossa: https://github.com/rage/tietoliikenteen-perusteet-2-20.
 
 
 ### En voi aloittaa kurssia, koska en tiedä minne ilmoittautua
 
-Kurssin aloittamiseen ei tarvitse ilmoittautumista. Älä ilmoittaudu minnekkään ellei kurssin etusivu erikseen kehoita sinua tekemään niin. 
+Kurssin aloittamiseen ei tarvitse ilmoittautumista. Ilmoittautumista tarvitset vain jos haluat kurssisuorituksesta opintopisteitä. Iarkemmat ilmoittautumisohjeet löydät kohdasta "Arvostelu ja kokeet". 
 
 
 ### Työ- ja elinkeinotoimisto haluaa minulta selvityksen kurssista  / Kela haluaa minulta todistuksen opiskelustani
