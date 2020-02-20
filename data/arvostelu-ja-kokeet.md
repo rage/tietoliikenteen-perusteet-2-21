@@ -27,7 +27,7 @@ Pääset kirjautumaan kurssin Moodleen, kun toimit seuraavien ohjeiden mukaisest
 3.	Kirjaudu [Opintoi-sivulle](https://student.helsinki.fi/opintoni), josta löydät kurssiavaimen  ja linkin Moodleen kirjautumista varten.
 4.	Kirjaudu kurssin Moodleen Helsingin yliopiston käyttäjätunnuksella ja kurssiavaimella
 HUOM!
--	Ilmoittautuminen Avoimeen yliopiston on mahdollista XX.XX.2020 saakka
+-	Ilmoittautuminen Avoimeen yliopiston on mahdollista 28.4.2020 saakka
 -	Vain niiden opiskelijoiden opintosuoritukset voidaan kirjata Helsingin yliopiston opintorekisteriin, jotka ovat tehneet kurssi-ilmoittautumisen Avoimeen yliopistoon ja suorittaneet kurssin loppuun ohjeiden mukaisesti.
 
 
