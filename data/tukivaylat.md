@@ -18,15 +18,6 @@ Kanavan osallistujat ovat kanssaopiskelijoita sekä vapaaehtoisia ohjaajia. Kana
 
 ## Moodle-foorumi
 
-Helsingin ylipistossa kurssille ilmoittautuneilla on käytössä lisäksi keskustelufoorumi, joka on Moodle-järjestelmässä. 
+Kummallakin ilmoittautumista edellyttävällä kurssilla on oma moode-foorumi, jossa kyseisen kurssin opiskelijoille on tarjolla keskustelufoorumi. Vuoden 2019 kokemuksen mukaan niitä ei juurikaan käytetty.  Katso tarkemmat ohjeet moodleen pääsystä kohdasta "Arvostelu ja kokeet".
 
-## Ilmoittautumisohjeet ja moodletiedot päivittämättä
-Moodle-järjestelmään pääsee vain ilmoittautumalla kurssille joko tietojenkäsittelytieteen kandiohjelman (Helsingin yliopiston tutkinto-opiskelijat) tai avoimen yliopiston (muut opiskelijat) kautta. 
 
-Pääset Moodleen tekemällä "koe ja moodle" -ilmoittautumisen. Ilmoittautuminen on pakollinen kaikille niille, jotka haluavat päästä kurssin Moodleen. Ilmoittautuminen koskee kaikkia kurssilaisia, eli myös Helsingin yliopiston opiskelijoita ja myös niitä, jotka ovat ilmoittautuneet kurssille jossakin muualla.
-
-Moodle-ilmoittautumisella voit ilmoittautua samalla kurssikokeeseen. Lisätietoa kokeista löytyy täältä: [Arvostelu ja kokeet](/arvostelu-ja-kokeet)
-
-Ohjeet Moodle-ilmoittautumiseen löytyvät [täältä](/koe-ja-moodle-ilmoittautuminen) kohdasta Moodle-ilmoittautuminen.
-
-Huom! Ilmoittautumisen tekemättä jättäminen ei pudota sinua kurssilta, mutta et voi saada kurssista opintopisteitä Helsingin yliopistolta. Vain ilmoittautumalla voit saada kurssista opintopisteitä Helsingin yliopistosta. Lisätietoja [kokeeseen ilmoittautuminen](/arvostelu-ja-kokeet#heading-kokeeseen-ilmoittautuminen).
