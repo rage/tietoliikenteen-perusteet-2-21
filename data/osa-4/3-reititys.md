@@ -36,9 +36,14 @@ KUVA: Piirrä kuva ja vaihtoehtoiseen tekstiin solmut, linkit ja niiden kustannu
 ## Linkkitila-algoritmi
 
 
+OSPF  käyttää Dijkstran algoritmia
 
 
 ## Etäisyysvektorialgoritmi
 
+
+RIP käyttää Bellman-Ford algoritmia
+
+Internetiin liitettyjen verkkojen omistajilla on oikeus päättää oman verkkonsa sisäisestä reitityksesti ihan itse. Usein tällaisten autonomisten verkkojen reitityksessä käytetäänkin joko OSPF tai RIP reititysprotokollaa.  Autonomisten verkkojen välisessä reitityksessä käytetään yleensä BGP protokollaa, joka on suunniteltu nimenomaan verkkojen väliseen reititykseen. BGP protokolla on hyvin monimutkainen muunnelma Bellman-Ford algoritmin periaatteista. Sen käsittely jää myöhemmille kursseille tai kiinnostuneille itsenäisesti opiskeltavaksi.
 
 
