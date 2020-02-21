@@ -64,9 +64,9 @@ Lisätietoa kiinnostuneille: Jonot ja jonotus on niin tavallista, että sille on
 
 Englanninkielistä termiä throughput ei valitettavasti vastaa yksi tietty suomenkielinen termi, vaan sille on jouduttu erilaisiin tilanteisiin ja tieteenaloille kehittämään useita erilaisia käännöksiä.  Läpäisy ja läpimeno ovat synonyymeja, jotka tarkoittavat suurin piirtein samaa eli miten paljon jotakin valmistuu tietyssä ajassa tai miten kauan johonkin tiettyyn asiaan tai prosessin menee aikaa.
 
-Viipeiden kanssa tarkastelimme asiaa yhden verkon solmun kohdalta. Läpimenoakin voisi tarkastella vain kahden solmun välillä. Silloin se määrittyy suoraan kyseisen linkin nopeudesta, koska se kertoo meille suoraan kuinka monta bittiä kyseisestä linkistä pääsee läpi sekunnissa.
+Viipeiden kanssa tarkastelimme asiaa yhden verkon solmun kohdalta. Läpimenoakin voisi tarkastella vain kahden solmun välillä. Silloin se määrittyy suoraan kyseisen linkin nopeudesta, koska se kertoo meille suoraan, kuinka monta bittiä kyseisestä linkistä pääsee läpi sekunnissa.
 
-Nyt tarkastelemme paketin (tai oikeammin bittien) kulkua kokonaisuudessaan lähettäjältä vastaanottajalle. Pakettihan kulkee matkalla usean eri linkin kautta, joilla on erilaiset nopeudet. Koko reitin läpäisyä rajoittaa hitain linkki. Näin ollen päästä-päähän -yhteyden läpäisy on yhtä suuri kuin hitaimman linkin nopeus. Tässä täytyy huomioida myös linkin jakaminen. Jos tietty lähettäjän ja vastaanottajan välinen liikenne saa vain osan linkistä käyttöönsä, niin silloin tällä yhteydellä tuon linkin nopeus on vain tämä osa koko nopeudesta. Näin jokin näennäisesti nopeampi linkki voikin olla liikennöintinopeutta rajoittava.  Tätä rajoittavaa linkkiä kutsutaan usein "pullonkaulaksi". Jos lähettäjän ja vastaanottajan välistä liikennettä halutaan nopeuttaa, niin nopeutus on kohdistettava nimenomaan pullonkaulaan. Muiden yhteysvälien nopeuttaminen ei auta.  **Mieti miksi näin on.**
+Nyt tarkastelemme paketin (tai oikeammin bittien) kulkua kokonaisuudessaan lähettäjältä vastaanottajalle. Pakettihan kulkee matkalla usean eri linkin kautta, joilla on erilaiset nopeudet. Koko reitin läpäisyä rajoittaa hitain linkki. Näin ollen päästä-päähän -yhteyden läpäisy on yhtä suuri kuin hitaimman linkin nopeus. Tässä täytyy huomioida myös linkin jakaminen. Jos tietty lähettäjän ja vastaanottajan välinen liikenne saa vain osan linkistä käyttöönsä, niin silloin tällä yhteydellä tuon linkin nopeus on vain tämä osa koko nopeudesta. Näin jokin näennäisesti nopeampi linkki voikin olla liikennöintinopeutta rajoittava.  Tätä rajoittavaa linkkiä kutsutaan usein "pullonkaulaksi". Jos lähettäjän ja vastaanottajan välistä liikennettä halutaan nopeuttaa, niin nopeutus on kohdistettava nimenomaan pullonkaulaan. Muiden yhteysvälien nopeuttaminen ei auta.  Mieti hetki miksi näin on.
 
 <img src="../img/pullonkaula.svg" alt="Kuvassa A ja B on yhdistetty reitittimeen R1. C ja D on yhdistetty reitittimeen R2. Reitittimet R1 ja R2 on yhdistetty toisiinsa. Liikennöintinopeudet ovat: A-R1 1Gb/s, B-R1 200 Mb/s, R1-R2 100 Mb/s, R2-C 100 Mb/s ja R2-D 1Gb/s"/>
 
@@ -85,8 +85,7 @@ Oletetaan sitten, että tämä 1 megatavun kokoinen tiedosto pilkotaan 1 kilotav
 
 ## Muita käsitteitä näihin liittyen
 
-
-packet jitter or packet delay variation (PDV) (TODO linkkit tms?)
+Vaikka edellä keskityimme vain yhteen pakettiin liittyviin viipeisiin, niin tietoliikenteessä yleisesti kiinnostaa liikennöintinopeus, läpäisy ja erilaiset viipeet yli kaikkien tietyllä ajanjaksolla kulkeneiden pakettien. Niistä voimme esimerkiksi laskea vaikkapa keskimääräisen läpäisyn. Toki voimme tarkastella näiden mmitattujen pakettien havaitsemien viipeiden ja siirron kokonaiskeston vaihtelua. Tyypillisiä pakettien siirtoaikojen vaihtelua aiheuttavia seikkoja ovat erilaisten jonotusajat matkan varrella. Siirtoviive, prosessointiviive ja etenemisviive on edellä oletettu vakiollisiksi.  Tällaisesta vaihtelusta voidaan käyttää englanninkielistä termiä [jitter](https://fi.wikipedia.org/wiki/Jitter), jonka voisi ehkä tässä yhteydessä suomentaa hajonnaksi tai huojunnaksi. Itse suosittelen käyttämään termiä pakettiviipeiden hajonta (engl. [packet delay variation](https://en.wikipedia.org/wiki/Packet_delay_variation) tai viipeiden hajonta, joka on paljon kuvaavampi termi tästä ilmiöstä.
 
 
 
