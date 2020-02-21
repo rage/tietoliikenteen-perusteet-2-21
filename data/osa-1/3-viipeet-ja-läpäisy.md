@@ -81,7 +81,7 @@ Oletetaan ensin, että yllä olevassa kuvassa B lähettää  1 megatavun kokoise
 
 Oletetaan sitten, että tämä 1 megatavun kokoinen tiedosto pilkotaan 1 kilotavun paketeiksi. Nyt yhden paketin siirtoon kuluu aikaa enää (8 kb / 200 kb/s)+ (8 kb/100 kb/s) + (8kb / 100 kb/s) = 0,2 sekuntia. Näitä paketteja on kaikkiaan 1 megatavu / 1 kilotavu = 1000 kappaletta. Paketit kulkevat kuitenkin lomittain siten, että vain viimeisen (tai ensimmäisen) yhteysvälin osalta pitää ottaa huomioon kaikki paketit. Koko tiedoston siirtoon reitittimeltä C:lle kuluu tuo sama 80 sekuntia (eli 1000 * 8 kb / 100 kb/s) kuin edellisessäkin laskelmassa. Jos nyt laskemme yhteen kaikkien pakettien siirron yhden linkin yli ja yhden paketin kulkuajan lähettäjältä vastaanottajalle tulemme laskeneeksi yhden paketin siirron yhden linkin yli mukaan laskelmaan kahteen kertaan.  Piirrä itsellesi kuva, jonka perusteella voit vakuuttua tästä!  Kokonaissiirtoaika tässä on siis 80 + 0,12 eli 80,12 sekuntia.
 
-<quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>  - tehtäväksi laskea siirron kesto kolmen linkin yli yhtenä pakettina ja pilkottuna useampaan pieneen pakettiin!
+<quiz id="a6e2337b-84e4-4f2b-aed1-dc9aa32f7a94"></quiz>
 
 ## Muita käsitteitä näihin liittyen
 
