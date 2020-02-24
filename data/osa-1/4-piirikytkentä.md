@@ -22,13 +22,11 @@ Yksittäinen linkki voidaan jakaa useampaan kanavaan, jolloin varausvaiheessa yh
 
 Linkin kanavointi voidaan tehdä joko taajuusjakona (engl. frequency-division multiplexing, FDM), aikajakona (time-division multiplexing , TDM) tai niiden yhdistelmänä.
 
-Koska pakettikytkentäisessä verkossa ei varata yhteyttä varmuuden vuoksi, sallii se enemmän samanaikaisia "yhteyksiä". Käydään tätä eroa läpi esimerkin avulla. Oletetaan, että linkin nopeus on 100 megabittiä sekunnissa ja että jokainen käyttäjä haluaa käyttöönsä
-10 megabittiä sekunnissa kun aktiivisena eli kun käyttäjä lähettää tai vastaanottaa. Piirikytkentäisessä verkossa voi olla vain 10 käyttäjää samaan aikaan, kun pakettikytkentäisen verkon arvioidaan kestävän noin 35 käyttäjää.  Tämä luku 35 voidaan laskea matemaattisesti [binomijakauman](https://fi.wikipedia.org/wiki/Binomijakauma) kertymäfunktiosta. Kun otoskoko N (eli käyttäjien määrä) on 35, on todennäköisyys, että niistä yli 10 on aktiivisia samanaikaisesti, lähes nolla.
-
-XXXXXXX  TARKISTA tuo yllä oleva väite!!!!
+Koska pakettikytkentäisessä verkossa ei varata yhteyttä varmuuden vuoksi, sallii se enemmän samanaikaisia "yhteyksiä". Käydään tätä eroa läpi esimerkin avulla. Oletetaan, että linkin nopeus on 100 megabittiä sekunnissa ja että jokainen verkon solmu haluaa käyttöönsä 10 megabittiä sekunnissa kun aktiivisena (10% ajasta) eli kun solmu lähettää tai vastaanottaa. Piirikytkentäisessä verkossa voi olla vain 10 solmua samaan aikaan, kun pakettikytkentäisen verkon arvioidaan kestävän noin 35 solmu. Tämä arvio perustuu siihen, että kun otoskoko N (eli solmujen lukumäärä) on 35, on todennäköisyys, että niistä yli 10 on aktiivisia samanaikaisesti, lähes nolla (tarkasti ottaen se on 0,004). Miten tähän tulokseen on päästy? Tulos voidaan laskea [binomijakauman](https://fi.wikipedia.org/wiki/Binomijakauma) kertymäfunktiosta. Binomijakaumaa käsitellään tarkemmin matematiikan ja tilastotieteen opetuksessa.  
 
 
-QUIZZ:
+
+QUIZZ:   afdef299-8c0d-419b-8502-e87c00c61a84
 
 
 
