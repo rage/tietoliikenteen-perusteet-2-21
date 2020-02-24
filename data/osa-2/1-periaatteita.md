@@ -12,9 +12,6 @@ title: 'Verkkosovelluksen toimintaperiaatteita'
 
 </text-box>
 
-<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
-
-
 
 
 ## Verkkosovellus
@@ -45,35 +42,9 @@ Vaihtelu (engl. jitter) on varmasti useimmille terminä outo. Englanninkielen te
 
 Sovelluksen tarpeet yhteyden laadulle liittyvät nimenomaan sovelluksen oman kommunikoinnin ominaisuuksiin. Sovellus saattaa tarvita tietyn siirtonopeuden tason, jotta tarvittavat sovelluksen tiedot saadaan riittävän nopeasti siirrettyä lähettäjältä vastaanottajalle. Taso voidaan määritellä joko kiinteänä minimitasona tai minimikeskiarvona, jolloin sovellus sietää jonkun verran vaihtelua eri pakettien siirtoajoille. Sovellus saattaa myös asettaa ylärajoja erilaisille viiveille ja siirtoaikojen vaihtelulle. Näiden avulla sovellus pyrkii turvaamaan oman toimintansa laadun. Esimerkiksi videota siirtävä sovellus tarvitsee riittävän siirtonopeuden ja rajoitetut viiveet, jotta videokuva näkyisi vastaanottajalla nykimättä.
 
+
+
 XXXXXX:  Tehtäviä näihin palvelutasoihin ja vaatimuksiin liittyen!!!
-
-
-
-## Liikenteen analysointi
-
-Tietoliikennettä ja sen protokollien toimintaa voi seurata useilla erilaisissa analysointiohjelmilla. Niiden avulla voi kuunnella tietoliikenneverkossa kulkevia paketteja. Tällainen verkkoliikenteen seuranta ei kaikissa tilanteissa ole laillista, joten sitä ei pidä noin vain kokeilla missä vaan. Rikosoikeudellinen vastuu ja korvausvastuu on aina liikennettä seuraavalla henkilöllä, joten verkon käyttösäännöt pitää tuntea ennen kuin edes lähtee kokeilemaan liikenteen kuuntelua. Kuunnellun liikenteen voi myös tallettaa myöhempää analysointia varten. Tällaisesta pakettien tallettamista kutsutaan englanniksi capture ja suomeksi usein käytetään liikenteen kaappaamista tai sieppaamista. Tällaista toimintaa tekevät sekä hyvikset että pahikset. Kumpaan joukkoon liikenteen analysoija milläkin hetkellä kuuluu voi riippua näkökulmasta. Verkon ylläpitäjällä on oikeus seurata verkon liikennettä, jos näin on käyttösäännöissä sovittu. Toisaalta verkon käyttäjä ei varmaankaan toivo oman arkaluontoisen viestittelynsä näkyvän edes ylläpitäjälle.
-
-Viestien salaus on ainoa tällä hetkellä tunnettu keino estää muista seuraamasta omien viestien sisältöjä ja silloinkin liikenteen seuraajalla on käytettävissään erilaisia keinoja liikenteen analysointiin.
-
-Tietoliikenteen seuraamiseen on saatavilla valmiita ohjelmia. Wireshark on avoimen lähdekoodin ohjelma, joka on laajasti käytetty. Ohjelman voi ladata Wiresharkin [omilta sivuilta](https://www.wireshark.org/). Sille on myös saatavilla paljon valmiita analysoitavia tiedostoja, jolloin voimme välttää todellisen tietoliikenteen kuuntelun tällä kurssilla kokonaan.
-
-Wireshark on erittäin monipuolinen ja tarjoaa paljon vaihtoehtoja tietoliikenteen analysointiin. Tällä kursilla käytämme hyvin pientä osaa sen piirteistä ja tarkastelemme vain muutamaa valmista aineistoa.
-
-(TODO tämä Liikenteen Analysointi on myös seuraavan osan alussa (2.2))
-
-
-ZZZZZZZZ KESKEN!!!!!  ZZZZZZZZZ
-
-Suosittelen ohjelman käyttöä ja noiden valmiiden aineistojen tarkastelua. Osa harjoitustehtävistäkin perustuu niihin. Esimerkiksi HTTP protokollaan liittyy tiedosto xxx.pcap. Kun avaamme tämän tiedoston Wiresharkilla, niin ….
-
-
-
-
-
 <quiz id="333846bf-2099-4aca-89e7-1a313babf7a5"></quiz>
 
-
-
-
-**up**
 
