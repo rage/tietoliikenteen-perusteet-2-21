@@ -119,6 +119,6 @@ DNSSEC käyttää julkisen avaimen salausmenetelmään perustuvaa digitaalista a
 
 ## Lisätietoja .fi-verkkotunnuksista
 
-(Tämä ei ole varsinaisesti kurssimateriaalia, mutta asiasta kiinnostuneiden kannattaa paneutua myös viestintäviraston ohjeistoon.)
+(Tämä ei ole varsinaisesti kurssimateriaalia, mutta asiasta kiinnostuneiden kannattaa paneutua myös viestintäviraston ohjeistoon. Erityisesti ohje kannattaa lukea, josa olet kiinnostunut joko hankkimaan oman nimi.fi -verkkotunnuksen tai ainakin tietämään mieten yksityishenkilöt ja yritykset niitä voivat hankkia.)
 
 Koska [Liikenne- ja viestintävirasto Traficom](https://www.traficom.fi/fi/)  hallinnoi .fi-verkkotunnuksia, on se määritellyt säännöt siihen, miten näitä .fi-verkkotunnuksia tunnuksia voidaan jakaa ja julkaissut myös ohjeen verkkotunnustenvälittäjille. Tarkempaa tietoa sivustolla https://www.traficom.fi/fi/viestinta/fi-verkkotunnukset
