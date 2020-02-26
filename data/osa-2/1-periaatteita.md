@@ -44,7 +44,6 @@ Sovelluksen tarpeet yhteyden laadulle liittyvät nimenomaan sovelluksen oman kom
 
 
 
-XXXXXX:  Tehtäviä näihin palvelutasoihin ja vaatimuksiin liittyen!!!
-<quiz id="333846bf-2099-4aca-89e7-1a313babf7a5"></quiz>
+<quiz id="a672b220-848c-4272-9230-dc073cec5215"></quiz>
 
 
