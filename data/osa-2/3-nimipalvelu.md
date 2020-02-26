@@ -11,14 +11,14 @@ title: 'Nimipalvelu'
 
 </text-box>
 
-<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
+
 
 
 ## Nimipalvelu DNS
 
 Nimipalvelu (engl. Domain Name Service, DNS) tarjoaa internetin muille sovelluksille mahdollisuuden selvittää tiettyä verkkonimiä vastaavan IP-numero tai päinvastoin. Sitä kutsutaankin usein internetin puhelinluetteloksi. Aiemmalla kurssilla käytimme jo nimipalvelua tässä tehtävässä. Nyt tarkastelemme, miten palvelu toimii.
 
-Meillä on käytössä useita erilaisia nimipalvelijoita. Paikallinen nimipalvelija (engl. local name server) vastaanottajaa käyttäjän koneelta nimipalvelupyynnön ja ratkaisee sen. Tämän ratkaisija-roolin vuoksi näitä kutsutaan myös englanninkielestä johdetulla nimellä resolveri. Viralliseen nimipalvelijahierarkiaan, niin sanottuihin autorisoituihin nimipalvelijoihin, kuuluvat juurinimipalvelijat, ylätason nimipalvelijat ja alimmalla tasolla autoritääriset nimipalvelijat (engl. authoritative DNS server). Nämä viralliset nimipalvelijat lähinnä säilyttävät tietoa. Paikalliset nimipalvelijat kysyvät virallisilta nimipalvelijoilta tietoja silloin, kun ne ratkovat käyttäjältä tullutta nimipalvelukyselyä.
+Meillä on käytössä useita erilaisia nimipalvelijoita. Paikallinen nimipalvelija (engl. local name server) vastaanottajaa käyttäjän koneelta nimipalvelupyynnön ja ratkaisee sen. Tämän ratkaisija-roolin vuoksi näitä kutsutaan myös englanninkielestä johdetulla nimellä resolveri. Viralliseen nimipalvelijahierarkiaan, niin sanottuihin autorisoituihin nimipalvelijoihin, kuuluvat juurinimipalvelijat, ylätason nimipalvelijat ja alimmalla tasolla autoritääriset nimipalvelijat (engl. authoritative DNS server), joita kutsutaan myös aluepalvelijoiksi. Nämä viralliset nimipalvelijat lähinnä säilyttävät tietoa. Paikalliset nimipalvelijat kysyvät virallisilta nimipalvelijoilta tietoja silloin, kun ne ratkovat käyttäjältä tullutta nimipalvelukyselyä.
 
 Tyypillisesti käyttäjän oma internet-palveluntarjoaja tarjoaa myös paikallisen nimipalvelijan asiakkaidensa käyttöön. Näitä kyselyjä ratkovia nimipalvelijoita tarjoavat myös muut. Jokaisella on myös mahdollisuus ottaa käyttöön oma paikallinen nimipalvelija ja ryhtyä tarjoamaan nimipalvelua joko vain omille koneille tai jopa avoimesti muillekin.
 
@@ -28,36 +28,32 @@ Nimipalveluhierarkia on kolmitasoinen puurakenne, jossa juurinimipalvelin on puu
 
 KUVA: Hierarkiasta
 
-Juurinimipalvelijoita on itse asiassa useita, koska yksi juurinimipalvelija ei millään ehtisi palvella kaikkia kyselijöitä. Juurinimipalvelijat on nimetty kirjaimilla a-m. Niillä on siis 13 eri kirjainta. Jokaista eri kirjaimella nimettyä juurinimipalvelijaa hallinnoi eri organisaatio.  Näistä jokaisesta on vielä useita täydellisiä kopioita ympäri maailmaa. Verkkosivulla https://root-servers.org/ on kuvattuna kaikki tämän hetkiset nimipalvelijoiden ja niiden kopioiden sijainnit. Sen mukaan lokakuussa 2019 Suomessa oli 8 nimipalvelijaa.
+Juurinimipalvelijoita on itse asiassa useita, koska yksi juurinimipalvelija ei millään ehtisi palvella kaikkia kyselijöitä. Juurinimipalvelijat on nimetty kirjaimilla a-m. Niiden tarkempi osoite on esi. e.root-servers.orgNiillä on siis 13 eri kirjainta. Jokaista eri kirjaimella nimettyä juurinimipalvelijaa hallinnoi eri organisaatio.  Näistä jokaisesta on useita täydellisiä kopioita ympäri maailmaa. Verkkosivulla https://root-servers.org/ on kuvattuna kaikki tämän hetkiset nimipalvelijoiden ja niiden kopioiden sijainnit. Sen mukaan lokakuussa 2019 Suomessa oli 8 juurinimipalvelijoiden kopiota. Nyt maaliskuussa 2020 niitä on 10.
 
-Quizz:  Millä paikkakunnilla, mitä kirjaimia
+<quiz id="a1db1c19-80e3-4ffd-857c-d5f53a021dc8"></quiz>
+
+Juurinimipalvelijat tietävät niiden alapuolella olevien ylätason palvelijoiden tiedot. Ylätason nimipalvelimet (kuten a.fi, dns2.nic.uk tai f.ns.se) tuntevat oman alueensa (kuten .fi tai .se) osoitteiden autoritääsiset aluepalvelimet (esim. helsinki.fi -alueesta vastaavat nimipalvelijat). Ylätason osoitteet olivat alunperin lähinnä maatunnuksia, mutta nykyisin myös yrityksillä ja erilaisilla organisaatiolla on omia ylätason tunnuksia. Kuten varmaan jo huomasitkin, niin jokainen organisaatio voi vapaasti ja itsenäisesti nimetä omat laitteensa ja palvelimensa täysin vapaasti. Vain juurinimipalvelijoiden nimet on sovittu. Muilla tasoilla ei ole maailmanlaajuisesti sovittuja nimikäytöntöjä.
 
 
 ## DNS tietue ja viesti
 
-Nimipalvelijoilla tiedot tallennetaan DNS:n resurssitietueina (engl. resource record, RR). Tietueessa on aina neljä kenttää (nimi, arvo, tyyppi ja elinaika).
+Nimipalvelijoilla tiedot tallennetaan DNS:n resurssitietueina (engl. resource record, RR). Tietueessa on aina neljä kenttää (nimi, arvo, tyyppi ja elinaika). Nämä resurssitietueen muodostavat kyseisen nimipalveluhierarkiaan kuuluva autoritäärisen nimipalvelijan tietokannan. Huomaa, että resurssitietueen tyyppi määrittä miten nimi ja arvo kentät pitää tulkita
 
 Yleisimmät tyypit ovat:
-Tyyppi = A  (host address)
-       nimi = koneen nimi,  arvo = IP-osoite  (Ipv4)
-       esim: (relay1.bar.foo.com, 145.37.3.126, A, TTL)
-Tyyppi = NS (name server)
-       nimi = aluenimi (domain), arvo = autorisoidun palvelimen nimi
-       esim: (foo.com, ds.foo.com, NS, TTL)
-Tyyppi = CNAME (canonical name)
-       nimi = koneen aliasnimi, arvo=  kanoninen, oikea konenimi
-       esim: (foo.com, relay1.bar.foo.com, CNAME, TTL)
-Tyyppi = MX (mail exchange)
-       nimi = koneen aliasnimi, arvo = postipalvelimen kanoninen nimi
-       esim: (foo.com, mail.bar.com, MX,TTL)
-Tyyppi = AAAA (host address)
-       nimi = koneen nimi,  arvo = IP-osoite  (Ipv6)
-       esim: (relay1.bar.foo.com,    , A, TTL)
+* Tyyppi = A  (host address); nimi = koneen nimi,  arvo = IP-osoite  (Ipv4);  esim: (relay1.bar.foo.com, 145.37.3.126, A, TTL)
+* Tyyppi = NS (name server);      nimi = aluenimi (domain), arvo = autoritäärisen palvelimen nimi;  esim: (foo.com, ds.foo.com, NS, TTL)
+* Tyyppi = CNAME (canonical name);  nimi = koneen aliasnimi, arvo= kanoninen nimi eli oikea koneen nimi;  esim: (foo.com, relay1.bar.foo.com, CNAME, TTL)
+* Tyyppi = MX (mail exchange);  nimi = koneen aliasnimi, arvo = postipalvelimen kanoninen nimi; esim: (foo.com, mail.bar.com, MX,TTL)
+* Tyyppi = AAAA (host address);  nimi = koneen nimi,  arvo = IP-osoite  (Ipv6);  esim: (relay1.bar.foo.com,  ipv6  , A, TTL)
 (TODO fix formatting)
+
+Näistä tyypeistä tuo kanoninen nimi (CNAME) vaatii ehkä pienen lisäselityksen. SEn avulla voimme nimipalvelussa määritellä jonkun nimen, kuten www.helsinki.fi, mutta nimellä ei olekaan suoraan vastaavaa IP-osoitetta, vaan kyseiseen nimeen liittyy jokun toinen nimi, kuten adc-vip3.it.helsinki.fi. Tälle nimelle löytyy sitten A tai AAAA tietue, jossa on ko. nimeen liittyvä IP-osoite 
 
 Esimerkki A-tietueesta ja MX-tietueesta. Muut voi jättää wikipedian ja muiden materiaalien varaan.
 
 Quizz:  Dig tehtävä, jossa selvitetään jonkun kohteen A-tietueen ja MX-tietueen sisältö
+
+<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
 Nimipalvelussa on vain yksi viestirakenne, jota käytetään sekä kyselyissä että vastauksissa. Viestissä on erikseen lipuke (engl. flag), jolla lähettäjä kertoo, onko kysymyksessä kysely vai vastaus. Viestin otsakkeet eri kenttien täsmällisen määrittelyn voi käydä lukemassa alkuperäisesti nimipalvelun toiminnan kuvaavasta RFC-dokumentista https://tools.ietf.org/html/rfc1035. Otsakkeen kentät on kuvattu kyseisen dokumentin sivulla 25.
 
@@ -72,6 +68,8 @@ Vastauksessa on myös mukana lipukkeena tieto siitä, tuleeko vastaus suoraan ni
 
 
 Quizz: kysymyksi viestin rakenteesta
+
+<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
 
 ## DNS toiminta
@@ -100,6 +98,8 @@ Vastauksen saatuaan paikallinen nimipalvelija voi vihdoin kysyä tältä auktori
 Tässä viestien vaihdossa paikalliselle nimipalvelijalle kertyy useita resurssitietueita. Se tyypillisesti varastoi ne kaikki omaan välimuistiinsa ja käyttää näin vähitellen kertyvää tietoa apuna myöhemmissä kyselyissä. Esimerkiksi, jos välimuistista olisi jo löytynyt suoraan joko ylätason palvelijan tai auktoritaarisen palvelijan yhteystiedot, niin kyselyketjussa olisi voitu ohittaa tarpeettomat kyselyt ja näin säätää aikaa ja vähentää verkkoliikennettä.
 
 QUIZZ:  Nimipalvelin toimintaan liittyen parikin kysymystä
+
+<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
 
 ## Nimipalvelun turvallisuus
