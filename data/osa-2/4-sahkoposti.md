@@ -11,7 +11,7 @@ title: 'Sähköposti'
 
 </text-box>
 
-<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
+
 
 ## Sähköpostipalvelu
 
@@ -29,11 +29,11 @@ Käyttäjän tunnisteet yksilöivät käyttäjät vain yhden sähköpostipalveli
 
 Sähköpostipalvelimen tunniste helsinki.fi ei ole sähköpostipalvelimen oma verkkonimi, vaan sähköpostijärjestelmässä käytettävä tunniste. Sähköpostipalvelimen verkkonimen voi selvittää nimipalvelun avulla. Nimipalvelun resurssitietueessa MX on tieto siitä, mikä sähköpostipalvelin vastaa tietyn verkkoalueen (kuten helsinki.fi) sähköpostipalvelusta. Sähköpostiosoitteet sitoutuvat siis verkkonimiin siten, että tuo sähköpostipalvelimen tunniste on yleensä samalla verkkoalueen nimi.
 
-QUIZZ:  MIkä on helsinki.fi osoitteiden sähköpostipalvelin  (Tee siis nimipalvelukysely, kuten edellisessä osassa)
+<quiz id="4c9f0a90-72c1-4219-a4c4-4838a4f859dc"></quiz>
 
 KUVA: Sähköpostijärjestelmästä, jossa useampi sähköpostipalvelin ja niillä pari postilaatikkoa.
 
-HUOM:  Kuvaan liittyvä tarina yhden sähköpostin lähettämisestä ja vastaanottamisesta.
+TODO!!!  HUOM:  Kuvaan liittyvä tarina yhden sähköpostin lähettämisestä ja vastaanottamisesta.
 
 
 
@@ -63,6 +63,8 @@ Oheinen yhteysesimerkki, eli yhden sähköpostiviestin siirto lähettävältä p
 
 Tästä esimerkistä käy hyvin ilmi monivaiheinen viestien vaihto. Tässä esimerkissä sähköpostin lähettäminen onnistuu. Protokollassa on määritelty tarkasti myös erilaiset virhetilanteet ja niihin liittyvät viestit. SMTP on HTTP-protokollan tavoin tekstipohjainen, jolloin ihmisen on mahdollista itsekin ottaa TELNET-yhteys palvelimeen ja kirjoittaa nuo lähettävän palvelimen viestit ihan suoraan näppäimistöltä. Tällaisessa yhteydessä on toki noudatettava myös niitä sääntöjä, jotka liittyvät itse viestin rakenteeseen. Esimerkissä näistä säännöistä on yksinkertaisuuden vuoksi oikaistu.
 
+Huomaa, että sähköpostiprotokolla edellyttää tilatietoa. Molempien kommunikoinnin osapuolten pitää tietää missä vaiheessa (eli missä tilassa) kommunikointi ja viestienvaihto on menossa, jotta ne osaavat lähettää seuraavat viestit oikein.
+
 
 
 ## Viestin rakenne
@@ -71,19 +73,19 @@ Sähköpostiviestit eivät yleensä ole ihan noin lyhyitä kuin tuossa esimerkis
 
 Sähköpostiviestin rakenteesta on hyvä kuvaus [wikipedian sivulla](https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6posti).
 
-Useimmat sähköpostiohjelmat käyttävät erillisiä kenttiä sähköpostin otsaketiedoille, kuten vastaanottaja(t) ja viestin otsikko. Näin ne tukevat käyttäjää siinä, että lähtevän sähköpostiviestin otsaketiedot noudattavat sovittuja käytänteitä.
+Useimmat sähköpostiohjelmat käyttävät erillisiä kenttiä sähköpostin otsaketiedoille, kuten vastaanottaja(t) ja viestin otsikko. Näin ne tukevat käyttäjää siinä, että lähtevän sähköpostiviestin otsaketiedot noudattavat sovittuja käytänteitä. Sähköposti on kuitenkin vanha protokolla, jota voisi ihan yhtä hyvin käyttää suoraan komentoriviltä toimivilla tekstipohjaisilla ohjelmilla.
 
 QUIZZ: Sähköpostiviestin otsakkeista (Kentän tyyppi,  mikä erottaa sähköpostin otsakkeet ja varsinaisen viestinsisällön, ...)
+<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
-Katso jonkun saamasi sähköpostiviestin täydet otsaketiedot ja etsi sieltä rivit, jotka alkavat "Received:". Huomaa, että jos viesti on tullut saman postipalvelimen joltain toiselta käyttäjältä, niin tuota received-riviä ei välttämättä ole lainkaan, koska postipalvelin ei ole lähettänyt sitä toiselle postipalvelimelle vaan on vain laittanut kyseisen käyttäjän postilaatikkoon. Valitse siis tarkasteltavaksi viesti, joka on tullut jonkun toisen postipalvelimen käyttäjältä. Miten näet viestin otsaketiedot, riippuu käyttämästäsi sähköpostiohjelmasta. Toiminto voi olla 'view full header', 'view source', 'view original'. Joillakin, erityisesti mobiililaitteiden, sähköpostiohjelmilla tämän tiedon katselu ei välttämättä edes ole mahdollista, kun ohjelmassa ei kyseistä toiminallisuutta ole. Vaihda silloin käyttöösi sellainen käyttöliittymä tai ohjelma, jolla nämä tiedot näet.
+Katso jonkun saamasi sähköpostiviestin täydet otsaketiedot ja etsi sieltä rivit, jotka alkavat "Received:". Huomaa, että jos viesti on tullut saman postipalvelimen joltain toiselta käyttäjältä, niin tuota received-riviä ei välttämättä ole lainkaan, koska postipalvelin ei ole lähettänyt sitä toiselle postipalvelimelle vaan on vain laittanut viestin kyseisen käyttäjän postilaatikkoon. Valitse siis tarkasteltavaksi viesti, joka on tullut jonkun toisen postipalvelimen käyttäjältä. Miten näet viestin otsaketiedot, riippuu käyttämästäsi sähköpostiohjelmasta. Toiminto voi olla 'view full header', 'view source', 'view original'. Joillakin, erityisesti mobiililaitteiden, sähköpostiohjelmilla tämän tiedon katselu ei välttämättä edes ole mahdollista, kun ohjelmassa ei kyseistä toiminallisuutta ole. Vaihda silloin käyttöösi sellainen käyttöliittymä tai ohjelma, jolla nämä tiedot näet.
 
-QUIZZ: Tuohon äskeiseen liittyvä kysely (joka on aina oikein!!!!)
-
+<quiz id="a704808e-8500-4435-8b3a-dcc7faed2b3c"></quiz>
 
 Sähköpostiviestiin voi nykyään liittää myös muuta materiaali kuin vain varsinaisen viestin pelkkänä tekstinä. Tällaiset laajennukset on määritelty MIME-standardissa (ks [standardin wikipedia-sivu](https://fi.wikipedia.org/wiki/MIME) ja [sähköpostin koodausohjeistus](https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6posti#MIME)). MIME-muotoisessa sähköpostissa on useita osia ja jokainen osa voidaan koodata eri tavalla. Viestin liitteeksi voi laittaa minkä tahansa tiedoston, jonka tyyppi kerrotaan MIME-standardin mukaisissa tiedoissa.  Koska SMTP-protokolla siirtää varmasti vain 7-bittisiä ASCII-merkkejä, on tyypillistä, että erityisesti liitetiedostot ja kuvat koodataan 7-bittiseksi ASCII-koodiksi. Tunnetuin koodaustapa on base64, jossa kolme 8-bittistä tavua (tai merkkiä) koodataan 4:ksi, jotka eivät voi rikkoa sähköpostin siirtoa. Esimerkiksi merkkiyhdistelmä 'rivinvaihto'piste'rivinvaihto' ei ole sallittu, koska se on sovittu SMTP-protokollassa sähköpostiviestin päättäväksi merkiksi.
 
 QUIZZ: Mimen otsakkeiden kenttänimistä  - Mikä nimi kertoo mitäkin ja vapaakenttä + regexp tarkistus.
-
+<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
 ## Sähköpostin ongelmia
 
@@ -114,10 +116,12 @@ Julkisen avaimen salauksen avulla voidaan varmistua joko vastaanottajasta tai l�
 
 Jos halutaan samaan aikaa varmistaa sekä lähettäjä että vastaanottaja, on viesti salattava useampaan kertaan.
 
+Kiinnostuneille tiedoksi, että vuonna 2019 määriteltiin myös postipalvelimien käyttämä autentikointien ketjutus (engl. [Authenticated Received Chain](https://en.wikipedia.org/wiki/Authenticated_Received_Chain), ARC, jolla pyritään tukemaan postilistojen toimintaa silloin, kun postilistan käsittelee joku muu postipalvelin kuin alkuperäisen viestin lähettäjän oman palvelin.
+
 
 KUVA: Muokkaa wikipedian kuvasta, joka ladattuna.
 
 
 QUIZZ:  Kuvaan liittyen ja toinen käsitteistä sekä spostin käsitteitä että salausta.
-
+<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
