@@ -83,8 +83,6 @@ Katso jonkun saamasi sähköpostiviestin täydet otsaketiedot ja etsi sieltä ri
 
 Sähköpostiviestiin voi nykyään liittää myös muuta materiaali kuin vain varsinaisen viestin pelkkänä tekstinä. Tällaiset laajennukset on määritelty MIME-standardissa (ks [standardin wikipedia-sivu](https://fi.wikipedia.org/wiki/MIME) ja [sähköpostin koodausohjeistus](https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6posti#MIME)). MIME-muotoisessa sähköpostissa on useita osia ja jokainen osa voidaan koodata eri tavalla. Viestin liitteeksi voi laittaa minkä tahansa tiedoston, jonka tyyppi kerrotaan MIME-standardin mukaisissa tiedoissa.  Koska SMTP-protokolla siirtää varmasti vain 7-bittisiä ASCII-merkkejä, on tyypillistä, että erityisesti liitetiedostot ja kuvat koodataan 7-bittiseksi ASCII-koodiksi. Tunnetuin koodaustapa on base64, jossa kolme 8-bittistä tavua (tai merkkiä) koodataan 4:ksi, jotka eivät voi rikkoa sähköpostin siirtoa. Esimerkiksi merkkiyhdistelmä 'rivinvaihto'piste'rivinvaihto' ei ole sallittu, koska se on sovittu SMTP-protokollassa sähköpostiviestin päättäväksi merkiksi.
 
-QUIZZ: Mimen otsakkeiden kenttänimistä  - Mikä nimi kertoo mitäkin ja vapaakenttä + regexp tarkistus.
-<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
 ## Sähköpostin ongelmia
 
@@ -121,6 +119,6 @@ Kiinnostuneille tiedoksi, että vuonna 2019 määriteltiin myös postipalvelimie
 KUVA: Muokkaa wikipedian kuvasta, joka ladattuna.
 
 
-QUIZZ:  Kuvaan liittyen ja toinen käsitteistä sekä spostin käsitteitä että salausta.
+TODO:    QUIZZ:  Kuvaan liittyen ja toinen käsitteistä sekä spostin käsitteitä että salausta.
 <quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
