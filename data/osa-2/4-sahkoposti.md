@@ -75,8 +75,7 @@ Sähköpostiviestin rakenteesta on hyvä kuvaus [wikipedian sivulla](https://fi.
 
 Useimmat sähköpostiohjelmat käyttävät erillisiä kenttiä sähköpostin otsaketiedoille, kuten vastaanottaja(t) ja viestin otsikko. Näin ne tukevat käyttäjää siinä, että lähtevän sähköpostiviestin otsaketiedot noudattavat sovittuja käytänteitä. Sähköposti on kuitenkin vanha protokolla, jota voisi ihan yhtä hyvin käyttää suoraan komentoriviltä toimivilla tekstipohjaisilla ohjelmilla.
 
-QUIZZ: Sähköpostiviestin otsakkeista (Kentän tyyppi,  mikä erottaa sähköpostin otsakkeet ja varsinaisen viestinsisällön, ...)
-<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
+<quiz id="aab49445-87f0-40f3-a919-e1a7f581eb2c"></quiz>
 
 Katso jonkun saamasi sähköpostiviestin täydet otsaketiedot ja etsi sieltä rivit, jotka alkavat "Received:". Huomaa, että jos viesti on tullut saman postipalvelimen joltain toiselta käyttäjältä, niin tuota received-riviä ei välttämättä ole lainkaan, koska postipalvelin ei ole lähettänyt sitä toiselle postipalvelimelle vaan on vain laittanut viestin kyseisen käyttäjän postilaatikkoon. Valitse siis tarkasteltavaksi viesti, joka on tullut jonkun toisen postipalvelimen käyttäjältä. Miten näet viestin otsaketiedot, riippuu käyttämästäsi sähköpostiohjelmasta. Toiminto voi olla 'view full header', 'view source', 'view original'. Joillakin, erityisesti mobiililaitteiden, sähköpostiohjelmilla tämän tiedon katselu ei välttämättä edes ole mahdollista, kun ohjelmassa ei kyseistä toiminallisuutta ole. Vaihda silloin käyttöösi sellainen käyttöliittymä tai ohjelma, jolla nämä tiedot näet.
 
