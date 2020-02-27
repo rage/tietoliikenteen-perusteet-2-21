@@ -16,22 +16,23 @@ Perinteisesti internetin protokollapinon sovelluskerroksella on ollut erilaisia 
 
 Pistokkeet ovat siis keino välittää dataa (eli viestejä) sovelluskerroksen ja kuljetuskerroksen välillä. Tällä kurssilla tutustutaan yleisesti kuljetuskerroksen tarjoamien palvelujen käyttöön pistokkeilla. Varsinaista verkko-ohjelmointia emme tällä kurssilla opettele. Helsingin yliopiston tutkinto-opiskelijat voivat osallistua valinnaiselle kurssille [Network Programming](https://courses.helsinki.fi/fi/tkt21026), jossa opiskellaan verkkosovellusten tekoa pistokkeita käyttäen.
 
-Toisaalta nykyään yhä useampi verkkopalvelu toteutetaankin selaimen kautta käytettävänä www-palveluna. Nämä palvelut käyttävätkin sovelluskerroksen omaa HTTP-protokolla sovelluksen eri osien väliseen tiedonsiirtoon. Ne siis muodostavat ovat kerroksensa HTTP-protokollan päälle ja kasvattavat näin koko järjestelmän abstrakiotasoa, kun kaikki HTTP:n alapulella oleva voidaan jättää huomioimatta.
+Toisaalta nykyään yhä useampi verkkopalvelu toteutetaankin selaimen kautta käytettävänä www-palveluna. Nämä palvelut käyttävätkin sovelluskerroksen omaa HTTP-protokolla sovelluksen eri osien väliseen tiedonsiirtoon. 
 
-(TODO selvennä allaolevaa. Esimerkkejä apista vaikkapa https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Third_party_APIs )
-Nykyään yhä useammat verkkosovellukset on toteutettu sovelluskerroksella siten, että ne käyttävät kuljetuskerroksen TCP-protokollan sijaan sovelluskerroksen HTTP-protokollaa omien viestiensä kuljetuspalveluna. Osa tällaisista verkkopalveluista toimii verkkoselaimessa. Tällöin käyttäjän koneessa ei sovelluksella ole enää omaa erillistä prosessia, vaan sitä suoritetaan selainprosessilla ja verkkosivujen kuvausten kautta. Tällaisilla websovelluksilla on omat erilliset toteutusrajapintansa, kuten REST, jne. Internetin protokollapinossa ne 'piiloutuvat' sovelluskerrokselle. Tällaisen www-palvelun päällä toimivat websovelluksen tietoliikenne tapahtuu HTTP-protokollalla, kuten selaimen ja www-palvelimen välinen liikenne normaalistikin tapahtuu. Selain siis noutaa tällaisen selaimessa suoritettavan 'verkkosivun' www-palvelimelta ja tarvittavat viestien vaihdot selaimessa toimivan asiakasosan ja palvelimella toimivan palvelinsovelluksen välillä tapahtuu HTTP-viesteinä. Jos tämä teema kiinnostaa, niin silloin kannattaa seuraavaksi suunnata kurssille [web-palvelinohjelmointi](https://courses.helsinki.fi/fi/tkt21007) tai [full stack -websovelluskehitys](https://courses.helsinki.fi/fi/tkt21009), jossa opit nimenomaan tekemään sovelluksia web-ympäristössä.
+Ne siis muodostavat ovat kerroksensa HTTP-protokollan päälle ja kasvattavat näin koko järjestelmän abstrakiotasoa, kun kaikki HTTP:n alapulella oleva voidaan jättää huomioimatta. Tällaisen www-palvelun päällä toimivat websovelluksen tietoliikenne tapahtuu HTTP-protokollalla, kuten selaimen ja www-palvelimen välinen liikenne normaalistikin tapahtuu. Selain siis noutaa tällaisen selaimessa suoritettavan 'verkkosivun' www-palvelimelta ja tarvittavat viestien vaihdot selaimessa toimivan asiakasosan ja palvelimella toimivan palvelinsovelluksen välillä tapahtuu HTTP-viesteinä. Jos tämä teema kiinnostaa, niin silloin kannattaa seuraavaksi suunnata kurssille [web-palvelinohjelmointi](https://courses.helsinki.fi/fi/tkt21007) tai [full stack -websovelluskehitys](https://courses.helsinki.fi/fi/tkt21009), jossa opit nimenomaan tekemään sovelluksia web-ympäristössä.
 
-Huomaa, että valitaanpa verkkosovelluksen tietoliikennerajapinnaksi sovelluskerroksen HTTP tai kuljetuskerroksen TCP tai UDP, verkkosovelluksen osia suoritetaan vain verkkon reunoilla olevissa päätelaitteissa, kuten käyttäjän tietokone ja palvelinkeskusten palvelimet. Verkkosovelluksen ohjelmoijan pitääkin kirjoittaa ohjelmakoodi vain näille laitteille. Verkon syövereissä olevissa laitteissa ei ole sovelluskerrosta, joten ne eivät voi verkkosovelluksen osia suorittaa, eikä niiden toiminta muutu sovelluksen vaihtuessa.
+Jotta abstraktiotasoa voidaan nostaa ja käyttää HTTP:tä kuljetuspalveluna, niin  täytyy määritellä jonkunlainen rajapinta (tai vähinkäänkin kuvata tapa viestiä HTTP:n kautta). Tämän mukaan sitten sovelluksen eri osat käyttävät samalla tavalla HTTP:tä viestien kuljetukseen. Esimerkiksi [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) kuvaa erilaisia sääntöjä joita verkkosovelluksen toteuksessa voidaan noudattaa.  
+
+Huomaa, että valitaanpa verkkosovelluksen kuljetukspalveluksi sovelluskerroksen HTTP tai kuljetuskerroksen TCP tai UDP, verkkosovelluksen osia suoritetaan vain verkon reunoilla olevissa päätelaitteissa, kuten käyttäjän tietokone ja palvelinkeskusten palvelimet. Verkkosovelluksen ohjelmoijan pitääkin kirjoittaa ohjelmakoodi vain näille laitteille. Verkon syövereissä olevissa laitteissa ei ole sovelluskerrosta, joten ne eivät voi verkkosovelluksen osia suorittaa, eikä niiden toiminta muutu sovelluksen vaihtuessa. Koska me tällä kurssilla keskitymme nimenomaan päälaitteiden väliseen viestiin, jää varsinaisten verkkosovellusten oman sisäinen toimina muille kurssille.
 
 KUVA: Jotain kuten kirjan peruskuva, joka kaikissa kalvoissa.
 
 ## Pistokkeet
 
-Verkkosovellusta koneella edustava prosessi käyttää kuljetuskerroksen palveluja pistokkeiden kautta. Pistoketta voi ajatella ovena tai postilaatikkona, jonka kautta sovellusprosessi lähettää ja vastaanottaa viestejä. Sovelluksen ei tarvitse tietää, miten viesti kulkee verkkosovelluksen prosessien välillä ovelta toiselle tai postilaatikosta toiseen. Lähettäjän täytyy vain luottaa, että 'oven' takana oleva kuljetuspalvelu toimittaa viestin perille.
+Verkkosovellusta koneella edustava prosessi käyttää kuljetuskerroksen palveluja pistokkeiden kautta. Näin tapahtuu silloinkin, kun sovellus itse käyttää kuljetuspalveluna HTTP:tä. Tällöin prosessin sisäinen HTTP:n toteutus käyttää pistokkeita sovelluksen puolesta. Pistoketta voi ajatella ovena tai postilaatikkona, jonka kautta sovellusprosessi lähettää ja vastaanottaa viestejä. Sovelluksen ei tarvitse tietää, miten viesti kulkee verkkosovelluksen prosessien välillä ovelta toiselle tai postilaatikosta toiseen. Lähettäjän täytyy vain luottaa, että 'oven' takana oleva kuljetuspalvelu toimittaa viestin perille.
 
 Ohjelmoijan ja sovellusohjelman näkökulmasta pistokkeen käyttö muistuttaa tiedoston käyttöä, sinne kirjoitetaan ja sieltä luetaan. Pistokkeiden kanssa tosin käytetään termejä lähettää (engl. send) ja vastaanottaa (eng. receive).
 
-Pistokkeita voidaan käyttää prosessien välisessä kommunikoinnissa myös samassa tietokoneessa. Pistokkeiden toteutuksessa mikään ei vaadi, että viestit on aina välitettävä koneesta toiseen. Ne voidaan hyvin välittää prosessilta toiselle samassa koneessa.
+Pistokkeita voidaan käyttää prosessien välisessä kommunikoinnissa myös samassa tietokoneessa. Pistokkeiden toteutuksessa mikään ei vaadi, että viestit on aina välitettävä koneesta toiseen. Ne voidaan hyvin välittää prosessilta toiselle samassa koneessa. (Itse asiassa kaikissa koneissa on oman sisäinen verkko-osoite 127.0.0.1, johon lähetetyt viestit päätyvät samalla koneelle, mutta kiertävät protokollapinossa verkkokerroksen kautta.)
 
 KUVA: Vanha pistokekuva kalvoista 2017, luento 3, kalvo 12.
 
@@ -42,9 +43,11 @@ Tarkastellaan nyt pistoketta käyttöjärjestelmän näkökulmasta eli mitä tap
 4) Laiteajuri vie datan ja komennot verkkokortin ohjaimen rekistereihin
 5) Verkkokortti siirtää bitit linkille (linkkikerros ja fyysinen siirto)
 
-Lähettäminen on ajallisesti yksinkertaisempaa, koska sovellus päättää, koska lähetetään ja kutsuu kirjastorutiinia, joka sitten käyttöjärjestelmän toimintoina huolehtii tuosta lähettämisestä. Viestiä ei välttämättä pystytä heti laittamaan eteenpäin, vaan se laitetaan ensin lähetyspuskuriin (engl. send buffer), josta viesti sitten lähetetään, kun verkossa on tilaa.
+Lähettäminen on selkeää ja yksinkertaista, koska sovellus päättää, koska lähetetään ja kutsuu kirjastorutiinia, joka sitten käyttöjärjestelmän toimintoina huolehtii varsinaisesta lähettämisestä. Viestiä ei välttämättä pystytä heti laittamaan eteenpäin, vaan se laitetaan ensin lähetyspuskuriin (engl. send buffer), josta viesti sitten lähetetään, kun verkossa on tilaa.
 
-Vastaanottaminen on haasteellisempaa, koska sovellus tekee vastaanottopyynnön (receive) silloin, kun se sovelluksen oman toiminnan kannalta on tarpeellista. Tämä ei ajallisesti ole mitenkään sidottu varsinaiseen viestin saapumiseen. Vastaanottava kone (tai prosessi) ei voi vaikuttaa viestin saapumisen ajankohtaan tai saapuvan viestin kokoon. Sen pitää ottaa viesti vastaan silloin, kun se on verkkoyhteydeltä tulossa.  Viesti siis vastaanotetaan ensin vastaanottopuskuriin (engl. receive buffer), josta se voidaan antaa sovellukselle silloin, kun sovellus sitä pyytää.
+Vastaanottaminen on haasteellisempaa, koska sovellus tekee vastaanottopyynnön (receive) silloin, kun se sovelluksen oman toiminnan kannalta on tarpeellista. Huomaa erityisesti, että se ei ole mitenkään sidottu varsinaiseen viestin saapumiseen. Viesti on voinut saapua jo ennenkuin prosessi tekee vastaanottopyynnön tai viesti voi saapua paljon myöhemmin. Siksi meillä on pistoke, jota käyttäen prosessi tai viesti voi odottaa. Viesti siis odottaa, että prosessi haluaa lukea sen. Prosessi voi halutessaan jäädä odottamaan kunnes viesti saapuu. Sovellus voi pistokkeen avaamisen yhteydessä määritellä, haluaako se receive-pyynnön yhteydessä jäädä odottamaan viestiä vai ei (engl. blocking vs. non-blocking).
+
+Vastaanottava laite (tai sen prosessi) ei voi vaikuttaa viestin saapumisen ajankohtaan tai saapuvan viestin kokoon. Sen pitää ottaa viesti vastaan silloin, kun se on verkkoyhteydeltä tulossa.  Viesti siis vastaanotetaan ensin vastaanottopuskuriin (engl. receive buffer), josta se voidaan antaa sovellukselle silloin, kun sovellus sitä pyytää.
 
 Viestin vastaanotto vaiheittain:
 1) Verkkokortti ottaa vastaan linkiltä tulevat bitit (fyysinen siirto ja linkkikerros)
@@ -54,19 +57,17 @@ Viestin vastaanotto vaiheittain:
 5) Verkkokerros kutsuu kuljetuskerroksen rutiinia, joka tekee omat toimensa
 6) Sanoma prosessille vasta, kun se sitä pyytää palvelupyynnöllä receive
 
-Sovellus voi pistokkeen avaamisen yhteydessä määritellä, haluaako se receive-pyynnön yhteydessä jäädä odottamaan viestiä vai ei (engl. blocking vs. non-blocking).
+Pistoke on aina kaksisuuntainen eli samalla pistokkeella sekä lähetetään että vastaanotetaan. Pistoke on siis prosessin yhteyspiste toisen prosessin kanssa. Molemmilla kommunikointiin osallistuvilla prosesseilla on omat pistokkeensa, jotka ovat yhteydessä toisiinsa. Yhdellä prosessilla voi olla samanaikaisesti käytössä useita pistokkeita eri yhteyksiä varten.
 
-Pistoke on kaksisuuntainen eli samalla pistokkeella sekä lähetetään että vastaanotetaan. Pistoke on siis prosessin yhteyspiste toisen prosessin kanssa. Molemmilla kommunikointiin osallistuvilla prosesseilla on omat pistokkeensa, jotka ovat yhteydessä toisiinsa. Yhdellä prosessilla voi olla samanaikaisesti käytössä useita pistokkeita eri yhteyksiä varten.
-
-Kuljetuskerros tarjoaa yhteydellisen kuljetuspalvelun TCP-protokollalla ja yhteydettömän UDP-protokollalla. Palvelun mukaan pistokkeet voivat vastaavasti olla joko tavuvirtapistokkeita (engl. stream socket) tai tietosähkepistokkeita (engl. datagram socket).
+Kuljetuskerros tarjoaa yhteydellisen kuljetuspalvelun TCP-protokollalla ja yhteydettömän UDP-protokollalla. Palvelun mukaan pistokkeet voivat vastaavasti olla joko tavuvirtapistokkeita (engl. stream socket) tai tietosähkepistokkeita (engl. datagram socket). TCP liittyy tavuvirtapistokkeisiin ja UDP tietosähkepistokkeisiin.
 
 ## Päästä-päähän yhteys
 
-Prosessin verkkoyhteys on sidottu tiettyyn pistokkeeseen. Kuljetuskerros kuitenkin tunnistaa yhteyden viestit porttinumeroilla.  Lähtevässä viestissä pitää aina olla vastaanottajan IP-numero ja porttinumero. Verkkokerros käyttää IP-numeroa vastaanottavan koneen löytämiseen. Saapuvan viestin porttinumerolla kuljetuskerros tunnistaa oikean pistokkeen ja osaa välittää viestin oikealle prosessille.
+Prosessin verkkoyhteys on sidottu tiettyyn pistokkeeseen, joka on sidottu kuljetuskerroksen käyttämään porttinumeroon. Kuljetuskerros tunnistaa yhteyden saapuvat viestit, sen otsakkeessa olevalla porttinumeroilla.  Lähtevässä viestissä pitää siksi aina olla verkkokerroksen käyttämän vastaanottajan IP-numeron lisäksi kuljetuskerroksenn tarvitsema porttinumero. Saapuvan viestin porttinumerolla kuljetuskerros tunnistaa oikean pistokkeen ja osaa välittää viestin oikealle prosessille.
 
 Osa porttinumeroista on varattu tietyille tunnetuille palveluille. [Internet Assigned Numbers Authority (IANA)](https://www.iana.org), hallinnoi internetin IP-numeroita ja myös erilaisten palvelujen porttinumeroita. IANA ylläpitää myös muuta internetin ja sen protokollien käyttöön liittyvää tietoa.
 
-
+<quizz >
 
 KUVA: Kalvon 15 kuva
 
