@@ -7,7 +7,7 @@ hidden: false
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
 - tunnistat mitä suunnitteluperiaatteita protokolla noudattaa.
-- Osaat arvoida miten protokollan toiminnassa on otettu huomioon tiettyjä suunnitteluperiaatteita.
+- Osaat arvioida miten protokollan toiminnassa on otettu huomioon tiettyjä suunnitteluperiaatteita.
 
 </text-box>
 
@@ -22,24 +22,24 @@ Nyt kun olemme tutustuneet protokollien mallinnukseen ja kuljetuskerroksen proto
 
 Koska viestin kuljetuksessa lähettäjältä vastaanottajalle on aina riski esimerkiksi bittivirheille, on protokollan tehtävä huolehtia mahdollisesta viestin oikeellisuuden tarkistuksesta. Kuljetuskerroksen protokolla voi toki jättää viestin oikeellisuuden tarkistamisen kerroksen protokollan tehtäväksi, mutta yleensä jokainen kerros vastaa vähintään oman otsakkeensa oikeellisuuden tarkistuksesta.
 
-Viestin muuttumattomuus voidaan tarkistaa joko pelkästään virheen havaitsemalla menetelmällä tai menetelmällä, joka voi tarvittaessa myös korjata virheen. Lähettäjä laskee tarvittavan lisätiedon osaksi viestiä ja vastaanottaja tarkistaa, että viesti ei ole muuttunut laskemalla tämän tiedon uudelleen ja vertaamalla sitä viestin mukana tuleeseen tietoon.
+Viestin muuttumattomuus voidaan tarkistaa joko pelkästään virheen havaitsemalla menetelmällä tai menetelmällä, joka voi tarvittaessa myös korjata virheen. Lähettäjä laskee tarvittavan lisätiedon osaksi viestiä ja vastaanottaja tarkistaa, että viesti ei ole muuttunut laskemalla tämän tiedon uudelleen ja vertaamalla sitä viestin mukana tulleeseen tietoon.
 
-Viestin tarkistaminen edellyttää aina tämän lisätiedon eli [tarkistussumman](https://fi.wikipedia.org/wiki/Tarkistussumma) lisäämistä viestiin. Tarkistussummalle varataan kiinteänkokoinen osa protokollan viestistä. Tarkistussumman laskentaan ja tarkistamiseen on tarjolla useita erilaisia menetelmiä. 
+Viestin tarkistaminen edellyttää aina tämän lisätiedon eli [tarkistussumman](https://fi.wikipedia.org/wiki/Tarkistussumma) lisäämistä viestiin. Tarkistussummalle varataan kiinteänkokoinen osa protokollan viestistä. Tarkistussumman laskentaan ja tarkistamiseen on tarjolla useita erilaisia menetelmiä.
 
 Jos tyydytään virheen havaitsemiseen, niin silloin ainoa vaihtoehto on hävittää vioittunut paketti. Mikä tahansa laite joka vastaanottaa paketin, jonka tarkistussumma ei vastaanottajalla enää vasta viestin sisältöä, hävittää tällaisen paketin. Virheen havaitsemiseen voidaan käyttää ainakin jotain seuraavista:
 * [pariteetti](https://fi.wikipedia.org/wiki/Pariteetti_(tietotekniikka)) on näistä menetelmistä yksinkertaisin ja se voidaan laskea joko bitti tai tavutasolla.
 * yhteenlaskuun perustuva tarkistussumma, kuten UDP:n tarkistussumma.
 * [tiiviste](https://fi.wikipedia.org/wiki/Tiiviste_(tietotekniikka)) voidaan laskea monella erilaisella tiivistefunktiolla tai tiivistealgoritmilla.
 
-Jos halutaan havaitsemisen lisäksi myös tarvittaessa korjata vikaantunut viesti, niin viestin mukana täytyy kuljettaa enemmän tarkistusinformaatiota, jotta korjaaminen onnnistuu. Virheenkorjaukseenkin https://fi.wikipedia.org/wiki/Virheenkorjauskoodi on tarjolla paljon erilaisia menetelmiä, kuten Hamming-koodi. Näitä ei useinkaan käytetä tietoliikenteen ylemmillä kerroksilla, koska viestit ovat varsin suuria ja virheenkorjauksen vaatima lisätila olisi tarpettoman suuri hyötyyn nähden. 
+Jos halutaan havaitsemisen lisäksi myös tarvittaessa korjata vikaantunut viesti, niin viestin mukana täytyy kuljettaa enemmän tarkistusinformaatiota, jotta korjaaminen onnistuu. [Virheenkorjaukseenkin](https://fi.wikipedia.org/wiki/Virheenkorjauskoodi) on tarjolla paljon erilaisia menetelmiä, kuten Hamming-koodi. Näitä ei useinkaan käytetä tietoliikenteen ylemmillä kerroksilla, koska viestit ovat varsin suuria ja virheenkorjauksen vaatima lisätila olisi tarpeettoman suuri hyötyyn nähden.
 
 Yksittäisten protokollien käyttämiin menetelmiin tutustutaan näiden protokollien yhteydessä.
 
 ## Ajastin
 
-Lähettäjä yleensä aina tarvitsee ajastimen, jolla voidaan katkaista liian pitkään kestänyt vastauksen odotus. JOs lähettäjän odotusta ei katkaista ajastimen laukeamisella, protokollan toiminta ei voi edetä. Vastaanottajan odotukseen ajastin ei ole tarpeen, koska vastaanottaja ei kuitenkaan voi edetä ilman saapuvaa viestiä. 
+Lähettäjä yleensä aina tarvitsee ajastimen, jolla voidaan katkaista liian pitkään kestänyt vastauksen odotus. Jos lähettäjän odotusta ei katkaista ajastimen laukeamisella, protokollan toiminta ei voi edetä. Vastaanottajan odotukseen ajastin ei ole tarpeen, koska vastaanottaja ei kuitenkaan voi edetä ilman saapuvaa viestiä.
 
-Ajastimen kanssa keskeistä on arvioida mikä on sopiva maksimiodotusaika, jonka jälkeen ajastimen olisi hyvä laueta mikäli vastausta ei ole saapunut.  Liian aikaisin laukeava ajastin aiheuttaa tarpeettoman uudelleenlähetyksen ja tarpeettoman myöhään laukeava viivästää järjestelmän toimintaa. Hyvä lähtökohta on käyttää ajastimen arvona kaksikertaista kiertoviivettä.
+Ajastimen kanssa keskeistä on arvioida, mikä on sopiva maksimiodotusaika, jonka jälkeen ajastimen olisi hyvä laueta mikäli vastausta ei ole saapunut.  Liian aikaisin laukeava ajastin aiheuttaa tarpeettoman uudelleenlähetyksen ja tarpeettoman myöhään laukeava viivästää järjestelmän toimintaa. Hyvä lähtökohta on käyttää ajastimen arvona kaksikertaista kiertoviivettä.
 
 
 ## Kuittaukset
@@ -51,7 +51,7 @@ Protokolla voi käyttää positiivisten kuittausten sijasta tai lisäksi myös n
 
 Esimerkiksi valikoivien kuittausten kanssa vastaanottaja voisi lähettää negatiivisen kuittauksen välittömästi, kun joku paketti jää pois välistä eli kyseistä pakettia seuraavan paketin saapuessa. Näin vastaanottaja voisi päästä lähettämään viestin uudelleen paljon aiemmin kuin vasta ajastimen laukeamisen jälkeen.
 
-Järjestelmässä täytyy aina myös varautua ns. tuplakuittauksiin, eli saman kuittauksen lähettämiseen ja vastaanottamiseen useampia kertoja. Tältä ei voi valttyä, koska kun vastaanottaja saa jo saapuneen paketin uudelleen, sen täytyy lähettää kyseiseen pakettiin liittyvä kuittaus uudelleen. Mikäli tätä lähettämistä ei tehtäisi, niin lähettäjä ei ehkä saisi koskaan kuittausta kyseisestä viestistä. 
+Järjestelmässä täytyy aina myös varautua ns. tuplakuittauksiin, eli saman kuittauksen lähettämiseen ja vastaanottamiseen useampia kertoja. Tältä ei voi välttyä, koska kun vastaanottaja saa jo saapuneen paketin uudelleen, sen täytyy lähettää kyseiseen pakettiin liittyvä kuittaus uudelleen. Mikäli tätä lähettämistä ei tehtäisi, niin lähettäjä ei ehkä saisi koskaan kuittausta kyseisestä viestistä.
 
 Toisaalta näitä tuplakuittauksia alkuperäinen lähettäjä voi myös pyrkiä hyödyntämään. Esimerkiksi Paluu-N:ään menetelmässä vastaanottaja kuittaa aina samalla kuittauksia kaikki epäjärjestyksessä saapuvat viestit. Lähettäjä voi hyödyntää tätä tieto ja tehdä uudelleen lähetyksen jo näiden tuplakuittausten perusteelle ennen kuin ajastin laukeaa.
 
@@ -61,6 +61,6 @@ Eri protokolla tai niiden eri versiot käyttävät näitä kaikkia vaihtoehtoja.
 
 Protokolla käyttävät viesteissä usein järjestysnumeroa tai tunnistenumeroa, jolla viestit voidaan erottaa toisistaan. Taas protokollan omien tarpeiden mukaan tämän numerointi voi olla vain tunnistamiseen tai myös järjestämiseen.
 
-KUn numeroa käytetään järjestämiseen on tärkeää, että numerointi on yhtäjaksoinen, jotta mahdolliset puuttuvat viestit voidaan havaita. Yhtäjaksoisuus ei kuitenkaan aina tarkoita, että viestinumerot olisivat peräkkäisiä kokonaislukuja. Esimerkiksi TCP numeroi viestinsä siten, että kahden peräkkäisen viestin numeroiden erotus on edellisen viestin datan koko tavuina.
+Kun numeroa käytetään järjestämiseen, on tärkeää, että numerointi on yhtäjaksoinen, jotta mahdolliset puuttuvat viestit voidaan havaita. Yhtäjaksoisuus ei kuitenkaan aina tarkoita, että viestinumerot olisivat peräkkäisiä kokonaislukuja. Esimerkiksi TCP numeroi viestinsä siten, että kahden peräkkäisen viestin numeroiden erotus on edellisen viestin datan koko tavuina.
 
-Lähdetään seuraavaksti tutkimaan TCP:n toimintaa tarkemmin.
+Lähdetään seuraavaksi tutkimaan TCP:n toimintaa tarkemmin.
