@@ -93,13 +93,10 @@ Vastauksen saatuaan paikallinen nimipalvelija voi vihdoin kysyä tältä auktori
 
 Tässä viestien vaihdossa paikalliselle nimipalvelijalle kertyy useita resurssitietueita. Se tyypillisesti varastoi ne kaikki omaan välimuistiinsa ja käyttää näin vähitellen kertyvää tietoa apuna myöhemmissä kyselyissä. Esimerkiksi, jos välimuistista olisi jo löytynyt suoraan joko ylätason palvelijan tai autoritäärisen palvelijan yhteystiedot, niin kyselyketjussa olisi voitu ohittaa tarpeettomat kyselyt ja näin säästää aikaa ja vähentää verkkoliikennettä.
 
-Nimipalveluun on alunperin määritelty myös tuon edellä kuvatun iteratiivisen kyselyprosessin rinnalle myös rekursiivinen kysely.
+Nimipalveluun on alunperin määritelty myös tuon edellä kuvatun iteratiivisen kyselyprosessin rinnalle myös rekursiivinen kysely, jolloin nimipalveluhierarkiaan kuuluva nimipalvelija ei palauta omaa puutteellista vastaustaan kysyjälle, vaan tekee kyselyn edelleen alemmalle tasolle. Vastaus kulkee sitten aikanaan tämän rekursiivisen ketjun läpi alkuperäiselle kysyjälle. Koska rekursiivinen kysely kuormittaa erityisesti juurinimipalvelijoita, niin ne eivät välttämättä niitä kysyjän pyynnöst huolimatta tee. Sksi tuo iteratiivinen malli on tyypillinen tapa, jolla paikallinen nimipalvelija tiedon selvittää.
 
 
-
-QUIZZ:  Nimipalvelin toimintaan liittyen parikin kysymystä
-
-<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
+<quiz id="af7fd745-8bc1-45d3-8f1c-e7fe47eb74e4"></quiz>
 
 
 ## Nimipalvelun turvallisuus
