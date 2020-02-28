@@ -17,7 +17,7 @@ hidden: false
 
 Kuljetuspalvelun tehtävänä on huolehtia sen kuljetettavaksi annettu viesti lähettäjältä vastaanottajalle. Tämän kurssin edellisessä osassa ja aiemmalla kurssilla on jo käytä läpi sovelluskerroksen toiveita kuljetuskerrokselle.
 
-QUIZZ: Kertaustehtävä, jolla palautetaan mieleen erilaiset termit palveluun laatuun ja asiakkaan toiveisiin liittyen.
+<quizz id="quizzes/b5f5c343-90e6-46e4-aeed-f0889b401c49"> </quizz>
 
 Kuljetuspalvelun keskeinen tehtävä on täyttää sovelluskerroksen toiveet ja vaatimukset, vaikka verkkokerros ei aina tue näitä.
 
@@ -62,7 +62,7 @@ Vastaavasti sovelluskerrokselta kuljetuskerrokselle tulevat viestit saapuvat eri
 
 <img src="../img/lomitus.svg" alt="Kuvassa on kolme laitetta A, B ja C. "/>
 
-KUVA: Kuvassa A:n ja C:n sovelluskerroksen prosessit kommunikoivat keskenään porttien xxx ja yyy kautta. Vastaavasti B:n ja C:n sovelluskerroksen prosessit kommunikoivat keskenään porttien zz ja kk kautta. C:llä on siis kaksi sovellusprosessia (tai yksi, joka kommunikoi useamman portin kautta eri laitteissa olevien sovellusten kanssa), jotka käyttävät eri portteja ja kommunikoivat vastapuoliensa kanssa niiden välityksellä.
+KUVA: Kuvassa A:n ja C:n sovelluskerroksen prosessit kommunikoivat keskenään porttien 2476 (A:lla) ja 3614 (C:llä) kautta. Vastaavasti B:n ja C:n sovelluskerroksen prosessit kommunikoivat keskenään porttien 1258 (B:llä) ja  5625 (C:llä) kautta. C:llä on siis kaksi sovellusprosessia (tai yksi, joka kommunikoi useamman portin kautta eri laitteissa olevien sovellusten kanssa), jotka käyttävät eri portteja ja kommunikoivat vastapuoliensa kanssa niiden välityksellä.
 
 
 <quiz id="9631e51f-779a-4c8e-8837-c68b0f5bf08e"></quiz>
