@@ -3,10 +3,10 @@ path: '/osa-2/6-yhteenveto'
 title: 'Yhteenveto'
 ---
 
-TODO
+Tässä osassa käytiin sovelluskerroksen palveluista tarkemmin läpi nimipalvelu ja sähköpostipavelu. Lisäksi tarkasteltiin hyvin yleisellä tasolla verkkosovellusten ohjelmointiin liittyvää problematiikkaa ja sovelluksen vaatimuksia kuljetuspalvelulle.
 
-Toisessa osassa kerrattiin tulostamista, muuttujia, laskemista, syötteen käsittelyä, vertailua sekä toistamista. Samalla tutustuttiin usein toistuviin osaongelmiin sekä niiden ratkaisumalleihin. Materiaalissa käsiteltiin myös loogisia operaatioita, joiden avulla ehto- ja toistolauseiden ehdoista saa monipuolisempia, sekä metodeja, joiden avulla ohjelman toiminnallisuutta saa jaettua useampaan osaan.
+Osiossa oli mukana myös tietoliikenteen seurantaan liittyviä asioita ja tutustumista hyvin pikaisesti myös siihen vaikuttaviin lakeihin.
 
 Vastaa vielä alla olevaan kyselyyn.
 
-<quiz id="2f43d86a-1e15-448d-8c76-f1b30e69afe9"></quiz>
+<quiz id="a8d1f698-866f-4bcf-ad61-df29fcc13003"></quiz>
