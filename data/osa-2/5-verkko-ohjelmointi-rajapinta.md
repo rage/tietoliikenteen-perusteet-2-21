@@ -63,13 +63,18 @@ Kuljetuskerros tarjoaa yhteydellisen kuljetuspalvelun TCP-protokollalla ja yhtey
 
 ## Päästä-päähän yhteys
 
-Prosessin verkkoyhteys on sidottu tiettyyn pistokkeeseen, joka on sidottu kuljetuskerroksen käyttämään porttinumeroon. Kuljetuskerros tunnistaa yhteyden saapuvat viestit, sen otsakkeessa olevalla porttinumeroilla.  Lähtevässä viestissä pitää siksi aina olla verkkokerroksen käyttämän vastaanottajan IP-numeron lisäksi kuljetuskerroksenn tarvitsema porttinumero. Saapuvan viestin porttinumerolla kuljetuskerros tunnistaa oikean pistokkeen ja osaa välittää viestin oikealle prosessille.
+Prosessin verkkoyhteys on sidottu tiettyyn pistokkeeseen, joka on sidottu kuljetuskerroksen käyttämään porttinumeroon. Kuljetuskerros tunnistaa yhteyden saapuvat viestit, sen otsakkeessa olevalla porttinumeroilla.  Lähtevässä viestissä pitää siksi aina olla verkkokerroksen käyttämän vastaanottajan IP-numeron lisäksi kuljetuskerroksenn tarvitsema porttinumero. Saapuvan viestin porttinumerolla kuljetuskerros tunnistaa oikean pistokkeen ja osaa välittää viestin oikealle prosessille. Prosessilla voi olla samaan aikaan käytössä useita pistokkeita, jolloin sen käytössä on myös useita porttinumeroita, koska jokaisella pistokkeella on oltava yksilöivä tunniste eli porttinumero.
+
+KUVA: 2017, luento 3, Kalvon 15 kuva
+KUVA: Kuvassa on siis asiakaslaite, jossa on useampia prosesseja. Ne kaikki kommunikoivat saman palvelinlaitteella toimivan palvelinprosessin kanssa.  Kuljetuskerros tunnistaa jokaisen prosessin niihin liitetystä porttinumerosta. Muistathan, että porttinumero yksilö prosessin vain yhden laitteen sisällä eli eri laitteilla olevat prosessit käyttävät samoja porttinumeroita. 
 
 Osa porttinumeroista on varattu tietyille tunnetuille palveluille. [Internet Assigned Numbers Authority (IANA)](https://www.iana.org), hallinnoi internetin IP-numeroita ja myös erilaisten palvelujen porttinumeroita. IANA ylläpitää myös muuta internetin ja sen protokollien käyttöön liittyvää tietoa.
 
-<quizz >
 
-KUVA: 2017, luento 3, Kalvon 15 kuva
+
+<quiz id="a9f3871a-8756-453a-84d2-e0a8c37ea170"></quiz>
+
+
 
 ## Pistokerajapinnan socket.h keskeiset funktiot
 
