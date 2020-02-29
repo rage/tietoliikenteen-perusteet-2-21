@@ -75,9 +75,11 @@ Kun lähettäjä saa kuittauksen tilassa 2 se olettaa kuittauksen koskevan juuri
 
 Teoreettisessa automaattien analysoinnissa usein edellytetään, että automaatille täytyy kuvata kaikki lailliset tilanteet. Jos jotain tilannetta ei ole kuvattu, niin automaatin toiminta päättyy virhetilaan. Meidän automaatissamme näin voisi käydä, jos lähettäjä saa kuittauksen tilassa L1, jossa se ei sitä odota saavansa. Tällä kurssilla kuitenkin oletamme, että automaatti vain ohittaa odottamattomat tapahtumat. Niitä ei siis jätetä odottamaan myöhempää käsittelyä, vaan automaatti vain purkaa ne pois käsittelyjonosta, kunnes tulee tapahtuma, jonka se osaa käsitellä. Tällä oletuksella saamme malleista vähennettyä siirtymiä tilasta itseensä.
 
-QUIZZ: Erilaisia viestiketjuja lähettäjän ja vastaanottajan välillä. Mikä on yhteistila, johon ko. ketju johtaa. Tai kuinka monta viestiä vastaanottaja sai?
+
+<quiz id="b81d7375-929d-4c1a-b1f4-f361e2976178"> </quiz>
 
 
+Tämä yksinkertainen automaatti ei toimi oikein, jos viestien kulkuaika voi olla ajastimen laukeamisaikaa pidempi. Mieti hetki miksi näin on.   Yritä kehittää tapahtumaketju, jossa yksi lähettäjältä lähtenyt viesti ei koskaa pääse perille, mutta muuten viestien kulku etenee normaalisti.  Näin tapahtuu, kun kadotat lähetettyjä m viesteja sopivasti ja viivästät yhden (tai useamman) ack-viestin siten, että se saapuu vasta ajastimen laukeamisen jälkeen. Tällainen ennenaikainan ajastimen laukeaminen (engl. premature timeout) sekoittaa tämän automaatin toiminnan. Korjaaminen edellyttää lähetettyjen viestien erottamista toisistaan, jolloin lähettäjä voi yhdistää kuittaukset oikeisiin lähetettyihin viesteihin.
 
 ## Vuorottelevan bitin protokolla
 
