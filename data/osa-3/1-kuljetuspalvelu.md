@@ -15,23 +15,24 @@ hidden: false
 
 ## Kuljetuspalvelu
 
-Kuljetuspalvelun tehtävänä on huolehtia sen kuljetettavaksi annettu viesti lähettäjältä vastaanottajalle. Tämän kurssin edellisessä osassa ja aiemmalla kurssilla on jo käytä läpi sovelluskerroksen toiveita kuljetuskerrokselle.
+Kuljetuspalvelun tehtävänä on huolehtia sen kuljetettavaksi annettu viesti lähettäjältä vastaanottajalle. Tämän kurssin edellisessä osassa ja aiemmalla kurssilla on jo käytä läpi sovelluskerroksen toiveita kuljetuskerrokselle. Palaute ne mieleesi nyt. Käy tarvittaessa aiempia materiaaleja läpi.
 
-<quizz id="quizzes/b5f5c343-90e6-46e4-aeed-f0889b401c49"> </quizz>
 
-Kuljetuspalvelun keskeinen tehtävä on täyttää sovelluskerroksen toiveet ja vaatimukset, vaikka verkkokerros ei aina tue näitä.
+Kuljetuskerroksen keskeinen tehtävä on täyttää sovelluskerroksen toiveet ja vaatimukset ja näin piilottaa se seikka, että verkkokerros ei näitä pysty tarjoamaan.
 
 Luotettavan kuljetuspalvelun keskeinen tehtävä on siis piilottaa verkkokerroksen epäluotettavuus sovelluskerrokselta:
 * Sovelluskerros edellyttää kuljetuspalvelulta virheettömyyttä ja luotettavuutta, mutta verkkokerros voi muuttaa segmentin bittejä tai kadottaa koko segmentin
 * sovelluskerros edellyttää järjestyksen säilymistä, mutta verkkokerros voi toimittaa segmentit epäjärjestyksessä
 * sovelluskerros edellyttää kaksoiskappaleiden karsimista, mutta verkkokerros voi monistaa segmenttejä eli toimittaa useita kopioita samasta segmentistä
 * sovelluskerros edellyttää mielivaltaisen pitkiä sanomia, mutta verkkokerros voi rajoittaa segmentin kokoa
-* verkkokerros voi lisäksi viivyttää segmenttejä satunnaisen pitkän ajan,
+* verkkokerros voi lisäksi viivyttää segmenttejä satunnaisen pitkän ajan
+
+Ennenkuin käydään yksityiskohtaisemmin läpi kuljetuskerroksen TCP:n ja UDP:n toimintaa, niin tarkastellaan asioita ensin hiukan teoreettisemmin. Edellytämme protollilta ja niiden toteutuksilta, että ne toimivat virheettömästi ja tekevät sen mitä lupaavat. Tämän arviointi suunnitteluvaiheessa perustuu protokollan mallintamiseen ja tämän mallin toiminnallisuuden ja oikeellisuuden arviointiin. Vaikka emme tällä kurssilla opettelemaan verifioimaan ja validoimaan protokollia ja niiden oikeellisuutta, niin yleiskuva mallinnuksesta on kuitenkin tarpeen. Mallinnuksesa kuten yleensä tiejenkäsittelyssä abstrahoimme asioita ja tarkastelemme vain sillä hetkellä kiinnostavia piirteitä.
 
 
 ## Mallinnuksesta
 
-Kun mallinnamme tietoliikennejärjestelmän toimintaa, käytämme usein termiä kanava (engl. channel) kuvaamaan varsinaista tietoa siirtävää elementtiä. Kanava-termillä mallia ei sidota tiettyyn järjestelmään, vaan se sopii kaikkiin sellaisiin ympäristöihin, joissa kanavalle määritellyt ominaisuudet ovat samoja. Kanava on siis vain joukko ominaisuuksia, jotka kuvaavat miten tieto siirtyy lähettäjältä vastaanottajalle. Kanava voi esimerkiksi kadottaa viestejä, jolloin kaikki lähetetyt viestit eivät pääse perille. Kanava voi myös luvata toimittaa kaikki viestit virheettömästi perille. Mallin suunnittelija määrittelee kanavan ominaisuudet siten, että mallilla saadaan kuvattua haluttua toiminnallisuutta.
+Kun mallinnamme tietoliikennejärjestelmän toimintaa, käytämme usein termiä kanava (engl. channel) kuvaamaan varsinaista tietoa siirtävää elementtiä. Kanava-termillä mallia ei sidota tiettyyn järjestelmään, vaan se sopii kaikkiin sellaisiin ympäristöihin, joissa kanavalle määritellyt ominaisuudet ovat samoja. Kanava on siis vain joukko ominaisuuksia, jotka kuvaavat, miten tieto siirtyy lähettäjältä vastaanottajalle. Kanava voi esimerkiksi kadottaa viestejä, jolloin kaikki lähetetyt viestit eivät pääse perille. Kanava voi myös luvata toimittaa kaikki viestit virheettömästi perille. Mallin suunnittelija määrittelee kanavan ominaisuudet siten, että mallilla saadaan kuvattua haluttua toiminnallisuutta.
 
 <img src="../img/sovelluskerros-kuljetuspalvelu.svg" alt="Sovelluskerroksen prosessit lähettävät dataa toisilleen kuljetuskerroksen 'putken' läpi."/>
 
