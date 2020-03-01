@@ -101,13 +101,8 @@ KUVA: Vuorottelevan bitin protokolla. Lähettäjän ja vastaanottajan välillä 
 <br>
 
 
+<quiz id="aaee8959-881e-4366-87e1-e1f492b5b3fc"> </quiz>
 
+Vuorottelevan bitin protokolla ei selvitä tilanteesta, jossa kanava voi vaihtaa lähetettyjen viestien järjestystä. Vuorottelevan bitin protokollassa normaalisti kanavassa on vain yksi viesti, jolloin kanava ei pääse vaihtamaan viestien järjestystä. Jos ajastin laukeaa silloin, kun viesti on vielä matkalla, on mahdollista saada kanavaan useampi viesti samanaikaisesti. Jos viestit menevät perille lähetysjärjestyksessä, niin protokolla toimii suunnitellulla tavalla. Jos kuitenkin viestit pääsevät vaihtamaan järjestystä, niin protokolla ei välttämättä enää toimi oikein. Se voi esimerkiksi jättää jonkun sovelluskerroksen viestin kokonaan välittämättä, mutta jatkaa toimintaansa tai se voi lukkiutua. Protokollien lukkiutuminen muistuttaa rinnakkaisten prosessien lukkiutumista (käsitellään käyttöjärjestelmät -kurssilla) sikäli, että lukkiutunut protokolla ei voi edetä koska kumpikin osapuoli odottaa toisen toimenpidettä. Jätämme lukkiutumisen käsittelyn myöhemmille kursseille.
 
-
-VIDEO: Jossa tämä tarina kuvattuna  laajenevana automaattina.
-
-
-Tehtävä:  Simulointi tilanteessa, jossa viestien järjestys voi vaihtua. Anna viesti jono ja pyydä vastauksena tila, johon lähettäjä päätyy, vastaanottaja päätyy. Mikä viesti jää pois oikealta paikaltaan, jne....
-
-
-Tehtävä, jossa annetaan automaatti, johon pitää täydentää tarvittavat toiminnallisuudet  (eli osa toiminnoista on X,Y,Z, jne) ja vaihtoehdot tehtävässä
+Yritä sekoittaa protokollan toiminta viivästämällä viestejä ja vaihtamalla lähetettyjen viestien järjestystä. Näin opit hahmottamaan protokollien toimintaa yleisemminkin.
