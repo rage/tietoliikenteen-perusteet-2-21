@@ -106,6 +106,7 @@ Vastaanottajan toiminnallisuus:
 
 KUVA: Kuvassa on valikoivan uudelleen lähetyksen toiminta tilanteessa, jossa ikkunan koko on 4 ja viesteistä katoaa järjestysnumerolla 2 varustettu viesti.
 
+<quiz id="ac387454-8924-4ef9-be92-e3a8b157767a> </quiz>
 
 ## Viestien numeroinnista
 
@@ -115,8 +116,6 @@ Oletetaan esimerkiksi tilanne, jossa meillä on 4 erilaista numeroa eli 0,1,2 ja
 
 Itse asiassa pakettien numerointi, ikkunan koko ja protokollan yksityiskohtainen toiminta liittyvät läheisesti toisiinsa. Jos käytämme kadonneen paketin kohdalla toipumiseen Paluu-N:ään, niin silloin riittää, että ikkunassa olevat paketit voidaan erotella toisistaan, koska lähettäjä lähettää aina kadonneen viestin lisäksi kaikki sitä seuraavat viestit uudelleen. Näin eri 'kierrosten' pakettinumerot eivät voi sekaantua toisiinsa.
 
-Valikoivan toiston kanssa sekaantumisen vaara on, jos meillä ei ole turvamarginaalia ikkunan ympärillä. Valikoivan toiston kanssa itse asiassa maksimi-ikkunankoko on puolet käytettävästä numeroavaruudesta. Tämä johtuu siitä, että toisaalta valikoivassa toistossa lähettäjä lähettää vain kaikki yksittäiset puuttuviksi kuvittelemansa viestit ja toisaalta vastaanottaja puskuroi aiemmin saapuneita viestejä. Nyt on mahdollista, että vastaanottaja on saanut viestin jo aiemmin, mutta kuittaus katosi. Tällöin lähettäjän pitää lähettää kyseinen viesti uudelleen. Jos nyt vastaanottajan ikkuna on liikahtanut eteenpäin, niin ilman tuota turvamarginaalia olisi mahdollista, että vastaanottaja olettaisi saapuvan viestin kuuluvan jo seuraavaan sarjaan.  Tarvittaessa piirrä itsellesi tapahtumakuvaus, jossa tällainen sekaantuminen pääsee tapahtumaan, kun ikkunan koko vastaa numerointia. Piirrä sen jälkeen vastaava tapahtumasarja tilanteessa, jossa ikkunan koko on puolet numeroavaruudesta ja vakuuta itsesi miksi tässä tilanteessa ei vastaavaa voi tapahtua.
-
-QUIZZ: Kun oletetaan, että käytetään valikoivaa toistoa ja ikkunan koko on yhtä suuri kuin numeroavaruus, niin mikä seuraavista sarjoista aiheuttaa ongelmia?
+Valikoivan toiston kanssa sekaantumisen vaara on, jos meillä ei ole turvamarginaalia ikkunan ympärillä. Valikoivan toiston kanssa itse asiassa maksimi-ikkunankoko on puolet käytettävästä numeroavaruudesta. Tämä johtuu siitä, että toisaalta valikoivassa toistossa lähettäjä lähettää vain kaikki yksittäiset puuttuviksi kuvittelemansa viestit ja toisaalta vastaanottaja puskuroi aiemmin saapuneita viestejä. Nyt on mahdollista, että vastaanottaja on saanut viestin jo aiemmin, mutta kuittaus katosi. Tällöin lähettäjän pitää lähettää kyseinen viesti uudelleen. Jos nyt vastaanottajan ikkuna on liikahtanut eteenpäin, niin ilman tuota turvamarginaalia olisi mahdollista, että vastaanottaja olettaisi saapuvan viestin kuuluvan jo seuraavaan sarjaan.  Tarvittaessa piirrä itsellesi tapahtumakuvaus, jossa tällainen sekaantuminen pääsee tapahtumaan, kun ikkunan koko vastaa numerointia. Piirrä sen jälkeen vastaava tapahtumasarja tilanteessa, jossa ikkunan koko on puolet numeroavaruudesta ja vakuuta itsesi, miksi tässä tilanteessa ei vastaavaa voi tapahtua.
 
 
