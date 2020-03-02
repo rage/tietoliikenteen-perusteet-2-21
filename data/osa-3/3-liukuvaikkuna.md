@@ -52,7 +52,7 @@ Lähettäjähän voi havaita kadonneen viestin vain siitä, että siihen liittyv
 Liukuvan ikkunan protokollassa uudelleen lähetys voidaan toteuttaa joko valikoivana uudelleenlähetyksenä (engl. selective repeat) tai koko ikkunan uudelleenlähetyksenä. Tätä koko ikkunan uudelleenlähetystä kutsutaan usein nimellä Paluu-N:ään (engl. Go-Back-N), koska ajatellaan, että meillä on lähetyskohdan ilmaiseva osoitin, joka siirretään, eli palautetaan, taaksepäin tuohon kohtaan N, josta lähettämistä jatketaan.
 
 
-## Paluu-N:ään (Go-Back-N)
+### Paluu-N:ään (Go-Back-N)
 
 Paluu-N:ään on toiminnallisesti hyvin yksinkertainen. Kun vanhimpaan viestiin liittyvää kuittausta ei tule ajoissa, ajastin laukeaa ja lähettäjä lähettää kaikki ikkunassa olevat viestit uudelleen.
 
@@ -76,35 +76,41 @@ KUVA Aikajana. Paketin katoaminen ja siihen liittyvä toipuminen   (Käsin tehty
 
 KUVA: Kuvassa on aikajanalla Paluu-N:ään toiminta, kun ikkunan koko on 4 ja paketti 2 katoaa. Kuvaan on piirretty se mitkä viestit kulloinkin ovat ikkunassa ja mitä viestejä lähettjään ja vastaanottajan välillä kulkee. Viestit on numeroitu 0:sta alkaen.
 
-
-ITSENÄINEN TEHTÄVÄ: 
 <quiz id="9bc750d3-7c0d-4131-ada8-cdec9dd65164">  </quiz>
 
-## Valikoiva uudelleenlähetys
+### Valikoiva uudelleenlähetys
 
 Toinen vaihtoehto katoavien pakettien uudelleenlähetyksiin on lähettää vain kadonnut paketti uudelleen. Näin katoamistapauksessa lähetetään vähemmän paketteja, mutta pakettien ja niiden kuittausten hallinta on monimutkaisempaa kuin tuossa Paluu-N:ään vaihtoehdossa.
 
-Lähettäjä lähettää yhden paketin uudelleen aina kun kyseiseen pakettiin liittyvä ajastin laukeaa. Tällöin joko paketti on kadonnut tai kuittaus on kadonnut. Ajastin on ainoa tässä toistaiseksi ainoa tapa, jolla lähettäjä voi saada tiedon siitä, että paketti täytyy lähettää uudelleen.
+Lähettäjä lähettää yhden paketin uudelleen aina kun kyseiseen pakettiin liittyvä ajastin laukeaa. Tällöin joko paketti on kadonnut tai kuittaus on kadonnut. Ajastin on kurssimateriaalissa toistaiseksi ainoa tapa, jolla lähettäjä voi saada tiedon siitä, että paketti täytyy lähettää uudelleen. 
 
 Kun käytetään valikoivaa kuittausta, niin lähettäjän saama kuittausviesti kuittaa aina vain kyseisen paketin. Vastaanottajan on siis kuitattava jokainen yksittäinen saapunut paketti silloinkin, kun se saapuu väärässä järjestyksessä. Vastaanottajan täytyy siis kuitata aina kaikki saapuvat paketit myös sellaiset, jotka se on jo saanut aiemmin. Niiden kohdalla vastaanottaja olettaa kuittauksen kadonneen, joten sen täytyy lähettää kuittaus, vaikka se on sellaisen jo lähettänyt aiemmin.
 
-Valikoivassa uudelleenlähetyksessa vastaanottajan on välttämätöntä puskuroida kaikki saapuvat paketit, koska lähettäjä ei välttämättä lähetä niitä enää uudelleen. Paluu-N:än kanssa tuo puskurointi on vapaaehtoinen lisäpiirre, mutta tässä vaihtoehdossa siis pakollinen toiminnallisuus.
+Valikoivassa uudelleenlähetyksessa vastaanottajan on välttämätöntä puskuroida kaikki saapuvat paketit, koska lähettäjä ei välttämättä lähetä niitä enää uudelleen. Paluu-N:än kanssa puskurointi on vapaaehtoinen lisäpiirre, mutta tässä vaihtoehdossa siis pakollinen toiminnallisuus.
 
-Puskurista muodostaa vastaanottajalle oma 'liukuvan ikkunan' näkymä tuohon saapuvien viestien jonoon.
+Puskurista muodostaa vastaanottajalle oma 'liukuvan ikkunan' näkymä saapuvien viestien jonoon.
 
 KUVA Lähettäjän ja vastaanottajan ikkunoista
 
 Lähettäjän toiminnallisuus:
-* viesti sovelluskerrokselta:
+* Viesti sovelluskerrokselta: Oletaan, että lähetyspuskuriin mahtuu jonottamaan äärettömän monta viestiä. Jos ikkunassa on tilaa, niin viesti saa järjestysnumeron ja se lähetetään vastaanottajalle. Jos ikkuna on täynnä, niin viesti jää lähetyspuskuriin odottamaan lähetysikkunaan pääsyä.
+* Ajastin laukeaa: Jokaisella viestillä on oma aikaraja ja ne jokainen tarvitsevat siksi oman ajastimen. Ajastimen lauetessa vain kyseinen viesti lähetetään uudelleen. (Huom: jos laitteisto tulee vain yhtä ajastinta laitetasolla, niin sen avulla on kuitenkin mahdollista toteuttaa useita loogisia ajastimia ohjelmallisesti)
+* Kuittausviesti saapuu: Kun kuittausviesti saapuu, kyseinen viesti merkitään kuitatuksi. Jos tämä on ikkunan reunimmainen, vanhin, viesti, niin siirrä ikkunaa eteenpäin  niin paljon, että ikkunan reunassa on taas ensimmäinen kuittaamaton viesti. Jos ikkunaan mahtuu ja jos lähetysjonossa on lähetettävää, niin lähetä ne yksitellen, kunnes ikkuna on täynnä tai ei enää lähetettävää.
+ 
 
-KESKEN!!!!!! (TODO)
+Vastaanottajan toiminnallisuus:
+* Huomaa, että vastaanottajan omassa ikkunassa on reunimmaisena pienin järjestysnumero, jonka saapumista vielä odotetaan.Merkitään tätä vastaanottaja-odottaa
+* Saapuu viesti, jonka järjestysnumero on vastaanottajan ikkunassa eli suurempi tai yhtäsuuri kuin vastaanottaja-odottaa: Kuittaa viesti. Jos viesti oli ikkunan reunassa (eli juuri vastaanottaja-odottaa), niin siirrä vastaanottajan omaa ikkunaa ensimmäiseen puuttuvaan viestiin.  Toimita ikkunasta näin poistuvat viestit sovelluskerrokselle.
+* Saapuu viesti, jonka järjestysnumero ei enää ole vastaaottajan ikkunassa, eli sen järjestynumero on pienempi kuin vastaanottaja-odottaa: Lähetä kuittaus. Itse viesti on jo käsitelty ja kuitattu aiemmin, mutta lähettäjä ei ilmeisesti tiedä sitä.
+
+KUVA:
+
+KUVA: Kuvassa on valikoivan uudelleen lähetyksen toiminta tilanteessa, jossa ikkunan koko on 4 ja viesteistä katoaa järjestysnumerolla 2 varustettu viesti.
 
 
 ## Viestien numeroinnista
 
 Liukuvan ikkunan protokollassa viestit täytyy numeroida siten, että tiedämme viestien järjestyksen ja kaksi viestiä ei voi koskaan mennä sekaisin. Kuten vuorottelevan bitin protokollasta huomasimme, tämän erottelun voi tehdä jopa vain yhdellä bitillä. Tietoliikenneprotokollien kanssa meillä on aina käytettävissä vain äärellinen numeroavaruus, koska yleensä protokollien otsakkeessa on varattu kiinteän kokoinen kenttä viestin numerolle. Jos kentän pituus on n bittiä, niin voimme erotella toisistaan 2<sup>n</sup> viestiä, joiden numerot ovat 0,1,2,3,... 2<sup>n</sup>-1.
-
-QUIZZ: Montako viestiä voidaan numeroida, jos kentän pituus on 3, 4 tai 8 bittiä?
 
 Oletetaan esimerkiksi tilanne, jossa meillä on 4 erilaista numeroa eli 0,1,2 ja 3. Mikä voi silloin olla ikkunan maksimikoko, jotta emme voi sekoittaa viestejä? Missään tapauksessa se ei voi olla suurempi kuin 4, mutta voiko se olla edes 4? Jos ikkunan koko olisi suurempi kuin käytettävissä oleva numeroavaruus, niin ikkunassa olisi sama numero useampaan kertaan eikä lähettäjällä tai vastaanottajalla olisi keinoa erottaa näitä kahta viestiä toisistaan. Tarvittaessa piirrä itsellesi kuva ikkunasta tällaisella tilanteessa.
 
