@@ -17,7 +17,7 @@ Internetin protokollat on sijoitettu protokollapinon eri kerroksille. Yhdellä k
 
 <quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>
 
-Eri kerroksilla käytetään eri osoitteita. Kuljetuskerros käyttää porttinumeroa oikean sovelluksen / prosessin tunnistamiseen tämän tietokoneen sisällä. Verkkokerros käyttää IP-osoitetta Internet-verkkoon liitetyn laitteen tunnistamiseen. Linkkikerros käyttää laitteiden MAC-osoitteita niiden tunnistamaan yhden linkin muodostamassa aliverkossa.  
+Eri kerroksilla käytetään eri osoitteita. Kuljetuskerros käyttää porttinumeroa oikean sovelluksen / prosessin tunnistamiseen tämän tietokoneen sisällä. Verkkokerros käyttää IP-osoitetta Internet-verkkoon liitetyn laitteen tunnistamiseen. Linkkikerros käyttää laitteiden MAC-osoitteita niiden tunnistamaan yhden linkin muodostamassa aliverkossa.
 
 <quiz id="ad711046-8a1d-4e03-8b6f-e545ee9bdcd0"></quiz>
 
@@ -25,7 +25,7 @@ Pakettikytkentäisen verkon yksi keskeinen piirre on, että paketit liikkuvat ai
 
 ## Protokollat
 
-Tietoliikenteen protokollat määrittävät viestien vaihdon toiminnallisuuden. Protokollan kuvauksessa kerrotaan siis kuka lähettää, kenelle, mitä ja millä ehdoilla.  Internetin protokollien kuvaukset ovat IETF:n RFC dokumentaatiossa. Esimerkiksi HTTP versio 2 on [https://tools.ietf.org/html/rfc7540](RFC7540). Siinä on kuvattu kaikki HTTP/2:n käyttöön tarvittavat tiedot kuten kehykset, yhteydet ja viestien vaihto.
+Tietoliikenteen protokollat määrittävät viestien vaihdon toiminnallisuuden. Protokollan kuvauksessa kerrotaan siis kuka lähettää, kenelle, mitä ja millä ehdoilla.  Internetin protokollien kuvaukset ovat IETF:n RFC dokumentaatiossa. Esimerkiksi HTTP versio 2 on [RFC7540](https://tools.ietf.org/html/rfc7540). Siinä on kuvattu kaikki HTTP/2:n käyttöön tarvittavat tiedot kuten kehykset, yhteydet ja viestien vaihto.
 
 Kaikilla muillakin protokollilla on omat dokumentaationsa. Viralliset internetissä käytettävät protokollat on aina kuvattu RFC-dokumentaatiossa. Toki kuka tahansa voi rakentaa oman verkko-ohjelman ja käyttää omien ohjelman osien välillä ihan sellaista protokollaa kuin haluaa. Kuitenkin jos tarvitaan laajoja verkkosovelluksia, joilla on toisistaan riippumattomia toteuttajia, niin järjestelmän osien välinen kommunikointi täytyy kuvata ja dokumentoida siten, että se on kaikkien saatavilla.
 
