@@ -53,9 +53,9 @@ Esimerkiksi valikoivien kuittausten kanssa vastaanottaja voisi lähettää negat
 
 Järjestelmässä täytyy aina myös varautua ns. tuplakuittauksiin, eli saman kuittauksen lähettämiseen ja vastaanottamiseen useampia kertoja. Tältä ei voi välttyä, koska kun vastaanottaja saa jo saapuneen paketin uudelleen, sen täytyy lähettää kyseiseen pakettiin liittyvä kuittaus uudelleen. Mikäli tätä lähettämistä ei tehtäisi, niin lähettäjä ei ehkä saisi koskaan kuittausta kyseisestä viestistä.
 
-Toisaalta näitä tuplakuittauksia alkuperäinen lähettäjä voi myös pyrkiä hyödyntämään. Esimerkiksi Paluu-N:ään menetelmässä vastaanottaja kuittaa aina samalla kuittauksia kaikki epäjärjestyksessä saapuvat viestit. Lähettäjä voi hyödyntää tätä tieto ja tehdä uudelleen lähetyksen jo näiden tuplakuittausten perusteelle ennen kuin ajastin laukeaa.
+Toisaalta näitä tuplakuittauksia alkuperäinen lähettäjä voi myös pyrkiä hyödyntämään. Esimerkiksi Paluu-N:ään menetelmässä vastaanottaja kuittaa aina samalla kuittauksia kaikki epäjärjestyksessä saapuvat viestit. Lähettäjä voi hyödyntää tätä tietoa ja tehdä uudelleenlähetyksen jo näiden tuplakuittausten perusteella ennen kuin ajastin laukeaa.
 
-Eri protokolla tai niiden eri versiot käyttävät näitä kaikkia vaihtoehtoja.
+Eri protokollat tai niiden eri versiot käyttävät näitä kaikkia vaihtoehtoja.
 
 ##  Järjestysnumero
 
