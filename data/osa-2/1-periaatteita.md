@@ -6,7 +6,7 @@ title: 'Verkkosovelluksen toimintaperiaatteita'
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
 - Osaat selittää miksi tietoliikenneverkko pitää olettaa epäluotettavaksi.
-- Ymmärrät miksi verkon kuuntelu on helppoa ja miksi kuuntelulta suojautuminen tapahtuu lähinnä salauksen avulla.
+- Ymmärrät miksi verkon kuuntelu on helppoa ja miksi kuuntelulta suojautuminen tapahtuu lähinnä salauksen avulla. (TODO tuleekohan tämä tästä tekstistä esiin, vai vasta seuraavassa osassa)
 - Osaat kuvata kuljetuskerroksen palvelut sovelluskerroksen protokollille.
 - Osaat perustella miksi sovelluskerroksella täytyy ottaa kantaa sen tarvitsemiin alemman kerroksen palveluihin.
 
