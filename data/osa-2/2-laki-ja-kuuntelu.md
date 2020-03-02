@@ -17,7 +17,7 @@ Tietoliikennettä ja sen protokollien toimintaa voi seurata useilla erilaisissa 
 
 Viestien salaus on ainoa tällä hetkellä tunnettu keino estää muista seuraamasta omien viestien sisältöjä ja silloinkin liikenteen seuraajalla on käytettävissään erilaisia keinoja liikenteen analysointiin.
 
-Tietoliikenteen seuraamiseen on saatavilla valmiita ohjelmia. Wireshark on ilmainen, avoimen lähdekoodin ohjelma, joka on laajasti käytetty. Ohjelman voi ladata Wiresharkin omilta sivuilta [https://www.wireshark.org/](https://www.wireshark.org/). Sille on myös saatavilla paljon valmiita analysoitavia tiedostoa, jolloin voimme välttää todellisen tietoliikenteen kuuntelun tällä kurssilla kokonaan.
+Tietoliikenteen seuraamiseen on saatavilla valmiita ohjelmia. Wireshark on ilmainen, avoimen lähdekoodin ohjelma, joka on laajasti käytetty. Ohjelman voi ladata [Wiresharkin omilta sivuilta](https://www.wireshark.org/). Sille on myös saatavilla paljon valmiita analysoitavia tiedostoa, jolloin voimme välttää todellisen tietoliikenteen kuuntelun tällä kurssilla kokonaan.
 
 Wireshark on erittäin monipuolinen ja tarjoaa paljon vaihtoehtoja tietoliikenteen analysointiin. Tällä kurssilla käytämme hyvin pientä osaa sen piirteistä ja tarkastelemme vain muutamaa valmista aineistoa.
 
