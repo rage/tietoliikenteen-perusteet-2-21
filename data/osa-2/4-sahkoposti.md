@@ -87,6 +87,7 @@ Sähköpostiviestiin voi nykyään liittää myös muuta materiaali kuin vain va
 ## Sähköpostin ongelmia
 
 Huomasithan, että lähettäjän ja vastaanottajan tiedot toimitettiin kahteen kertaan. Toisaalta ne olivat SMTP-protokollan viestien vaihdossa mukana ja toisaalta ne tulivat sitten varsinaisen sähköpostin alussa otsaketietoina kentissä From: ja To:.
+
 Sähköpostin vastaanottava sähköpostipalvelin ei tarkasta, että protokollassa annetut osoitteet ja viestin mukaan tulleet osoitteet ovat samat.  Mieti hetki, että miksi ei! Jos tarkastaisi, niin mitä tapahtuisi, kun viestiä lähetetään postilistalle esim. meidanjoukko@osoite.com.
 
 Valitettavasti tämä tietojen kirjaaminen kahteen kertaan antaa mahdollisuuden piilottaa todellinen lähettäjä. SMTP-protokollan mukainen lähettäjän tunniste voi siis olla eri kuin viestin mukana olevaan From: kenttään kirjoitettu tunniste. Tietenkään normaalisti toimiva sähköpostiohjelma ei anna käyttäjälle mahdollisuutta näiden erilaisuuteen. Aikoinaan, kun käytettiin yksinkertaista SMTP-protokollaa ja luotettiin viestien lähettäjiin ei ollut mitenkään vaikeaa väärentää viestejä. Nykyisin se on jo hiukan hankalampaa, kun luotettavat sähköpostipalvelimet vaativat tunnistautumista. Sähköpostipalvelin voikin kieltäytyä vastaanottamasta yhteyspyyntöjä ja viestejä epäluotettavilta palvelimilta. Sähköpostipalvelimet voivat itse ylläpitää tällaista [mustaa listaa](https://fi.wikipedia.org/wiki/Musta_lista_(s%C3%A4hk%C3%B6posti)) tai ne voivat käyttää jonkun toisen organisaation ylläpitämää mustaa listaa epäluotettavista palvelimista.

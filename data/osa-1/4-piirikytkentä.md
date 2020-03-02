@@ -28,12 +28,14 @@ KUVA:  Linkin jako kanaviin aikajakona ja taajuusjakona (katso kalvo 2017, luent
 
 
 Koska pakettikytkentäisessä verkossa ei varata yhteyttä varmuuden vuoksi, sallii se enemmän samanaikaisia "yhteyksiä". Esimerkiksi linkillä, jonka nopeus on 100 megabittiä sekunnissa voi olla 10 samanaikaista lähettäjää, jos jokainen lähettäjä haluaa käyttöönsä 10 megabittiä sekunnissa. Koska solmut eivät yleenä lähetä koko aikaa, niin tehdään vielä lisäoletus. Oletaan, että jokainen solmu on aktiivisena 10% ajasta eli minuutin aikana se lähettää dataa noin 6 sekuntia. Piirikytkentäisessä verkossa voi silti olla vain 10 solmua samaan aikaan, koska solmulle varataan sen tarvitsema kapasiteetti (10 Mb/s) koko ajaksi.
-Toisaalta on varsin helppo havaita, että jos varaamme solmulle 10 Mb/s:ssa kokonaiseksi minuutiksi ja se käyttää siitä vain 6 sekuntia, niin loput 54 sekuntia jää hukkaan. Pakettikytkentäisessä verkossa tätä hukka-aikaa pyritään pienentämään sillä, että verkossa voi olla useampia solmuja. Toki, jos kaikki haluavat lähettää juuri samalla hetkellä, niin linkki ruuhkautuu pahasti. 
-Matemaattisesti voidaan arvioida, että pakettikytkentäisen verkon kestäisi noin 35 solmua, ennenkuin linkki ruuhkautuu liian usein. Tämä arvio perustuu siihen, että kun otoskoko N (eli solmujen lukumäärä) on 35, on todennäköisyys, että niistä yli 10 on aktiivisia samanaikaisesti, lähes nolla (tarkasti ottaen se on 0,004). Muista, että 10 samanaikaista ei ole ongelma, koska ne haluavat vain 1/10 osan koko kapasiteestista. Miten tähän tulokseen on päästy? Tulos voidaan laskea [binomijakauman](https://fi.wikipedia.org/wiki/Binomijakauma) kertymäfunktiosta. Binomijakaumaa käsitellään tarkemmin matematiikan ja tilastotieteen opetuksessa. Siksi en käy tällä kurssilla tätä matemaattista perustelua tarkemmin läpi.  
+
+Toisaalta on varsin helppo havaita, että jos varaamme solmulle 10 Mb/s:ssa kokonaiseksi minuutiksi ja se käyttää siitä vain 6 sekuntia, niin loput 54 sekuntia jää hukkaan. Pakettikytkentäisessä verkossa tätä hukka-aikaa pyritään pienentämään sillä, että verkossa voi olla useampia solmuja. Toki, jos kaikki haluavat lähettää juuri samalla hetkellä, niin linkki ruuhkautuu pahasti.
+
+Matemaattisesti voidaan arvioida, että pakettikytkentäisen verkon kestäisi noin 35 solmua, ennenkuin linkki ruuhkautuu liian usein. Tämä arvio perustuu siihen, että kun otoskoko N (eli solmujen lukumäärä) on 35, on todennäköisyys, että niistä yli 10 on aktiivisia samanaikaisesti, lähes nolla (tarkasti ottaen se on 0,004). Muista, että 10 samanaikaista ei ole ongelma, koska ne haluavat vain 1/10 osan koko kapasiteestista. Miten tähän tulokseen on päästy? Tulos voidaan laskea [binomijakauman](https://fi.wikipedia.org/wiki/Binomijakauma) kertymäfunktiosta. Binomijakaumaa käsitellään tarkemmin matematiikan ja tilastotieteen opetuksessa. Siksi en käy tällä kurssilla tätä matemaattista perustelua tarkemmin läpi.
 
 
 <quiz id="afdef299-8c0d-419b-8502-e87c00c61a84"></quiz>
- 
+
 
 
 
