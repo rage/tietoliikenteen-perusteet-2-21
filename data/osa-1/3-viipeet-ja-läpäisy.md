@@ -38,7 +38,7 @@ Vastaanottovaiheessa paketista poistetaan linkkikerroksen otsake. Samalla täyty
 Reitittimissä viestin varsinainen prosessointi eli reitityspäätös tehdään verkkokerroksella. Tällöin paketin vastaanottajan IP-numeron perusteella reititin katsoo reititystaulustaan mihin ulosmenevään linkkiin paketti pitää lähettää, jotta se aikanaan päätyisi vastaanottajalle. Reitittimen pitää siis siirtää paketti vastaanottolinkistä lähetyslinkkiin. Tämän kuluu aikaa, joka on osa prosessointiviivettä.
 Kun paketti on valmis lähetettäväksi eteenpäin, se toimitetaan verkkokerrokselta linkkikerrokselle. Linkkikerros lisää tähän verkkokerroksen pakettiin oman otsakkeensa. Otsakkeen lisäyksen yhteydessä lasketaan mm. paketin linkkikerroksen tarkistussumma ja tarvittaessa selvitetään vastaanottajan MAC-osoite silloin kun linkkinä toimii Ethernet-verkko.
 
-Wikipedian sivulla https://fi.wikipedia.org/wiki/Prosessointiviive on kuvattu muutakin toimintaa, josta aiheutuu prosessointiviivettä.
+Wikipedian sivulla [prosessointiviive](https://fi.wikipedia.org/wiki/Prosessointiviive) on kuvattu muutakin toimintaa, josta aiheutuu prosessointiviivettä.
 
 ### Etenemisviive
 
