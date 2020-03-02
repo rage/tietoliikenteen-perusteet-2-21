@@ -229,7 +229,7 @@ QUIZZ: Joku ajastin laskutoimitus
 
 
 
-**Jos aikaa jää, niin tänne lisää protokollan käyttäytymisestä ruuhkaisilla yhteysväleillä yhdessä muiden kanssa. Tarkastellaan reiluutta (engl. fairness)**
+**Jos aikaa jää, niin tänne lisää protokollan käyttäytymisestä ruuhkaisilla yhteysväleillä yhdessä muiden kanssa. Tarkastellaan reiluutta (engl. fairness)** (TODO)
 
 
 
