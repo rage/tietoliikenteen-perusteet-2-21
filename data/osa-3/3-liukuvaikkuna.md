@@ -72,7 +72,7 @@ Vastaanottajan on tärkeä kuitata kaikki saapuva viestit, vaikka niillä olisi 
 
 Miksi vastaanottaja voi kadottaa väärässä järjestyksessä saapuvan viestin? Se voi luottaa siihen, että lähettäjä kuitenkin lähettää viestin uudelleen, jos ja kun edeltävä viesti on kadonnut. Näin sen ei tarvitse tallettaa puskuriin liian aikaisin saapuneita paketteja ja vastaanottajan toiminta on paljon yksinkertaisempaa. Se pitää tallessa vain tietoa siitä, mikä on seuraavaksi odotetun oikean paketin järjestysnumero. Toki on mahdollista, että vastaanottaja puskuroi paketteja, mutta silloin oikean paketin saavuttua sen pitää tutkia puskuria ja selvittää, kuinka monta pakettia se voi toimittaa sovelluskerrokselle puskurista. Kuittausviestissä menevä järjestysnumero muuttuu sitten tämän tiedon mukaisesti.
 
-KUVA Aikajana. Paketin katoaminen ja siihen liittyvä toipuminen   (Käsin tehty piirros)
+<img src="../img/go-back-n.svg" alt="Kuvassa lähettäjän ja vastaanottajan välinen viestintä. Kuvassa on aikajanalla Paluu-N:ään toiminta, kun ikkunan koko on 4 ja paketti 2 katoaa. Kuvaan on piirretty se mitkä viestit kulloinkin ovat ikkunassa ja mitä viestejä lähettjään ja vastaanottajan välillä kulkee. Viestit on numeroitu 0:sta alkaen.  Lähettäjä(jatkossa vain L): -viesti0 (ikkunassa 0); L: -viesti1 (ikk. 0,1); Vastaanottaja (jatkossa vain V):+viesti0,-ack0; L:-viesti2 (Tämä katoaa!) (ikkuna 0,1,2); L: -viesti3 (ikkkuna 0,1,2,3); V: +viesti1,-ack1; L:+ack0, -viesti4 (ikkuna 1,2,3,4); L:+ack1,-viesti5 (ikkuna 2,3,4,5); V:+viesti3, ack1 (odotti 2:sta, joten siksi kuittaus ack1); V:+viesti4,ack1; L:+ack1 (on tullut jo, joten ei tee muuta); L:+ack1; V:+viesti5, ack1; L: Ajastin laukeaa, -viesti2; L:-viesti3; L:+ack1; V:+viesti2,-ack2; L:-viesti4; L:-viesti5; L:+ack2,-viesti6 (ikkuna 3,4,5,6); ..."/>
 
 KUVA: Kuvassa on aikajanalla Paluu-N:ään toiminta, kun ikkunan koko on 4 ja paketti 2 katoaa. Kuvaan on piirretty se mitkä viestit kulloinkin ovat ikkunassa ja mitä viestejä lähettjään ja vastaanottajan välillä kulkee. Viestit on numeroitu 0:sta alkaen.
 
@@ -88,9 +88,8 @@ Kun käytetään valikoivaa kuittausta, niin lähettäjän saama kuittausviesti 
 
 Valikoivassa uudelleenlähetyksessa vastaanottajan on välttämätöntä puskuroida kaikki saapuvat paketit, koska lähettäjä ei välttämättä lähetä niitä enää uudelleen. Paluu-N:än kanssa puskurointi on vapaaehtoinen lisäpiirre, mutta tässä vaihtoehdossa siis pakollinen toiminnallisuus.
 
-Puskurista muodostaa vastaanottajalle oma 'liukuvan ikkunan' näkymä saapuvien viestien jonoon.
+Puskurista muodostuu vastaanottajalle oma 'liukuvan ikkunan' näkymä saapuvien viestien jonoon. Vastaanottajan ikkunan reunassa on aina ensimmäinen puuttuva viesti. Ikkunassa voi pidemmällä olla jo saapuneita ja kuitattuja viestejä odottamassa tuon ensimmäisen viestin saapumista. Kun sitten ikkunan reunassa oleva odotettu viesti saapuu, niin ikkuna pääsee liikkumaan. Vastaanottajaa antaa ikkunan reunasta saapuneita viestejä sovelluskerrokselle ja ikkuna liikkuu kaikkien annettujen viestien ohi. Se pysähtyy taas kun ikkunan reunassa on sellainen paketti, joka ei ole vielä saapunut. Huomaa, että tämä on enemmänkni meille ihmisille sopiva havainnollistamiskeino. Todellisuduessa vastaanottaja ei tiedä minkä kokoisia paketteja sille on tulossa. Se voi toimia vain jo saapuneen tiedon varassa. Numeroinnin avulla se kyllä havaitsee, että paketteja puuttuu.
 
-KUVA Lähettäjän ja vastaanottajan ikkunoista
 
 Lähettäjän toiminnallisuus:
 * Viesti sovelluskerrokselta: Oletaan, että lähetyspuskuriin mahtuu jonottamaan äärettömän monta viestiä. Jos ikkunassa on tilaa, niin viesti saa järjestysnumeron ja se lähetetään vastaanottajalle. Jos ikkuna on täynnä, niin viesti jää lähetyspuskuriin odottamaan lähetysikkunaan pääsyä.
@@ -103,7 +102,7 @@ Vastaanottajan toiminnallisuus:
 * Saapuu viesti, jonka järjestysnumero on vastaanottajan ikkunassa eli suurempi tai yhtäsuuri kuin vastaanottaja-odottaa: Kuittaa viesti. Jos viesti oli ikkunan reunassa (eli juuri vastaanottaja-odottaa), niin siirrä vastaanottajan omaa ikkunaa ensimmäiseen puuttuvaan viestiin.  Toimita ikkunasta näin poistuvat viestit sovelluskerrokselle.
 * Saapuu viesti, jonka järjestysnumero ei enää ole vastaaottajan ikkunassa, eli sen järjestynumero on pienempi kuin vastaanottaja-odottaa: Lähetä kuittaus. Itse viesti on jo käsitelty ja kuitattu aiemmin, mutta lähettäjä ei ilmeisesti tiedä sitä.
 
-KUVA:
+<img src="../img/valikoiva-toisto.svg" alt="Kuvassa lähettäjän ja vastaanottajan välinen viestintä, sekä molempien ikkunat. Kuvassa on valikoivan uudelleen lähetyksen toiminta tilanteessa, jossa ikkunan koko on 4 ja viesteistä katoaa järjestysnumerolla 2 varustettu viesti. V: ikkunan reunassa 0; L:-v0 (ikk. 0); L:-v1 (ikk. 0,1); V:+v0,-ack0 (ikk. reuna 1); L-v2 (katoaa) (ikk 0,1,2); L:-v3 (ikk 0,1,2,3 - täynnä); V:+v1,-ack1 (ikk. reuna 2); L:+ack0,-v4 (ikk 1,2,3,4); V:+v3;-ack3 (ikk. od.2, on 3); L: +ack1, -v5 (ikk 2,3,4,5); V: +v4,-ack4 (ikk od2, on 3,4); L:+ack3 (merkitse), (ikk 2,3,4,5); L:+ack4 (merkitse) (ikk 2,3,4,5); V:+5,-ack5 (ikk od 2, on 3,4,5); L: Ajastin (viesti2) -v2; L:+ack5 (merkitse), ikk(2,3,4,5); V:+v2, ack2 (ikkuna siirtyy, uusi ikk.reuna 6); L:+ack2, -v6 (ikk 6); L:-v7 (ikk 6,7,); ..."/>
 
 KUVA: Kuvassa on valikoivan uudelleen lähetyksen toiminta tilanteessa, jossa ikkunan koko on 4 ja viesteistä katoaa järjestysnumerolla 2 varustettu viesti.
 
