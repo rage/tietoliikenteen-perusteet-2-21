@@ -56,7 +56,7 @@ Liukuvan ikkunan protokollassa uudelleen lähetys voidaan toteuttaa joko valikoi
 
 Paluu-N:ään on toiminnallisesti hyvin yksinkertainen. Kun vanhimpaan viestiin liittyvää kuittausta ei tule ajoissa, ajastin laukeaa ja lähettäjä lähettää kaikki ikkunassa olevat viestit uudelleen.
 
-Jokainen kuittaus kertoo lähettäjälle, että vastaanottaja on saanut kyseisen paketin ja kaikki sitä edeltävät paketit. Tätä kutsutaan kumulatiiviseksi kuittaukseksi (engl. cumulative acknowledgement). Näin yksittäinen katoava kuittausviesti ei pääse aiheuttamaan massiivista uudelleenlähetystä.
+Jokainen kuittaus kertoo lähettäjälle, että vastaanottaja on saanut kyseisen paketin ja kaikki sitä edeltävät paketit. Tätä kutsutaan kumulatiiviseksi kuittaukseksi (engl. cumulative acknowledgement). Näin yksittäinen katoava kuittausviesti ei pääse aiheuttamaan massiivista uudelleenlähetystä. Huomaa, että kumulatiivisessa kuittauksessa yksi saapuva kuittaus voi kuitata useita paketteja.
 
 Lähettäjän toiminnallisuus = Tapahtumat, joihin pitää reagoida
 * Viesti sovelluskerrokselta: Oletetaan, että meillä on ääretön puskuri, joten viesti lisätään lähetysjonoon. Tarkista, onko ikkuna täynnä (eli onko jo N kuittaamatonta viestiä). Jos ikkuna ei ole vielä täynnä, lähetä viesti vastaanottajalle. Jos ikkuna on täynnä, viestiä ei vielä voi lähettää.
