@@ -17,11 +17,12 @@ hidden: false
 
 [TCP](https://fi.wikipedia.org/wiki/TCP) tarjoaa sovelluskerrokselle luotettavan päästä-päähän kuljetuspalvelun. Se siis siirtää sovelluskerrokselta saamansa datan sellaisenaan vastaanottajalle, kunhan lähettäjän ja vastaanottajan välillä on toimiva verkkoyhteys. Jos yhteyttä ei ole, niin viestit eivät kulje, eikä kuljetuspalvelu voi toimia.
 
-TCP käsittelee sovelluskerrokselta tulevaa dataa (tai viestejä) itse asiassa yhtenäisenä tavuvirtana. TCP ei siis välitä sovelluskerroksen viestirakenteesta millään tavalla. Se vain siirtää tavuvirtapistokkeen kautta saamansa tavut vastaanottajalle, jossa ne päätyvät tavuvirtapistokkeen kautta sovelluskerrokselle.
+TCP käsittelee sovelluskerrokselta tulevaa dataa (tai viestejä) itse asiassa yhtenäisenä tavuvirtana. TCP ei siis välitä sovelluskerroksen viestirakenteesta millään tavalla. Se vain siirtää tavuvirtapistokkeen kautta saamansa tavut vastaanottajalle, jossa ne päätyvät tavuvirtapistokkeen kautta sovelluskerrokselle. TCP pätkii tämän tavuvirran segmenteiksi, jotka se sitten siirtää verkkokerroksen välityksellä lähettäjältä vastaanottajalle.
 
-KUVA: tcp-palveluna.svg
+<img src="../img/tcp-palveluna.svg" alt="Kuvassa on kolme kerrosta (sovelluskerros, kuljetuskerros ja verkkokerros). Sovelluskerroksen asiakasprosessi syönttää tavuvirtaa TCP:lle välitettäväksi eteenpäin. Kuljetuskerroksella TCP mudoostaa tästä tavuvirrasta TCP-otsakkeen kanssa segmentteja, jotka annetaan verkkokerrokselle välitettäväksi. Verkkokerroksen IP muodostaa tästä segmentistä ja omasta otsakkeestaan IP-satasähkeen, jonka se välittää vastaanottajan verkkokerroksen IP:lle. Vastaanottajalla verkkokerros antaa TCP-segmentin kuljetuskerrokselle, josta TCP purkaa tavuja ja välittää ne tavuvirtana sovelluskerroksen prosessille vastaanottajalla."/>
 
-TCP pätkii tämän tavuvirran segmenteiksi, jotka se sitten siirtää verkkokerroksen välityksellä lähettäjältä vastaanottajalle.
+KUVA: Kaavakuvassa on esitetty sovelluskerrokselta tulevan tavuvirran siirto kuljetuskerroksen TCP:n ja vekkokerroksen IP:n välityksellä. Huomaa, että kuvasta on jätetty selvyyden vuoksi pois muut kuin kuljetuskerroksen viereiset kerrokset. Katsotaan siis maailmaa sellaisena, kuin se näkyy kuljetuskerroksen TCP:lle.
+
 
 TCP muodostaa yhteyden segmenttien siirtoa varten lähettäjän ja vastaanottajan välille. Yhteys muodostetaan, kun viestien vaihto alkaa ja puretaan, kun sitä ei enää tarvita. Yhteys on kaksisuuntainen (engl. full duplex), joten samaa muodostettua yhteyttä pitkin voi kuljettaa segmenttejä molempiin suuntiin. Tämä on käytännöllistä, koska yleensä verkkosovelluksella on tarvetta siirtää tietoa molempiin suuntiin.
 
@@ -64,20 +65,16 @@ Otsakkeessa oleva järjestysnumero kertoo segmentin ensimmäisen tavun numeron. 
 
 TCP-yhteys on kaksisuuntainen ja eri suuntiin liikkuvilla segmenteillä on omat järjestysnumeronsa, joilla ei ole mitään tekemistä keskenään. Yhteyden alussa segmenttien tavunumerointi voi alkaa ihan mistä numerosta tahansa.
 
-Kuittausnumero kertoo aina sen, mitä tavua vastaanottaja seuraavaksi odottaa. Vastaanottaja siis kuittaa saaneensa kaikki tavut ennen tätä seuraavaksi odottamaansa tavua.
-
-Katsotaan ensin osittaista esimerkkiä tästä numeroinnista:
-
-KUVA: TCP segmentti ja kuittausnumeroinnit vain yhteen suuntaan
+Kuittausnumero kertoo aina sen, mitä tavua vastaanottaja seuraavaksi odottaa. Vastaanottaja siis kuittaa saaneensa kaikki tavut ennen tätä seuraavaksi odottamaansa tavua. Esimerkiksi, kun lähettäjä A lähettää segmentin, jossa on segmenttinumero 245 ja se sisältää 102 tavua, niin segmentissa kulkee tavujen 245 - 346 sisältäm data. Yhteensä 102 tavua. Vastaanottaja B kuittaa tämän segmentin kuittausnumerolla 347 (eli 245+102), joka on sen seuraavaksi odottaman tavun numero.
 
 Kun meillä on segmenttejä liikkeellä molempiin suuntiin, niin samassa viestissä voi kulkea sekä uutta dataa että toisen suunnan segmenttiin liittyvä kuittausnumero. Juuri siksi otsakkeessa on erikseen kentät järjestysnumerolle ja kuittausnumerolle.
 
 
+<img src="../img/tcp-data-kuittaukset.svg" alt="A lähettää TCPsegmentin (numero 245, pituus 102) B:lle. B lähettää segmentin (no 3546, pituus 200, ack 347) A:lle. A lähettää segmentin (numero puuttuu, pituus 300, ack puuttuu) B:lle. B lähettää 70 tavun mittaisen segmentin, jonka muut tiedot puuttuvat kuvasta. A lähettää vielä kuittauksen, jonka numero puuttuu kuvasta."/>
 
-KUVA: TCP segmentti ja kuittausnumeroinnit molempiin suuntiin
-- JÄTÄ KUVASTA POIS KUITTAUSNUMEOT JA OSA SEGMENTTINUMEROISTA. LAITA NE TEHTÄVÄSKI HETI PERÄÄN
+KUVA: Kuvassa on pieni jakso A:n ja B:n välillä kulkeneest TCP-liikenteestä. Osa viestien numeroista ja kuittausnumeroista on jätetty pois, koska ne täydennetään seuraavassa tehtävässä. Huomaa, että kuvassa ei ole hyödynnetty liukuvaa ikkunaa, kuten normaalisti TCP-liikenteessä olisi.
 
-
+<quiz id=" "></quiz>
 
 
 Kuittaukset pyritään aina kun mahdollista lähettämään varsinaisen datasegmentin yhteydessä kylkiäisenä (engl. piggypacked). Näin vähennetään tarpeetonta tietoliikennettä.
