@@ -166,7 +166,8 @@ Ruuhkaikkuna säätää kuittaamattomien viestien määrän lisäksi myös sitä
 
 Ruuhkaikkunan koko muuttuu dynaamisesti tilanteen mukaan. TCP:n viestien lähetyksessä on eri vaiheita. Lähetyksen alussa, ns. hidas aloitus (engl. slow start), TCP kasvattaa ikkunan kokoa nopeasti, kunnes se törmää ruuhkaan. Silloin se pienentää ikkunan kokoa merkittävästi ja pyrkii jatkossa välttämään ruuhkaa. Ruuhkan välttely -vaiheessa (engl. congestion avoidance) TCP kasvattaa ikkunan kokoa hyvin maltillisesti.
 
-KUVA: TCP:n viestien lähetys!
+<img src="../img/tcp-datasiirto.svg" alt="Kuvassa on vain visuaalinen näkymä kuvatekstin selitykselle"/>
+KUVA: Kuvassa on esimerkki TCP:n segmenttien lähettämisestä silloin, kun yhdessä viestissä on 1KB eli tuhat tavua dataa, ikkunan koon kynnysarvo on 4 KB ja lähettäjän puskurin koko on riittävän suuri. Jaetaan lähetys kiertoviiveen mittaisiin jaksoihin. Ensimmäisessä jaksossa lähetetään ensimmäinen segmentti. Seuraavan jakson alussa, kun kuittaus1 äskeiseen segmenttiin saapuu voidaan lähettää kaksi segmenttiä, koska ikkunan koko 1 on pienempi kuin kynnysarvo 4. Kolmannen jakson alussa saapuu ensin kuittaus2, josta aiheutuu kahden viestin lähettäminen. Nyt ikkunan koko on 3. Kun kuittaus3 saapuu hetken kuluttua saman jakson aikana, niin ikkunan koko on edelleen pienempi kuin kynnysarvo, joten edelleen voidaan lähettää kaksi viestiä. Nyt ikkunan koko on kynnysarvon suuruinen ja protokolla siirtyy hitaasta aloituksesta ruuhkan välttelyyn. Tässä vaiheessa on lähetetty kaikkiaan 7 viestiä. Seuraavan jakson alussa saapuu kuittaus4. Koska ollaan ruuhkavälttelyssä, niin kuittauksista 4-7 aiheutuu vain yhden segmentin lähettäminen jokaista kuittausta kohti. Lisäksi ruuhkavälttelyssä voidaan lähetää yksi lisäviesti jokaista kiertoviivejaksoa kohti. Lähetetäänkö se heti kuittauksen 4 vai vasta kuittauksen 7 jälkeen ei ole protokollan yleiskuvan kannalta merkityksellistä.
 
 Hidas aloitus:
 * Ihan aluksi ruuhkaikkunan koko on 1 - hidas siirtonopeus, koska vain yksi sanoma yhtä kiertoviivettä kohti
@@ -177,7 +178,7 @@ Ruuhkanvälttely:
 * Alkaa heti kun ruuhkaikkunan koko saavuttaa kynnysarvon
 * Lineaarinen kasvu - kasvata ruuhkaikkunan kokoa vain yhdellä yhtä kiertoviivettä kohti.
 
-Kynnysarvon tarkoitus on siis toimia ennakkovaroituksena mahdollisesta ruuhkautumisesta ennen kuin lähetysnopeus on liian suuri. Kynnysarvo säätää vaiheita, kun ruuhkaikkuna pienempi kuin kynnysarvo ollaan hitaassa aloituksessa ja ruuhkaikkuna kasvaa yhdellä jokaisesta saapuvasta uudesta kuittauksesta. Kun ruuhkaikkuna on vähintään kynnysarvon suuruinen, niin ollaan ruuhkavälttelyssä ja ruuhkaikkunan koko saa kasvaa enää yhdellä yhden kiertoviiveen keston aikana.
+Kynnysarvon tarkoitus on siis toimia ennakkovaroituksena mahdollisesta ruuhkautumisesta ennen kuin lähetysnopeus on liian suuri. Kynnysarvo säätää vaiheita. Kun ruuhkaikkuna pienempi kuin kynnysarvo ollaan hitaassa aloituksessa ja ruuhkaikkuna kasvaa yhdellä jokaisesta saapuvasta uudesta kuittauksesta. Hitaan aloituksen aikana lähetettyjen viestien määrä kasvaa eksponentiaalisesti yhtä kiertoviijaksoa kohti, mutta kyseessä on hidas aloitus, koska yhden kiertoviivejakson aikana siirtyy kuitenkin vähemmän dataa kuin ruuhkanvälttelyssä. Kun ruuhkaikkuna on vähintään kynnysarvon suuruinen, niin ollaan ruuhkavälttelyssä ja ruuhkaikkunan koko saa kasvaa enää yhdellä yhden kiertoviiveen keston aikana.
 
 Jos ajastin laukeaa ja tulee uudelleenlähetys, niin oletetaan, että verkko on pahasti ruuhkautunut. Ruuhkaikkunan kooksi asetetaan 1 ja toiminta jatkuu hitaalla aloituksella. Samalla uudeksi kynnysarvoksi tulee puolet sen hetkisen ruuhkaikkunan koosta (kynnysarvo = ruuhkaikkuna / 2).
 
@@ -185,6 +186,7 @@ Jos yksittäinen segmentti on kadonnut, niin vastaanottaja lähettää kuittauks
 
 Kolmen saapuneen toistokuittauksen jälkeen lähettäjä aloittaa sekä nopean toipumisen (engl. fast recovery) että nopean uudelleenlähetyksen (engl. fast retransmit) ja lähettää puuttuvan segmentin. Samalla se puolittaa sekä ruuhkaikkunan koon että asettaa uuden kynnysarvon (kynnysarvo = ruuhkaikkuna / 2). Liikennöinti jatkuu ruuhkanvälttelyllä.
 
+Internetistä löytyy paljon erilaisia graafisia kuvauksia ruuhkaikkunan koon elämisestä näiden virhetilanteiden mukaan. Esimerkiksi artikkelissa [Decreasing the Hybrid-ARQ bandwidth overhead through the Multiple Packet NAK (MPN) protocol](https://www.researchgate.net/publication/267554658_Decreasing_the_Hybrid-ARQ_bandwidth_overhead_through_the_Multiple_Packet_NAK_MPN_protocol) on hyvät kuvat ajastimen laukeamisesta otsikolla [TCP Tahoe](https://www.researchgate.net/figure/Scenario-in-TCP-Tahoe-where-congestion-control-reacts-to-a-timed-out-ACK-with-a-slow_fig2_267554658) ja kaksoiskuittauksista otsikolla [TCP Reno](https://www.researchgate.net/figure/Scenario-in-TCP-Reno-where-congestion-control-reacts-with-fast-retransmission-as_fig3_267554658).  Nämä Reno ja Tahoe kuvastavat erilaisia TCP:n ruuhkanhallintamentelmiä. Niitä on TCP:lle määritelty useita, mutta me olemme käsitelleet vain näitä kahta eli ajastimen laukeamista ja kaksoiskuittauksia.
 
 ## Ajastimen arvo
 
