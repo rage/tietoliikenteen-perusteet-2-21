@@ -74,46 +74,36 @@ Kun meillä on segmenttejä liikkeellä molempiin suuntiin, niin samassa viestis
 
 KUVA: Kuvassa on pieni jakso A:n ja B:n välillä kulkeneest TCP-liikenteestä. Osa viestien numeroista ja kuittausnumeroista on jätetty pois, koska ne täydennetään seuraavassa tehtävässä. Huomaa, että kuvassa ei ole hyödynnetty liukuvaa ikkunaa, kuten normaalisti TCP-liikenteessä olisi.
 
-<quiz id=" "></quiz>
+<quiz id="a3a732ab-8252-4618-9a6e-d8556b36bc00"></quiz>
 
 
-Kuittaukset pyritään aina kun mahdollista lähettämään varsinaisen datasegmentin yhteydessä kylkiäisenä (engl. piggypacked). Näin vähennetään tarpeetonta tietoliikennettä.
+Kuittaukset pyritään, aina kun mahdollista. lähettämään varsinaisen datasegmentin yhteydessä kylkiäisenä (engl. piggypacked). Näin vähennetään tarpeetonta tietoliikennettä.
 
-Itse asiassa TCP sallii kuittauksen viivästämisen, siten että yksittäistä kuittausta saa viivyttää korkeintaan 500 millisekuntia ja vain yhden kuittauksen voi jättää pois välistä. Eli joka toinen segmentti on kuitattava välittömästi ja yhden segmentin kuittausta saa viivyttää korkeintaan puoli sekuntia.
+Itse asiassa TCP sallii kuittauksen viivästämisen siten, että yksittäistä kuittausta saa viivyttää korkeintaan 500 millisekuntia ja vain yhden kuittauksen voi jättää pois välistä. Eli joka toinen segmentti on kuitattava välittömästi ja yhden segmentin kuittausta saa viivyttää korkeintaan puoli sekuntia.
 
 Koska kuittausta saa viivyttää, niin lähettäjän aikakatkaisun viiveen pitää olla riittävän pitkä, jottei tapahdu ennenaikaista aikakatkaisua ja siihen liittyvää tarpeetonta uudelleenlähetystä. Toisaalta pitkä viive aiheuttaa sen, että todellisessa katoamisessa segmentin uudelleenlähetys tapahtuu hyvin pitkän ajan kuluttua.
 
-TCP voi käyttää niin sanottua nopeaa uudelleenlähetystä (engl. fast retransmit), jolloin lähettäjä lähettää segmentin uudelleen jo ennen aikakatkaisua. Tässä lähettäjä käyttää apuna saapuvia kuittausnumeroita. TCP:ssä vastaanottaja lähettää kuittauksen vähintään joka toisesta segmentistä, vaikka siltä puuttuisi aiempia segmenttejä. Tässä kuittauksessa se kertoo, mikä on seuraavaksi odotettava tavu. Kaikki nämä puuttuvaa segmenttiä seuraavat segmentit kuitataan siis samalla kuittausnumerolla, joka on puuttuvan segmentin ensimmäisen tavun numero. Näin alkuperäinen vastaanottaja saa useita kuittauksia, jotka kaikki kuittaavat samaa odotettavaa tavua. Kun näitä on tullut tarpeeksi, niin lähettäjä lähettää tuon todennäköisesti puuttuvan segmentin, vaikka ajastin ei olekaan vielä lauennut.
+TCP voi käyttää niin sanottua nopeaa uudelleenlähetystä (engl. fast retransmit), jolloin lähettäjä lähettää segmentin uudelleen jo ennen aikakatkaisua. Tässä lähettäjä käyttää apuna saapuvia kuittausnumeroita. TCP:ssä vastaanottaja lähettää kuittauksen vähintään joka toisesta segmentistä, vaikka siltä puuttuisi aiempia segmenttejä. Tässä kuittauksessa se kertoo, mikä on seuraavaksi odotettava tavu. Kaikki nämä puuttuvaa segmenttiä seuraavat segmentit kuitataan siis samalla kuittausnumerolla, joka on puuttuvan segmentin ensimmäisen tavun numero. Näin alkuperäinen vastaanottaja saa useita kuittauksia, jotka kaikki kuittaavat samaa odotettavaa tavua. 
 
-Näitä aiemman kuittauksen kuittausnumeron sisältäviä viestejä kutsutaan toistokuittauksiksi. Kun lähettäjä saa kolmannen toistokuittauksen, se lähettää segmentin uudelleen.
-
-
-
-QUIZZ
+Näitä aiemman kuittauksen kuittausnumeron sisältäviä viestejä kutsutaan toistokuittauksiksi. Kun lähettäjä saa kolmannen toistokuittauksen, se lähettää segmentin uudelleen, vaikka ajastin ei olisikaan vielä lauennut. Huomaa, että kolmas toistokuittaus on itseasiassa neljäs saman kuittausnumeron sisältävä viesti. Ensimmäinen kuittaus ei ollut toistokuittaus ja toistokuittauksia pitää tull kolme. 
 
 
 
 ## Segmentin katoaminen
 
-TCP käyttää liukuvan ikkunan menetelmää ja kumuloituvaa kuittausta. Jos varsinainen datasegmentti katoaa, niin se pitää lähettää uudelleen, koska muuten vastaanottaja ei voi saada dataa. Perusmuodossaan TCP käyttää Paluu-N:ään, mutta koska se tallettaa kaikki saapuvat segmentit puskuriin, niin on mahdollista, että kaikkia kadonnutta seuraavia segmenttejä ei tarvitse lähettää uudelleen.
+TCP käyttää liukuvan ikkunan menetelmää ja kumuloituvaa kuittausta. Jos varsinainen datasegmentti katoaa, niin se pitää lähettää uudelleen, koska muuten vastaanottaja ei voi saada dataa. Perusmuodossaan TCP käyttää Paluu-N:ään, mutta koska se tallettaa kaikki saapuvat segmentit puskuriin, niin on mahdollista, että kaikkia kadonnutta segmenttiä seuraavia segmenttejä ei tarvitse lähettää uudelleen.
 
 Lähettäjän kannalta ei ole merkitystä katoaako varsinainen datasegmentti vai siihen liittyvä kuittaus, jos se ei saa tietoa asiasta ennen ajastimen laukeamista. Kun ajastin laukeaa, niin lähettäjä lähettää kyseisen segmentin uudelleen.
 
-KUVA
+Sen sijaa TCP:n toiminnan kannalta on eroa sillä katoaako varsinainen datasegmentti vai kuittaus. Jos datasegementti katoaa, niin se on aina jokatapauksessa lähetettävä uudelleen, koska vastaanottajalla ei sitä ole. Sen sijaan, jos kuittaus katoaa, niin se ei välttämättä ole ongelma, kunhan seuraava kumuloituva kuittaus tulee riittävän nopeasti perille. Sehän kuittaa myös tuon segmentin, jonka oma kuittaus katosi.
 
-Jos kuittaus katoaa, niin kumuloituvien kuittausten kanssa lähettäjä voi seuraavasta saapuvasta kuittauksesta päätellä, että segmentti meni perille, vaikka siihen liittyvä kuittaus ei saapunutkaan.
-
-KUVA!!!
-
-Toisaalta, jos kuittaus saapuu vasta ajastimen laukeamisen jälkeen, niin lähettäjä lähettää segmentin uudelleen. Tällaista tilannetta kutsutaan ennenaikaiseksi aikakatkaisu (engl. premature timeout). Tätä pyritään välttämään käyttämällä riittävän pitkää aikakatkaisua ajastimessa.
-
-KUVA
-
-KUVAT VOI LAITTAA RINNAKKAIN JOS NE MAHTUVAT
+Toisaalta, jos ajastin laukeaa ennen kuin kuittaus ehtii perille, niin lähettäjä lähettää segmentin uudelleen. Tällaista tilannetta kutsutaan ennenaikaiseksi aikakatkaisuksi (engl. premature timeout). Niitä pyritään välttämään käyttämällä riittävän pitkää aikakatkaisua ajastimessa. Tarpeettomat uudelleenlähetykset kuormittavat verkkoa.
 
 
-QUIZZ:  Ehkä joku tehtävä näihin kuviin liittyen. Skenaariota lisää ja siihen liittyvä jatkokysymys
+TODO:  Pari kuvaa, jossa on a) kuittauksen katoaminen ja seuraavalla kuittaus,  b) kuittauksen katoaminen ja ajastimen laukeaminen. c) ennenaikainen aikakatkaisu  (Katso mallia kirjan kuvista 3.34 - 3.36  (eri segmenttinumerot, mutta vastaavat nuolet ok)
 
+
+<quiz id="aa443c8c-8796-498f-925c-e11373e82ff1"></quiz>
 
 
 ## Yhteyden muodostus ja purku
@@ -122,30 +112,31 @@ TCP:n yhteyden muodostuksessa välitetään kolme viestiä ja siitä käytetää
 
 Kättelyssä kulkee kolme segmenttiä SYN - SYNACK -ACK. Tuo viimeinen ACK voi myös kulkea jo ensimmäisen datasegmentin mukana.
 
+<img src="../img/tcp-kattely.svg" alt="TCP kättelyssä. Yhteyden muodostaja lähettää ensin SYN-viestin. Tähän kommunikoinnin toinen soapuoli vastaa SYNACK -viestiää. Yhteyden muodostaja lähettää vielä ACK-viestin."/>
+
+KUVA: TCP:n kolmivaihen kättely yhteyttä muodostettaessa
+
 Yhteyden muodostuksen voi aloittaa kumpi tahansa osapuoli. Muodostuva yhteys on kaksisuuntainen, joten segmenttejä voi joka tapauksessa lähettää kumpaankin suuntaan.
 
 SYN ja ACK ovat TCP-otsakkeen bittikenttiä. Niiden arvo 1 tarkoittaa, että lähetettävällä viestillä on kyseinen toiminnallisuus. Koska aina TCP-viestien kohdalla lähetetään aina vähintään 20 tavua otsaketta, niin näissäkin viesteissä kulkee kaikki otsakkeen kentät. Porttinumerot kertovat mistä ja miten sovelluskerros ja kuljetuskerros kommunikoivat kummassakin päässä. SYN-viestissä kulkeva järjestysnumero kertoo, mistä numerosta viestin lähettäjä aloittaa segmenttien numeroinnin. Viestissä on yhden tavun verran dataa, jotta sen järjestysnumero eroaa myöhempien viestien järjestysnumeroista. ACK-viestissä on vastaavasti normaalien kuittaussääntöjen mukainen kuittausnumero eli seuraavaksi odotettavan tavun numero. SYNACK-viestissä on nämä molemmat.
 
-KUVA Kättelystä ja purusta
 
-Vastaavasti yhteyden purussa käytetään FIN ja ACK viestejä. Purkaessa täytyy molemmat suunnat purkaa erikseen. Tämä johtuu siitä, että toiseen suuntaan saattaa vielä olla liikkeellä viestejä, kun toinen suunta olisi jo valmis purkamaan. Jos tilanne sen sallii, niin toki purkaessakin FIN- ja ACK-viestit voi yhdistää, mutta tämä ei ole aina mahdollista.  Yhteys on siis kokonaan purettu vasta, kun molemmat suunnat on purettu. Koska purkamista on vaikea tehdä moneen kertaan, käytetään purkuvaiheen apuna usein ajastimia, joiden avulla yhteys saadaan siivottua pois, kun se on purettu. Näillä ajastimilla on usein tietoliikenteen näkökulmasta hyvin pitkä laukeamisaika esimerkiksi 30,60 tai 120 sekuntia.
+Vastaavasti yhteyden purussa käytetään FIN ja ACK viestejä. Purkaessa täytyy molemmat suunnat purkaa erikseen. Tämä johtuu siitä, että toiseen suuntaan saattaa vielä olla liikkeellä viestejä, kun toinen suunta olisi jo valmis purkamaan. Jos tilanne sen sallii, niin toki purkaessakin FIN- ja ACK-viestit voi yhdistää, mutta tämä ei ole aina mahdollista.  Yhteys on siis kokonaan purettu vasta, kun molemmat suunnat on purettu. Koska purkamista on vaikea tehdä moneen kertaan, käytetään purkuvaiheen apuna usein ajastimia, joiden avulla yhteys saadaan siivottua pois, kun se on purettu. Näillä ajastimilla on usein tietoliikenteen näkökulmasta hyvin pitkä laukeamisaika esimerkiksi 30, 60 tai 120 sekuntia.
 
 Koska palvelimilla on käytettävissään vain rajallinen kapasiteetti samanaikaisille TCP-yhteyksille, on hyvin tavallista yrittää palvelunestohyökkäystä siten, että hyökkääjä pyrkii sitomaan kaikki yhteydet, jolloin lailliset asiakkaat eivät saa palvelua. Tällaisia hyökkäystyyppejä on useita, mutta yksinkertaisin niistä on niin sanottu SYN tulva (engl. SYN flood). SYN-hyökkäyksessä hyökkääjä lähettää vain SYN-viestejä, jolloin palvelin ei saa yhteyttä kokonaan muodostettua, mutta joutuu kuitenkin varamaan sille resursseja.
+
 
 ## TCP:n vuonvalvonta
 
 TCP:ssä lähettäjä ja vastaanottaja käyttävät puskureita ja liukuhihnoitusta.  Lähettäjä voi lähettää useita segmenttejä, jos vastaanottajan puskurissa on tilaa. Vastaanottajahan tallettaa saapuvat segmentit vastaanottopuskuriin ennen kuin se saa ne toimitettua sovelluskerrokselle. Koska puskurin koko on rajallinen, täytyy lähettäjän pitää huolta että se ei lähetä enempää dataa kuin mitä vastaanottajan puskuriin mahtuu. Lähettäjä siis pyrkii sopeuttamaan lähetysnopeutensa vastaanottajan kapasiteettiin. Tähän se käyttää vuonvalvontaa.
 
-Vuonvalvonta määrää lähettäjän ikkunan koon se mukaan mikä on vastaanottajan puskurin tilanne. Jokaisessa lähettämässään viestissä solmu kertoo, kuinka paljon sen puskuriin vielä mahtuu tavuja.
+Vuonvalvonta määrää lähettäjän ikkunan koon se mukaan, mikä on vastaanottajan puskurin tilanne. Jokaisessa lähettämässään viestissä solmu kertoo, kuinka paljon sen puskuriin vielä mahtuu tavuja. Huomaa, että tämä tieto säätää ikkunan kokoa, kun taas saapuvat kuittaukset siirtävät ikkunaa.
 
-QUIZZ:  Minkä nimisessä kentässä tämä puskurin koko tietä sijaitsee? Kirjoitan kentän englanninkielinen nimi pienillä kirjaimilla. Avokysymys,
-
-
-Huomaa, että saapuvat kuittaukset siirtävät ikkunaa, mutta eivät muuta sen kokoa.
+<quiz id="abbe627e-88c3-4ba6-8a24-e307540f90dd> </quiz>
 
 Jos vuonvalvonta pudottaa lähettäjän ikkunan koon nollaan, niin lähettäjä alkaa lähettää yhden tavun kokoisia segmenttejä. Näillä se kyselee vastaanottajalta, joko on tilaa lähettää enemmän. Vastaanottajan täytyy nämäkin viestit kuitata normaalien kuittaussääntöjen mukaisesti. Vastaanottaja käyttää toistokuittauksia kertomaan, että tilaa ei ole. Se lähettää normaalin kuittauksen vasta, kun se voi samalla kertoa, että tilaa on vähintään yhdelle täydelle TCP-segmentille.
 
-Miksi lähettäjän täytyy lähettää näitä yhden tavun kokoisia segmenttejä? Miksei lähettäjä vain voi odottaa? Näiden kysymysten taustalla olevia periaatteita olemme jo sivunneet useampaan kertaan tämän kurssin kuluessa. Kaikki kiteytyy yksinkertaisesti siihen, että jos lähettäjä vain jää odottamaan ja kaikkia matkalla olevat kuittausviestit syystä tai toisesta katoavat, niin lähettäjällä ei ole mitään keinoa tietää koska se voi lähettää seuraavan viestin. Siksi lähettäjän täytyy aktiivisesti kysellä vastaanottajalta, jotta se voi olla varma yhteyden toimivuudesta ja siitä, että se aikanaan voi saada tiedon vastaanottajan tilanteesta. Muistathan, että vastaanottaja ei ole aktiivinen. Se aktivoituu vain kun sille saapuu viesti, jonka se käsittelee ja jää sitten odottamaan seuraavaa viestiä.
+Miksi lähettäjän täytyy lähettää näitä yhden tavun kokoisia segmenttejä? Miksei lähettäjä voi vain odottaa? Näiden kysymysten taustalla olevia periaatteita olemme jo sivunneet useampaan kertaan tämän kurssin kuluessa. Kaikki kiteytyy yksinkertaisesti siihen, että jos lähettäjä vain jää odottamaan ja kaikki matkalla olevat kuittausviestit syystä tai toisesta katoavat, niin lähettäjällä ei ole mitään keinoa tietää, koska se voi lähettää seuraavan viestin. Siksi lähettäjän täytyy aktiivisesti kysellä vastaanottajalta, jotta se voi olla varma yhteyden toimivuudesta ja siitä, että se aikanaan voi saada tiedon vastaanottajan tilanteesta. Muistathan, että vastaanottaja ei ole aktiivinen. Se aktivoituu vain kun sille saapuu viesti, jonka se käsittelee ja jää sitten odottamaan seuraavaa viestiä.
 
 
 ## Ruuhkanhallinta
@@ -156,22 +147,20 @@ Verkon hetkellinen kuormitus vaihtelee ja käytettävissä olevan kaistan nopeus
 
 Verkon kuormituksen vaihtelu johtuu yleensä muista verkon käyttäjistä eikä sitä voi kunnolla ennakoida. Etappivälitteisessä verkossa kaikki lähettäjät joutuvat jakamaan yhteisten yhteysvälien kapasiteetin ilman yksityiskohtaisia sopimuksia tai rajoituksia.
 
-Verkon reitittimillä ja muissa verkkoelementeissä on yleensä puskurit, joilla ne voivat hiukan tasata verkon eri osien nopeuseroja.
-Kun puskuri kasvaa, yksittäisen viestin eteneminen verkossa hidastuu. Se joutuu jonottamaan yhä pidempään reitittimen puskurissa ennen kuin se lähetetään eteenpäin. Tätä käsiteltiin lyhyesti, kun kurssin alussa tarkasteltiin jonotusviivettä.
+Verkon reitittimillä ja muissa verkkolaitteissa on yleensä puskurit, joilla ne voivat hiukan tasata verkon eri osien nopeuseroja.
+Kun puskuri kasvaa, yksittäisen viestin eteneminen verkossa hidastuu. Se joutuu jonottamaan yhä pidempään reitittimien puskureissa ennen kuin se lähetetään eteenpäin. Tätä käsiteltiin lyhyesti, kun kurssin alussa tarkasteltiin jonotusviivettä.
 
-Jos kuitenkin jonkun elementin puskurit täyttyvät, niin se joutuu pudottamaan saapuvia paketteja, kun sillä ei ole tilaa vastaanottaa pakettia. Tällaisesta saapuvien pakettien pudottamisesta johtuu osa pakettien katoamisista. Kun paketti katoaa, lähettäjä joutuu lähettämään sen uudelleen. Tämä uudelleenlähetys siis lisää jo valmiiksi ylikuormittuneen verkon kuormitusta ja voi pahimmillaan johtaa siihen, että yhä enemmän paketteja putoaa verkosta matkalla. Lisäksi jonotusaikojen kasvaessa, paketin kulkuaika kasvaa ja siitä voi seurata, että lähettäjä lähettää uudelleen sellaisen paketin, joka on vielä matkalla verkon ruuhkatilanteen vuoksi. Tällaisetkin uudelleenlähetykset lisäävät verkon kuormaa ja hidastavat pakettien kulkua entisestään. Tästä syntyy valitettavan helposti itseään ruokkiva noidankehä, jossa kaikki lähettävät paljon paketteja, mutta mitään ei kuitenkaan pääse läpi. Reitittimet vain tekevät yhä enemmän turhaa työtä välittämällä paketteja, jotka joku muu reititin myöhemmin pudottaa puskurin täyttymisen vuoksi.
-
-KUVA: Graafinen kuva tästä ilmiöstä
+Jos kuitenkin jonkun verkkolaitteen puskurit täyttyvät, niin se joutuu pudottamaan saapuvia paketteja, koska sillä ei yksinkertaisesti ole tilaa vastaanottaa pakettia. Kun paketti katoaa, lähettäjä joutuu lähettämään sen uudelleen. Pakettien uudelleenlähetys kuormittaa lisää jo valmiiksi ylikuormittunutta verkkoa ja voi pahimmillaan johtaa siihen, että yhä enemmän paketteja putoaa verkosta matkalla. Lisäksi jonotusaikojen kasvaessa, paketin kulkuaika kasvaa ja siitä voi seurata, että lähettäjä lähettää uudelleen sellaisen paketin, joka on vielä matkalla verkon ruuhkatilanteen vuoksi. Tällaisetkin uudelleenlähetykset lisäävät verkon kuormaa ja hidastavat pakettien kulkua entisestään. Tästä syntyy valitettavan helposti itseään ruokkiva noidankehä, jossa kaikki lähettävät paljon paketteja, mutta mitään ei kuitenkaan pääse läpi. Reitittimet vain tekevät yhä enemmän turhaa työtä välittämällä paketteja, jotka joku muu reititin myöhemmin pudottaa puskurin täyttymisen vuoksi. Jos ylikuormitustilanne on kuitenkin päässyt syntymään, niin tärkeintä on, että lähettäjtä eivät yritä korjata tilannetta lähettämällä lisää paketteja.
 
 Tilanteesta voidaan toipua vain kun lähettäjä huomaa ongelman ja selkeästi hidastaa viestien lähetystä. Näin se omalta osaltaan antaa verkolle mahdollisuuden toipua tästä hetkellisestä ylikuormitustilanteesta. Miten lähettäjä sitten voi havaita tilanteen? Se joko päättelee tilanteen pakettien katoamisesta ja hidastumisesta tai se saa verkolta tietoa tilanteesta.
 
-Verkko tai siis sen reititin voi tiedottaa lähettää joko erillisellä kontrolliviestillä tai merkitä läpikulkeviin viesteihin lisätietoa ruuhkasta. Erillisellä kontrolliviestillä se siis ilmoittaa lähettäjälle, että "Olen ylikuormittunut" tai "Tukehdun". Lähettäjän odotetaan sitten reagoivan tähän kontrolliviestiin. Jos reititin vain merkitsee välittämiinsä viesteihin tiedon ruuhkautumisesta, niin tämä tieto saavuttaa lähettäjän vasta kun viestin alkuperäinen vastaanottaja lähettää tiedon ruuhkautumisesta alkuperäiselle lähettäjälle. Me emme tällä kurssilla tarkastele näitä ratkaisu, vaan keskitymme tuohon lähettäjän omaan havainnointiin, joka toimii silloinkin, kun verkkoelementit eivät ruuhkasta tiedota.
+Verkko tai siis sen reititin voi kerota ongelmasta joko erillisellä kontrolliviestillä tai merkitä läpikulkeviin viesteihin lisätietoa ruuhkasta. Erillisellä kontrolliviestillä se siis ilmoittaa lähettäjälle, että "Olen ylikuormittunut" tai "Tukehdun". Lähettäjän odotetaan sitten reagoivan tähän kontrolliviestiin. Jos reititin vain merkitsee välittämiinsä viesteihin tiedon ruuhkautumisesta, niin tämä tieto saavuttaa lähettäjän vasta, kun viestin alkuperäinen vastaanottaja lähettää tiedon ruuhkautumisesta alkuperäiselle lähettäjälle. Me emme tällä kurssilla tarkastele näitä ratkaisuja, vaan keskitymme vain lähettäjän omaan havainnointiin, joka toimii silloinkin, kun verkkolaitteet eivät osaa varoittaa ruuhkasta.
 
-Keskitytään tässä vain TCP:n ruuhkanhallintaan. Koska kyseessä on lähettäjän omaan viestien lähetykseen liittyvä toimintaperiaate, niin eri kuljetusprotokollilla on hyvin erilaisia tapoja ratkoa omaa ruuhkanhallintaa. TCP:n ruuhkanhallinta sopii TCP:lle, mutta ei välttämättä kaikille muille kuljetusprotokollille. TCP:ssä on useita erilaisia ruuhkanhallintamenetelmiä, joista tässä tutustumme vain TCP Reno:on.
+Keskitytään tässä siis yksinkertaiseen lähettäjän tekemään ruuhkanhallintaan. Koska kyseessä on lähettäjän omaan viestien lähetykseen liittyvä toimintaperiaate, niin eri kuljetusprotokollilla on hyvin erilaisia tapoja ratkoa omaa ruuhkanhallintaa. TCP:n ruuhkanhallinta sopii TCP:lle, mutta ei välttämättä kaikille muille kuljetusprotokollille. TCP:ssä on useita erilaisia ruuhkanhallintamenetelmiä, joista tässä tutustumme vain TCP Reno:on.
 
 TCP:n ruuhkanhallinta tehdään säätämällä ruuhkaikkunan (eng. congestion window) kokoa. Ruuhkaikkuna ei ole sama kuin lähetysikkuna, vaikka ne molemmat säätävätkin kuittaamattomien viestien määrää. Tietyllä ajanhetkellä saa olla kuittaamatta korkeintaan min (lähetysikkunan koko, ruuhkaikkunan koko) eli näistä pienempi on aina määräävä.
 
-Ruuhkaikkuna säätää kuittaamattomien viestien määrän lisäksi myös sitä kuinka paljon lähettäjä saa kyseisellä ajanhetkellä kuormittaa verkkoa. Lähettäjän on itse pääteltävä oikea ikkunan koko, tietoa ei saada mistään muualta. Päättely perustuu saapuviin viesteihin:
+Ruuhkaikkuna säätää kuittaamattomien viestien määrän lisäksi myös sitä, kuinka paljon lähettäjä saa kyseisellä ajanhetkellä kuormittaa verkkoa. Lähettäjän on itse pääteltävä oikea ikkunan koko, tietoa ei ole saatavissa mistään muualta. Päättely tapahtuu seuraavasti:
 * jos uudelleenlähetysajastin laukeaa, verkossa on ruuhkaa -> pienennä ikkunan kokoa
 * jos kuittaukset tulevat tasaisesti, verkossa ei ole ruuhkaa -> ikkunan kokoa voisi ehkä suurentaa
 
@@ -194,12 +183,7 @@ Jos ajastin laukeaa ja tulee uudelleenlähetys, niin oletetaan, että verkko on 
 
 Jos yksittäinen segmentti on kadonnut, niin vastaanottaja lähettää kuittauksia, joissa on saman kuittausnumero.  Yksittäisen paketin katoaminen voi liittyä ruuhkaan, mutta yhtä hyvin paketin siirrossa on saattanut tapahtua bittivirhe, jonka seurauksena paketti on vaurioitunut ja se on hylätty. Saapuvia toistokuittauksia voidaan käyttää ruuhkanhallinnan apuna. Koska kuittauksia edelleen saapuu, niin verkko pystyy vielä välittämään liikennettä, mutta voisi olla hyvä hiukan rauhoittaa tilannetta.
 
-Kolmen saapuneen toistokuittauksen jälkeen lähettäjä aloittaa sekä nopean toipumisen (engl. fast recovery) että nopean uudelleenlähetyksen (engl. fast retransmit) ja lähettää puuttuvan segmentin. Samalla se puolittaa sekä ruuhkaikkunan koon että asettaa uuden kynnysarvon (kynnysarvo = ruuhkaikkuna / 2). Liikennöinti jatkuu ruuhkavälttelyllä.
-
-
-KUVA: Ruuhkaikkunan koon muutoksista
-
-QUIZZ - kuvaan liittyen  (teetä tässä vanhan tentti tms.)
+Kolmen saapuneen toistokuittauksen jälkeen lähettäjä aloittaa sekä nopean toipumisen (engl. fast recovery) että nopean uudelleenlähetyksen (engl. fast retransmit) ja lähettää puuttuvan segmentin. Samalla se puolittaa sekä ruuhkaikkunan koon että asettaa uuden kynnysarvon (kynnysarvo = ruuhkaikkuna / 2). Liikennöinti jatkuu ruuhkanvälttelyllä.
 
 
 ## Ajastimen arvo
@@ -220,12 +204,11 @@ DevRTT = (1-&beta;)* DevRTT + &beta;* |SampleRTT-EstimatedRTT|
 * DevRTT kuvaa arvojen vaihteluväliä eli poikkeamaa
 * &alpha; ja &beta; ovat painoja, joilla säädetään, kuinka paljon uusi arvo voi muuttaa edellistä arviota. Tyypillisest &alpha; = 1/8 = 0,125 ja  &beta; = 0,25
 
-QUIZZ: Joku ajastin laskutoimitus
 
 
 
 
-**Jos aikaa jää, niin tänne lisää protokollan käyttäytymisestä ruuhkaisilla yhteysväleillä yhdessä muiden kanssa. Tarkastellaan reiluutta (engl. fairness)** (TODO)
+TCP:n yksityiskohtien harjoitteluun tarjolla itsenäisesti tehtäviä lisätehtäviä, jotka luentokurssilla ovat viikottaisia harjoitustehtäviä.
 
 
 
