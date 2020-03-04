@@ -46,7 +46,7 @@ KUVA: Lähettäjällä ja vastaanottajalla on kummallakin vain yksi tila ja siir
 Tällainen kuljetuspalvelu toimii oikein vain, kun voimme luottaa siihen, että viesti m lähettäjältä vastaanottajalle menee aina perille ja että peräkkäiset viestit menevät perille samassa järjestyksessä kuin ne on lähetetty. Oletamme siis, että meillä on virheetön kanava, joka ei tee mitään virheitä viestin välitykseen. Koska todellisuudessa kanava ei ole näin luotettava, on kuljetuspalvelun toiminnassa otettava huomioon kanavan aiheuttamat ongelmat.
 
 
-## Yksinkertainen kuljetuspalvelu, jossa kuittaukset
+## Yksinkertainen kuljetuspalvelu, jossa paketti voi kadota
 
 Kun oletetaan, että viestejä kuljettava kanava voi kadottaa yksittäisen viestin, on kuljetuspalvelun varmistuttava siitä, että jokainen lähetty viesti menee perille vastaanottajalle. Viestin vaurioituminen bittivirheistä käsitellään tässä mallissa kuin kadonnut viesti, koska yleensä viesti hylätään, jos ei pääse virhetarkistuksesta läpi. Järjestelmä toipuu viestin katoamisesta yleensä uudelleenlähetyksellä. Sitä varten lähettäjän pitää kuitenkin tietää, miten tietyn viestin lähetys sujui. Tässä käytetään yleensä kuittauksia eli vastaanottaja lähettää kuittausviestin, jolla se kertoo lähettäjälle saaneensa viestin. Kuittausviestistä lähettäjä saa vahvistuksen, että lähetetty viesti on saapunut onnistuneesti perille vastaanottajalle.
 
