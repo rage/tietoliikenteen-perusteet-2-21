@@ -78,7 +78,7 @@ KUVA: Kuvassa on aikajanalla Paluu-N:ään toiminta, kun ikkunan koko on 4 ja pa
 
 <quiz id="9bc750d3-7c0d-4131-ada8-cdec9dd65164">  </quiz>
 
-### Valikoiva uudelleenlähetys
+### Valikoiva uudelleenlähetys (selective repeat)
 
 Toinen vaihtoehto katoavien pakettien uudelleenlähetyksiin on lähettää vain kadonnut paketti uudelleen. Näin katoamistapauksessa lähetetään vähemmän paketteja, mutta pakettien ja niiden kuittausten hallinta on monimutkaisempaa kuin tuossa Paluu-N:ään vaihtoehdossa.
 
@@ -106,7 +106,7 @@ Vastaanottajan toiminnallisuus:
 
 KUVA: Kuvassa on valikoivan uudelleen lähetyksen toiminta tilanteessa, jossa ikkunan koko on 4 ja viesteistä katoaa järjestysnumerolla 2 varustettu viesti.
 
-<quiz id="ac387454-8924-4ef9-be92-e3a8b157767a> </quiz>
+<quiz id="ac387454-8924-4ef9-be92-e3a8b157767a"> </quiz>
 
 ## Viestien numeroinnista
 
