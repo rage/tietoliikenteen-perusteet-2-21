@@ -25,7 +25,7 @@ Tietoliikenteen tila-automaateissa tyypilliset tapahtumat ovat joko viestin läh
 
 Tässä materiaalissa automaateissa ei ole merkittynä aloitustilaa vaan sen oletetaan olevan tila 1. Yleisesti automaattien aloitustila voidaan merkitä pienellä tähän tilaan johtavalla nuolella. Aloitustilalla on merkitystä, koska erityisesti tietoliikenteen automaattien kohdalla olemme kiinnostuneita niiden yhteistoiminnasta.
 
-## Yksinkertainen kuljetuspalvelu (ei kuittauksia)
+## Yksinkertainen kuljetuspalvelu (ei varaudu virheisiin)
 
 Lähettäjällä kuljetuspalvelu saa sovelluskerrokselta välitettävän viestin (kuvassa +send) ja lähettää sen vastaanottajalle (kuvassa -m). Vastaanottajalla kuljetuspalvelu vastaanottaa viestin (kuvassa +m) ja toimittaa sen edelleen sovelluskerrokselle (kuvassa (-receive). Kuten huomaat, niin merkitsemme aina automaatin lähettämiä viestejä miinusmerkillä ja vastaanottamia viestejä plusmerkillä. Näin toimitaan, vaikka toinen osapuoli ei olisikaan tietoliikenneverkon takana. Tässähän send ja receive ovat tapahtumia, joiden avulla kuljetuspalvelu kommunikoi sovelluskerroksen prosessin kanssa. Olisimme voineet jättää myös sovelluskerroksen kommunikoinnnin pois, jolloin olisimme mallntaneet tilanteen, jossa lähettäjä vain lähettää ja vastaanottaja vain vastaaottaa. Kummallakin olisi ollut vain yksi tila ja siinä tilasiirtymä itseensä.  (Voit piirtää tämän yksinkertaisimman mahdollisen järjestelmän itsellsei paperille.) Tässä halusin kuitenkin pitää myös yhteyden sovelluskerroksen kanssa näkyvillä, koska se korostaa sitä, ett kuljetuskerros välittää sovelluskerroksen viestejä.
 
