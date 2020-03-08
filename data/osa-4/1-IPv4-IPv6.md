@@ -8,11 +8,9 @@ hidden: false
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
 - Osaat kuvata IPv4 ja IPv6 osoitteet.
-- Osaat selittää miksi on siirrytty ja edelleen siirrytään IPv4 osoitteiden käytöstä kohti IPv6 osoitteiden käyttöä.
+- Osaat selittää, miksi on siirrytty ja edelleen siirrytään IPv4 osoitteiden käytöstä kohti IPv6 osoitteiden käyttöä.
 
 </text-box>
-
-<quiz id="3ec7c1cc-27f5-4518-890a-201a9fe6121d"></quiz>
 
 
 ## Verkkokerroksen tehtävät
@@ -37,16 +35,16 @@ IP-osoite jaetaan aina kahteen osaan. Osoitteen alkuosa kertoo kyseistä osoitea
 
 Alunperin näitä jakokohtia oli vain tavujen välissä ja silloin puhuttiin luokista A (ensimmäisen tavun jälkeen), B (toisen tavun jälkeen) ja C (kolmannen tavun jälkeen). Näiden perusluokkien lisäksi koko osoiteavaruuden lopusta on varattu osoitteita monilähetykseen (luokka D) ja tulevaan käyttöön (luokka E). Näihin käyttöihin varattuja osoitteita ovat IP-osoite 224.0.0.0 ja sitä suuremmat arvot. Käy katsomassa luokkakohtaiset IP-osoitteet wikipedian sivulta [IP-osoite](https://fi.wikipedia.org/wiki/IP-osoite).
 
-Luokkajaon lisäksi sovittiin, että kaikki 127-alkuiset osoitteet ovat käytettävissä paikallisena osoitteena yhden verkkolaitteen sisällä. Tämä voidaan merkitä joko 127.0.0.0/255.0.0.0  tai 127.0.0.0./8.  Näistä erityisesti paikallinen koneen oman sisäinen osoite (engl. localhost) 127.0.0.1 tulee vastaan laitteen konfigurointitiedoissa. 
+Luokkajaon lisäksi sovittiin, että kaikki 127-alkuiset osoitteet ovat käytettävissä paikallisena osoitteena yhden verkkolaitteen sisällä. Tämä voidaan merkitä joko 127.0.0.0/255.0.0.0  tai 127.0.0.0./8.  Näistä erityisesti paikallinen koneen oman sisäinen osoite (engl. localhost) 127.0.0.1 tulee vastaan laitteen konfigurointitiedoissa. Huomaa, että tuo kauttaviivan jälkeinen merkintä /255.0.0.0 tai /8 kertoo samalla [aliverkon peitteen](https://fi.wikipedia.org/wiki/Aliverkko). Aliverkon peite kertoo kuinka monta monta bittiä osoitteen alusta on verkon tunnusta ja loput bitit ovat siis laitteiden erotteluun aliverkon sisällä. Verkkon kuvastavat bitit ovat peitteessä ykkösiä ja verkon sisäistä vaihtuvaa osaa kuvaavat bitit nollia. Luvussa 255 on 8 bittiä, joten aliverkon peitettä 255.0.0.0. vastaava binäärinen esitys on 11111111 00000000 00000000 00000000. Tämän voi kirjoittaa lyhyemmin /8, jossa siis kerrotaan kuinka monta ykkösbittiä peitteessä on.
 
 IPv4:n osoitteista on myös varattu tietyt alueet yksityisissä verkoissa käytettäviksi. Näillä yksityisverkojen osoitteilla ei saa liikennöidä julkisessa internetissä. Toisaalta ne voi ottaa käyttöön omassa suljetussa verkossa sen tarkemmin kysymättä keneltäkään. 
 Näistä ehkä eniten käytettyjä ovat  10.0.0.0/8 ja 192.168.0.0/16, koska ne noudattavat näitä vanhoja luokkarajoja. Kolmas yksityisverkon osoitealue 172.16.0.0/12 (tai 172.16.0.0/255.240.0.0)  eli osoitteet 172.16.0.1 – 172.31.255.255 on luokaton, koska siinä verkon peite katkeaa tavun sisällä.
 
-Luokallisesta osoitteiden hallinnoinnosta siirryttiin luokattomiin osoiterajoihin, koska näin saatiin joustavammin jaettu verkon osoiteavaruutta useammalle operaattoreille. Tätä kutsutaan termillä [luokaton reititys](https://fi.wikipedia.org/wiki/Luokaton_reititys) (engl. Classless InterDomain Routing, CIDR). CIDR:n mukaisesti operaattorin tunnisteen ja verkkolaitteen tunnisteen raja voidaan sijoittaa mihin kohtaan tahansa 32-bittisessä osoitteessa eikä vain tavurajoille. 
+Luokallisesta osoitteiden hallinnoinnista siirryttiin luokattomiin osoiterajoihin, koska näin saatiin joustavammin jaettu verkon osoiteavaruutta useammalle operaattoreille. Tätä kutsutaan termillä [luokaton reititys](https://fi.wikipedia.org/wiki/Luokaton_reititys) (engl. Classless InterDomain Routing, CIDR). CIDR:n mukaisesti operaattorin tunnisteen ja verkkolaitteen tunnisteen raja voidaan sijoittaa mihin kohtaan tahansa 32-bittisessä osoitteessa eikä vain tavurajoille. 
 
+Organisaatio saa aika käyttöönsä yhtenäisen osoitealueen. Alueen koon kertoo nimenomaan tuo aliverkon peite. Organisaatio saa edelleen jakaa tämän osoitelueen haluamallaan tavalla pienemmiksi aliverkoiksi. Otetaan esimerkiksi tuo yksityisverkon osoitealue 172.16.0.0/12. Voimme jakaa sen kahteen yhtäsuureen alueeseen 172.16.0.0/13 ja 172.24.0.0./13.  Miten nämä alueet on sitten laskettu. Otetaan tarkasteluun vain tuo toinen tavu, jossa muutoksia tapahtuu. 16 on binäärilukuna 10000, mutta koska meillä on kokonainen tavu, niin tavu on silloin 00010000. Kun teemme kaksi yhtä suurta aluetta, niin toinen alue on binäärilukuna 00010000 ja toinen 00011000 eli niiden ero on ykkösbitiä seuraavassa bitissä. Kun nämä muunnetaan takaisin kymmenjärjestelmän luvuiksi, niin saamme luvut 16 ja 24. Samalla myös aliverkon peitteen koko kasvoi yhdellä, koska siirsimme yhden bitin lisää verkkoja erottavaan osioon.  Jos haluamme jakaa sen kahdeksaan yhtä suureen alueeseen, niin silloin niiden osoitelueet ovat 172.16.0.0/15, 172.18.0.0./15, 172.20.0.0/15, ... 172.30.0.0/15. Tee tuo äskeisen kaltainen bittimuunnos itsenäisesti ja varmistu näin, että ymmärrät miten nuo verkkonumerot ja peitteet toimivat.
 
-Osoitteisiin liittyviä tehtäviä:
-<quiz id="3ec7c1cc-27f5-4518-890a-201a9fe6121d"></quiz>
+<quiz id="b51a8df2-9037-4de6-a12c-ef66d593d50cd"></quiz>
 
 
 ## IPv6
@@ -59,29 +57,26 @@ IPv6:n osoitteet esitetään kahdeksana hexadesimaaliryhmänä, joissa kukin 4-m
 
 Kuva osoitteen purkamisesta: https://upload.wikimedia.org/wikipedia/commons/7/70/Ipv6_address_leading_zeros.svg
 
-Koska IPv6:n osoiteavaruus valtava, on erikseen sovittu, että yksittäistä osoitetta operaattorilta pyytävä reititin saa tyypillisesti oman aliverkon, jonka peite on 64 bittiä. Esimerkiksi juuri edellä kuvatun osoitteen. Tähän aliverkkoon liittyvä laite puolestaan saa reitittimeltä aliverkon tunnisteen ja aliverkon peitteen. Osoitteen loput biti (tyyppillisesti siis jälkimmäiset 64 bittiä) se voi arpa itse. Automaattisessa konfiguroinnissa voidaan käyttää vaikkapa laitteen MAC-osoitetta apuna. MAC-osoitteen tavoitehan on yksilöidä laite linkkikerroksen tasolla. MAC-osoitteen pituus on 48 bittiä, joten se mahtuu vallan hyvin laitteen aliverkossa yksilöivään 64:ään bittiin.
+Koska IPv6:n osoiteavaruus valtava, on erikseen sovittu, että yksittäistä osoitetta operaattorilta pyytävä reititin saa tyypillisesti oman aliverkon, jonka peite on 64 bittiä. Esimerkiksi juuri edellä kuvatun osoitteen. Tähän aliverkkoon liittyvä laite puolestaan saa reitittimeltä aliverkon tunnisteen ja aliverkon peitteen. Osoitteen loput bitit (tyyppillisesti siis jälkimmäiset 64 bittiä) se voi määritellä itse. Automaattisessa konfiguroinnissa voidaan käyttää vaikkapa laitteen MAC-osoitetta apuna. MAC-osoitteen tavoitehan on yksilöidä laite linkkikerroksen tasolla. MAC-osoitteen pituus on 48 bittiä, joten se mahtuu vallan hyvin laitteen aliverkossa yksilöivään 64:ään bittiin. Itseasiassa osoitteen automaattiseen konfigurointiin on määritely menetelmällä, jolla MAC-osoitteen voi muuntaa IPv6 osoitteen osaksi laitteen (tai oikeammin sen verkkoyhteyden) tunnisteeksi.
 
 Näiden isojen aliverkkojen tavoitteena on helpottaa iPv6-osoitteiden reititystä ja pitää reititystaulut kooltaan siedettävinä.
-
-QUIZZ:  MIkä on jonkun tietyn laitteen IPv6 osoite?  tai muunnoslasku bittien ja hexalukujen välillä
-<quiz id="3ec7c1cc-27f5-4518-890a-201a9fe6121d"></quiz>
 
 Siirtymä IPv6:n käyttöön on vahvasti käynnissä. Esimerkiksi googlen tilastojen mukaan maailmalaajuisesti jo noin neljännes sen sivuille tulevista yhteyksistä käyttää IPv6:ta. IPv4-osoitteet on kaikki jaettu ja jos operaattorilta loppuvat osoitteet, se joutuu ostamaan niitä lisää joltain muulta. Tämä aiheuttaa näille operaattoreille paineita siirtyä käyttämään IPv6:tta, koska siellä on runsaasti osoitteita. Jos tilastotieto IPv6:den yleisyydestä kiinnostaa, niin verkkosivulta https://www.internetsociety.org/deploy360/ipv6/statistics/ löytyy linkkejä erilaisiin tilastoihin.
 
 
 ## Vastaanottajien määrä? - Erilaiset kommunikointitavat
 
-Tällä kurssilla olemme keskittyneet etupäässä viestien siirtoon yhden lähettäjän ja yhden vastaanottajan välillä. Tämän [täsmälähetyksen](https://fi.wikipedia.org/wiki/T%C3%A4sm%C3%A4l%C3%A4hetys) (engl. unicast) lisäksi käytettävissä on myös [yleislähetys](https://fi.wikipedia.org/wiki/Yleisl%C3%A4hetys)(engl. broadcast) ja [ryhmälähetys](https://fi.wikipedia.org/wiki/Ryhm%C3%A4l%C3%A4hetys) (engl. multicast). Nämä kolme viestien lähetystapaa ovat käytössä IPv4:ssä. IPv6:ssa tarjolle tulee monilähetyksen erikoistapaus [jokulähetys](https://fi.wikipedia.org/wiki/Jokul%C3%A4hetys) (engl. anycast) ja poistuu mahdollisuus yleislähetykseen kaikille saman verkon laitteille.
+Tällä kurssilla olemme keskittyneet etupäässä viestien siirtoon yhden lähettäjän ja yhden vastaanottajan välillä. Tämän [täsmälähetyksen](https://fi.wikipedia.org/wiki/T%C3%A4sm%C3%A4l%C3%A4hetys) (engl. unicast) lisäksi käytettävissä on myös [yleislähetys](https://fi.wikipedia.org/wiki/Yleisl%C3%A4hetys) (engl. broadcast) ja [ryhmälähetys](https://fi.wikipedia.org/wiki/Ryhm%C3%A4l%C3%A4hetys) (engl. multicast). Nämä kolme viestien lähetystapaa ovat käytössä IPv4:ssä. IPv6:ssa tarjolle tulee monilähetyksen erikoistapaus [jokulähetys](https://fi.wikipedia.org/wiki/Jokul%C3%A4hetys) (engl. anycast) ja poistuu mahdollisuus yleislähetykseen kaikille saman verkon laitteille.
 
 Täsmälähetyksessä lähettäjä lähettää viestin täsmälleen yhdelle vastaanottajalle, joka tunnistetaan vastaanottajan IP-osoitteella. Tämä on yleisin tapa viestiä internetissä laitteiden välillä.
 
-Yleislähetyksessä lähettäjä lähettää viestin kaikille laitteille, jotka voivat teknisesti kuulla sen lähettämät viestit. Tämä kuormittaa verkon toimintaa merkittävästi ja siksi on määritelty, että yleislähetykset ovat sallittuja vain saman aliverkon sisällä. IPv4:ssä on yksi täysin geneerinen yleislähetysosoite 255.255.255.255, jota mikään reititin ei välitä eteenpäin.  Jos samaan aliverkkoon kuuluvia osia on reitittimen eri puolilla ja yleislähetyksen on tarkoitus tavoittaa kaikki kyseisen aliverkon laitteet, niin pitää käyttää kyseisen aliverkon omaa yleislähetysosoitetta, jossa alkuosa on aliverkon tunniste ja loppuosa on pelkkiä ykkösbittejä, kuten tuossa geneerisessä yleislähetysosoitteessakin. Wikipedian sivulla [yleislähetys](https://fi.wikipedia.org/wiki/Yleisl%C3%A4hetys) on yksi esimerkki tästä, käy lukemassa se.
+Yleislähetyksessä lähettäjä lähettää viestin kaikille laitteille, jotka voivat teknisesti kuulla sen lähettämät viestit. Tämä kuormittaa verkon toimintaa merkittävästi ja siksi on määritelty, että yleislähetykset ovat sallittuja vain saman aliverkon sisällä. IPv4:ssä on yksi täysin geneerinen yleislähetysosoite 255.255.255.255, jota mikään reititin ei välitä eteenpäin.  Jos samaan aliverkkoon kuuluvia osia on reitittimen eri puolilla ja yleislähetyksen on tarkoitus tavoittaa kaikki kyseisen aliverkon laitteet, niin pitää käyttää kyseisen aliverkon omaa yleislähetysosoitetta, jossa alkuosa on aliverkon tunniste ja loppuosa on pelkkiä ykkösbittejä. Wikipedian sivulla [yleislähetys](https://fi.wikipedia.org/wiki/Yleisl%C3%A4hetys) on yksi esimerkki tästä, käy lukemassa se.
 
 Ryhmälähetystä käytetään silloin, kun lähettäjä haluaa lähettää vain yhden viestin, mutta toivoo sen menevän perille useammalle vastaanottajalle. Tyypillinen ryhmälähetystä käyttävä internetpalvelu on IPTV. Ei ole järkevää, että lähettäjä lähettäisi saman viestin erikseen jokaiselle vastaanottajalle. Se kuormittaisi sekä lähettäjää että verkko tarpeettomasti, kun kuitenkin viestin sisältö on täysin identtinen kaikille vastaanottajille. IPv4:ssä osoitteet 224.0.0.0 – 239.255.255.255 (eli luokka D) on varattu näille ryhmälähetyksille. IPv6:ssa puolestaan ryhmälähetys on otettu huomioon jo protokollan suunnitteluvaiheessa siten, että siinä on tuki useammille erilaisille ryhmille.  IPv4:ssä D-luokan osoitteita voi käyttää ryhmälähetyksissä vain saman aliverkon sisällä. Tällöin käytetään yleensä osoitetta 224.0.0.1. IPv6:ssa on varattu osoite ff02::1::::: tätä vastaavaan käyttöön.
 
-Jokulähetys on tavallaan ryhmälähetyksen tai yleislähetyksen erikoistapaus. Siinä mahdollisia viestin vastaanottajia on useita, mutta yksi viesti päätyy kuitenkin vain yhdelle vastaanottajalle. Lähettäjä ei lähettäessään välitä mille ryhmän jäsenelle viesti päätyy, jokainen niistä osaa asian käsitellä. Tämän tyyppinen viestinlähetys sopii sellaiseen tilanteeseen, jossa palvelin on kuormituksen vuoksi monistettu ja kaikki kopiot ovat toiminnassa. Internetin nimipalvelu on hyvä esimerkki tämän kaltaisesta tilanteesta. Lähettäjä haluaa vastauksen nimipalvelukysymykseensä, mutta sitä ei kiinnosta mikä auktorisoiduista nimipalvelijoista voisi sen vastata.
+Jokulähetys on tavallaan ryhmälähetyksen tai yleislähetyksen erikoistapaus. Siinä mahdollisia viestin vastaanottajia on useita, mutta yksi viesti päätyy kuitenkin vain yhdelle vastaanottajalle. Lähettäjä ei lähettäessään välitä mille ryhmän jäsenelle viesti päätyy, jokainen niistä osaa asian käsitellä. Tämän tyyppinen viestinlähetys sopii sellaiseen tilanteeseen, jossa palvelin on kuormituksen vuoksi monistettu ja kaikki kopiot ovat toiminnassa. Internetin nimipalvelu on hyvä esimerkki tämän kaltaisesta tilanteesta. Lähettäjä haluaa vastauksen nimipalvelukysymykseensä, mutta sitä ei kiinnosta, mikä auktorisoiduista nimipalvelijoista voisi sen vastata. WWW-palvelu on toinen hyvä esimerkki. Isoilla toimijoilla on palvelimia eri puolilla internetiä ja käyttäjälle riittää, että joku niistä vastaa kyselyyn, mutta käyttäjälle ei ole väli mistä vastaus tarkemmin ottaen tulee.
 
-
+<quiz id="a53ea914-8396-4db0-87eb-da700b8d26de"> </quiz>
 
 
 
