@@ -18,7 +18,6 @@ Linkkikerros huolehtii viestin välittämisestä yhden linkin yli.
 
 <pages-in-this-section></pages-in-this-section>
 
-Yllä oleva sisällysluettelo sisältää kurssin viidennen osan aihealueet. Kukin kurssin osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi. Kuhunkin kurssin osaan on hyvä varata reilusti yli kymmenen tuntia aikaa, riippuen aiemmasta tietokoneen käyttökokemuksesta. Ohjelmointia aiemmin kokeilleet saattavat edetä materiaalissa aluksi nopeamminkin.
-
+Yllä oleva sisällysluettelo sisältää kurssin viidennen osan aihealueet. Kuhunkin kurssin osaan on hyvä varata reilusti yli kymmenen tuntia aikaa, niin ehtii paneutua asioihin ja tehtäviin kunnolla.
 
 <exercises-in-this-section></exercises-in-this-section>
