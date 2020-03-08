@@ -16,7 +16,7 @@ Tarkastellaan siis protokollien ja viestien yksityiskohtia, sovelluksen ohjelmoi
 
 <pages-in-this-section></pages-in-this-section>
 
-Yllä oleva sisällysluettelo sisältää kurssin toisen osan aihealueet. Kukin kurssin osa on suunniteltu siten, että siinä on työtä noin yhden viikon ajaksi. Kuhunkin kurssin osaan on hyvä varata reilusti yli kymmenen tuntia aikaa. Aiempi perehtyneisyys tietoliikenteeseen toki nopeuttaa materiaalin läpikäyntiä.
+Yllä oleva sisällysluettelo sisältää kurssin toisen osan aihealueet. Kuhunkin kurssin osaan on hyvä varata reilusti yli kymmenen tuntia aikaa. Aiempi perehtyneisyys tietoliikenteeseen toki nopeuttaa materiaalin läpikäyntiä.
 
 
 <exercises-in-this-section></exercises-in-this-section>
