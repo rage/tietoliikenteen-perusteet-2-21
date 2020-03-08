@@ -38,9 +38,9 @@ KUVA: Kuvassa on esimerkkiverkko, jossa on 7 solmua ja näiden välillä 9 linkk
 ## Linkkitila-algoritmi
 
 LInkkitila-algoritmi käyttää virittävää puuta reititystaulun muodostamisessa. [Virittävä puu](https://fi.wikipedia.org/wiki/Viritt%C3%A4v%C3%A4_puu) (engl. spanning tree) muodostaan kaikkien verkon solmujen välille yhteydet, siten että siinä ei enää ole syklejä. Tällaisia puita on useita, mutta reititystä varten pyritään löytämään minimikustannukset antava puu. Tähän minimikustannukset kuvaavaan puuhun valitut linkit muodostavat sitten reitityksessä käytettävät reitit solmujen välillä.
-[Dijkstran algoritmi](https://fi.wikipedia.org/wiki/Dijkstran_algoritmi) tekee juuri tällaisen puun. Algoritmi ja sen toiminta on kvuattu tuossa wikipedian artikkelissa.
+[Dijkstran algoritmi](https://fi.wikipedia.org/wiki/Dijkstran_algoritmi) tekee juuri tällaisen puun. Algoritmi ja sen toiminta on kvuattu tuossa wikipedian artikkelissa. Internetin reititysprotokollista OSPF käyttää Dijkstran algoritmia.
 
-Käydään tässä läpi algoritmin toiminta tuon esimerkkiverkkon kanssa, kun puun juureksi valitaan solmu A:
+Käydään tässä läpi algoritmin toiminta äskeisessä kuvassa olleen esimerkkiverkkon kanssa, kun puun juureksi valitaan solmu A:
 * juuri s= A; S=tyhjä; Q={A,B,C,D,E,F,G}; d[A]=0; d[muut] voivat olla tässä vaiheessa äärettömiä
 * Kierros yksi: u= A; Q={B,C,D.E,F,G} (koska sen etäisyys itseensä on 0 eli lyhin kaikista etäisyyksistä)
 * S={A};  d[B]=3; d[C]=2; previous[B]=A; previous[D]=A
@@ -57,12 +57,19 @@ Käydään tässä läpi algoritmin toiminta tuon esimerkkiverkkon kanssa, kun p
 * Kierroksella seitsemän käsitellään viimeinen solmu G, mutta se ei aiheuta muutoksia tauluihin d tai previous
 *
 
-Algoritmin jälkeen meillä on etäisyydet d(A)=0; d(B)=3; d(C)=2; d(D)=4, d(E)=8, d(F)=6 sekä d(G)=7 ja previous(B)=A, previous(C)=A; previous(D)=C, previous(E)=C, previous(F)=D ja previous(G)=F. Näistä voidaan sitten laatia reititystaulu A:lle
+Algoritmin jälkeen meillä on etäisyydet d(A)=0; d(B)=3; d(C)=2; d(D)=4, d(E)=8, d(F)=6 sekä d(G)=7 ja previous(B)=A, previous(C)=A; previous(D)=C, previous(E)=C, previous(F)=D ja previous(G)=F. Simuloidessa tuon previous-taulun sijaan voin myös merkitä verkkopiirrokseen vastaavan linkin (kuten wikipedian kuvassa on tehty) Näistä voidaan sitten laatia reititystaulu A:lle
+
+| kohde  | A:lta lähtevä linkki | kustannus |
+|--------|----------------------| ----------|
+| B  |  A-B  | 3 |
+| C  |  A-C  | 2 |
+| D  | A-C   | 4 |
+| E  | A-C | 8 |
+| F | A-C | 6 |
+| G | A-C | 7 |
 
 
-
-OSPF  käyttää Dijkstran algoritmia
-
+<quiz id="  "> </quiz>
 
 ## Etäisyysvektorialgoritmi
 
