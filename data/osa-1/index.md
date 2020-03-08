@@ -11,6 +11,6 @@ Tässä tämän kurssin ensimmäisessä osassa käydään läpi verkon yleisiä 
 
 <pages-in-this-section></pages-in-this-section>
 
-Yllä oleva sisällysluettelo sisältää kurssin ensimmäisen osan aihealueet. Ensimmäinen osa on suunniteltu siten, että siinä on työtä muutamaksi päiväksi. Saatat selvitä tästä osasta muutamassa tunnissa, jos edellisen kurssin sisältö on hyvin hallinnassa, koska materiaalissa on jonkun verran kertausta.
+Yllä oleva sisällysluettelo sisältää kurssin ensimmäisen osan aihealueet. Ensimmäisen osan, kuten muiden kurssin osien, tekemiseen on hyvä varata kymmenkunta tuntia. Saatat selvitä tästä osasta muutamassa tunnissa, jos edellisen kurssin sisältö on hyvin hallinnassa, koska materiaalissa on jonkun verran kertausta.
 
 <exercises-in-this-section></exercises-in-this-section>
