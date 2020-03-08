@@ -6,10 +6,6 @@ hidden: false
 ---
 
 
-<only-for-not-logged-in>
-  <deadline>Kirjaudu sisään nähdäksesi deadlinen tälle osalle</deadline>
-</only-for-not-logged-in>
-
 
 Linkkikerros huolehtii viestin välittämisestä yhden linkin yli. 
 
