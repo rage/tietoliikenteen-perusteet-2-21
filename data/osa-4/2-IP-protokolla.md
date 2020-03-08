@@ -8,6 +8,7 @@ hidden: false
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
 - Osaat kuvata IP-protokollan toimintaperiaatteet ja sanomarakenteen.
+- Osaa kertoa miten reititystaulua käytetään viestien edelleenlähetyksessä.
 
 </text-box>
 
@@ -86,7 +87,8 @@ Nyt 'x':llä merkityt osat osoitteesta ovat aliverkon sisäisiä laitenumeroita 
 Joskus reititystaulusta (engl. router table) saatetaan käyttää englanniksi nimitystä forwarding table, ja joskus tuo uudelleenlähetystaulu on isommasta kaikki mahdolliset reitit kattavasta reititystaulusta poimittu osa, joka kattaa uudelleenlähetyksessä tarvittavien aktiivisten reittien tiedot. Suomeksi näistä molemmista käytetään yleensä  nimeä reititystaulu.
 
 Seuraavassa tehtävässä tarvitset tätä reititystaulua:
-| Osoite/peite        |	linkki |	
+
+| Osoite/peite  |	linkki |	
 | ---------------- | -------- |
 | 140.24.7.0/26 |  m0 |
 | 140.24.7.62/26 | m1 |
@@ -96,13 +98,13 @@ Seuraavassa tehtävässä tarvitset tätä reititystaulua:
 
 <quiz id="b2325dad-8de7-43fd-aed5-eb8f16a85487"></quiz>
 
-Koska osoitteiden tulkinnan periaatteena on tuo pisin yhteinen alkuosa, on mahdollista yhdistellä reitittimen rivejä, jos ne kattavat yhdessä koko osoiteavaruuden. Esimerkiksi tuon tehtävässä olleen reititystaulun osoitteet kaikki yhdessä voidaan kattaa osoitteella 140.24.7.0/24, joka voisi siis olla tälle reitittimelle liikennettä ohjaavan reitittimen reititystaulussa.
+Koska osoitteiden tulkinnan periaatteena on tuo pisin yhteinen alkuosa, on mahdollista yhdistellä reitittimen rivejä, jos ne kattavat yhdessä koko osoiteavaruuden. Esimerkiksi äskeisessä tehtävässä olleen reititystaulun osoitteet kaikki yhdessä voidaan kattaa osoitteella 140.24.7.0/24, joka voisi siis olla tälle reitittimelle liikennettä ohjaavan reitittimen reititystaulussa.
 
-Luokaton reititys ja pisimmän yhteisen alkuosan käyttäminen antaa myös mahdollisuuden järjestellä verkon arkkitehtuuria uudelleen ilman, että laitteiden julkisia IP-osoitteita tarvitsee vaihtaa.  Edellä joku noista aliverkoista (vaikkapa 140.24.7.128/26) voitaisiin siirtää tästä reitittimestä jollekin muulle reitittimelle, vaikkapa tätä reititintä edeltävälle reitittimelle, jolloin sen reititystaulussa olisikin molemmat osoitealueet 140.24.7.0./24 ja 140.24.7.128/26, vaikka ne ovat päällekkäisiä. Se osaisi kuitenkin päätellä, että laitteelle 140.24.7.165 lähetetty viesti kuuluu lähettää tuon pienemmän osoitealueen 140.24.7.128/26 suuntaan eikä tuohon 140.24.7.0/24 suuntaan, koska sillä pidempi yhteinen alkuosa tuon pienemmän verkon osoitteiden kanssa.  Suosittelen, että muunnat kaikki kolme osoitetta biteiksi ja lasket yhteen sopivien bittien lukumäärät ja näin varmistut siitä, että reititin oikeasti osaa tuon päätöksen tehdä näiden periaatteiden mukaan.
+Luokaton reititys ja pisimmän yhteisen alkuosan käyttäminen antaa myös mahdollisuuden järjestellä verkon arkkitehtuuria uudelleen ilman, että laitteiden julkisia IP-osoitteita tarvitsee vaihtaa.  Edellä joku noista aliverkoista (vaikkapa 140.24.7.128/26) voitaisiin siirtää tästä reitittimestä jollekin muulle reitittimelle, vaikkapa tätä reititintä edeltävälle reitittimelle, jolloin sen reititystaulussa olisikin molemmat osoitealueet 140.24.7.0./24 ja 140.24.7.128/26, vaikka ne ovat päällekkäisiä. Se osaisi kuitenkin päätellä, että laitteelle 140.24.7.165 lähetetty viesti kuuluu lähettää tuon pienemmän osoitealueen 140.24.7.128/26 suuntaan eikä tuohon 140.24.7.0/24 suuntaan, koska silläon  pidempi yhteinen alkuosa pienemmän verkon osoitteiden kanssa.  Suosittelen, että muunnat kaikki kolme osoitetta biteiksi ja lasket alkuosan yhteensopivien bittien lukumäärät ja näin varmistut siitä, että reititin oikeasti osaa tuon päätöksen tehdä näiden periaatteiden mukaan.
 
 <quiz id="a1421fd0-806a-42c2-bc75-d52afe982742"></quiz>
 
-Edellä jo tarkasteltiinkin osoiteavaruuden 140.24.7.0/24 jakamista neljään yhtäsuureen osaan, joilla kullakin 26 bittinen aliverkon peite, eli aliverkot eroavat toisistaan kahden bitin verran (bitit 24 ja 25, kun bitit numeroidaan alkaen nollasta). Olisimme ihan yhtä hyvin voineen jakaa osoiteavaruuden eri suuruisiin osiin esimerkiksi 140.24.7.0/25, 140.24.7.128/26 ja 140.24.7.192/26  tai 140.24.7.0/26, 140.24.7.62/26 ja 140.24.7.128/25. Nyt yksi alue kattaa puolet osoiteavaruudesta. Tarkasta binäärilukujen avulla, miksi emme voineet yhdistää kahta keskimmäistä aluetta yhdeksi, vaan alueen piti olla joko numeroavaruuden alussa tai lopussa.
+Edellä jo tarkasteltiinkin osoiteavaruuden 140.24.7.0/24 jakamista neljään yhtäsuureen osaan, joilla kullakin on 26 bittinen aliverkon peite, eli aliverkot eroavat toisistaan kahden bitin verran (bitit 24 ja 25, kun bitit numeroidaan alkaen nollasta). Olisimme ihan yhtä hyvin voineen jakaa osoiteavaruuden eri suuruisiin osiin esimerkiksi 140.24.7.0/25, 140.24.7.128/26 ja 140.24.7.192/26  tai 140.24.7.0/26, 140.24.7.62/26 ja 140.24.7.128/25. Nyt yksi alue kattaa puolet osoiteavaruudesta. Tarkasta binäärilukujen avulla, miksi emme voi yhdistää kahta keskimmäistä aluetta yhdeksi, vaan isomman yhtenäisen alueen pitää olla joko numeroavaruuden alussa tai lopussa.
 
 <quiz id="a999dbaf-870e-4eb9-a8eb-e0323aa72347"></quiz>
 
@@ -112,7 +114,7 @@ Edellä jo tarkasteltiinkin osoiteavaruuden 140.24.7.0/24 jakamista neljään yh
 
 Voi halutessasi lukea tunneloinnista lyhyen kuvauksen englanninkielisen wikipedian sivulta [IP Tunnel](https://en.wikipedia.org/wiki/IP_tunnel)
 
-Piirrä aluksi itsellesi kuva, jossa verkon reunoilla olevilla solmuilla A ja Z on IPv6:n mukaiset IP-osoitteet ja ne haluavat kommunikoida keskenään. Ne ovat siis eri aliverkoissa ja eri reunoissa piirrosta. Niiden aliverkot on yhdistetty internetiin reitittimillä (B ja Y), jotka osaavat aliverkon edellyttämää IPv6:sta ja internetin suuntaan ne osaavat myös IPv4:sta, koska reitittimet (C ja X), joiden kautta niiden viestit siirtyvät internetiin on vielä sen verran vanha, että se osaa vain IPv4:ää. Reitti C ja X:n välillä on olemassa, mutta sen yksityiskohdat eivät ole tiedossa.
+Piirrä aluksi itsellesi kuva, jossa verkon reunoilla olevilla solmuilla A ja Z on IPv6:n mukaiset IP-osoitteet ja ne haluavat kommunikoida keskenään. Ne ovat siis eri aliverkoissa ja eri reunoissa piirrosta. Niiden aliverkot on yhdistetty internetiin reitittimillä (B ja Y), jotka osaavat aliverkon edellyttämää IPv6:sta ja internetin suuntaan ne osaavat myös IPv4:sta, koska reitittimet (C ja X), joiden kautta niiden viestit siirtyvät internetiin on vielä sen verran vanha, että se osaa vain IPv4:ää. Reitti C:n ja X:n välillä on olemassa, mutta sen yksityiskohdat eivät ole tiedossa.
 
 Kuvassa on siis kuusi solmua A, B, C, X, Y ja Z, jotka on yhdistetty toisiinsa siten, että viestit A:lta voivat päätyä Z:lle ja päinvastoin.
 
@@ -122,7 +124,7 @@ Kun IPv4-paketti saapuu Y:lle, joka siis on kyseisen paketin vastaanottaja, niin
 
 Yllä on kuvattu niin sanottu [IP-in-IP](https://en.wikipedia.org/wiki/IP_in_IP) tunnelointi. Jo edeltävällä kurssilla käsittelimme virtuaalista yksityisverkkoa VPN:ää, jonka toiminta perustuu tunnelointiin. VPN:ssä tunnelissa voidaan kuljettaa useita eri protokollia, kun yllä kuvattu esimerkki IPv6:n lähettämisestä IPv4-paketissa koski vain yhtä protokollaa.
 
-Yleensä tunneli toteutetaan käyttäen salavaa [IPSec](https://fi.wikipedia.org/wiki/IPsec)-protokollaa, jolloin tunnelissa kulkeva tieto on salattua ja vain tunnelin muodostava kuori on salaamatonta. Se on tyypillisin protokolla myös VPN:n toteutuksessa. Joissakin suosituksissa korostetaan, että tunnelit pitäisi aina tehdä käyttäen salaavaa protokollaa, jolloin viestinnän turvallisuutta saadaan parannettua.
+Yleensä tunneli toteutetaan käyttäen salaavaa [IPSec](https://fi.wikipedia.org/wiki/IPsec)-protokollaa, jolloin tunnelissa kulkeva tieto on salattua ja vain tunnelin muodostava kuori on salaamatonta. Se on tyypillisin protokolla myös VPN:n toteutuksessa. Joissakin suosituksissa korostetaan, että tunnelit pitäisi aina tehdä käyttäen salaavaa protokollaa, jolloin viestinnän turvallisuutta saadaan parannettua.
 
 <quiz id="b425e36b-8f75-408b-94e9-ee2368bbc257"></quiz>
 
