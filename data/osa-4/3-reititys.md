@@ -80,7 +80,33 @@ Etäisyysvektorialgoritmien perusajatus on, että jokainen solmu laskee itsenäi
 
 Useimmat etäisyysvektoriin perustuvat reititysprotokollat kuten RIP käyttävät Bellman-Fordin algoritmia etäisyysvektorien laskennassa ja tietojen vaihdossa. Myös autonomisten verkkojen reitityksessä käytettävässä BGP protokollassa on muunnelma Bellman-Fordin algoritmista tai vähintäänkin BGP soveltaa vastaavia periaatteita.
 
- [Bellman-Fordin algoritmissa](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm) solmulla on aina oma etäisyysvektori, jossa on tiedot kustannuksista kaikkiin solmuihin. Kun solmu saa naapureiden vektorit, niin se päivittää omaan vektoriinsa kaikki etäisyydet, siten, että d[xy]=min(d[xy], c(xz)+d[zy]). Tällä kaavalla x päivittää oman etäisyydensä solmuun y. Etäisyys pysyy samana d[xy] tai vaihtuu pienemmäksi z:n etäisyys y:hyn d[zy] + x:n ja z:n välisen linkin kustannus x(xz). Tämä laskenta tehdään joka kierroksella jokaisessa solmussa kaikille etäisyyksille. Kun algoritmia on suoritettu korkeintaan solmujen lukumäärän verran, niin jokaisen solmun etäisyysvektoriin on varmasti päivittynyt pienimmät etäisyyden muihin solmuihin. 
+[Bellman-Fordin algoritmissa](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm) solmulla on aina oma etäisyysvektori, jossa on tiedot kustannuksista kaikkiin solmuihin. Kun solmu saa naapureiden vektorit, niin se päivittää omaan vektoriinsa kaikki etäisyydet, siten, että d[xy]=min(d[xy], c(xz)+d[zy]). Tällä kaavalla x päivittää oman etäisyydensä solmuun y. Etäisyys pysyy samana d[xy] tai vaihtuu pienemmäksi z:n etäisyys y:hyn d[zy] + x:n ja z:n välisen linkin kustannus x(xz). Tämä laskenta tehdään joka kierroksella jokaisessa solmussa kaikille etäisyyksille. Kun algoritmia on suoritettu korkeintaan solmujen lukumäärän verran, niin jokaisen solmun etäisyysvektoriin on varmasti päivittynyt pienimmät etäisyyden muihin solmuihin. 
+ 
+ Nyt kaikki solmut päivittävät tietojaan joka kierroksella. Ne kaikki ylläpitävät omaa etäisyysvektoria distance=[A,B,C,D,E,F,G], jossa on siis solmun etäisyys kaikkiin muihin solmuihin. Tämän rinnalla niillä on tiedossa se, miltä solmulta tieto ko. etäisyyteen liittyen tuli. Eli previous -vektorissa on tieto solmusta z, jolle tämä solmu x lähettää kaikki solmulle y menevät viestit, koska c(xz)-d[zy] on minimi etäisyys xy, jonka x tietää.
+ 
+Käydään siis tämän algoritmin toiminta läpi käyttämämme esimerkkiverkon kanssa:
+* Kirjaan tähän vain solmun A tilanteen, muut solmut laskevat omia arvojaan vastaavasta joka kierroksella
+* Aluksi A:n etäisyysvektori (distance) on [A 0,B 3,C 2,D -,E -,F -,G -] eli A tietää etäisyydet vain naapureihinsa
+* Kierros yksi
+* Tietojen vaihdossa A lähettää oman vektorinsa B:lle ja C:lle ja 
+* saa niiden vektorit B:[A 3,B 0,C -, D 5,E -,F -,G -] ja C: [A 2,B -,C 0, D 2,E 6,F -,G -]
+* A päivittää oman vektorinsa A:[A 0,B 3,C 2,D 4,E 8,F -,G -], koska D:lle min(-, 3+5, 2+2) =4, joten predecessor[D]=C ja E:lle min 8, predecessor[E]=C
+* Kierros kaksi
+* A lähettää oman vektorin ja saa B:ltä B:[A 3,B 0,C 5, D 5,E -,F 7,G -] ja C:ltä C:[A 2,B 5,C 0, D 2,E 6,F 4,G 9]
+* A päivittää nyt oman vektorinsa A:[A 0,B 3,C 2,D 4,E 8,F 6,G 11], joten  predecessor[E]=C , predecessor[F]=C ja predecessor [G]=C
+* Kierros kolme
+* A lähettää oman vektorinsa ja saa B:ltä B:[A 3,B 0,C 5, D 5,E 11,F 7,G 8] ja C:ltä C:[A 2,B 5,C 0, D 2,E 6,F 4,G 5]
+* A päivittää nyt oman vektorinsa A:[A 0,B 3,C 2,D 4,E 8,F 6,G 7] predecessor[G]=C
+* Tämä jälkeen A:n vektorin tieto ei muutu ellei verkon linkkien kustannuksissa tapahdu muutoksia.
 
+Huomaa kuinka A:n tieto reitistä ja ennenkaikkea etäisyydestä G:hen muuttui kierrosten kaksi ja kolme välissä. Tämä johtuu siitä, että tuo kustannuksiltaan lyhyin reitti A:lta G:lle on pidempi, joten se sai ensin tiedon lyhyemmästä reitistä ja vasta myöhemmin pidemmästä, mutta nopeammasta (tai edullisemmasta) reitistä.
+
+Käytännössä, kun laskee käsin näitä reittejä, niin usein on helpointa tehdä kaikista solmuista ja niiden etäisyysvektoreista matriisi
+
+|solmu |A |B |C |D | E | F | G | reitti (predecessor)|
+|A:n vektori | 0 | 3|2|-|-|-|-| B via B ja C via C |
+|B:n vektori | 3 |0|-|5|-|-|-| A via A ja D via D |
+
+Tässä tuntemattomat etäisyyden on merkitty viivalla, mutta yhtä hyvin merkintänä olisi voinut olla ääretön. Vastaavasti solmun etäisyys itseensä on merkitty 0:ksi.
 
 
