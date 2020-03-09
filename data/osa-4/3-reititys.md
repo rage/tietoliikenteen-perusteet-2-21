@@ -30,7 +30,7 @@ Reititysalgoritmin tavoitteena on siis löytää nopeimmat tai halvimmat reitit 
 
 Käydään näiden algoritmien toiminta läpi esimerkin avulla.
 
-alt= Kuvassa on seitsemän solmua A-G. Nämä solmut muodostavat verkos, jossa on yhteydet ja niiden kustannukset seuraavasti (A-B,3), (A-C,2), (B-D,5), (C-D,2), (C-E,6), (D-F,2), (E-F,4), (E-G,3) ja (F-G,1).
+kuva reititysverkko1.svg alt= Kuvassa on seitsemän solmua A-G. Nämä solmut muodostavat verkos, jossa on yhteydet ja niiden kustannukset seuraavasti (A-B,3), (A-C,2), (B-D,5), (C-D,2), (C-E,6), (D-F,2), (E-F,4), (E-G,3) ja (F-G,1).
 
 KUVA: Kuvassa on esimerkkiverkko, jossa on 7 solmua ja näiden välillä 9 linkkiä ja niiden kustannukset. Viestit kulkevat linkeissä molempiin suuntiin.
 
@@ -108,11 +108,25 @@ Käytännössä, kun laskee käsin näitä reittejä, niin usein on helpointa te
 | A:n vektori | 0 | 3 | 2 | - | - | - | - | B via B ja C via C |
 |B:n vektori | 3 |0|-|5|-|-|-| A via A ja D via D |
 | C:n vektori | 2 | - | 0 | 2 | 6 | - | - | A via A, D via D ja E via E |
-| D:n vektori | - | 5 | 2 | 0 | - | 2 | - | A via A, D via D ja E via E |
-| E:n vektori | - | - | 6 | - | 0 | 4 | 3 | A via A, D via D ja E via E |
-| F:n vektori | - | - | - | 2 | 4 | 0 | 1 | A via A, D via D ja E via E |
-| G:n vektori | - | - | - | - | 3 | 1 | 0 | A via A, D via D ja E via E |
+| D:n vektori | - | 5 | 2 | 0 | - | 2 | - | B via B, C via C ja F via F |
+| E:n vektori | - | - | 6 | - | 0 | 4 | 3 | C via C, F via F ja G via G |
+| F:n vektori | - | - | - | 2 | 4 | 0 | 1 | D via D, E via E ja G via G |
+| G:n vektori | - | - | - | - | 3 | 1 | 0 | E via E ja F via F |
 
-Tässä tuntemattomat etäisyyden on merkitty viivalla, mutta yhtä hyvin merkintänä olisi voinut olla ääretön. Vastaavasti solmun etäisyys itseensä on merkitty 0:ksi.
+Tässä tuntemattomat etäisyydet on merkitty viivalla, mutta yhtä hyvin merkintänä olisi voinut olla ääretön. Vastaavasti solmun etäisyys itseensä on merkitty 0:ksi.
+
+Etäisyysvektorireititys on näppärä, koska reittitiedot etenevät suhteellisen nopeasti verkossa. Etappivälitteisessä verkossa viestit etenevät muutenkin vain linkkivälin kerrallaan. Nyt reititin päivittän oman tietonsa ja sitten lähettää sen eteenpäin. Tällöin aina kierros kierrokselta tieto eteen verkossa ja tunnetut reitit pitenevät. Vastaavasti myös kustannusmuutokset etenevät tällä samalla nopeudella verkon solmujen välillä. Tsstä käytetään joskus termiä "hyvät uutiset etenevät nopeasti" vastakohtana sille, että "huonot uutiset etenevät hitaasti".
+
+Tarkastellaan tuota "huonojen uutisten hidasta etenemistä" pienessä esimerkkiverkossa. Tässä verkossa on vain kolme solmua ja ne on kytketty toisiinsa oheisen kuvan mukaisesti.  A:n ja B:n välinen liikenne kulkee C:n kautta, koska A:n ja B:n välisen yhteyden kustannus on suurempi.  
+
+KUVA: reititysverkko2.svg
+
+Nyt sitten, jos A:n ja C:n välinen yhteys hidastuu arvoon 50, jonka A huomaa ja toimittaa seuraavassa päivityksessä tiedoksi C:lle ja B:lle. niin etäisyysvektorialgoritmila menee useita kierroksia ennenkuin tilanne rauhoittuu. Tätä tarkoittaa huonojen uutisten hitaus. Tarkastellaan siis algoritmin toimintaa ja solmujen reitityspäätöksiä eri kierroksilla.  Voit simuloida tätä itsekin ja huomaat kuinka solmut muuttavat etäisyyksien arvioita vain aina kahdella per kierros. Ne olettavat viestin kulkevan aina toista kautta, jossa etäisyys näyttää pienemmältä. Tämä pienin etäisyys kasvaa vain kahdella per kierros.
+
+KESKEN!!!!!
+
+
+
+
 
 
