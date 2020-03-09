@@ -107,6 +107,11 @@ Käytännössä, kun laskee käsin näitä reittejä, niin usein on helpointa te
 |-------|---|---|---|---|---|---|---|--------|
 | A:n vektori | 0 | 3 | 2 | - | - | - | - | B via B ja C via C |
 |B:n vektori | 3 |0|-|5|-|-|-| A via A ja D via D |
+| C:n vektori | 2 | - | 0 | 2 | 6 | - | - | A via A, D via D ja E via E |
+| D:n vektori | - | 5 | 2 | 0 | - | 2 | - | A via A, D via D ja E via E |
+| E:n vektori | - | - | 6 | - | 0 | 4 | 3 | A via A, D via D ja E via E |
+| F:n vektori | - | - | - | 2 | 4 | 0 | 1 | A via A, D via D ja E via E |
+| G:n vektori | - | - | - | - | 3 | 1 | 0 | A via A, D via D ja E via E |
 
 Tässä tuntemattomat etäisyyden on merkitty viivalla, mutta yhtä hyvin merkintänä olisi voinut olla ääretön. Vastaavasti solmun etäisyys itseensä on merkitty 0:ksi.
 
