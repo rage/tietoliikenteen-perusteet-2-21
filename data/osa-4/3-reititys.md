@@ -103,8 +103,9 @@ Huomaa kuinka A:n tieto reitistä ja ennenkaikkea etäisyydestä G:hen muuttui k
 
 Käytännössä, kun laskee käsin näitä reittejä, niin usein on helpointa tehdä kaikista solmuista ja niiden etäisyysvektoreista matriisi
 
-|solmu |A |B |C |D | E | F | G | reitti (predecessor)|
-|A:n vektori | 0 | 3|2|-|-|-|-| B via B ja C via C |
+| solmu | A | B | C | D | E | F | G | reitti (predecessor) |
+|-------|---|---|---|---|---|---|---|--------|
+| A:n vektori | 0 | 3 | 2 | - | - | - | - | B via B ja C via C |
 |B:n vektori | 3 |0|-|5|-|-|-| A via A ja D via D |
 
 Tässä tuntemattomat etäisyyden on merkitty viivalla, mutta yhtä hyvin merkintänä olisi voinut olla ääretön. Vastaavasti solmun etäisyys itseensä on merkitty 0:ksi.
