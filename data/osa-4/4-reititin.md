@@ -63,7 +63,14 @@ Paketti voi viipyä sisääntulon jonossa, jos joko reitittimen arkkitehtuuri ei
 Ulosmenossakin voi muodostua jonoa (ja puskuri jopa täyttyä) esimerkiksi siksi, että samaa linkkiä käyttää useampi lähettäjä, jolloin reititin ei pääse lähettämään paketteja riittävän nopeasti, kun linkki on varattuna muille lähettäjille. Yllättävämpi syy ulosmenon jonon kasvuun on kuitenkin se, että samaa ulosmenoon tulee paketteja useammasta sisääntulosta. Jos oletetaan, että kaikki linkit toimivat samalla nopeudella, niin silloin jos usemmasta sisääntulosta tulee samalla hetkellä paketti samaan ulosmenoon, niin paketit joutuvat jonoon, koska ulosmeno voi lähettää vain yhden paketin samassa aikayksikössä kuin kaikkin sisääntuloihin tulee yksi paketti jokaiseen. Juuri tällaista tilannetta varten reitittimissä on jonoja ja puskureita, jotta kaikki saapuvat paketit saadaan lähetettyä aikanaan. 
 
 
+Äskeinen kuva reitittimen toiminnasta on hyvin suppea todellisten markkinoilla olevien reitittimien toiminnasta. Vaikka ne kaikki edelleen toimivat reitittiminä ja välittävät liikennettä jollakin edellä kuvatulla tavalla, niin käytännössä ne tekevät paljon muutakin. Tyypillisesti niissä on esim. NAT toiminnallisuus, mahdollisuus DHCP palvelun käyttöön, erilaisia verkon turvallisuutta lisääviä piireitä kuten palomuuri (engl. firewall) tai sitä kehittyneempiä tunkeutumisen estojärjestelmiä (engl. intrusion prevention system) ja muutakin pakettien suodatusta. Jotkut reitittimet tarjoavat myös langattoman verkon tuen ja toiset syvemmälle verkkoon suunnitellut laitteet taas sisältävät enemmän portteja, jolloin ne pystyvät yhdistämään useampia laitteita.
+Tässä vaihessa kurssia osaat jo etsiä reitittimen esitteestä ja informaatiota tietoa, vaikka esitteessä onkin paljon vielä tuntemattomia käsitteitä.
 
-TEHTÄVÄ:  Ciscon reitittimen kuvaus ja siihen liittyviä kysymyksiä, jotta tällaisen kuvauksen lukeminen ei ole jatkossa ihan yhtä hepreaa
+Poimin tähän sattumanvaraisesti kahden eri valmistajan esitteet. Ciscolta on mukana [Cisco RV340, RV345, RV345P, and RV340W Dual WAN Security Router Data Sheet](https://www.cisco.com/c/en/us/products/collateral/routers/small-business-rv-series-routers/datasheet-c78-742350.html) ja  Ubiquitilta [EdgeRouter Data Sheet](https://dl.ubnt.com/datasheets/edgemax/EdgeRouter_DS.pdf).
 
-https://www.cisco.com/c/en/us/products/collateral/routers/small-business-rv-series-routers/datasheet-c78-742350.html
+Molemmissa esitteissä esiintyy lyhenne PoE. Aukikirjoitettuna se on [Power-over-Ethernet](https://fi.wikipedia.org/wiki/Power_over_Ethernet) eli tietokoneen tai muun verkkolaitteen tarvitsema sähkövirta voidaan toimittaa suoraan laitteet yhdistävässä ethernet-kaapelissa eikä erillistä virtajohtoa tarvita.
+
+Laitteissa puhutaan myös kerrosten 2 ja 3 kytkimistä (engl. Layer 2 and Layer 3 switch). Nämä viittaavat protokollapinoon siten että kerros 2 on linkkikerrosja kerros 3 verkkokerros. Käytännössä tuollainen kerroksen 3 kytkin on reititin, jossa reitityspäätöksiä tehdään ohjelmiston sijasta laitteistolla. Jos asia kiinnostaa, niin lue lisää englanninkielisestä wikipedian artikkelista [Multilayer switch](https://en.wikipedia.org/wiki/Multilayer_switch).
+
+<quiz id="b6e7f93c-91a7-44f7-a66e-f1c8c92e255a"> </quiz>
+ 
