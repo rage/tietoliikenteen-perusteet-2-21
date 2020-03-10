@@ -30,9 +30,9 @@ Reititysalgoritmin tavoitteena on siis löytää nopeimmat tai halvimmat reitit 
 
 Käydään näiden algoritmien toiminta läpi esimerkin avulla.
 
-kuva reititysverkko1.svg alt= Kuvassa on seitsemän solmua A-G. Nämä solmut muodostavat verkos, jossa on yhteydet ja niiden kustannukset seuraavasti (A-B,3), (A-C,2), (B-D,5), (C-D,2), (C-E,6), (D-F,2), (E-F,4), (E-G,3) ja (F-G,1).
+<img src="../img/reititysverkko1.svg" alt="Kuvassa on seitsemän solmua A-G. Nämä solmut muodostavat verkos, jossa on yhteydet ja niiden kustannukset seuraavasti (A-B,3), (A-C,2), (B-D,5), (C-D,2), (C-E,6), (D-F,2), (E-F,4), (E-G,3) ja (F-G,1)." >
 
-KUVA: Kuvassa on esimerkkiverkko, jossa on 7 solmua ja näiden välillä 9 linkkiä ja niiden kustannukset. Viestit kulkevat linkeissä molempiin suuntiin.
+KUVA: Kuvassa on esimerkkiverkko, jossa on 7 solmua ja näiden välillä kaikkiaan 9 linkkiä ja niiden kustannukset. Viestit kulkevat linkeissä molempiin suuntiin. Käytämme tätä verkkoa molempien algoritmien esittelyyn.
 
 
 ## Linkkitila-algoritmi
@@ -119,7 +119,8 @@ Etäisyysvektorireititys on näppärä, koska reittitiedot etenevät suhteellise
 
 Tarkastellaan tuota "huonojen uutisten hidasta etenemistä" pienessä esimerkkiverkossa. Tässä verkossa on vain kolme solmua ja ne on kytketty toisiinsa oheisen kuvan mukaisesti.  A:n ja B:n välinen liikenne kulkee C:n kautta, koska A:n ja B:n välisen yhteyden kustannus on suurempi.  
 
-KUVA: reititysverkko2.svg
+<img src="../img/reititysverkko2.svg.svg" alt="Kuvassa on kolme solmua A, B ja C.">
+
 
 Nyt sitten, jos A:n ja C:n välinen yhteys hidastuu arvoon 50, jonka A huomaa ja toimittaa seuraavassa päivityksessä tiedoksi C:lle ja B:lle. niin etäisyysvektorialgoritmila menee useita kierroksia ennenkuin tilanne rauhoittuu. Tätä tarkoittaa huonojen uutisten hitaus. Tarkastellaan siis algoritmin toimintaa ja solmujen reitityspäätöksiä eri kierroksilla.  Voit simuloida tätä itsekin ja huomaat kuinka solmut muuttavat etäisyyksien arvioita vain aina kahdella per kierros. Ne olettavat viestin kulkevan aina toista kautta, jossa etäisyys näyttää pienemmältä. Tämä pienin etäisyys kasvaa vain kahdella per kierros.
 
