@@ -119,7 +119,7 @@ Etäisyysvektorireititys on näppärä, koska reittitiedot etenevät suhteellise
 
 Tarkastellaan tuota "huonojen uutisten hidasta etenemistä" pienessä esimerkkiverkossa. Tässä verkossa on vain kolme solmua ja ne on kytketty toisiinsa oheisen kuvan mukaisesti.  A:n ja B:n välinen liikenne kulkee C:n kautta, koska A:n ja B:n välisen yhteyden kustannus on suurempi.  
 
-<img src="../img/reititysverkko2.svg.svg" alt="Kuvassa on kolme solmua A, B ja C.">
+<img src="../img/reititysverkko2.svg" alt="Kuvassa on kolme solmua A, B ja C.">
 
 
 Nyt sitten, jos A:n ja C:n välinen yhteys hidastuu arvoon 50, jonka A huomaa ja toimittaa seuraavassa päivityksessä tiedoksi C:lle ja B:lle. niin etäisyysvektorialgoritmila menee useita kierroksia ennenkuin tilanne rauhoittuu. Tätä tarkoittaa huonojen uutisten hitaus. Tarkastellaan siis algoritmin toimintaa ja solmujen reitityspäätöksiä eri kierroksilla.  Voit simuloida tätä itsekin ja huomaat kuinka solmut muuttavat etäisyyksien arvioita vain aina kahdella per kierros. Ne olettavat viestin kulkevan aina toista kautta, jossa etäisyys näyttää pienemmältä. Tämä pienin etäisyys kasvaa vain kahdella per kierros.
