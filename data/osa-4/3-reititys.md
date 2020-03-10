@@ -115,7 +115,9 @@ Käytännössä, kun laskee käsin näitä reittejä, niin usein on helpointa te
 
 Tässä tuntemattomat etäisyydet on merkitty viivalla, mutta yhtä hyvin merkintänä olisi voinut olla ääretön. Vastaavasti solmun etäisyys itseensä on merkitty 0:ksi.
 
-Etäisyysvektorireititys on näppärä, koska reittitiedot etenevät suhteellisen nopeasti verkossa. Etappivälitteisessä verkossa viestit etenevät muutenkin vain linkkivälin kerrallaan. Nyt reititin päivittän oman tietonsa ja sitten lähettää sen eteenpäin. Tällöin aina kierros kierrokselta tieto eteen verkossa ja tunnetut reitit pitenevät. Vastaavasti myös kustannusmuutokset etenevät tällä samalla nopeudella verkon solmujen välillä. Tsstä käytetään joskus termiä "hyvät uutiset etenevät nopeasti" vastakohtana sille, että "huonot uutiset etenevät hitaasti".
+<quiz id="aac1f4a7-87fa-4b62-9f30-e1b9a4357330"> </quiz>
+
+Etäisyysvektorireititys on näppärä, koska reittitiedot etenevät suhteellisen nopeasti verkossa. Etappivälitteisessä verkossa viestit etenevät muutenkin vain linkkivälin kerrallaan. Nyt reititin päivittää oman tietonsa ja sitten lähettää sen eteenpäin. Tällöin aina kierros kierrokselta tieto eteen verkossa ja tunnetut reitit pitenevät. Vastaavasti myös kustannusmuutokset etenevät tällä samalla nopeudella verkon solmujen välillä. Tsstä käytetään joskus termiä "hyvät uutiset etenevät nopeasti" vastakohtana sille, että "huonot uutiset etenevät hitaasti".
 
 Tarkastellaan tuota "huonojen uutisten hidasta etenemistä" pienessä esimerkkiverkossa. Tässä verkossa on vain kolme solmua ja ne on kytketty toisiinsa oheisen kuvan mukaisesti.  A:n ja B:n välinen liikenne kulkee C:n kautta, koska A:n ja B:n välisen yhteyden kustannus on suurempi.  
 
@@ -126,9 +128,17 @@ Nyt sitten, jos A:n ja C:n välinen yhteys hidastuu arvoon 20, jonka A huomaa ja
 
 <img src="../img/huonot-uutiset.svg" alt="Kuvassa on alkuosa etäisyysvektorireitityksen laskutoimituksista.">
 
-KUVA: Kuvan laskutoimituksista on huomattavissa miten B:n ja C:n etäisyysarvio A:han vuorottelee solmujen välillä ja kasvaa vain kahdella per kierros. Tätä jatkuu kunnes arvo vihdoin saavuttaa A:n etäisyysarviot
+KUVA: Kuvan laskutoimituksista on huomattavissa miten B:n ja C:n etäisyysarvio A:han vuorottelee solmujen välillä ja kasvaa vain kahdella per kierros. Tätä jatkuu kunnes arvo vihdoin saavuttaa A:n etäisyysarviot.
 
-KESKEN!!!!!
+Hyvien uutisten kanssa tieto eteni viestien mukana aina laajemmalle. Huonojen uutisten kanssa voi valitettavasti tapahtua kuten äskeisessä esimerkissä, että tieto muuttuukin vain vakiolisäykselle yhtä kierrosta kohti. Tällöin mitään varsinaista ylärajaa ei saada sille, koska järjestelmä on taas vakaassa tilassa ja kaikilla on oikea tieto verkon sen hetkisestä tilanteesta. Englanniksi tällaista tilannetta kutsutaan termillä count-to-infinity.
+
+Äskeisessä esimerkiksi ongelmaksi tulee se, että ajoittain B ja C kuvittelevat nopeimman reitin A:lle menevän toistensa kautta samaanaikaan. Tällöin B lähettää A:lle menevät viestit C:lle ja C lähettää ne puolestaan B:lle. Nämä viestit eivät voi tavoittaa A:ta, koska kumpikaan ei lähetä niitä A:lle.
+
+Tämä nimenomainen ongelma voidaan korjata sillä, että solmu 'valehtee' tietylle naapurille oman etäisyytensä äärettömäksi niihin solmuihin, jotka se reitittää kyseisen naapurin kautta. Näin solmu itseasiassa lähettää erilaiset etäisyysvektorit eri naapureilleen. Äskeisessä esimerkissä alkutilanteessa B lähettää A:lle vektorin B: (A 4, B 0, C 2), mutta C:lle vektorin (A -, B 0, C 2), koska se läehttää viestit A:lle C:n kautta. C lähettää saman vektorin sekä A:lle että B:lle, koska se ei reititä viestejä kummankaan kautta. Tällaista solmun tarkoituksellista valehtelua reitityssuuntaan kutsutaan englanniksi termillä poison-reverse.
+
+Vaikka saimme tällä pienellä mutoksella katkaistua tässä esimerkissä tuon huonojen uutisten hitaan etenemisen, niin se ei ratkaise  kaikkia ongelmatilanteita.  (Esimerkiksi, jos otamme tähän kolmensolmun järjestelmään mukaan solmun D, jolla on yhteys vain solmuun B. Kn solmu D myöhemmin katoaa kokonaan verkosta A ja C aloittavat äskeistä esimerkkiä vastaavan pallottelun siitä mitä kautta ne D:n voivat tavoittaa. Koska kumpikin on lähettänyt viestit D:lle suoraan B:n kautta, niin tuon paluusuunnan asettaminen äärettömäksi ei auta.)
+
+
 
 
 
