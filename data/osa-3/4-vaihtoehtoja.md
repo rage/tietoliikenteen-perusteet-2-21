@@ -22,7 +22,7 @@ Nyt kun olemme tutustuneet protokollien mallinnukseen ja kuljetuskerroksen proto
 
 Koska viestin kuljetuksessa lähettäjältä vastaanottajalle on aina riski esimerkiksi bittivirheille, on protokollan tehtävä huolehtia mahdollisesta viestin oikeellisuuden tarkistuksesta. Kuljetuskerroksen protokolla voi toki jättää viestin oikeellisuuden tarkistamisen kerroksen protokollan tehtäväksi, mutta yleensä jokainen kerros vastaa vähintään oman otsakkeensa oikeellisuuden tarkistuksesta.
 
-Viestin muuttumattomuus voidaan tarkistaa joko pelkästään virheen havaitsemalla menetelmällä tai menetelmällä, joka voi tarvittaessa myös korjata virheen. Lähettäjä laskee tarvittavan lisätiedon osaksi viestiä ja vastaanottaja tarkistaa, että viesti ei ole muuttunut laskemalla tämän tiedon uudelleen ja vertaamalla sitä viestin mukana tulleeseen tietoon.
+Viestin muuttumattomuus voidaan tarkistaa joko pelkästään virheen havaitsevalla menetelmällä tai menetelmällä, joka voi tarvittaessa myös korjata virheen. Lähettäjä laskee tarvittavan lisätiedon osaksi viestiä ja vastaanottaja tarkistaa, että viesti ei ole muuttunut laskemalla tämän tiedon uudelleen ja vertaamalla sitä viestin mukana tulleeseen tietoon.
 
 Viestin tarkistaminen edellyttää aina tämän lisätiedon eli [tarkistussumman](https://fi.wikipedia.org/wiki/Tarkistussumma) lisäämistä viestiin. Tarkistussummalle varataan kiinteänkokoinen osa protokollan viestistä. Tarkistussumman laskentaan ja tarkistamiseen on tarjolla useita erilaisia menetelmiä.
 
@@ -53,7 +53,7 @@ Esimerkiksi valikoivien kuittausten kanssa vastaanottaja voisi lähettää negat
 
 Järjestelmässä täytyy aina myös varautua ns. tuplakuittauksiin, eli saman kuittauksen lähettämiseen ja vastaanottamiseen useampia kertoja. Tältä ei voi välttyä, koska kun vastaanottaja saa jo saapuneen paketin uudelleen, sen täytyy lähettää kyseiseen pakettiin liittyvä kuittaus uudelleen. Mikäli tätä lähettämistä ei tehtäisi, niin lähettäjä ei ehkä saisi koskaan kuittausta kyseisestä viestistä.
 
-Toisaalta näitä tuplakuittauksia alkuperäinen lähettäjä voi myös pyrkiä hyödyntämään. Esimerkiksi Paluu-N:ään menetelmässä vastaanottaja kuittaa aina samalla kuittauksia kaikki epäjärjestyksessä saapuvat viestit. Lähettäjä voi hyödyntää tätä tietoa ja tehdä uudelleenlähetyksen jo näiden tuplakuittausten perusteella ennen kuin ajastin laukeaa.
+Toisaalta näitä tuplakuittauksia alkuperäinen lähettäjä voi myös pyrkiä hyödyntämään. Esimerkiksi Paluu-N:ään menetelmässä vastaanottaja kuittaa aina samalla kuittauksella kaikki epäjärjestyksessä saapuvat viestit. Lähettäjä voi hyödyntää tätä tietoa ja tehdä uudelleenlähetyksen jo näiden tuplakuittausten perusteella ennen kuin ajastin laukeaa.
 
 Eri protokollat tai niiden eri versiot käyttävät näitä kaikkia vaihtoehtoja.
 
