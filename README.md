@@ -1,4 +1,4 @@
-# Add course name here
+# Tietoliikenteen perusteet 2
 
 ## Development environment
 
