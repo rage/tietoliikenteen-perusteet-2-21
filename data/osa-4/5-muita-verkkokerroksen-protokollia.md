@@ -28,6 +28,7 @@ Reitittimet voivat käyttää ICMP-paketteja kertomaan lähettäjälle, jos reit
 
 Jos protokolla yksityiskohtaisempi toiminta kiinnostaa, niin englanninkielisellä wikipedian sivulla [Internet Control Message Protocol](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) on kuvattuna tarkemmin protokollan erilaiset viestityypit ja niihin liittyvät koodit.
 
+<quiz id=" "> </quiz>
 
 ## IPsec
 
