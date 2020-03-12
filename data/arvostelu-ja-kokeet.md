@@ -19,6 +19,8 @@ Nämä kaksi kurssia arvostellaan täysin toisistaan riippumatta ja niillä on e
 
 Kurssin voi tenttiä moodlessa joko huhtikuun, toukokuun tai kesäkuun lopulla.  Muita tenttivaihtoehtoja ei ole. Suosittelen tenttimään jo heti huhtikuun lopulla, jolloin voit vielä tarvittaessa uusia kokeen toukokuuss tai kesäkuussa.
 
+Kurssi tentitään moodlessa ja siellä on myös itsenäisesti tehtäviä lisätehtäviä kokeeseen valmistautumista varten. Tarkemmata arvosteluperusteet on myös moodlessa.
+
 Pidä huoli, että ilmoittaudut avoimeen yliopistoon viimeistään tenttiä edeltävällä viikolla, jotta käyttöoikeutesi tulee voimaan ajoissa. Et siis tarvitse erillistä tentti-ilmoittautumista, vaan normaali kurssi-ilmoittautuminen riittää.
 
 Pääset kirjautumaan kurssin Moodleen, kun toimit seuraavien ohjeiden mukaisesti:
