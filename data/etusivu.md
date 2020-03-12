@@ -44,4 +44,4 @@ Ilmoittautumisohjeet kohdassa [arvostelu ja kokeet](./arvostelu-ja-kokeet).
 
 Tämä on osa kurssia [Tietoliikenteen perusteet](https://courses.helsinki.fi/fi/tkt20004/131058728). Tämä ei siis ole itsenäinen opintokokonaisuus vaan osa laajempaa kurssia. Tämän osien suorituksesta ei anneta erillistä suoritusmerkintää. Osion sisällön hallinta testataan kurssin kahdessa jälkimmäisessä minikokeessa ma 6.4. ja ma 27.4.
 
-Helsingin yliopiston opiskelijat ovat jo ilmoittautuneet kurssille ensimmäisen osan yhteydessä, joten tämän osion osalta ilmoittautumista ei tarvita.
+Helsingin yliopiston opiskelijat ovat jo ilmoittautuneet kurssille ensimmäisen osan yhteydessä, joten tämän osion osalta erillistä ilmoittautumista OODIssa ei tarvita.
