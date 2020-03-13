@@ -40,7 +40,7 @@ Virtuaaliset yksityisverkot (VPN) toteutetaan tyypillisesti juuri IPsec:llä. Si
 
 Tämä IPsecin suhde virtuaalisten yksityisverkkojen yhtenä toteutusvaihtoehtona on suurin syy protokollan suppeaan esittelyyn tällä kurssilla.
 
-<img  alt="Kuvassa on protokollapinon kerrokset, joiden väliin on sijoitettu myös IPsec. Kerrokset ylhäältä lukien sovelluskerros, kuljetuskerror, verkkokerros, IPsec, verkkokerros, linkkikerros"
+<img src="../img/IPsec.svg"  alt="Kuvassa on protokollapinon kerrokset, joiden väliin on sijoitettu myös IPsec. Kerrokset ylhäältä lukien sovelluskerros, kuljetuskerror, verkkokerros, IPsec, verkkokerros, linkkikerros">
 KUVA: Kuvassa on protokollapinon kerrokset, joiden väliin on sijoitettu myös IPsec tunnelointitilassa. IPsecin yläpuoliset sovellus-, kuljetus- ja verkkokerros ovat alkuperäisen IP-paketin mukaisia. IPsecin alapuoliset kerrokset puolestaan kohdistuvat IPsec:n tekemään uuteeen IP-pakettiin.
 
 IPsec:iä voi käyttää myös kuljetustilassa (engl. transport mode), jolloin sen kuljettama data on kuljetuskerrokselta tullut segmentti. Tällöin salataan vain kuljetettava data, mutta otsaketiedot jäävät salaamatta. Protokolla sinänsä toimii samoin sekä tunnelointitilassa että kuljetustilassa, mutta sen oma data on erilainen. Kuljetustilassa sen data on TCP-segmentti, kun taas
