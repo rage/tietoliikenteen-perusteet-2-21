@@ -5,9 +5,9 @@ hidden: false
 ---
 
 
-Neljännessä osassa tutustuttiin tiedon lukemiseen tiedostosta ja otettiin ensimmäiset askeleet olio-ohjelmoinnin pariin. Loimme luokkia ja olioita. Määrittelimme luokille konstruktorit, metodit ja oliomuuttujat, ja opettelimme tulostamaan olioihin liittyviä tietoja olion `toString`-metodilla. Harjoittelimme myös listalla olevien olioiden käsittelyä.
+Neljännessä osassa tutustuttiin verkkokerroksen toimintaan tarkemmin. Reititys on sen keskeinen toiminto ja siksi opettelimmekin, miten keskenään erilaiset reititysalgorimit tekevät ja päivittävät reititystauluja.
 
 
 Vastaa vielä alla olevaan kyselyyn.
 
-<quiz id="33563c4e-20ac-4be2-baf6-1a408da6ef44"></quiz>
+<quiz id="a577df8a-83c4-46a6-bc3c-dabbacc116cf"></quiz>
