@@ -10,9 +10,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="74.020592mm"
+   height="69.195862mm"
+   viewBox="0 0 74.020592 69.195862"
    version="1.1"
    id="svg479"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -36,8 +36,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="-88.571429"
-     inkscape:cy="560"
+     inkscape:cx="-129.5073"
+     inkscape:cy="-91.120475"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -45,7 +45,11 @@
      inkscape:window-height="1046"
      inkscape:window-x="82"
      inkscape:window-y="-11"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata476">
     <rdf:RDF>
@@ -61,7 +65,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-10.830948,-55.528515)">
     <rect
        style="fill:#ffffff;fill-rule:evenodd;stroke-width:0.26458332"
        id="rect481"
@@ -86,7 +91,7 @@
          id="tspan489"
          x="29.132378"
          y="62.337353"
-         style="stroke-width:0.26458332;font-size:4.93888889px">Sovelluskerros</tspan></text>
+         style="font-size:4.93888903px;stroke-width:0.26458332">Sovelluskerros</tspan></text>
     <rect
        style="fill:#e6e6e6;fill-rule:evenodd;stroke:#010106;stroke-width:0.25420344;stroke-opacity:1"
        id="rect487-8"
@@ -124,7 +129,7 @@
          y="85.32254"
          style="font-size:4.93888903px;stroke-width:0.26458332">Verkkokerros</tspan></text>
     <rect
-       style="fill:#ddff55;fill-rule:evenodd;stroke-width:0.19111255;stroke:#010106;stroke-opacity:1"
+       style="fill:#ddff55;fill-rule:evenodd;stroke:#010106;stroke-width:0.19111255;stroke-opacity:1"
        id="rect487-3"
        width="41.694046"
        height="11.492589"
@@ -142,7 +147,7 @@
          y="96.815132"
          style="font-size:4.93888903px;stroke-width:0.26458332">     IPsec</tspan></text>
     <rect
-       style="fill:#f6ffd5;fill-rule:evenodd;stroke-width:0.22643781;stroke:#010106;stroke-opacity:1"
+       style="fill:#f6ffd5;fill-rule:evenodd;stroke:#010106;stroke-width:0.22643781;stroke-opacity:1"
        id="rect487-5"
        width="58.532036"
        height="11.492589"
@@ -160,7 +165,7 @@
          y="108.30772"
          style="font-size:4.93888903px;stroke-width:0.26458332">Verkkokerros</tspan></text>
     <rect
-       style="fill:#f6ffd5;fill-rule:evenodd;stroke-width:0.22643784;stroke:#010106;stroke-opacity:1"
+       style="fill:#f6ffd5;fill-rule:evenodd;stroke:#010106;stroke-width:0.22643784;stroke-opacity:1"
        id="rect487-1"
        width="58.532036"
        height="11.492589"
