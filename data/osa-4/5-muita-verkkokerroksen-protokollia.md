@@ -15,7 +15,7 @@ hidden: false
 
 ## Muita verkkokerroksen protokollia
 
-Edellä on käyty läpi verkkokerroksen tärkeimmän protokollan IP:n toiminnallisuutta. Verkkokerroksella on kuitenkin paljon muitakin protokollia. Englanninkielinen wikipedian sivu [Network_layer](https://en.wikipedia.org/wiki/Network_layer) luettelee niitä toistakymmentä. Tällä kurssilla tutustutaan niistä lyhyesti vain kahteen, jotka ovat vahvasti liitoksissa IP-protokollan kanssa.
+Edellä on käyty läpi verkkokerroksen tärkeimmän protokollan IP:n toiminnallisuutta. Verkkokerroksella on kuitenkin paljon muitakin protokollia. Englanninkielinen wikipedian sivu [Network_layer](https://en.wikipedia.org/wiki/Network_layer) luettelee niitä toistakymmentä. Tällä kurssilla tutustutaan niistä hyvin lyhyesti vain kahteen, jotka ovat vahvasti liitoksissa IP-protokollan kanssa. Kummankaan protokollan yksityiskohtaista toimitaa emme käy läpi. Se jää myöhemmille kursseille.
 
 
 ## ICMP
@@ -28,7 +28,7 @@ Reitittimet voivat käyttää ICMP-paketteja kertomaan lähettäjälle, jos reit
 
 Jos protokolla yksityiskohtaisempi toiminta kiinnostaa, niin englanninkielisellä wikipedian sivulla [Internet Control Message Protocol](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) on kuvattuna tarkemmin protokollan erilaiset viestityypit ja niihin liittyvät koodit.
 
-<quiz id=" "> </quiz>
+<quiz id="a2588d5b-8147-4e48-bf4e-d69b0c9dc992"> </quiz>
 
 ## IPsec
 
@@ -38,10 +38,14 @@ IPsec on kehitetty huomattavasti itse internetiä myöhemmin ja sen tavoitteena 
 
 Virtuaaliset yksityisverkot (VPN) toteutetaan tyypillisesti juuri IPsec:llä. Silloin IPsec:iä käytetään tunnelointitilassa (engl. tunnel mode) ja alkuperäinen IP-paketti otsakkeineen on IPsecillä salattava ja kuljetettava data. IPsec:llä salattu paketti sijoitetaan sitten tavalliseen IP-pakettiin, jonka otsakkeita ei tietenkään voida salata, kun IP-paketteja ei internetissä salata. Näin saadaan kuitenkin tunnelissa salattua tuo alkuperäinen paketti otsakkeineen, koska se on vain data tässä salatussa IP-paketissa. Tunnelissa kulkevan salatun paketin vastaanottaja ja lähettäjä ovat piilossa niin kauan kuin paketti on tunnelissa, mutta jotta paketti voidaan toimittaa lopulliselle vastaanottajalleen, niin salaus on purettava, jonka jälkeen alkuperäisen paketin otsakkeissa olevat lähettäjän ja vastaanottajan IP-numerot ovat taas luettavissa.
 
-IPsec:iä voi käyttää myös kuljetustilassa (engl. transport mode), jolloin sen kuljettama data on kuljetuskerrokselta tullut segmentti. Tällöin salataan vain kuljetettava data, mutta otsaketiedot jäävät salaamatta.
+Tämä IPsecin suhde virtuaalisten yksityisverkkojen yhtenä toteutusvaihtoehtona on suurin syy protokollan suppeaan esittelyyn tällä kurssilla.
 
+<img  alt="Kuvassa on protokollapinon kerrokset, joiden väliin on sijoitettu myös IPsec. Kerrokset ylhäältä lukien sovelluskerros, kuljetuskerror, verkkokerros, IPsec, verkkokerros, linkkikerros"
+KUVA: Kuvassa on protokollapinon kerrokset, joiden väliin on sijoitettu myös IPsec tunnelointitilassa. IPsecin yläpuoliset sovellus-, kuljetus- ja verkkokerros ovat alkuperäisen IP-paketin mukaisia. IPsecin alapuoliset kerrokset puolestaan kohdistuvat IPsec:n tekemään uuteeen IP-pakettiin.
 
-KUVA: Protokollapinot kuten Forouzan s. 1126
+IPsec:iä voi käyttää myös kuljetustilassa (engl. transport mode), jolloin sen kuljettama data on kuljetuskerrokselta tullut segmentti. Tällöin salataan vain kuljetettava data, mutta otsaketiedot jäävät salaamatta. Protokolla sinänsä toimii samoin sekä tunnelointitilassa että kuljetustilassa, mutta sen oma data on erilainen. Kuljetustilassa sen data on TCP-segmentti, kun taas
+tunnelointitilassa datana on IP-paketti.
+
 
 Koska IPsec käyttää salausta on sekä lähettäjällä että vastaanottajalla oltava jokin jaettu salaisuus, tyypillisesti salausavain (engl. encryption key) tai avainpari, jolla data voidaan lähettäjällä salata (engl. encrypt) ja vastaanottajalla taas purkaa (engl. decrypt) ennen salausta olleeseen "selväkieliseen" muotoon.  
 
@@ -51,9 +55,14 @@ Salaamalla siirrettävän datan (engl. encryption of payload) IPsec takaa sen mu
 
 Turvallinen avaintenhallinta on aina keskeinen ongelman tiedonsuojaukseen liittyvissä salausjärjestelmissä. IPsec:ssä on erillinen avaintenhallintaprotokolla Internet Key Exchange (IKE), jonka avulla avaimista voidaan sopia turvallisesti ilman, että muut verkossa olevat laitteet pystyvät tunnistamaan kommunikoinnin osapuolia.  IKEn sijaan avaimet voitaisiin toki asettaa kommunikoiville laitteille käsin, mutta isommissa järjestelmissä laitteita on aivan liikaa tähän tarkoitukseen. 
 
+Palataan vielä hetkeksi virtuaalisten yksityisverkkojen teemaan. Virtuaalinen yksityisverkko kahden aliverkon välillä voidaan siis toteuttaa IPsecillä siten, että tunnelointi tehdään aliverkkoja julkiseen verkkoon yhdistävissä reitittimissä. Pienimmillään toinen näistä aliverkoista voi olla käyttäjän tietokone ja suurimmillaan kyseessä voi olla ison organisaation koko sivukonttori. Toinen on tyypillisesti organisaation oma laaja verkko pääkonttorilla tai pääasiallisessa toimipaikassa. Tyypillisesti vain toisella aliverkolla on tunneloimaton yhteys internetiin.
 
-TEHTÄVÄ:  Joku tehtävä IPseciin liittyen - ekä käsitteitä
+alt= " Aliverkossa A on tietokone, jonka IP osoite on 158.34.128.78. Verkossa on myös muutama muu laite, joiden IP-osoitteita ei ole kerrottu. Laitteet on yhdistetty aliverkon reunalla olevaan reitittimeen, jonka aliverkon puoleinen IP-osoite on 158.34.23.1 ja julkisen internetin puoleinen osoite on 202.128.78.26. Reitittimen yhdistää toisen aliverkon, B, reitittimeen julkinen pilvimäinen internet, jonka läpi reitittimien välinen tunneli muodostaa suoran putken. Toisen aliverkon reitittimen Internetin puoleinen IP-osoite on 158.34.2.10 ja aliverkon sisäpuolen IP-osoite on 158.34.79.5. Tässä toisessa aliverkossa on kuvattuna vain viestin vastaanottaja, jonka IP-osoite on 158.34.79.186. Lisäksi aliverkossa on muutama viivalla piirretty linkki, joiden toista päätä ei ole kuvattu."
+
+KUVA: Kuvassa kaksi aliverkkoa on yhdistetty virtuaaliseksi yksityisverkoksi. Näitä verkkoja yhdistävät reitittimet toimivat yhteistyössä ja tunneloivat kaikki aliverkosta A lähtevät viestit aliverkkoon B.
 
 
+<quiz id=" "> </quiz>
 
+JOs et saanut äskeistä tehtävää oikein, niin piirrä itsellesi alkuperäinen laitteen lähettämä IP-paketti ja sen jälkeen reitittimen lähettämä IP-sec paketti ja katso miten nuo lähettäjien ja vastaanottajien osoitteet menevät.
 
