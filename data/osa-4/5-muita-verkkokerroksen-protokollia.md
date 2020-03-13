@@ -7,7 +7,8 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Tiedät mikä ICMP on ja mitä sillä tehdään
+- Tunnistat termin ICMP ja osaat yleisellä tasolla kertoa mikä se on
+- Tunnistat termin IPsec ja osaat yleisllä tasolla kertoa mikä se on
 
 </text-box>
 
