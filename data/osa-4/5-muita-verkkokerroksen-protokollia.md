@@ -43,9 +43,10 @@ Tämä IPsecin suhde virtuaalisten yksityisverkkojen yhtenä toteutusvaihtoehton
 <img src="../img/IPsec.svg"  alt="Kuvassa on protokollapinon kerrokset, joiden väliin on sijoitettu myös IPsec. Kerrokset ylhäältä lukien sovelluskerros, kuljetuskerror, verkkokerros, IPsec, verkkokerros, linkkikerros">
 KUVA: Kuvassa on protokollapinon kerrokset, joiden väliin on sijoitettu myös IPsec tunnelointitilassa. IPsecin yläpuoliset sovellus-, kuljetus- ja verkkokerros ovat alkuperäisen IP-paketin mukaisia. IPsecin alapuoliset kerrokset puolestaan kohdistuvat IPsec:n tekemään uuteeen IP-pakettiin.
 
+
+
 IPsec:iä voi käyttää myös kuljetustilassa (engl. transport mode), jolloin sen kuljettama data on kuljetuskerrokselta tullut segmentti. Tällöin salataan vain kuljetettava data, mutta otsaketiedot jäävät salaamatta. Protokolla sinänsä toimii samoin sekä tunnelointitilassa että kuljetustilassa, mutta sen oma data on erilainen. Kuljetustilassa sen data on TCP-segmentti, kun taas
 tunnelointitilassa datana on IP-paketti.
-
 
 Koska IPsec käyttää salausta on sekä lähettäjällä että vastaanottajalla oltava jokin jaettu salaisuus, tyypillisesti salausavain (engl. encryption key) tai avainpari, jolla data voidaan lähettäjällä salata (engl. encrypt) ja vastaanottajalla taas purkaa (engl. decrypt) ennen salausta olleeseen "selväkieliseen" muotoon.  
 
