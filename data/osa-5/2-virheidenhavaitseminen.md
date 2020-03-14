@@ -51,7 +51,7 @@ CRC:n tarkastusbittien lukumäärä riippuu käytettävästä virittäjäpolynom
 
 Laskennan tehostamiseksi CRC:ssä jätetään yhteenlaskusta pois muistinumero (engl. carry) ja vähennyslaskusta lainaus, jolloin binäärilukujen aritmetiikassa ne supistuvat yksinkertaiseksi XOR-operaatioksi.
 
-TEHTÄVÄ:  XOR laskuja
+<quiz id="a07cd207-7fcd-40db-982d-d4262d8545ff"> </quiz>
 
 Tällä kurssilla ohitetaan matemaattiset perustelut sille, miksi CRC toimii hyvin virheiden havaitsemissa. Jos aihe kiinnostaa, niin wikipediasta löytyy artikkeli [Mathematics of CRC](http://en.wikipedia.org/wiki/Mathematics_of_CRC), jossa on kattavasti kerrottu menetelmän matemaattiset perusteet.
 
@@ -62,10 +62,10 @@ Jos data, johon tarkistusbitit liitetään on 101110, lähettäjä tekee jakolas
 
 Lähettäjä lähettää siis vastaanottajalle bittijonon 101110011. Tätä kutsutaan usein koodiksi (engl. code), koska alkuperäinen data on koodattu jollain tavalla mukaan tähän lähetettävään koodiin. Samaa termiä ja toimintamallia käytetään myös salausalgoritmeissa. Lähettäjä siis tekee alkuperäiselle datalle jonkin operaation ja lähettää tämän operaation tuloksena syntynen koodin vastaanottajalle, joka puolestaan tekee koodille jonkin (saman tai eri) operaation, ja saa tulokseksi alkuperäisen datan.
 
-Kun vastaannottaja vastaanottaa bittijonon 101110011, se laskee jakolaskun 101110011 : 1001 jakojäännöksen. Jos jakojäännös on pelkkiä nollia, kuten tässä, niin se tietää / olettaa, että kehyksessä ei ole virheitä ja antaa datan 101110 eteenpäin. Jos se on saanut jonkun muun bittikuvion, vaikkapa 010111011, niin jakolaskun lopputulos ei ole nollia, vaan 110, jolloin se tietää että kehyksessä on virheitä ja hylkää sen.
+Kun vastaannottaja vastaanottaa bittijonon 101110011, se laskee jakolaskun 101110011 : 1001 jakojäännöksen. Jos jakojäännös on pelkkiä nollia, kuten tässä, niin se tietää / olettaa, että kehyksessä ei ole virheitä ja antaa datan 101110 eteenpäin. Jos se on saanut jonkun muun bittikuvion, vaikkapa 010111011, niin jakolaskun lopputulos ei ole nollia, vaan 110, jolloin se tietää, että kehyksessä on virheitä ja hylkää sen.
 
 
-HUOM: Tähän esimerkki CRC-laskusta  TODO
+HUOM: Tähän esimerkki CRC-laskusta  TODO  . Skannattava kuva
 
 Laskutoimitus on yksityiskohtaisesti kuvattu englanninkielisellä wikipedian sivulla [Cyclic Redundancy Check](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) 
 
@@ -74,14 +74,9 @@ eli bitteinä 1 0000 0100 1100 0001 0001 1101 1011 0111. Huomaa, että tässä o
 
 Niille joita virheentarkistus kiinnostaa enemmänkin, niin muita stardardoituja virittäjäpolynomeja on luetetu eglanninkielisen wikipedian sivulla [CRC: Polynomial representations](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks). Pariteettibitti voidaan luokitella triviaaliksi 1-bittiseksi CRC:ksi.
 
-
 CRC:ssä käytettävä polynomi kuvaa virheiden jakautumista. Hyvin valittu virittäjäpolynomi maksioi virheiden havaitsemisen samalla kun minimoidaan kaikki ylimääräinen tarkistus. Tietyllä virittäjäpolynomilla voidaan havaita virheryöpyt, joiden pituus on pienempi tai korkeintaan yhtäsuuri kuin virittäjän pituus. Tätä pidemmätkin virheryöpyt voidaan todennäköisesti havaita, mutta huonolla tuurilla osa niistä saattaa myös jäädä havaitsematta. Siksi edellä esimerkissä käyttämämme 4:n pituinen virittäjäpolynomi ei ole riittävän hyvä todelliseen käyttöön, vaan tarvitaan pidempiä polynomeja. Ethernet käyttää 33:n pituista virittäjäpolynomia, jolla havaitaan riittävän luotettavasti ethernet-kehysten virheet.
 
 
 
-TEHTÄVÄ: Ainakin pari CRC laskutoimitusta.
-
-
-
-<quiz id='3a28a6ee-2504-44c5-957d-1dbd9e9533af'></quiz>
+<quiz id='a7f4eab5-85bf-4b65-b403-de05c901a730'></quiz>
 
