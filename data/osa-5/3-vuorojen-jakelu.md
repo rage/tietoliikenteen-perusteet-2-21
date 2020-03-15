@@ -80,9 +80,12 @@ Aloitetaan historiasta ja ihan ensimmäisestä langattoman verkon läehtysvuoroj
 
 Alkuperäinen ALOHA ei ollut kovin tehokas, koska jokainen solmu sai lähettää viestin heti, kun sillä oli lähetettävää. Se ei siis  etukäteen kuunnellut onko radiotiellä jo viesti kulkemassa. Solmu kuunteli vasta lähetyksen jälkeen onnistuiko lähetys. Jos törmäys tapahtui, niin solmun piti odottaa satunnainen aika ja yrittää sitten uudelleen.
 
-Koska solmut eivät kuunnelleet etukäteen ja koska viestien pituutta ei ollut rajoitettu, niin alkuperäisessä ALOHAssa törmäyksen todennäköisyys oli niin suuri, että vain noin 18% kanavan koko kapasiteetista saatiin käyttöön. Suurin osa kanavan kapasiteetista kului siis tärmäysten vuoksi hukkaan. Katso tuolta englanninkielisestä wikipediasta kuvia, joista selviää miksi yhteentörmäykset veivät noin suuren osan kanavan kapasiteetista.
+Koska solmut eivät kuunnelleet etukäteen ja koska viestien pituutta ei ollut rajoitettu, niin alkuperäisessä ALOHAssa törmäyksen todennäköisyys oli niin suuri, että vain noin 18% kanavan koko kapasiteetista saatiin käyttöön. Suurin osa kanavan kapasiteetista kului siis tärmäysten vuoksi hukkaan. Katso tuolta englanninkielisestä wikipediasta kuvia, joista selviää miksi yhteentörmäykset vievät noin suuren osan kanavan kapasiteetista.
 
-ALOHAsta tehtiin paranneltu versio, jossa karsittiin osittain päällekkäiset yhteentörmäykset pois. Viipaloidussa ALOHAssa kanavan sovittiin, että siirrettävät kehykset ovat keskenään samankokoisia. Lisäksi kanava jaettiin aikaviipaleisiin, siten että yhdessä aikaviipaleessa voi lähettää yhden kehyksen. Nyt kaikki solmut aloittivat lähetyksensä aina aikaviipaleen alusta eikä kesken toisen solmun lähetystä. Tämä onnistui, kun solmut ja niiden kellot saatiin synkronoitua. Kaikki (lähettävät) solmut havaitsevat yhteentörmäykset.
+<qui< id="b56f937e-907b-492f-8314-efd73978c244" </quiz>
+
+
+ALOHAsta tehtiin paranneltu versio, jossa karsittiin osittain päällekkäiset yhteentörmäykset pois. Viipaloidussa ALOHAssa (engl. slotted ALOHA) kaikki siirrettävät kehykset ovat keskenään samankokoisia. Lisäksi kanava jaettiin aikaviipaleisiin siten, että yhdessä aikaviipaleessa voi lähettää yhden kehyksen. Nyt kaikki solmut aloittavat lähetyksensä aina aikaviipaleen alusta eikä kesken toisen solmun lähetystä. Tämä onnistui, kun solmut ja niiden kellot saatiin synkronoitua. Kaikki (lähettävät) solmut havaitsevat yhteentörmäykset.
 
 Kun siirtokehys on valmis, niin solmu lähettää sen heti seuraavassa aikaviipaleessa. Jos ei tullut yhteenörmäystä, niin solmu voi lähettää seuraavan kehyksen heti seuraavassa aikaviipaleessa. Jos lähetyksessä tuli yhteentörmäys, niin solmu yrittää lähetystä uudelleen seuraavassa aikaviipaleessa jollakin todennäköisyydellä p.
 
@@ -90,10 +93,11 @@ Viipaloidulla ALOHAssa saadaan kanavan kapasiteetista käyttöön noin 37%, mik�
 
 Viipaloitua ALOHAa käytetään edelleen tietyissä erikoistilanteissa, koska se on toteutukseltaan ja toiminnaltaan hyvin yksinkertainen ja koska se sallii yhden lähettäjän lähettää täydellä nopeudella, jos muita lähettäjiä ei samanaikaisesti ole.
 
+Wikipedian englanninkielisellä [ALOHAnet](https://en.wikipedia.org/wiki/ALOHAnet) sivulla on hyvä kuva viipaloidun ALOHAn toiminnasta useamman lähettäjän kanssa. Kuvassa on sekä yhteentörmäyksiä että onnistuneita lähetyksiä.
 
-TEHTÄVÖ:  Kuinka paljon 1 Gigabitiä sekunnissa kanavan kapasiteetista saadaan ylläolevien tehokkuus lukujen perusteella käyttöön a) ALOHAssa b) viipaloidussa ALOHAssa
+<quiz id="ac4463e7-892e-470d-bb03-e3b8788683be"> </quiz>
 
-Simuloi viipaloitua alohaa (Anna lähetettävän kehykset, todennäköisyydet yms, jolloin simulointi on kaikilla samanlaianen ja tee sitten kymys  mitä missäkin viipaleessa tapahtuu (tyhjä, yhteentörmäys, a,b,c,d,e)
+
 
 
 ### Lähetyskanavan kuuntelu CSMA
