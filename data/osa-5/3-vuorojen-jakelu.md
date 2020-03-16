@@ -82,7 +82,7 @@ Alkuperäinen ALOHA ei ollut kovin tehokas, koska jokainen solmu sai lähettää
 
 Koska solmut eivät kuunnelleet etukäteen ja koska viestien pituutta ei ollut rajoitettu, niin alkuperäisessä ALOHAssa törmäyksen todennäköisyys oli niin suuri, että vain noin 18% kanavan koko kapasiteetista saatiin käyttöön. Suurin osa kanavan kapasiteetista kului siis tärmäysten vuoksi hukkaan. Katso tuolta englanninkielisestä wikipediasta kuvia, joista selviää miksi yhteentörmäykset vievät noin suuren osan kanavan kapasiteetista.
 
-<quiz id="b56f937e-907b-492f-8314-efd73978c244" </quiz>
+<quiz id="b56f937e-907b-492f-8314-efd73978c244"> </quiz>
 
 
 ALOHAsta tehtiin paranneltu versio, jossa karsittiin osittain päällekkäiset yhteentörmäykset pois. Viipaloidussa ALOHAssa (engl. slotted ALOHA) kaikki siirrettävät kehykset ovat keskenään samankokoisia. Lisäksi kanava jaettiin aikaviipaleisiin siten, että yhdessä aikaviipaleessa voi lähettää yhden kehyksen. Nyt kaikki solmut aloittavat lähetyksensä aina aikaviipaleen alusta eikä kesken toisen solmun lähetystä. Tämä onnistui, kun solmut ja niiden kellot saatiin synkronoitua. Kaikki (lähettävät) solmut havaitsevat yhteentörmäykset.
@@ -118,4 +118,17 @@ Jos kehyksen lähetys epäonnistui törmäyksen vuoksi, niin solmu odottaa satun
 
 Iso kysymys erityisesti CSMA/CD:ssä on, että kuinka paljon pitää vähintään lähettää ja toisaalta, kuinka kauan on kuunneltava oman lähetyksen aloituksen jälkeen. Ajatellaan, että A:n ja B:n etäisyys on kyseisessä kaapelissa mahdollisimman suuri. Tällöin ne ovat kaapelin eri päissä. Niiden välisessä kaapelissa voi olla muita solmuja. Vaikka A on jo aloittanut lähettämisen, niin B kuulee vielä hetken aikaa tyhjän kanavan ja voi aloittaa oman lähetyksensä. Tämä aika on etenemisviive A:lta B:lle. Jotta A voi havaita törmäyksen, niin sen pitää kuulla B:n lähetys, johon menee vielä toinen etenemisviive. Näin ollen pisin aika, jonka kuluessa mikä tahansa solmu voi havaita törmäyksen on 2 * etenemisviive solmujen välillä. Näin kaapelin eri päissä olevien laitteiden välinen etenemisviive saadaan pidetty riittävän pienenä suhteessa kehyksen pienimpään sallittuun kokoon. Varmistaakseen yhteentörmäyksen havaitsemisen solmu ei saa lopettaa omaa lähetystään ennen kuin törmäysignaali olisi ehtinut tulla. Näin ollen pienin sallittu lähetettävän kehyksen koko on se, jonka lähettäminen kestää vähintään 2 kertaa kaukaisimpien laitteiden välisen maksimietenemisviiveen verran. Näin ethernet-kehyksen minimikoko rajoittaa yhden linkkivälin ethernet-kaapelin pituutta.
 
-TEHTÄVÄ: Joku yksinkertainen CSMA/CD tehtävä.
+CSMA/CD tiivistettynä verkkoon liitetyn solmun, tai oikeammin sen verkkosovittimen (verkkokortti ja sen laiteohjain), toimenpiteet:
+1) Verkkosovitin saa kehyksen välitettäväksi
+2) Jos verkkosovitin havaitsee, että kanava on tyhjä, niin se aloittaa kehyksen lähetyksen samantien. Jos se havaitsee, että kanava on käytössä, niin se odottaa kunnes kanava on tyhjä ja aloittaa sitten kehyksen lähetyksen.
+3) Kun kehyksen lähetys on käynnissä, verkkosovitin kuuntelee kanavaa ja pyrkii havaitsemaan jonkun muun lähettämän signaalin.
+4) Jos verkkosovitin havaitsee signaalin, niin se lopettaa kehyksen lähettämisen (vaaditun minimikoon jälkeen).
+5) Jos kehyksen lähetys päättyy, eikä muiden signaaleja ole kuultu, niin kehyksen lähetys on onnistunut. 
+6) Jos kehyksen lähetys päättyi keskeytykseen, niin verkkosovitin odottaa satunnaisen ajan ja jatkaa kohdasta 2.
+
+Tuo verkkosovittiminen satunnainen odotusaika kasvaa jokaisen peräkkäisen yhteentörmäyksen yhteydessä. Tästä käytetään englanninkielistä termiä binary exponential backoff. Odotusaika valitaan satunnaisesti kokonaislukujen joukosta {0,1,2,... (2^n)-1}, missä n on peräkkäisten yhteentörmäysten määrä.
+
+Huomaathan, että verkkosovittimien toiminta on täysin riippumatonta aiempien viestien onnistumisesta ja toisen verkkosovittimien toiminnasta. Tällöin on täysin mahdollista, että verkkosovitin, joka juuri sai kehyksen välitettäväksi, saa kehyksensä välitettyä sillä aikaa, kun muut yhteentörmäysten jälkeen odottavat seuraavaa lähetysyritystä.
+
+<quiz id="a349c4e9-8207-4fb2-82cb-d7d9ea386496"> </quiz>
+
