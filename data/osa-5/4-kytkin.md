@@ -34,19 +34,11 @@ Koska kytkin suodattaa kehyksiä ja ohjaa saapuvan kehyksen vain siihen porttiin
 
 Koska kytkimen pitää välittää kehykset samantien, niin sillä ei ole aikaa kysyä missä päin verkkoa tietty MAC-osoite sijaitsee. Jos se ei löydä tietoa kytkintaulusta, niin se toimii kuten keskitin ja lähettää kehyksen kaikkiin portteihin, paitsi sinne mistä kehys tuli. Näin se tulvittaa (engl. flooding) kyseisen kehyksen kaikkialle verkossa ja voi olla varma, että vastaanottaja saa sen.
 
-Omaa kytkintauluaan se päivittää saapuvien kehysten tiedoilla. Aina kun sille tulee kehys se tarkistaa kytkintaulusta vastaanottajan osoitteen lisäksi myös lähettäjän MAC-osoitteen. Jos lähettäjän MAC-osoitetta ei löydy kytkintaulusta, niin kytkin lisää tauluun lähettäjän MAC-osoitteen ja sen portin numeron, josta kehys saapui. Näin se oppii liikennettä seuraamalla missä portissa mihin laite sijaitsee. Tästä käytetään joskus termiä 'takaperin oppiminen' (engl. backward learning) korostamaan sitä, että toisin kuin yleensä tässä tarkastellaan ja päivitetään lähettäjän tietoja. Yleensä tietoliikenteessä ollaan kiinnostuneita vain vastaanottajasta, mutta kytkintaulun päivityksessä kiinnostavaa on nimenomaan lähettäjä.
+Omaa kytkintauluaan se päivittää saapuvien kehysten tiedoilla. Aina, kun sille saapuu välitettävä kehys, se tarkistaa kytkintaulusta vastaanottajan osoitteen lisäksi myös lähettäjän MAC-osoitteen. Jos lähettäjän MAC-osoitetta ei löydy kytkintaulusta, niin kytkin lisää tauluun lähettäjän MAC-osoitteen ja sen portin numeron, josta kehys saapui. Näin se oppii liikennettä seuraamalla missä portissa mikin laite sijaitsee. Tästä käytetään joskus termiä 'takaperin oppiminen' (engl. backward learning) korostamaan sitä, että toisin kuin yleensä tässä tarkastellaan ja päivitetään lähettäjän tietoja. Yleensä tietoliikenteessä ollaan kiinnostuneita vain vastaanottajasta, mutta kytkintaulun päivityksessä kiinnostavaa on nimenomaan lähettäjä.
 
-Tästä vaiheittaisesta kytkitaulun päivityksestä on se hyöty, että kytkimeen voidaan helposti liittää uusia laitteita ja kytkin oppii itsenäisesti missä portissa laite on. Jotta kytkintaulu pysyisi riittävän pienenä, niin kytkin poistaa kytkitaulusta käyttämättöämiä tietoja, eli jos tietystä MAC-osoitteesta ei ole vähään aikaan liikennöity, niin se poistetaan. 
-
-
-KUVA. Verkossa käytetään tähtitopologiaa. Tähden keskuksena on kytkin. Kytkimeen tulee ainakin neljää yhteyttä, joista kaksi tulee suoraan solmulta ja kahdessa kytkin on esin liitetty keskittimeen, joista toiseen on liitty 2 ja toiseen 3 solmua. Näin meillä on verkon reunoilla kaikkiaan 7 laitetta ja keskemmällä kaksi keskitintä ja yksi kytkin. A ja B on kiinni keskittimessä H1, H1 ja C on yhdistetty kytkimeen K, H1 porttiin 1 ja C porttiin 2. Toisella puolella kytkintä portissa 3 on H2, jossa on kiinni solmut E,F ja G. Lisäksi kytkimessä on vielä kiinni solmu I portissa 4.
- 
- <img src="../img/drawings/olio-joan.png"/>
- 
- 
+Tästä vaiheittaisesta kytkitaulun päivityksestä on se hyöty, että kytkimeen voidaan helposti liittää uusia laitteita ja kytkin oppii itsenäisesti, missä portissa laite on. Jotta kytkintaulu pysyisi riittävän pienenä, niin kytkin poistaa kytkitaulusta käyttämättöämiä tietoja, eli jos tietystä MAC-osoitteesta ei ole vähään aikaan liikennöity, niin se poistetaan. 
 
 Kytkin siis käsittelee kytkintauluaan seuraavasti aina kun sille saapuu kehys
-
 - Onko lähettäjän MAC-osoite taulussa?
     on: päivitä aikaleima
     ei: lisää tauluun (MAC, porttinumero, aikaleima)
@@ -54,11 +46,16 @@ Kytkin siis käsittelee kytkintauluaan seuraavasti aina kun sille saapuu kehys
     ei:  tulvita (eli lähetä kaikkialle muualle paitsi tuloporttiin)
     on: Jos portti eri kuin tuloportti, niin lähetä ko. porttiin. Jos portti sama kuin tuloportti, niin unohda.
 
+ <img src="../img/kytkin.png"/> alt=" Kuvassa on tähtitopologiaan perustuva verkko, jonka keskipisteessä on kytkin. Kytkimeen tulee ainakin neljä yhteyttä, joista kaksi tulee suoraan solmulta ja kahdessa kytkin on ensin liitetty keskittimeen, joista toiseen on liitetty 2 ja toiseen 3 solmua. Näin meillä on verkon reunoilla kaikkiaan 7 laitetta ja keskemmällä kaksi keskitintä ja yksi kytkin. A ja B on kiinni keskittimessä H1. H1 ja C on yhdistetty kytkimeen K, H1 porttiin 1 ja C porttiin 2. Toisella puolella kytkintä portissa 3 on H2, jossa on kiinni solmut E,F ja G. Lisäksi kytkimessä on vielä kiinni solmu I portissa 4.
+ 
+ KUVA: Kuvassa on yksi aliverkko, jossa on 1 kytkin ja 2 keskitintä. Keskitittimet vällittävät kaiken liikenteen niiden läpi ja kaikkiin niihin liitettyihin laitteisiin. Kytkin osaa eristää liikennettä linkkikerroksella.
+ 
 
-Esimerkiksi oheisessa kuvassa, jos oletetaan, että kytkintaulu on tyhjä ja A lähettää kehyksen B:lle, niin mitä tapahtuu. A:n kehys päätyy keskittimelle, joka lähettää sen kaikkiin suuntiin eteenpäin, eli kehys päätyy sekä B:lle että kytkimelle. Koska kytkimen kytkintaulu on tyhjä, niin se lisää sinne (A,1). Koska B ei ole vielä kytkintaulussa, niin kytkin lähettää viestin kaikkiin portteihin paitsi porttiin 1, koska kehys saapui sieltä.
+Käydään läpi esimerkki tähän kuvaan ja sen solmuihin liittyen. Oletetaan ensin, että kytkimen kytkentätaulu on tyhjä. Solmu A lähettää nyt kehyksen solmulle B. A:n lähettämä kehys päätyy ensin keskittimelle, joka välittää sen kaikkiin suuntiin. Näin kehys päätyy sekä B:lle että kytkimelle. Koska kehys tulee kytkimelle, niin kytkin lisää kytkentätauluunsa, että solmu A on kytkimen portin 1 takana. Näin kytkin osaa jatkossa välittää viestejä A:lle. Koska B:tä ei vielä löydy kytkimen kytkentätaulusta, niin kytkin välittää kyeisen kehyksen kaikkiin muihin suuntiin paitsi kytkimen porttiin 1, josta viesti tuli.  Kun B vastaa A:lle, niin viesti kulkee taas keskittimen H1 kautta ja päätyy sekä A:lle että kytkimelle. Nyt kytkin havaitsee omasta kytkentätaulustaan, että A on samassa portissa, josta viesti tuli, joten kytkin ei välitä viesti minnekään.
 
-Jatketaan esimerkki: Nyt I lähettää viestin A:lle. Viesti menee suoraan kytkimelle, joka tarkistaa kytkintaulustaan sekä I:n että A:n. I ei ei ole taulussa, joten se lisätään sinne (I,4). Vastaanottaja A  on taulussa, joten kehys ohjataan vain porttiin 1.
+Jos nyt seuraavaksi E lähettää kehyksen B:lle, niin kehys päätyy kytkimelle keskittimen H2 kautta. Kun kytkin saa viestin se lisää E:n omaan kytkentätauluunsa ja havaitsee taulusta, että viesti Blle pitää laittaa porttiin 1. Kytkin siis lähettää viestin porttiin 1, jolloin kehys päätyy B:lle keskittimen H1 kautta.
 
+<quiz id=" "> <quiz>
 
 TEHTÄVÄ tuohon kuvaan liittyen.
 
