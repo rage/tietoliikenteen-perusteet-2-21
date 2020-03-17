@@ -1,5 +1,5 @@
 ---
-path: '/osa-5/5-langaton'
+path: '/osa-5/6-langaton'
 title: 'Langaton verkko'
 hidden: false
 ---
