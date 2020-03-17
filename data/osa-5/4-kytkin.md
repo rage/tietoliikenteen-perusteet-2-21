@@ -48,33 +48,23 @@ Kytkin siis käsittelee kytkintauluaan seuraavasti aina kun sille saapuu kehys
 
  <img src="../img/kytkin.png"/> alt=" Kuvassa on tähtitopologiaan perustuva verkko, jonka keskipisteessä on kytkin. Kytkimeen tulee ainakin neljä yhteyttä, joista kaksi tulee suoraan solmulta ja kahdessa kytkin on ensin liitetty keskittimeen, joista toiseen on liitetty 2 ja toiseen 3 solmua. Näin meillä on verkon reunoilla kaikkiaan 7 laitetta ja keskemmällä kaksi keskitintä ja yksi kytkin. A ja B on kiinni keskittimessä H1. H1 ja C on yhdistetty kytkimeen K, H1 porttiin 1 ja C porttiin 2. Toisella puolella kytkintä portissa 3 on H2, jossa on kiinni solmut E,F ja G. Lisäksi kytkimessä on vielä kiinni solmu I portissa 4.
  
- KUVA: Kuvassa on yksi aliverkko, jossa on 1 kytkin ja 2 keskitintä. Keskitittimet vällittävät kaiken liikenteen niiden läpi ja kaikkiin niihin liitettyihin laitteisiin. Kytkin osaa eristää liikennettä linkkikerroksella.
+KUVA: Kuvassa on yksi aliverkko, jossa on 1 kytkin ja 2 keskitintä. Keskittimet välittävät kaiken liikenteen niiden läpi ja kaikkiin niihin liitettyihin laitteisiin. Kytkin osaa eristää liikennettä linkkikerroksella.
  
 
 Käydään läpi esimerkki tähän kuvaan ja sen solmuihin liittyen. Oletetaan ensin, että kytkimen kytkentätaulu on tyhjä. Solmu A lähettää nyt kehyksen solmulle B. A:n lähettämä kehys päätyy ensin keskittimelle, joka välittää sen kaikkiin suuntiin. Näin kehys päätyy sekä B:lle että kytkimelle. Koska kehys tulee kytkimelle, niin kytkin lisää kytkentätauluunsa, että solmu A on kytkimen portin 1 takana. Näin kytkin osaa jatkossa välittää viestejä A:lle. Koska B:tä ei vielä löydy kytkimen kytkentätaulusta, niin kytkin välittää kyeisen kehyksen kaikkiin muihin suuntiin paitsi kytkimen porttiin 1, josta viesti tuli.  Kun B vastaa A:lle, niin viesti kulkee taas keskittimen H1 kautta ja päätyy sekä A:lle että kytkimelle. Nyt kytkin havaitsee omasta kytkentätaulustaan, että A on samassa portissa, josta viesti tuli, joten kytkin ei välitä viesti minnekään.
 
-Jos nyt seuraavaksi E lähettää kehyksen B:lle, niin kehys päätyy kytkimelle keskittimen H2 kautta. Kun kytkin saa viestin se lisää E:n omaan kytkentätauluunsa ja havaitsee taulusta, että viesti Blle pitää laittaa porttiin 1. Kytkin siis lähettää viestin porttiin 1, jolloin kehys päätyy B:lle keskittimen H1 kautta.
+Jos nyt seuraavaksi E lähettää kehyksen B:lle, niin kehys päätyy kytkimelle keskittimen H2 kautta. Kun kytkin saa viestin se lisää E:n omaan kytkentätauluunsa ja havaitsee taulusta, että viesti B:lle pitää laittaa porttiin 1. Kytkin siis lähettää viestin porttiin 1, jolloin kehys päätyy B:lle keskittimen H1 kautta.
 
-<quiz id=" "> <quiz>
+<quiz id="ac60ec2c-8945-4296-be47-e3de30133428"> <quiz>
 
-TEHTÄVÄ tuohon kuvaan liittyen.
-
-
-
-Kehysten tulvituksen liittyy aina riski siitä, että kehys jää ikuisesti kiertämään verkossa. Näin voi tapahtua, jos verkon rakenteessa on silmukka. Tehdään tuohon äskeiseen esimerkkiin silmukka esimerkiksi yhdistämällä keskittimet H1 ja H2 toisiinsa joko suoraan tai uuden kytkimen avulla. Nyt jos kytkin lähettää kehyksen A:le porttiin 1, niin keskittimet toistavat viestin ja se päätyy takaisin kytkimelle portista 3. Kytkin siis lähettää viestin uudelleen porttiin 1 ja näin meillä on ikuisesti verkossa liikkuva viesti. Tällainen silmukka pudottaa tehokkaasti verkon tehokkuutta, kun suurin osa siirrettävistä kehyksistä on näitä turhia jo moneenkertaan lähetettyjä.
+Kehysten tulvituksen liittyy aina riski siitä, että kehys jää ikuisesti kiertämään verkossa. Näin voi tapahtua, jos verkon rakenteessa on silmukka. Tehdään tuohon äskeiseen esimerkkiin silmukka esimerkiksi yhdistämällä keskittimet H1 ja H2 toisiinsa joko suoraan tai uuden kytkimen avulla. Nyt jos kytkin lähettää kehyksen A:lle porttiin 1, niin keskittimet toistavat viestin ja se päätyy takaisin kytkimelle portista 3. Kytkin siis lähettää viestin uudelleen porttiin 1 ja näin meillä on ikuisesti verkossa liikkuva viesti. Tällainen silmukka pudottaa tehokkaasti verkon tehokkuutta, kun suurin osa siirrettävistä kehyksistä on näitä turhia jo moneenkertaan lähetettyjä.
 
 Voimme välttyä silmukoilta muodostamalla tällaiseen verkkoon virittävän puun, jota pitkin kytkimet voivat siirtää kehyksiä. Tämä voidaan tehdä esimerkiksi reitityksen yhteydessä käsitellyllä linkkitila-algoritmilla. Silmukka on ihan yhtä hankala, onpa se reitittimien muodostamassa verkossa tai kytkinten muodostamassa verkossa. Samat periaatteet pätevät niihin molempiin. Verkkoja tutkitaan myös hyvin teoreettisesti, jotta niiden tällaiset yleiset ominaisuudet voidaan havaita ja niiden ratkaisemiseen kehittää yleisiä algoritmeja.
 
+Kytkimien ohessa saatetaan joskus puhua myös [silloista](https://fi.wikipedia.org/wiki/Silta_(tietoliikenne)). Kytkin on internetiin ja erityisesti ethernet-verkkoihin liittyvä termi. Silta on mikä tahansa kahta verkkoa linkkikerroksella yhdistävä laite, mutta nykyisin kun käytetään lähinnä ethernet-verkkoja, niin silta on terminä jäämässä taustalle. Silta-termiä käytetään erityisesti silloin, kun yhdistetään eri teknologioilla toimivia verkkoja toisiinsa nimenomaan linkkikerroksella. Kytkin, joka osaa useita eri ethernet-versioita, on myös silta. 
 
+Tyypillisesti termiin silta tai oikeastaan sen muunnokseen siltaus tai siltaava saattaa törmätä ADSL-modeemin tai muun verkkolaitteen yhteydessä. Tällainen laite voi olla joko reitittävässä tai siltaavassa tilassa. Tällöin käytännössä otetaan kantaa millä protokollapinon kerroksella laitteen halutaan toimivan. Reitittävä tila tarkoittaa sitä, että laite toimii verkkokerroksen reitittimenä ja suorittaa verkkokerroksen tehtäviä. Siltaava tila puolestaan tarkoittaa, että laite toimii kuin linkkikerroksen kytkin eli että se ei käsittele IP-pakettia lainkaan vaan lähettää kaikki verkkokerroksen paketit suoraan laitteen läpi kuten kytkin. Toki siltaavassa tilassa se ohjaa linkkikerroksen kehyksiä kytkimen tavoin oikeaan suuntaan, mutta se ei koske lainkaan verkkokerroksen sisältöön.
 
-Kytkimien ohessa saatetaan joskus puhua myös [silloista](https://fi.wikipedia.org/wiki/Silta_(tietoliikenne)). Kytkin on internetiin ja erityisesti ethernet-verkkoihin liittyvä termi. Silta on mikä tahansa kahta verkkoa linkkikerroksella yhdistävä laite, mutta nykyisin kun käytetään lähinnä ethernet-verkkoja, niin silta -termi on jäämässä taustalle. Silta -termiä käytetään erityisesti silloin kun yhdistetään eri teknologioilla toimivia verkkoja toisiinsa nimenomaan linkkikerroksella. Kytkin jokaa osaa useita eri ethernet-versioita on myös silta. 
-
-Tyypillisesti termiin silta tai oikeastaan sen muunnokseen siltaus tai siltaava saattaa törmätä ADSL-modeemin tai muun verkkolaitteen yhteydessä. Tällainen laite voi olla joko reitittävässä tai siltaavassa tilassa. Reitittävä tila tarkoittaa siis sitä, että laite toimii verkkokerroksen reitittimenä ja suorittaa verkkokerroksen tehtäviä. Siltaava tila puolestaan tarkoittaa, että laite toimii kuin linkkikerroksen kytkin eli että se ei käsittele IP-pakettia lainkaan vaain lähettää kaikki verkkokerroksen paketin suoraan laitten läpi kuten kytkin.
-
-
-
-TEHTÄVÄ
-
-
+<quiz id="ae548f5f-8ad3-409b-9d39-e672a90ddcbe"> <quiz>
 
 
