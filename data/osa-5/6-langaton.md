@@ -108,8 +108,7 @@ KUVA: Kuvassa on esitettynä yhden data kehyksen lähetykseen liittyvät viestit
 ### Langattoman verkon kehys
 
 
-Langattoman verkon kehyksessä (katso kenttien selitykset englanninkielisestä wikipediasta https://en.wikipedia.org/wiki/IEEE_802.11#Layer_2_%E2%80%93_Datagrams) on neljä osoitetta. Muistathan, että langallisen ethernet-verkon kehyksessä oli vain kaksi osoitetta (vastaanottajan MAC ja lähettäjän MAC). Langattomassa verkossa kehykselle on määritelty neljä osoitekenttää, joista tosin yleensä ei käytetä kuin kolmea. Muista, että nämä kehykset ovat linkkikerroksella, jolloin kehysten osoitetiedot ovat MAC-osoitteita. Osoitekenttien tulkinnat vaihtelevat sen mukaan mille laitteelle (eli mihin suuntaan) kehys on menossa.
-
+Langattoman verkon kehyksessä (katso kenttien selitykset englanninkielisestä wikipediasta [IEEE 802.11](https://en.wikipedia.org/wiki/IEEE_802.11#Layer_2_%E2%80%93_Datagrams) on neljä osoitetta. Muistathan, että langallisen ethernet-verkon kehyksessä oli vain kaksi osoitetta (vastaanottajan MAC ja lähettäjän MAC). Langattomassa verkossa kehykselle on määritelty neljä osoitekenttää, joista tosin yleensä ei käytetä kuin kolmea. Muista, että nämä kehykset ovat linkkikerroksella, jolloin kehysten osoitetiedot ovat MAC-osoitteita. Osoitekenttien tulkinnat vaihtelevat sen mukaan mille laitteelle (eli mihin suuntaan) kehys on menossa.
 
 <img url="https://i.stack.imgur.com/A6N3j.gif" > </img>
 KUVA: Langattoman verkon kehyksen otsake. 
@@ -127,6 +126,7 @@ Kehyksen alussa on joukko kehyksen tulkintaan vaikuttavia kenttiä, joista kent�
 
 Taulukosta voi hvaita, että osoitteet 1 ja 2 ovat tämän langattoman yhteyden lähettäjä ja vastaanottaja. Osoitteet 3 ja 4  kertovat sitten koko aliverkon osalta alkuperäisen lähettäjän tai vastaanottajan, joka siis on antanut kehyken linkkikerrokselle tai vastaavasti vastaanottovaiheessa saa kehyksen sisällön linkkikerrokselta verkkokerrokselle.
 Koska kummankin kehyksen lopussa on kehykseen liittyvät tarkistusbitit (Frame Check Sequence, FCS), tukiasema joutuu otsaketietojen muunnoksen vuoksi laskemaan ne uudelleen.
+
 
 TEHTÄVÄ:  MIhin kenttiin osoitteita muunnoksissa sijoitetaan
 
