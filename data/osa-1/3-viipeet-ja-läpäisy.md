@@ -62,7 +62,7 @@ Jonoja voi silti muodostua vaikka liikenteen intensiteetti olisikin pienempi tai
 
 Todellisuudessa yhden reitittimen osalta emme pysty ennustamaan pakettien saapumisia (jaksollisuutta tai saapumisväliä), joten pakettien oletetaan saapuvan satunnaisesti (random). Tällöin paketteja saapuu välillä enemmän ja välillä vähemmän, mutta niiden jakaumaa ei tiedetä ennalta.
 
-Lisätietoa kiinnostuneille: Jonot ja jonotus on niin tavallista, että sille on ihan oma jonoteoria. Wikipedian englanninkielinen sivu [Queueing theory](https://en.wikipedia.org/wiki/Queueing_theory) antaa perustiedot asiasta kiinnostuneelle. Tällä kurssilla jonotusta ja sen vaikutuksia ei käsitellä tämän enempää.
+Lisätietoa kiinnostuneille: Jonot ja jonotus on niin tavallista, että niille on ihan oma matematiikan osa-alue, jonoteoria. Wikipedian englanninkielinen sivu [Queueing theory](https://en.wikipedia.org/wiki/Queueing_theory) antaa perustiedot asiasta kiinnostuneelle. Tällä kurssilla jonotusta ja sen vaikutuksia ei käsitellä tämän enempää.
 
 <quiz id="a56e2695-83bc-4ac6-8623-daaed29eca23"></quiz>
 
