@@ -5,6 +5,7 @@ title: 'Verkon kuuntelu ja lainsäädäntö'
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
+-Ymmärrät miksi verkon kuuntelu on helppoa ja miksi kuuntelulta suojautuminen tapahtuu lähinnä salauksen avulla.
 - Tiedät millaisia lainsäädännöllisiä aspekteja liittyy tietoliikenteen seurantaan verkossa
 - Ymmärrät milloin verkon liikennettä voi kuunnella / kaapata ja miten, jotta ei riko lakia
 - Osaat alkeellisella tasolla käyttää Wireshark -ohjelmaa valmiin tallennetun liikenteen analysointiin
