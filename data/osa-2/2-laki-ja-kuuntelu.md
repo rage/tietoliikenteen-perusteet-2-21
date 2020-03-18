@@ -38,26 +38,9 @@ Harjoitellaan hiukan lakien lukemista. Tutustu siis sähköisen viestinnän palv
 
 Kaikenlaiset väärinkäytöksiin, rikoksiin ja niiden valmisteluun liittyvät säännöt ja rangaistukset on koottu [rikoslakiin](https://www.finlex.fi/fi/laki/ajantasa/1889/18890039001). Tietotekniikkaan ja tietoliikenteeseen liittyviä rikoksia on kuvattu erityisesti rikoslain luvussa 38, joka käsittelee tieto- ja viestintärikoksia. Toki lain muissakin luvuissa on kuvattu rikoksia, jotka voivat liittyä tietotekniikkaan ja tietoliikenteeseen.
 
-QUIZZ: MItkä seuraavista rikoksista on kuvattu rikoslain luvussa 38
-
 <quiz id="b0b05e15-8cb3-4de1-bd7b-e990d5fe766a"></quiz>
 
 
-salakuuntelu
-Salassapito
-tietoliikenteen häirintä
-tietojärjestelmän häirintä
-tietomurto
-suojauksen purkujärjestelmärikos
-tietosuojarikos    (Tietosuojalaki!)
-identiteettivarkaus
-
-Teknisen suojauksen kiertämiskeinorikos  (eri luvussa!)
-Oikeuksien sähköisten hallinnointitietojen loukkausrikos
-Datavahingonteko
-Viestintärauhan rikkominen
-Salakuuntelu
-viestintäsalaisuuden loukkaus
 
 Jos hallinnoisimme verkkoa tai sen palvelua siten, että käsittelisimme henkilötietoja, niin meidän täytyisi noudattaa [tietosuojalakia]( https://www.finlex.fi/fi/laki/ajantasa/2018/20181050). Työnantajina ja työntekijöinä on hyvä tietää mitä laissa [yksityisyyden suojasta työelämässä](https://www.finlex.fi/fi/laki/ajantasa/2004/20040759) määrätään.
 
