@@ -124,11 +124,12 @@ Kehyksen alussa on joukko kehyksen tulkintaan vaikuttavia kenttiä, joista kent�
 | 1   | 1     | vastaanottavan tukiaseman MAC  | lähettävän tukiaseman MAC   | vastaanottajan MAC        | lähettäjän MAC    |
 
 
-Taulukosta voi hvaita, että osoitteet 1 ja 2 ovat tämän langattoman yhteyden lähettäjä ja vastaanottaja. Osoitteet 3 ja 4  kertovat sitten koko aliverkon osalta alkuperäisen lähettäjän tai vastaanottajan, joka siis on antanut kehyken linkkikerrokselle tai vastaavasti vastaanottovaiheessa saa kehyksen sisällön linkkikerrokselta verkkokerrokselle.
+Taulukosta voi havaita, että osoitteet 1 ja 2 ovat tämän langattoman yhteyden lähettäjä ja vastaanottaja. Osoitteet 3 ja 4  kertovat sitten koko aliverkon osalta alkuperäisen lähettäjän tai vastaanottajan, joka siis on antanut kehyken linkkikerrokselle tai vastaavasti vastaanottovaiheessa saa kehyksen sisällön linkkikerrokselta verkkokerrokselle.
 Koska kummankin kehyksen lopussa on kehykseen liittyvät tarkistusbitit (Frame Check Sequence, FCS), tukiasema joutuu otsaketietojen muunnoksen vuoksi laskemaan ne uudelleen.
 
 
-TEHTÄVÄ:  MIhin kenttiin osoitteita muunnoksissa sijoitetaan
+<quiz id="b26eac43-8e17-4460-bc99-ebdecef70f2e"> </quiz>
+
 
 
 
