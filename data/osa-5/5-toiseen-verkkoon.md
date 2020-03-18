@@ -41,6 +41,5 @@ KUVA: R1:n lähettämä kehys, joka on menossa R2:lle. Huomaa, että kehyksessä
 
 Kun paketti aikanaan saavuttaa D:n, niin silloin kaikki kerrokset käsitellään vuorollaan alhaalta ylöspäin. Eli linkkikerros poistaa ensin oman kehyksensä, koska viesti oli tulossa tälle laitteelle. Verkkokerros tarkistaa vastaanottajan IP:n ja päättää että viesti on nyt perillä eikä sitä tarvitse enää lähettää eteenpäin. Se purkaa sitten IP-paketin ja antaa sisältä löytyvän segmentin kuljetuskerrokselle. Kuljetuskerros puolestaan välittää varsinaisen sovelluskerroksen viestin oikealle sovellukselle pistokkeen ja siihen liitetyn porttinumeron avulla.
 
-<quiz id=" "> </quiz>
+<quiz id="abe1ee87-88e0-4090-8975-e336516dd15b"> </quiz>
 
-Tehtävänä vielä tuo kolmas väli R2 -> D
