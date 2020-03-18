@@ -24,15 +24,21 @@ Tyypillisesti käyttäjän oma internet-palveluntarjoaja tarjoaa myös paikallis
 
 Asiakaskone saa nimipalvelijan osoitteen tyypillisesti DHCP-palvelijalta samalla, kun kone saa oman IP-osoitteen liikennöintiä varten. Toki nimipalvelijan osoitteen voisi asettaa koneen konfiguraatiotiedostoihin myös käsin, mutta näin ei yleensä enää kukaan toimi ellei halua varta vasten käyttää jotain muuta kuin palveluntarjoajan paikallista nimipalvelijaa.
 
-Nimipalveluhierarkia on kolmitasoinen puurakenne, jossa juurinimipalvelin on puun juuri ja sen (TODO)
+Nimipalveluhierarkia on kolmitasoinen puurakenne, jossa juurinimipalvelin on puun juuri ja sen alapuolelle ovat ylätason aluepalvelijat, jotka vastaavat ylimmän tason nimistä kuten .fi, .sw, .com, .edu, jne. Näiden alapuolella on kyseisen ylätason sisällä olevien alueiden autoritääriset aluepalvelimet. Jokaisesta tähän autorirääriseen nimipalveluhierarkiaan kuuluvasta nmipalvelijasta vastaa tietty nimetty organisaatio. Esimerkiksi i-juurinimipalvelinta hallinnoi Netdos, .fi ylätasoa liikenne- ja viestintävirasto
+ja helsinki.fi -aluetta Helsingin yliopisto. Hel.fi on Helsingin kaupungin hallinnoima nimialue.
 
-KUVA: Hierarkiasta
+<img alt="Kuvassa on nimipalveluhierarkia. Ylimpänä on juurinimipalvelija (eli kirjaimet a-m). Juuren alapuolella on rivi erilaisia ylätason nimipalvelijoita. Kuvassa näistä on .fi, .sw, ..., .com, .edu. Alimmalla tasolla on muutaman ylätason nimipalvelijan alapuolella esimerkin omaisesti joitakin autoritäärisiä aluepalvelijoita, kuten fi:n alla helsinki.fi, elisa.fi ja .edu:n alla berkeley.edu, mit.edu." >
+KUVA: Kuvassa on nimipalveluhierarkian puumainen rakenne. Kuvaan on esimerkin omaisesti nimetty joitakin nimipalvelijoiden vastuualueita. Kuvassa ei siis ole nimipalvelijoiden omia nimiä vaan alueet, joista ne vastaavat.
 
-Juurinimipalvelijoita on itse asiassa useita, koska yksi juurinimipalvelija ei millään ehtisi palvella kaikkia kyselijöitä. Juurinimipalvelijat on nimetty kirjaimilla a-m. Niiden tarkempi osoite on esi. e.root-servers.orgNiillä on siis 13 eri kirjainta. Jokaista eri kirjaimella nimettyä juurinimipalvelijaa hallinnoi eri organisaatio.  Näistä jokaisesta on useita täydellisiä kopioita ympäri maailmaa. Verkkosivulla https://root-servers.org/ on kuvattuna kaikki tämän hetkiset nimipalvelijoiden ja niiden kopioiden sijainnit. Sen mukaan lokakuussa 2019 Suomessa oli 8 juurinimipalvelijoiden kopiota. Nyt maaliskuussa 2020 niitä on 10.
+Juurinimipalvelijoita on itse asiassa useita, koska yksi juurinimipalvelija ei millään ehtisi palvella kaikkia kyselijöitä. Juurinimipalvelijat on nimetty kirjaimilla a-m. Niiden tarkempi osoite on esimerkiksi e.root-servers.org. Niitä on siis kaikkiaan 13 eri kirjainta. Jokaista eri kirjaimella nimettyä juurinimipalvelijaa hallinnoi eri organisaatio.  Näistä jokaisesta on useita täydellisiä kopioita ympäri maailmaa. Verkkosivulla https://root-servers.org/ on kuvattuna kaikki tämän hetkiset juurinimipalvelijoiden ja niiden kopioiden sijainnit. Sen mukaan lokakuussa 2019 Suomessa oli 8 juurinimipalvelijoiden kopiota. Nyt maaliskuussa 2020 niitä on 10.
 
 <quiz id="a1db1c19-80e3-4ffd-857c-d5f53a021dc8"></quiz>
 
-Juurinimipalvelijat tietävät niiden alapuolella olevien ylätason palvelijoiden tiedot. Ylätason nimipalvelimet (kuten a.fi, dns2.nic.uk tai f.ns.se) tuntevat oman alueensa (kuten .fi tai .se) osoitteiden autoritääsiset aluepalvelimet (esim. helsinki.fi -alueesta vastaavat nimipalvelijat). Ylätason osoitteet olivat alunperin lähinnä maatunnuksia, mutta nykyisin myös yrityksillä ja erilaisilla organisaatiolla on omia ylätason tunnuksia. Kuten varmaan jo huomasitkin, niin jokainen organisaatio voi vapaasti ja itsenäisesti nimetä omat laitteensa ja palvelimensa täysin vapaasti. Vain juurinimipalvelijoiden nimet on sovittu. Muilla tasoilla ei ole maailmanlaajuisesti sovittuja nimikäytöntöjä.
+Juurinimipalvelijat tietävät niiden alapuolella olevien ylätason palvelijoiden tiedot. Ylätason nimipalvelimet (kuten a.fi, dns2.nic.uk tai f.ns.se) tuntevat oman alueensa (kuten .fi tai .se) osoitteiden autoritääsiset aluepalvelimet (esim. helsinki.fi -alueesta vastaavat nimipalvelijat). Ylätason osoitteet olivat alunperin lähinnä maatunnuksia, mutta nykyisin myös yrityksillä ja erilaisilla organisaatiolla on omia ylätason tunnuksia. 
+
+Kuten varmaan jo huomasitkin, niin jokainen organisaatio voi vapaasti ja itsenäisesti nimetä omat laitteensa ja palvelimensa täysin vapaasti. Vain juurinimipalvelijoiden nimet on sovittu. Muilla tasoilla ei ole maailmanlaajuisesti sovittuja nimikäytäntöjä.
+
+
 
 
 ## DNS tietue ja viesti
