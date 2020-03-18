@@ -90,6 +90,8 @@ Kuten monet avoimia Wi-Fi -verkkoja käyttäneet jo tietävätkin, niin monet pa
 
 Laitteen sijaan langattoman verkon haltija voi edellyttää käyttäjän tunnistamista. Tällöin tukiasema käyttää erillistä tunnistuspalvelua, johon käyttäjän pitää tunnistautua esimerkiksi käyttäjätunnuksella ja salasanalla. Tunnistautumisen jälkeen käyttäjän laitteella voi liikennöidä verkossa. Jätämme erilaisten käyttäjän tunnistuksen menetelmien tarkemman tarkastelun tietoturvakursseille, kuten Cyber security.
 
+<quiz id="a6168f17-8442-4c82-b2b5-db8d712e034d"> </quiz>
+
 ### Lähetysvuorojen jakelu
 
 IEEE 802.11 standardin mukaan toimivat verkot käyttävät kehysten yhteentörmäysten välttämiseen CSMA/CA menetelmää, johon jo tutustuimme lyhyesti aiemmin. Siinähän tavoitteena oli erityisesti välttää yhteentörmäyksiä.   Katsotaan nyt tarkemmin. miten tämä WLAN-verkoissa tehdään.
@@ -98,10 +100,9 @@ CSMA/CA:ssa edellytään, että lähettäjän pitää aina odottaa pieni hetki v
 
 WLAN-verkkojen käyttämässä CSMA/CA:ssa lähettäjä käyttävää lisäksi kanavan varausta. Koska varauskehykset ja niiden kuittaukset ovat huomattavan paljon lyhyempiä kuin varsinaiset datakehykset, niin yhteentörmäykset varauskehysten kesken ovat nopeita selvittää. Lähettäjähän ei kuuntele tuliko yhteentörmäys, joten jos yhteentörmäys tulee pitkän datakehyksen aikana, niin lähettäjä kuitenkin lähettää kehyksen kokonaan. Kätketyn aseman ongelman vuoksi tällainen yhteentörmäys on mahdollinen. Nyt varausviestien kanssa lähettäjä, odotettuaan tuon DIFS aikaa, lähettääkin ensin pienen varauskehyksen (Request To Send, RTS), jossa se kertoo, kuinka ison kehyksen se haluaa lähettää ja kuinka kauan lähetys tulee kestämään. Vastaanottaja vahvistaa tämän varauksen erillisellä vahvistusviestillä (Clear To Send, CTS), jonka se lähettää heti SIFS ajan jälkeen, jolloin mikään muu asema ei vielä voi lähettää. Koska kuittaus tulee ison kehyksen vastaanottajalta, niin se tavoittaa kaikki ne laitteet, joiden mahdollinen lähetys voisi häiritä datakehyksen lähetystä. Ne osaavat nyt tämän kuittausviestin tietojen avulla odottaa koko datakehyksen lähetyksen ajan ennenkuin ne edes yrittävät omaa lähetystään. Näin alkuperäiseltä lähettäjältä kätkössä oleva asema saa tiedon lähetyksestä, jota se ei itse muuten pystyisi havaitsemaan.
 
+<img alt="Kuvassa on viestien vaihdot yhden kehyksen lähettämiseen liittyen. Kuvassa on siis kaksi asemaa/laitetta ja niiden välissä tukiasema. Viestien vaihto alkaa tilanteesta, jossa tukiasema lähettää vastaanottokuittauksen edelliestä datakehyksestä. Tämä kuittaus menee molemmille laitteille. Sen jälkeen DIFS ajan kuluttua ensimmäinen asema lähettää varauskehyksen (Request to send 100 ) tukiasemalle, joka kuittaa sen SIFS ajan kuluttua vahvistusviestillä Clear to send 100 ). Tämä vahvistusviesti menee molemmille laitteille. Ensimmäinen laite aloittaa sitten SIFS ajan kuluttua oman dataviestinsä lähettämisen. Toinen laite kirjaa itselleen tiedoksi, että se ei voi lähettää niin kauaa kuin tuon datan siirto kestää (eli 100). Kun datan siirto päättyy, niin tukiasema lähettää taasi kuittausviestin molemmille asemille.
 
-KUVA: Kirjan kuvasta 6.12 (editio 6) jonkunlainen oma versio  - liittyy siis tuohon edelliseen kappaleeseen
-
-KUVA: Kuvassa on yhden data kehyksen lähetykseen liittyvät viestit eli ensin varaus ja varauksen vahvistus ja sitten varsinainen datakahys ja lopuksi vielä sen kuittaus.
+KUVA: Kuvassa on esitettynä yhden data kehyksen lähetykseen liittyvät viestit eli ensin varaus ja varauksen vahvistus ja sitten varsinainen datakahys ja lopuksi vielä sen kuittaus. Huomaa, että kuittaus- ja vahvistusviestit  kuuluvat kaikille vastaanottajan kuuluvuusalueella, vaikka varsinainen datansiirto ei kuuluisikaan.
 
 
 ### Langattoman verkon kehys
