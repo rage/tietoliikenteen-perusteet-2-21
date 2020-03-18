@@ -34,7 +34,7 @@ Kun tämä A:n D:lle osoittama viesti saapuu reitittimelle R1:lle, niin Re on li
 
 R1 lisää nyt tämän IP-paketin, jossa lähettäjänä on A ja vastaanottajana D, ympärille uuden kehyksen. Kehyksessä vastaanottajan osoite on R2:n MAC-osoite ja lähettäjänä on R1:n MAC-osoite. Näin koska linkkikerrokselal tämän kehyksen lähettäjä on R1 ja kehys on menossa R2:lle, joten ne ovat kehyksessä lähettäjänä ja vastaaanottajana. 
 
-<img alt="Kuvassa on kehys, jonka sisällä on IP-paketti. Kehyksessä vastaanottajana on R2:n MAC-osoite ja lähettäjänä R1:n MAC-osoite. Kehyksen sisällä olevassa IP-paketissa lähettäjän on edelleen A:n IP-osoite ja vastaanottajana D:n IP-osoite."
+<img alt="Kuvassa on kehys, jonka sisällä on IP-paketti. Kehyksessä vastaanottajana on R2:n MAC-osoite ja lähettäjänä R1:n MAC-osoite. Kehyksen sisällä olevassa IP-paketissa lähettäjän on edelleen A:n IP-osoite ja vastaanottajana D:n IP-osoite.">
 
 KUVA: R1:n lähettämä kehys, joka on menossa R2:lle. Huomaa, että kehyksessä lähettäjänä on R1 ja vastaanottajana R2, mutta kehyksen sisällä olevassa IP-paketissa lähettäjänä on edelleen A ja vastaanottajana D.
 
