@@ -61,13 +61,14 @@ Nimipalvelussa on vain yksi viestirakenne, jota käytetään sekä kyselyissä e
 
 Oheisessa kuvassa, joka on peräisin wikibooksista, on kuvattuna koko viestin rakenne, eikä vai otsaketta. Rakennekuvauksesta käy ilmi, että otsaketietoja viestissä on kaikkiaan 12 tavua. Niitä seuraa kysymysosio, jossa voi olla useita kysymyksiä selvitettäväksi. Kysymysosan ja muiden osien tietuiden lukumäärä on kerrottava otsaketiedoissa, jotta vastaanottaja osaa tulkita saamansa tavujonon oikein. Yleensä kysymyksen viestissä vastauskentät ovat tyhjiä.
 
-Kuva viestistä: https://en.wikibooks.org/wiki/Communication_Networks/DNS#/media/File:Dns_message.jpg
+<img url="https://en.wikibooks.org/wiki/Communication_Networks/DNS#/media/File:Dns_message.jpg">
+KUVA: Kuva DNS viestistä (lähde wikibooks)
 
-Yksittäinen solmu voi tehdä useita nimipalvelukyselyjä ilman, että se on vielä saanut vastausta edelliseen.  Kyselyviestissä on viestin tunniste, jolla kysymys ja aikanaan saapuva vastaus voidaan yhdistää. Kyselyyn vastaava nimipalvelija laittaa kyselyssä saamansa tunnisteen mukaan omaan vastausviestiinsä.
+Yksittäinen solmu voi tehdä useita nimipalvelukyselyjä ilman, että se on vielä saanut vastausta edelliseen.  Kyselyviestissä on viestin tunniste, jolla kysymys ja aikanaan saapuva vastaus voidaan yhdistää toisiinsa. Kyselyyn vastaava nimipalvelija laittaa kyselyssä saamansa tunnisteen mukaan omaan vastausviestiinsä, jolloin vastaus voidaan tällä tunnisteella yhdistää alkuperäiseen kyselyyn.
 
 Vastauksessa on myös mukana lipukkeena tieto siitä, tuleeko vastaus suoraan nimipalveluhierarkiaan kuuluvalta autorisoidulta nimipalvelijalta vai ei.
 
-Nimipalvelutietoja voi kysellä nslookup tai dig -komennoilla. Linuxin komentotulkissa (engl. terminal, command) voit käyttää näitä komenoja suoraan. Sen sijaan windowsin komentotulkissa (engl. command prompt) on käytettävissä näistä vain nslookup. Dig on näistä kahdesta huomattavasti monipuolisempi. Sivulla https://linux.die.net/man/1/dig on sen toiminnan tarkka kuvaus. Nykyään myös verkosta löytyy useita www-palveluja, jotka tarjoavat nämä komennot käyttäjille. Esimerkiksi ping.eu tarjoaa nslookup -komennon sivulla https://ping.eu/nslookup/. Yksinkertainen rajapinta dig-komennolle on esimerkiksi sivulla https://toolbox.googleapps.com/apps/dig/.
+Nimipalvelutietoja voi kysellä nslookup tai dig -komennoilla. Linuxin komentotulkissa (engl. terminal, command) voit käyttää näitä komentoja suoraan. Sen sijaan windowsin komentotulkissa (engl. command prompt) on käytettävissä näistä vain nslookup. Dig on näistä kahdesta huomattavasti monipuolisempi. Sivulla https://linux.die.net/man/1/dig on sen toiminnan tarkka kuvaus. Nykyään myös verkosta löytyy useita www-palveluja, jotka tarjoavat nämä komennot käyttäjille. Esimerkiksi ping.eu tarjoaa nslookup -komennon sivulla https://ping.eu/nslookup/. Yksinkertainen rajapinta dig-komennolle on esimerkiksi sivulla https://toolbox.googleapps.com/apps/dig/.
 
 
 <quiz id="adea1117-8a7e-43bf-976d-e5e5e2f42f88"></quiz>
@@ -77,15 +78,16 @@ Nimipalvelutietoja voi kysellä nslookup tai dig -komennoilla. Linuxin komentotu
 ## DNS toiminta
 
 
-Käyttäjän asiakaskoneen tekemiin nimipalvelukyselyihin vastaavat tyypillisesti paikalliset nimipalvelijat (ns. resolverit), jotka eivät ole autoritäärisiä. Esimerkiksi minun työkoneen yliopistolla käyttää paikallista nimipalvelijaa ns-guest-1.it.helsinki.fi. Tämä ei ole helsinki.fi alueesta vastaava autoritäärinen nimipalvelija, vaan sen tehtävänä on nimenomaan ratkoa asiakaskoneilta tulevia kyselyjä.
+Käyttäjän asiakaskoneen tekemiin nimipalvelukyselyihin vastaavat tyypillisesti paikalliset nimipalvelijat (ns. resolverit), jotka eivät ole autoritäärisiä. Esimerkiksi minun työkoneeni yliopistolla käyttää paikallista nimipalvelijaa ns-guest-1.it.helsinki.fi. Tämä ei ole helsinki.fi alueesta vastaava autoritäärinen nimipalvelija, vaan sen tehtävänä on nimenomaan ratkoa asiakaskoneilta tulevia kyselyjä.
 
-Oheisessa kuvassa on kuvattuna tyypillisen nimipalvelukyselyn vaiheet ja siihen liittyvät koneet. Seuraavaksi käydään paikallisen nimipalvelijan toimintaa läpi kuvan esimerkin valossa. Kuvassahan haetaan www.firma.fi nimeä vastaavaa IP-osoitetta.
+Oheisessa kuvassa on kuvattuna tyypillisen nimipalvelukyselyn vaiheet ja siihen liittyvät koneet. Seuraavaksi käydään paikallisen nimipalvelijan toimintaa läpi kuvan esimerkin valossa. Kuvassa haetaan www.firma.fi nimeä vastaavaa IP-osoitetta.
 
-Kuva: https://fi.wikipedia.org/wiki/DNS#/media/Tiedosto:DNS.png
+<img url="https://fi.wikipedia.org/wiki/DNS#/media/Tiedosto:DNS.png">
+KUVA: Kuvassa on wikipedian esimerkki nimipalvelukyselystä
 
 Käyttäjän tietokone, tai oikeammin sen nimipalvelua käyttävä ohjelmakirjasto aloittaa toiminnon, kun se tekee nimipalvelukyselyn paikalliselle nimipalvelijalla, joka kuvassa on nimetty asiakasnimipalvelija. Nimipalvelija ratkoo nimipalvelukyselyn käyttäjän puolesta ja palauttaa aikanaan vastauksen käyttäjän tietokoneelle. Paikallinen nimipalvelija tekee kyselyjä nimipalveluhierarkian koneille vaiheittain ja näin se saa vähitellen vastauksen kyselyyn. Paikallinen nimipalvelija aloittaa kyselyt aina juurinimipalvelijasta ja eteenee sieltä puussa alaspäin ylätason nimipalvelijaan ja sieltä kyseisen alueen nimistä vastaavaan autoritääriseen nimipalveliljaan.
 
-Koska kaikkiin nimipalvelun resurssitietueisiin on liitetty niiden elinaika, niin paikallinen nimipalvelija voi säilyttää saamiaan tietueita sen aikaa, kun niiden tiedetään olevan käytettävissä. Tällaista tilapäistä säilyttämistä omassa 'muistissa' kutsutaan  https://fi.wikipedia.org/wiki/V%C3%A4limuisti välimuistiksi (engl. cache). Sitä käytetään monessa muussakin tilanteessa sekä laitteistossa että ohjelmistoissa, kun yritetään välttää saman hitaan asian tekemistä toistamiseen. Välimuisteja on jo käsitelty tietokoneen toiminta -kursseilla ja niitä tulee vastaan myös myöhemmillä kursseilla.
+Koska kaikkiin nimipalvelun resurssitietueisiin on liitetty niiden elinaika, niin paikallinen nimipalvelija voi säilyttää saamiaan tietueita sen aikaa, kun niiden tiedetään olevan käytettävissä. Tällaista tilapäistä säilyttämistä omassa 'muistissa' kutsutaan tässäkin [välimuistiksi](https://fi.wikipedia.org/wiki/V%C3%A4limuisti) (engl. cache). Välimuistia käytetään monessa muussakin tilanteessa, sekä laitteistossa että ohjelmistoissa, kun yritetään välttää saman hitaan asian tekemistä toistamiseen. Välimuisteja on jo käsitelty tietokoneen toiminta -kursseilla ja niitä tulee vastaan myös myöhemmillä kursseilla. Myös tietoa tarvitseva asiakas säilyttää aiemmin saamiaan vastauksia omassa välimuistissaan, jotta sen aina tarvitse kysyä tietoa paikalliselta nimipalvelijalta.
 
 Jos kysytty tieto (eli kuvassa www.firma.fi:n IP-osoite) on välimuistissa, niin se välitetään saman tien kysyjälle vastauksena, eikä paikallinen nimipalvelija tee muuta.
 
@@ -97,9 +99,9 @@ Seuraavaksi paikallinen nimipalvelija kysyy äskeisessä vastauksessa saadun tie
 
 Vastauksen saatuaan paikallinen nimipalvelija voi vihdoin kysyä tältä auktoritaariselta nimipalvelijalta verkkonimeen www.firma.fi liittyvää IP-osoitetta. Kun vastaus saapuu, niin paikallinen nimipalvelija voi vastata omalle asiakkaalleen ja kertoa mikä tuo kysytty IP-osoite on.
 
-Tässä viestien vaihdossa paikalliselle nimipalvelijalle kertyy useita resurssitietueita. Se tyypillisesti varastoi ne kaikki omaan välimuistiinsa ja käyttää näin vähitellen kertyvää tietoa apuna myöhemmissä kyselyissä. Esimerkiksi, jos välimuistista olisi jo löytynyt suoraan joko ylätason palvelijan tai autoritäärisen palvelijan yhteystiedot, niin kyselyketjussa olisi voitu ohittaa tarpeettomat kyselyt ja näin säästää aikaa ja vähentää verkkoliikennettä.
+Tässä viestien vaihdossa paikalliselle nimipalvelijalle kertyy useita resurssitietueita. Se varastoi ne kaikki omaan välimuistiinsa ja käyttää näin vähitellen kertyvää tietoa apuna myöhemmissä kyselyissä. Esimerkiksi, jos välimuistista olisi jo löytynyt suoraan joko ylätason palvelijan tai autoritäärisen palvelijan yhteystiedot, niin kyselyketjussa olisi voitu ohittaa tarpeettomat kyselyt ja näin säästää aikaa ja vähentää verkkoliikennettä.
 
-Nimipalveluun on alunperin määritelty myös tuon edellä kuvatun iteratiivisen kyselyprosessin rinnalle myös rekursiivinen kysely, jolloin nimipalveluhierarkiaan kuuluva nimipalvelija ei palauta omaa puutteellista vastaustaan kysyjälle, vaan tekee kyselyn edelleen alemmalle tasolle. Vastaus kulkee sitten aikanaan tämän rekursiivisen ketjun läpi alkuperäiselle kysyjälle. Koska rekursiivinen kysely kuormittaa erityisesti juurinimipalvelijoita, niin ne eivät välttämättä niitä kysyjän pyynnöst huolimatta tee. Sksi tuo iteratiivinen malli on tyypillinen tapa, jolla paikallinen nimipalvelija tiedon selvittää.
+Nimipalveluun on alunperin määritelty myös tuon edellä kuvatun iteratiivisen kyselyprosessin rinnalle myös rekursiivinen kysely, jolloin nimipalveluhierarkiaan kuuluva nimipalvelija ei palauta omaa puutteellista vastaustaan kysyjälle, vaan tekee kyselyn edelleen alemmalle tasolle. Vastaus kulkee sitten aikanaan tämän rekursiivisen ketjun läpi alkuperäiselle kysyjälle. Koska rekursiivinen kysely kuormittaa erityisesti juurinimipalvelijoita, niin ne eivät välttämättä rekursiota kysyjän pyynnöstä huolimatta tee. Sksi tuo iteratiivinen malli on tyypillinen tapa, jolla paikallinen nimipalvelija tiedon selvittää.
 
 
 <quiz id="af7fd745-8bc1-45d3-8f1c-e7fe47eb74e4"></quiz>
