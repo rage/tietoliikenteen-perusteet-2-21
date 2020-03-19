@@ -59,12 +59,12 @@ Turvallinen avaintenhallinta on aina keskeinen ongelman tiedonsuojaukseen liitty
 
 Palataan vielä hetkeksi virtuaalisten yksityisverkkojen teemaan. Virtuaalinen yksityisverkko kahden aliverkon välillä voidaan siis toteuttaa IPsecillä siten, että tunnelointi tehdään aliverkkoja julkiseen verkkoon yhdistävissä reitittimissä. Pienimmillään toinen näistä aliverkoista voi olla käyttäjän tietokone ja suurimmillaan kyseessä voi olla ison organisaation koko sivukonttori. Toinen on tyypillisesti organisaation oma laaja verkko pääkonttorilla tai pääasiallisessa toimipaikassa. Tyypillisesti vain toisella aliverkolla on tunneloimaton yhteys internetiin.
 
-alt= " Aliverkossa A on tietokone, jonka IP osoite on 158.34.128.78. Verkossa on myös muutama muu laite, joiden IP-osoitteita ei ole kerrottu. Laitteet on yhdistetty aliverkon reunalla olevaan reitittimeen, jonka aliverkon puoleinen IP-osoite on 158.34.23.1 ja julkisen internetin puoleinen osoite on 202.128.78.26. Reitittimen yhdistää toisen aliverkon, B, reitittimeen julkinen pilvimäinen internet, jonka läpi reitittimien välinen tunneli muodostaa suoran putken. Toisen aliverkon reitittimen Internetin puoleinen IP-osoite on 158.34.2.10 ja aliverkon sisäpuolen IP-osoite on 158.34.79.5. Tässä toisessa aliverkossa on kuvattuna vain viestin vastaanottaja, jonka IP-osoite on 158.34.79.186. Lisäksi aliverkossa on muutama viivalla piirretty linkki, joiden toista päätä ei ole kuvattu."
+alt= " Aliverkossa A on tietokone T1, jonka IP osoite on 158.34.128.78. Verkossa on myös muutama muu laite, joiden IP-osoitteita ei ole kerrottu. Laitteet on yhdistetty aliverkon reunalla olevaan reitittimeen R1, jonka aliverkon puoleinen IP-osoite on 158.34.23.1 ja julkisen internetin puoleinen osoite on 202.128.78.26. Reitittimen yhdistää toisen aliverkon B, reitittimeen R2 julkinen pilvimäinen internet, jonka läpi reitittimien välinen tunneli muodostaa suoran putken. Reitittimen R2 Internetin puoleinen IP-osoite on 158.34.2.10 ja aliverkon sisäpuolen IP-osoite on 158.34.79.5. Tässä toisessa aliverkossa on kuvattuna vain viestin vastaanottaja V2, jonka IP-osoite on 158.34.79.186. Lisäksi aliverkossa on muutama viivalla piirretty linkki, joiden toista päätä ei ole kuvattu."
 
 KUVA: Kuvassa kaksi aliverkkoa on yhdistetty virtuaaliseksi yksityisverkoksi. Näitä verkkoja yhdistävät reitittimet toimivat yhteistyössä ja tunneloivat kaikki aliverkosta A lähtevät viestit aliverkkoon B.
 
 
-<quiz id=" "> </quiz>
+<quiz id="https://quizzes.mooc.fi/quizzes/a9c31430-872f-4bed-8a59-e068b807198f"> </quiz>
 
-JOs et saanut äskeistä tehtävää oikein, niin piirrä itsellesi alkuperäinen laitteen lähettämä IP-paketti ja sen jälkeen reitittimen lähettämä IP-sec paketti ja katso miten nuo lähettäjien ja vastaanottajien osoitteet menevät.
+Jos et saanut äskeistä tehtävää oikein, niin piirrä itsellesi alkuperäinen laitteen lähettämä IP-paketti ja sen jälkeen reitittimen lähettämä IP-sec paketti ja katso miten nuo lähettäjien ja vastaanottajien osoitteet menevät.
 
