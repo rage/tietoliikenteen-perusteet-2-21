@@ -27,14 +27,31 @@ Käyttäjällä on siis sähköpostiosoite, kuten tiina.niklander@helsinki.fi, j
 
 Käyttäjän tunnisteet yksilöivät käyttäjät vain yhden sähköpostipalvelimen sisällä. Sama käyttäjätunniste voi olla käytössä useammassa eri sähköpostipalvelimessa. Niitä voi hallinnoida yksi ja sama henkilö tai ne voivat kuulua useammalle eri henkilölle.
 
-Sähköpostipalvelimen tunniste helsinki.fi ei ole sähköpostipalvelimen oma verkkonimi, vaan sähköpostijärjestelmässä käytettävä tunniste. Sähköpostipalvelimen verkkonimen voi selvittää nimipalvelun avulla. Nimipalvelun resurssitietueessa MX on tieto siitä, mikä sähköpostipalvelin vastaa tietyn verkkoalueen (kuten helsinki.fi) sähköpostipalvelusta. Sähköpostiosoitteet sitoutuvat siis verkkonimiin siten, että tuo sähköpostipalvelimen tunniste on yleensä samalla verkkoalueen nimi.
+Sähköpostipalvelimen tunniste helsinki.fi ei ole sähköpostipalvelimen oma verkkonimi, vaan sähköpostijärjestelmässä käytettävä tunniste. Sähköpostipalvelimen verkkonimen voi selvittää nimipalvelun avulla. Nimipalvelun resurssitietueessa MX on tieto siitä, mikä sähköpostipalvelin vastaa tietyn verkkoalueen (kuten helsinki.fi) sähköpostipalvelusta. Sähköpostiosoitteet sitoutuvat siis verkkonimiin siten, että tuo sähköpostipalvelimen tunniste on yleensä samalla verkkoalueen nimi. Siksi voimme käyttää aluenimeä sähköpostiosoitteessa varsinaisen palvelimen nimen sijaan.
 
 <quiz id="4c9f0a90-72c1-4219-a4c4-4838a4f859dc"></quiz>
 
-KUVA: Sähköpostijärjestelmästä, jossa useampi sähköpostipalvelin ja niillä pari postilaatikkoa.
+## Sähköpostin lähetys ja vastaanotto
 
-TODO!!!  HUOM:  Kuvaan liittyvä tarina yhden sähköpostin lähettämisestä ja vastaanottamisesta.
+Käyttäjän oma sähköpostipalvelin toimii usein käyttäjän postilaatikkona. Eli käyttäjälle saapuvat viestit tulevat sähköpostipalvelimelle käyttäjän omaan postilaatikkoon. Usein käyttäjä myös lähettää sähköpostit oman sähköpostipalvelimensa kautta.
 
+Koska sähköposti on vanhimpia internetin palveluja, niin se on alunperin suunniteltu vain palvelinten väliseen toimintaan. Aikoinaan käyttäjät käyttivät omia sähköpostilaatikoitaan suoraan palvelimilla komentotulkkien avulla. Nykyisin käyttäjät käyttävät omia sähköpostilaatikoitaan muilta laitteilta ja käyttäjien laitteiden (=asiakas) ja sähköpostipalvelimen välille on kehitetty uusia protokollia.
+
+Keskitytään hetkiseksi vain sähköpostipalvelimien toimintaan ja otetaan vasta myöhemmin mukaan sähköpostipalvelimen ja asiakkaan välinen kommunikointi.
+
+<img alt="Kuvassa on kolme sähköpostipalvelinta helsinki.fi, google.com ja rugers.edu. Jokaisella palvelimelle on joukko nimeämättömiä postilaatikoita. Palvelimet on liitetty internettiin, joka välityksessä ne voivat kommunikoida keskenään. Yhteyksiä ei ole tarkemmin kuvattu. "
+
+KUVA: Kuvassa on muutama sähköpostipalvelin ja niillä joitakin postilaatikoita.
+
+Sähköpostipalvelimet välittävät käyttäjien toisille käyttäjille lähettämiä viestejä SMTP (Simple Mail Transfer Protocol) protokollalla. Esimerkiksi, jos helsinki.fi:n sähköpostipalvelimella on sen käyttäjän rutgers.edu:n palvelimella olevalle käyttäjälle lähettämä viesti, niin helsinki.fi:n palvelin ottaa SMTP yhteyden rutgers.edu:n palvelimelle ja siirtää käyttäjän lähettämän viestin sinne.
+
+Jos käyttäjällä on omalla koneellaan joku erillinen sähköpostiohjelma kuten outlook, thunderbird tai vastaava, niin nämä ohjelmat tyypillisesti käyttävät joko [IMAP](https://fi.wikipedia.org/wiki/IMAP) (Internet Message  Access Protocol) tai [POP3](https://fi.wikipedia.org/wiki/POP3) prokollia käyttäjän palvelimella sijaitsevan sähköpostilaatikon käsittelyyn.  Huomaa, että näillä protokollilla käsitellään vain jo sähköpostilaatikossa olevia viestejä. Näillä siis luetaan saapuneita viestejä. Viestien lähettämiseen sähköpostiohjelmat käyttävät samaa SMTP protokollaa kuin sähköpostipalvelimetkin.
+
+Näillä sähköpostiprotokollilla on hyvä havainnollistaa protokollien yleisempääkin piirretty eli PUSH vs PULL. PUSH-tyyppisissä prokollissa, kuten SMTP, viestin tai datan vastaanottajalla ei ole juurikaan sanavaltaa. Toinen osapuoli vain antaa sille dataa, joka pitää ottaa vastaan. Lähettävä sähköpostipalvelin (asiakas-palvelin -mallin mukaaan asiakas) ottaa yhteyttä vastaanottavaan sähköpostipalvelimeen (asiakas-palvelija -mallin mukaan palvelin) ja työntää uuden saapuvan viestin sinne. Tähän sähköpostijärjestelmän ominaisuuteen perustuu suuri osa roskapostin toiminnasta. Palvelimille vain työnnetään roskapostia, joka on menossa käyttäjien postilaatikoihin. PULL-tyyppisissä protokollissa, kuten IMAP ja POP3, viestin tai datan vastaanottaja päättäää mitä ja milloin se haluaa vastaanottaa.
+
+Nykyään on yhä tyypillisempää, että käyttäjät hyödyntävät www-selaimia omien postilaatikoidensa käsittelyssä. Tällöin käyttäjän selaimen ja www-palvelimen välinen liikennöinti tapahtuu HTTP-protokollalla. WWW-palvelin pääsee käsiksi käyttäjän postilaatikkoon joko samoilla protokollilla (IMAP, POP3) kuin käyttäjän koneen sähköpostiohjelma tai se voi olla samassa järjestelmässä postipalvelimen kanssa, jolloin se voi lukea käyttäjän postilaatikon sisällön suoraan tiedostojärjestelmästä. 
+
+Huomaa, että sähköpostijärjestelmässä protokollia käytetään epäsymmetrisesti, koska SMTP on vain postien lähettämistä ja IMAP/POP3 sähköpostien lukemista varten. Aiemmissa käsittelemissämme järjestelmissä käytössä oli vain yksi protokolla, jotka käytettiin viestien välittämisen molempiin suuntiin.  Sähköpostijärjestelmässäkin kaikki protokollat oman yhteytensä aikana välittävät viestejä molempiin suuntiin. Epäsymmetrisyys tässä johtuu toisaalta historiasta ja toisaalta näiden tapahtumien ajallisesta etäisyydestä. Sähköpostin saapuminen postilaatikkoon voi tapahtua ajallisesti paljon ennen kuin käyttäjän asiakasohjelma käy sen postilaatikosta lukemasta.  Jatkossa keskitymme vain sähköpostien lähettämisessä käytettävään SMTP protokollaan ja siihen liittyviin muihin seikkoihin.
 
 
 ## SMTP
@@ -81,7 +98,7 @@ Katso jonkun saamasi sähköpostiviestin täydet otsaketiedot ja etsi sieltä ri
 
 <quiz id="a704808e-8500-4435-8b3a-dcc7faed2b3c"></quiz>
 
-Sähköpostiviestiin voi nykyään liittää myös muuta materiaali kuin vain varsinaisen viestin pelkkänä tekstinä. Tällaiset laajennukset on määritelty MIME-standardissa (ks [standardin wikipedia-sivu](https://fi.wikipedia.org/wiki/MIME) ja [sähköpostin koodausohjeistus](https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6posti#MIME)). MIME-muotoisessa sähköpostissa on useita osia ja jokainen osa voidaan koodata eri tavalla. Viestin liitteeksi voi laittaa minkä tahansa tiedoston, jonka tyyppi kerrotaan MIME-standardin mukaisissa tiedoissa.  Koska SMTP-protokolla siirtää varmasti vain 7-bittisiä ASCII-merkkejä, on tyypillistä, että erityisesti liitetiedostot ja kuvat koodataan 7-bittiseksi ASCII-koodiksi. Tunnetuin koodaustapa on base64, jossa kolme 8-bittistä tavua (tai merkkiä) koodataan 4:ksi, jotka eivät voi rikkoa sähköpostin siirtoa. Esimerkiksi merkkiyhdistelmä 'rivinvaihto'piste'rivinvaihto' ei ole sallittu, koska se on sovittu SMTP-protokollassa sähköpostiviestin päättäväksi merkiksi.
+Sähköpostiviestiin voi nykyään liittää myös muuta materiaali kuin vain varsinaisen viestin pelkkänä tekstinä. Tällaiset laajennukset on määritelty MIME-standardissa (ks [standardin wikipedia-sivu](https://fi.wikipedia.org/wiki/MIME) ja [sähköpostin koodausohjeistus](https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6posti#MIME)). MIME-muotoisessa sähköpostissa on useita osia ja jokainen osa voidaan koodata eri tavalla. Viestin liitteeksi voi laittaa minkä tahansa tiedoston, jonka tyyppi kerrotaan MIME-standardin mukaisissa tiedoissa.  Koska SMTP-protokolla siirtää varmasti vain 7-bittisiä ASCII-merkkejä, on tyypillistä, että erityisesti liitetiedostot ja kuvat koodataan 7-bittiseksi ASCII-koodiksi. Tunnetuin koodaustapa on base64, jossa kolme 8-bittistä tavua (tai merkkiä) koodataan 4:ksi, jotka eivät voi rikkoa sähköpostin siirtoa. Esimerkiksi merkkiyhdistelmä 'rivinvaihto' 'piste' 'rivinvaihto' ei ole sallittu, koska se on sovittu SMTP-protokollassa sähköpostiviestin päättäväksi merkiksi.
 
 
 ## Sähköpostin ongelmia
@@ -117,9 +134,4 @@ Jos halutaan samaan aikaa varmistaa sekä lähettäjä että vastaanottaja, on v
 Kiinnostuneille tiedoksi, että vuonna 2019 määriteltiin myös postipalvelimien käyttämä autentikointien ketjutus (engl. [Authenticated Received Chain](https://en.wikipedia.org/wiki/Authenticated_Received_Chain), ARC, jolla pyritään tukemaan postilistojen toimintaa silloin, kun postilistan käsittelee joku muu postipalvelin kuin alkuperäisen viestin lähettäjän oman palvelin.
 
 
-KUVA: Muokkaa wikipedian kuvasta, joka ladattuna.
-
-
-TODO:    QUIZZ:  Kuvaan liittyen ja toinen käsitteistä sekä spostin käsitteitä että salausta.
-<quiz id="38dcffe8-2431-4357-ba9c-1d1405abff5d"></quiz>
 
