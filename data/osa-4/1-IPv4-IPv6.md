@@ -44,7 +44,7 @@ Luokallisesta osoitteiden hallinnoinnista siirryttiin luokattomiin osoiterajoihi
 
 Organisaatio saa aina käyttöönsä yhtenäisen osoitealueen. Alueen koon kertoo nimenomaan tuo aliverkon peite. Organisaatio saa edelleen jakaa tämän osoitealueen haluamallaan tavalla pienemmiksi aliverkoiksi. Otetaan esimerkiksi tuo yksityisverkon osoitealue 172.16.0.0/12. Voimme jakaa sen kahteen yhtäsuureen alueeseen 172.16.0.0/13 ja 172.24.0.0./13.  Miten nämä alueet on sitten laskettu? Otetaan tarkasteluun vain tuo toinen tavu, jossa muutoksia tapahtuu. 16 on binäärilukuna 10000, mutta koska meillä on kokonainen tavu, niin tavu on silloin 00010000. Kun teemme kaksi yhtä suurta aluetta, niin toinen alue on binäärilukuna 00010000 ja toinen 00011000 eli niiden ero on ykkösbitiä seuraavassa bitissä. Kun nämä muunnetaan takaisin kymmenjärjestelmän luvuiksi, niin saamme luvut 16 ja 24. Samalla myös aliverkon peitteen koko kasvoi yhdellä, koska siirsimme yhden bitin lisää verkkoja erottavaan osioon.  Jos haluamme jakaa sen kahdeksaan yhtä suureen alueeseen, niin silloin niiden osoitelueet ovat 172.16.0.0/15, 172.18.0.0./15, 172.20.0.0/15, ... 172.30.0.0/15. Tee tuo äskeisen kaltainen bittimuunnos itsenäisesti ja varmistu näin, että ymmärrät miten nuo verkkonumerot ja peitteet toimivat.
 
-<quiz id="b51a8df2-9037-4de6-a12c-ef66d593d50cd"></quiz>
+<quiz id="b51a8df2-9037-4de6-a12c-ef66d593d50c"></quiz>
 
 
 ## IPv6
@@ -57,7 +57,7 @@ IPv6:n osoitteet esitetään kahdeksana hexadesimaaliryhmänä, joissa kukin 4-m
 
 Kuva osoitteen purkamisesta: https://upload.wikimedia.org/wikipedia/commons/7/70/Ipv6_address_leading_zeros.svg
 
-Koska IPv6:n osoiteavaruus valtava, on erikseen sovittu, että yksittäistä osoitetta operaattorilta pyytävä reititin saa tyypillisesti oman aliverkon, jonka peite on 64 bittiä. Esimerkiksi juuri edellä kuvatun osoitteen. Tähän aliverkkoon liittyvä laite puolestaan saa reitittimeltä aliverkon tunnisteen ja aliverkon peitteen. Osoitteen loput bitit (tyyppillisesti siis jälkimmäiset 64 bittiä) se voi määritellä itse. Automaattisessa konfiguroinnissa voidaan käyttää vaikkapa laitteen MAC-osoitetta apuna. MAC-osoitteen tavoitehan on yksilöidä laite linkkikerroksen tasolla. MAC-osoitteen pituus on 48 bittiä, joten se mahtuu vallan hyvin laitteen aliverkossa yksilöivään 64:ään bittiin. Itseasiassa osoitteen automaattiseen konfigurointiin on määritely menetelmällä, jolla MAC-osoitteen voi muuntaa IPv6 osoitteen osaksi laitteen (tai oikeammin sen verkkoyhteyden) tunnisteeksi.
+Koska IPv6:n osoiteavaruus valtava, on erikseen sovittu, että yksittäistä osoitetta operaattorilta pyytävä reititin saa tyypillisesti oman aliverkon, jonka peite on 64 bittiä. Esimerkiksi juuri edellä kuvatun osoitteen. Tähän aliverkkoon liittyvä laite puolestaan saa reitittimeltä aliverkon tunnisteen ja aliverkon peitteen. Osoitteen loput bitit (tyyppillisesti siis jälkimmäiset 64 bittiä) se voi määritellä itse. Automaattisessa konfiguroinnissa voidaan käyttää vaikkapa laitteen MAC-osoitetta apuna. MAC-osoitteen tavoitehan on yksilöidä laite linkkikerroksen tasolla. MAC-osoitteen pituus on 48 bittiä, joten se mahtuu vallan hyvin laitteen aliverkossa yksilöivään 64:ään bittiin. Itseasiassa osoitteen automaattiseen konfigurointiin on määritelty menetelmä, jolla MAC-osoitteen voi muuntaa IPv6 osoitteen osaksi laitteen (tai oikeammin sen verkkoyhteyden) tunnisteeksi.
 
 Näiden isojen aliverkkojen tavoitteena on helpottaa iPv6-osoitteiden reititystä ja pitää reititystaulut kooltaan siedettävinä.
 
