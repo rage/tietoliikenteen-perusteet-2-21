@@ -132,7 +132,7 @@ TCP:ssä lähettäjä ja vastaanottaja käyttävät puskureita ja liukuhihnoitus
 
 Vuonvalvonta määrää lähettäjän ikkunan koon se mukaan, mikä on vastaanottajan puskurin tilanne. Jokaisessa lähettämässään viestissä solmu kertoo, kuinka paljon sen puskuriin vielä mahtuu tavuja. Huomaa, että tämä tieto säätää ikkunan kokoa, kun taas saapuvat kuittaukset siirtävät ikkunaa.
 
-<quiz id="abbe627e-88c3-4ba6-8a24-e307540f90dd> </quiz>
+<quiz id="abbe627e-88c3-4ba6-8a24-e307540f90dd"> </quiz>
 
 Jos vuonvalvonta pudottaa lähettäjän ikkunan koon nollaan, niin lähettäjä alkaa lähettää yhden tavun kokoisia segmenttejä. Näillä se kyselee vastaanottajalta, joko on tilaa lähettää enemmän. Vastaanottajan täytyy nämäkin viestit kuitata normaalien kuittaussääntöjen mukaisesti. Vastaanottaja käyttää toistokuittauksia kertomaan, että tilaa ei ole. Se lähettää normaalin kuittauksen vasta, kun se voi samalla kertoa, että tilaa on vähintään yhdelle täydelle TCP-segmentille.
 
@@ -167,7 +167,8 @@ Ruuhkaikkuna säätää kuittaamattomien viestien määrän lisäksi myös sitä
 Ruuhkaikkunan koko muuttuu dynaamisesti tilanteen mukaan. TCP:n viestien lähetyksessä on eri vaiheita. Lähetyksen alussa, ns. hidas aloitus (engl. slow start), TCP kasvattaa ikkunan kokoa nopeasti, kunnes se törmää ruuhkaan. Silloin se pienentää ikkunan kokoa merkittävästi ja pyrkii jatkossa välttämään ruuhkaa. Ruuhkan välttely -vaiheessa (engl. congestion avoidance) TCP kasvattaa ikkunan kokoa hyvin maltillisesti.
 
 <img src="../img/tcp-datasiirto.svg" alt="Kuvassa on vain visuaalinen näkymä kuvatekstin selitykselle"/>
-KUVA: Kuvassa on esimerkki TCP:n segmenttien lähettämisestä silloin, kun yhdessä viestissä on 1KB eli tuhat tavua dataa, ikkunan koon kynnysarvo on 4 KB ja lähettäjän puskurin koko on riittävän suuri. Jaetaan lähetys kiertoviiveen mittaisiin jaksoihin. Ensimmäisessä jaksossa lähetetään ensimmäinen segmentti. Seuraavan jakson alussa, kun kuittaus1 äskeiseen segmenttiin saapuu voidaan lähettää kaksi segmenttiä, koska ikkunan koko 1 on pienempi kuin kynnysarvo 4. Kolmannen jakson alussa saapuu ensin kuittaus2, josta aiheutuu kahden viestin lähettäminen. Nyt ikkunan koko on 3. Kun kuittaus3 saapuu hetken kuluttua saman jakson aikana, niin ikkunan koko on edelleen pienempi kuin kynnysarvo, joten edelleen voidaan lähettää kaksi viestiä. Nyt ikkunan koko on kynnysarvon suuruinen ja protokolla siirtyy hitaasta aloituksesta ruuhkan välttelyyn. Tässä vaiheessa on lähetetty kaikkiaan 7 viestiä. Seuraavan jakson alussa saapuu kuittaus4. Koska ollaan ruuhkavälttelyssä, niin kuittauksista 4-7 aiheutuu vain yhden segmentin lähettäminen jokaista kuittausta kohti. Lisäksi ruuhkavälttelyssä voidaan lähettää yksi lisäviesti jokaista kiertoviivejaksoa kohti. Lähetetäänkö se heti kuittauksen 4 vai vasta kuittauksen 7 jälkeen ei ole protokollan yleiskuvan kannalta merkityksellistä.
+
+KUVA: Kuvassa on esimerkki TCP:n segmenttien lähettämisestä silloin, kun yhdessä viestissä on 1KB eli tuhat tavua dataa, ikkunan koon kynnysarvo on 4 KB ja lähettäjän puskurin koko on riittävän suuri. Jaetaan lähetys kiertoviiveen mittaisiin jaksoihin. Ensimmäisessä jaksossa lähetetään ensimmäinen segmentti. Seuraavan jakson alussa, kun kuittaus1 äskeiseen segmenttiin saapuu voidaan lähettää kaksi segmenttiä, koska ikkunan koko 1 on pienempi kuin kynnysarvo 4. Kolmannen jakson alussa saapuu ensin kuittaus 2, josta aiheutuu kahden viestin lähettäminen. Nyt ikkunan koko on 3. Kun kuittaus 3 saapuu hetken kuluttua saman jakson aikana, niin ikkunan koko on edelleen pienempi kuin kynnysarvo, joten edelleen voidaan lähettää kaksi viestiä. Nyt ikkunan koko on kynnysarvon suuruinen ja protokolla siirtyy hitaasta aloituksesta ruuhkan välttelyyn. Tässä vaiheessa on lähetetty kaikkiaan 7 viestiä. Seuraavan jakson alussa saapuu kuittaus 4. Koska ollaan ruuhkavälttelyssä, niin kuittauksista 4-7 aiheutuu vain yhden segmentin lähettäminen jokaista kuittausta kohti. Lisäksi ruuhkavälttelyssä voidaan lähettää yksi lisäviesti jokaista kiertoviivejaksoa kohti. Lähetetäänkö se heti kuittauksen 4 vai vasta kuittauksen 7 jälkeen ei ole protokollan yleiskuvan kannalta merkityksellistä. Oleellisempaa on, että ruuhkavälttelyssä lähetetään vain yksi segmentti jokaista kuitattua segmenttiä kohti.
 
 Hidas aloitus:
 * Ihan aluksi ruuhkaikkunan koko on 1 - hidas siirtonopeus, koska vain yksi sanoma yhtä kiertoviivettä kohti
@@ -210,7 +211,7 @@ DevRTT = (1-&beta;)* DevRTT + &beta;* |SampleRTT-EstimatedRTT|
 
 
 
-TCP:n yksityiskohtien harjoitteluun tarjolla itsenäisesti tehtäviä lisätehtäviä, jotka luentokurssilla ovat viikottaisia harjoitustehtäviä.
+TCP:n yksityiskohtien harjoitteluun tarjolla itsenäisesti tehtäviä lisätehtäviä, jotka luentokurssilla ovat viikottaisia harjoitustehtäviä. Lisätehtävät ovat tarjolla vain ilmoittautuneille moodlessa eli ne on tarkoitettu kokeeseen valmistautumisen tueksi.
 
 
 
