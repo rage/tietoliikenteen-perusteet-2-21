@@ -108,7 +108,9 @@ KUVA: Kuvassa on valikoivan uudelleen lähetyksen toiminta tilanteessa, jossa ik
 
 <quiz id="ac387454-8924-4ef9-be92-e3a8b157767a"> </quiz>
 
+
 ## Viestien numeroinnista
+
 
 Liukuvan ikkunan protokollassa viestit täytyy numeroida siten, että tiedämme viestien järjestyksen ja kaksi viestiä ei voi koskaan mennä sekaisin. Kuten vuorottelevan bitin protokollasta huomasimme, tämän erottelun voi tehdä jopa vain yhdellä bitillä. Tietoliikenneprotokollien kanssa meillä on aina käytettävissä vain äärellinen numeroavaruus, koska yleensä protokollien otsakkeessa on varattu kiinteän kokoinen kenttä viestin numerolle. Jos kentän pituus on n bittiä, niin voimme erotella toisistaan 2<sup>n</sup> viestiä, joiden numerot ovat 0,1,2,3,... 2<sup>n</sup>-1.
 
