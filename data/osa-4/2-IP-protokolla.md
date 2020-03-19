@@ -18,7 +18,7 @@ hidden: false
 IP:n toimintaan liittyy keskeisenä elementtinä osoitteet, viestin rakenne ja viestin kuljettaminen eli reititys.  Osoitteet olemme jo käsitelleet aiemmin, joten käydään seuraavaksi läpi viestin rakenne
 
 
-IP-prokollan mukaista viestiä kutsutaan IP-paketiksi (engl. packet). IP-paketin kuvan voit katsoa wikipediasta IP sivulta kohdasta [Ipv4-paketti](https://fi.wikipedia.org/wiki/IP#IPv4-paketti)
+IP-prokollan mukaista viestiä kutsutaan IP-paketiksi (engl. packet). IP-paketin kuvan voit katsoa wikipediasta IP sivulta kohdasta [IPv4-paketti](https://fi.wikipedia.org/wiki/IP#IPv4-paketti)
 
 IPv4:n mukaisen paketin kentät ovat seuraavat:
 * **Ensimmäinen sana**  eli ensimmäiset 32 bittiä
