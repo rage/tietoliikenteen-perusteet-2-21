@@ -24,7 +24,7 @@ Jotta abstraktiotasoa voidaan nostaa ja käyttää HTTP:tä kuljetuspalveluna, n
 
 Huomaa, että valitaanpa verkkosovelluksen kuljetuspalveluksi sovelluskerroksen HTTP tai kuljetuskerroksen TCP tai UDP, verkkosovelluksen osia suoritetaan vain verkon reunoilla olevissa päätelaitteissa, kuten käyttäjän tietokone ja palvelinkeskusten palvelimet. Verkkosovelluksen ohjelmoijan pitääkin kirjoittaa ohjelmakoodi vain näille laitteille. Verkon syövereissä olevissa laitteissa ei ole sovelluskerrosta, joten ne eivät voi verkkosovelluksen osia suorittaa, eikä niiden toiminta muutu sovelluksen vaihtuessa. Koska me tällä kurssilla keskitymme nimenomaan päälaitteiden väliseen viestiin, jää varsinaisten verkkosovellusten oman sisäinen toimina muille kurssille.
 
-<img src=" ">
+<img src=" "  alt="Tähän tuo 1.kurssin kuva, jossa on lähettäjä -reititin- reititin- vastaanottaja">
 
 KUVA: Peruskuva protokollapinosta lähettäjän ja vastaanottajan välillä
 
@@ -37,7 +37,6 @@ Ohjelmoijan ja sovellusohjelman näkökulmasta pistokkeen käyttö muistuttaa ti
 
 Pistokkeita voidaan käyttää prosessien välisessä kommunikoinnissa myös samassa tietokoneessa. Pistokkeiden toteutuksessa mikään ei vaadi, että viestit on aina välitettävä koneesta toiseen. Ne voidaan hyvin välittää prosessilta toiselle samassa koneessa. (Itse asiassa kaikissa koneissa on oman sisäinen verkko-osoite 127.0.0.1, johon lähetetyt viestit päätyvät samalla koneelle, mutta kiertävät protokollapinossa verkkokerroksen kautta.)
 
-KUVA: Vanha pistokekuva kalvoista 2017, luento 3, kalvo 12.
 
 Tarkastellaan nyt pistoketta käyttöjärjestelmän näkökulmasta eli mitä tapahtuu, kun prosessi haluaa lähettää dataa.
 1) Prosessi pyytää kuljetuspalvelua KJ:n palvelupyynnöllä send (kirjastofunktio)
@@ -68,8 +67,9 @@ Kuljetuskerros tarjoaa yhteydellisen kuljetuspalvelun TCP-protokollalla ja yhtey
 
 Prosessin verkkoyhteys on sidottu tiettyyn pistokkeeseen, joka on sidottu kuljetuskerroksen käyttämään porttinumeroon. Kuljetuskerros tunnistaa yhteyden saapuvat viestit, sen otsakkeessa olevalla porttinumeroilla.  Lähtevässä viestissä pitää siksi aina olla verkkokerroksen käyttämän vastaanottajan IP-numeron lisäksi kuljetuskerroksenn tarvitsema porttinumero. Saapuvan viestin porttinumerolla kuljetuskerros tunnistaa oikean pistokkeen ja osaa välittää viestin oikealle prosessille. Prosessilla voi olla samaan aikaan käytössä useita pistokkeita, jolloin sen käytössä on myös useita porttinumeroita, koska jokaisella pistokkeella on oltava yksilöivä tunniste eli porttinumero.
 
-KUVA: 2017, luento 3, Kalvon 15 kuva
-KUVA: Kuvassa on siis asiakaslaite, jossa on useampia prosesseja. Ne kaikki kommunikoivat saman palvelinlaitteella toimivan palvelinprosessin kanssa.  Kuljetuskerros tunnistaa jokaisen prosessin niihin liitetystä porttinumerosta. Muistathan, että porttinumero yksilö prosessin vain yhden laitteen sisällä eli eri laitteilla olevat prosessit käyttävät samoja porttinumeroita. 
+
+<img src="../img/pistoke.svg"  alt="KUvassa on kaksi laitetta, joista ensimmäisellä on useita prosesseja, joihin on liitetty pistoke per prosessi. Ne kaikki kommunikoivat toisella laitteella olevan yhden prosessin kanssa, johon on myös liitetty vain yksi pistoke -LUENTO 1 2020, kalvo 36">
+KUVA: Kuvassa on prosesseja ja niihin liitettyjä pistokkeita. Prosessilla voi olla useita pistokkeita, vaikka tässä kuvassa niitä onkin vain yksi. Kukin pistoke on kuvattuna sitä vastaavalla porttinumerolla.  Kaikki asiakas koneen prosesit kommunikoivat saman palvelinlaitteella toimivan palvelinprosessin kanssa.  Kuljetuskerros tunnistaa jokaisen prosessin pistokkeen niihin liitetystä porttinumerosta. Muistathan, että porttinumero yksilö prosessin vain yhden laitteen sisällä eli eri laitteilla olevat prosessit voivat käyttää samoja porttinumeroita. 
 
 Osa porttinumeroista on varattu tietyille tunnetuille palveluille. [Internet Assigned Numbers Authority (IANA)](https://www.iana.org), hallinnoi internetin IP-numeroita ja myös erilaisten palvelujen porttinumeroita. IANA ylläpitää myös muuta internetin ja sen protokollien käyttöön liittyvää tietoa.
 
