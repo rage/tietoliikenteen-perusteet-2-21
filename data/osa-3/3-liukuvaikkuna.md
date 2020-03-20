@@ -21,7 +21,9 @@ Yksinkertaisessa järjestelmässä, kuten vuorottelevan bitin protokolla, lähet
 
 Jos viestien lähettäminen liukuhihnoitetaan (engl. pipeline) siten, että lähettäjällä voi olla N kappaletta viestejä odottamassa kuittausta ja lähettäjä voi aina lähettää yhden uuden viestin, kun se saa kuittauksen vanhimpaan lähetettyyn viestiin, niin päästään käyttämään liukuvan ikkunan mallia. Ikkuna kattaa täsmälleen ne viestit, jotka on lähetetty, mutta joille ei vielä ole saapunut kuittausta. Kun kuittaus saapuu, niin ikkuna siirtyy ja lähettäjä pääsee lähettämään uuden viestin. Tässä on tärkeää huomata, että järjestyksessä ensimmäinen (pienin numero, vanhin lähetetty) kuittaamaton viesti on aina ikkunan reunassa. Jo kuitatut viestit eivät siis enää ole ikkunassa, koska niistä lähettäjä tietää, että vastaanottaja on ne varmasti saanut.
 
-KUVA:  Lähetettävä data, joka on siis kolmessa ryhmässä. 1) Jo lähetetyt ja kuitatut viestin, 2) lähetetty, mutta ei vielä kuitatut ja 3) lähettämättömät viestit. Näistä tuo ryhmä 2 on se, joka on ikkunassa.
+<img src="../img/3-3-ikkuna1.svg" alt="Lähetettävä data, joka on siis kolmessa ryhmässä. 1) Jo lähetetyt ja kuitatut viestin, 2) lähetetty, mutta ei vielä kuitatut ja 3) lähettämättömät viestit. Näistä tuo ryhmä 2 on se, joka on ikkunassa.">
+
+KUVA: Lähetettävä data, joka on siis kolmessa ryhmässä. 1) Jo lähetetyt ja kuitatut viestin, 2) lähetetty, mutta ei vielä kuitatut ja 3) lähettämättömät viestit. Näistä tuo ryhmä 2 on se, joka on ikkunassa.
 
 Liukuvan ikkunan (engl. sliding window) mallissa tavoitteena on, että lähettäjän ja vastaanottajan välillä on koko ajan liikkeellä viestejä ja kuittauksia siten, että lähettäjän ei tarvitsisi koskaan erikseen pysähtyä odottamaan kuittauksia. Luotettavan kuljetuspalvelun toteutus edellytti, että viestit menevät perille ja että ne menevät perille oikeassa järjestyksessä. Nyt kun matkalla on useita viestejä, on tärkeää numeroida viestit siten, että vastaanottaja voi tarvittaessa järjestää saapuvat viestit oikeaan järjestykseen. Vastaanottajan pitää siis voida havaita, jos joku viesti puuttuu välistä. Numeroimme viestejä jo äsken tuossa vuorottelevan bitin protokollassa. Meillä oli tosin käytössä vain numerot 0 ja 1. Protokollien kanssa on tyypillistä, että meillä on käytössä äärellinen määrä numeroita, joita sitten kierrätetään. Voimme esimerkiksi käyttää vain numeroita 0,1,..7 (eli meillä on 8 erilaista numeroa). Kun juuri lähetetyn viestin numero oli 7, niin seuraavan viestin numero on 0. Matemaattiesti käytämme siis [modulaariaritmetiikkaa](https://fi.wikipedia.org/wiki/Modulaarinen_aritmetiikka) eli luvun 8 jakojäännöksiä. Tätä merkitään usein mod 8.
 
@@ -35,6 +37,8 @@ Ikkunan ulkopuolella voi jonossa olla lähetysvuoroa odottavia viestejä. Näit�
 Ikkunasta jo poistuneista viesteistä ei olla enää kiinnostuneita, koska ne kuljetuspalvelu on saanut onnistuneesti siirrettyä lähettäjältä vastaanottajalle.
 
 Kiinnostavin viesti on ikkunasta seuraavaksi poistuva viesti. Se on siis ikkunan reunassa ja sen lähettämisestä on kulunut pisin aika. Sitä ei ole vielä kuitattu, joten lähettäjällä ei ole tietoa, onko vastaanottaja saanut sen. Vasta kun kuittaus saapuu lähettäjälle voi kuljetuspalvelu olla varma siitä, että kyseinen viesti on onnistuneesti toimitettu perille ja vasta silloin ikkuna voi liikkua sen ohi.
+
+<img src="../img/3-3-ikkuna2.svg" alt="Lähetettävä data, joka on siis kolmessa ryhmässä. 1) Jo lähetetyt ja kuitatut viestin, 2) lähetetty, mutta ei vielä kuitatut ja 3) lähettämättömät viestit. Näistä tuo ryhmä 2 on se, joka on ikkunassa. Ikkunasta seuraavaksi poistuva viesti on korostettuna.">
 
 KUVA Liukuvasta ikkunasta!!
 
