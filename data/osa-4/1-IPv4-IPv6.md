@@ -53,7 +53,7 @@ Organisaatio saa aina käyttöönsä yhtenäisen osoitealueen. Alueen koon kerto
 
 IPv6 osoitteet ovat 128-bittisiä eli huomattavan pitkiä verrattuna IPv4:n 32-bittisiin osoitteisiin. Tämän seurauksena osoitteita on käytettävissä yli 340 sekstiljoonaa.
 
-IPv6:n osoitteet esitetään kahdeksana hexadesimaaliryhmänä, joissa kukin 4-merkkinen hexadesimaaliluku kuvaa 16 bitin mittaista osiota osoitteesta. Muistathan, että hexadesimaalilukujen kantaluku on 16, joten yhdellä hexadesimaaliluvulla voi kuvata 4-bittisen luvun. Nämä 4-merkkiset hexadesinaaliluvut erotetaan toisistaan kaksoispisteellä. Esimerkki osoitteesta 2001:0DB8:AC10:FE01:0000:0000:0000:0000.  Osoitetta kirjoitettaesssa alkunollat voi jättää pois ja nolla-alueen voi jättää tyhjäksi. Kaikki 8 osiota on kuitenkin tunnistettava, joten kaksoispisteitä ei saa jättää pois. Äskeinen osoite mahdollisimman tiiviisti kirjoitettuna on 2001:DB8:Fe01::::.
+IPv6:n osoitteet esitetään kahdeksana hexadesimaaliryhmänä, joissa kukin 4-merkkinen hexadesimaaliluku kuvaa 16 bitin mittaista osiota osoitteesta. Muistathan, että hexadesimaalilukujen kantaluku on 16, joten yhdellä hexadesimaaliluvulla voi kuvata 4-bittisen luvun. Nämä 4-merkkiset hexadesinaaliluvut erotetaan toisistaan kaksoispisteellä. Esimerkki osoitteesta 2001:0DB8:AC10:FE01:0000:0000:0000:0000.  Osoitetta kirjoitettaesssa alkunollat voi jättää pois ja nolla-alueen voi jättää tyhjäksi. Kaikki 8 osiota on kuitenkin tunnistettava, joten kaksoispisteitä ei saa jättää pois. Äskeinen osoite mahdollisimman tiiviisti kirjoitettuna on 2001:DB8:AC10:Fe01::::.
 
 Kuva osoitteen purkamisesta: https://upload.wikimedia.org/wikipedia/commons/7/70/Ipv6_address_leading_zeros.svg
 
