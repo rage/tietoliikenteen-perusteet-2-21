@@ -39,8 +39,6 @@ Juurinimipalvelijat tietävät niiden alapuolella olevien ylätason palvelijoide
 Kuten varmaan jo huomasitkin, niin jokainen organisaatio voi vapaasti ja itsenäisesti nimetä omat laitteensa ja palvelimensa täysin vapaasti. Vain juurinimipalvelijoiden nimet on sovittu. Muilla tasoilla ei ole maailmanlaajuisesti sovittuja nimikäytäntöjä.
 
 
-
-
 ## DNS tietue ja viesti
 
 Nimipalvelijoilla tiedot tallennetaan DNS:n resurssitietueina (engl. resource record, RR). Tietueessa on aina neljä kenttää (nimi, arvo, tyyppi ja elinaika). Nämä resurssitietueen muodostavat kyseisen nimipalveluhierarkiaan kuuluva autoritäärisen nimipalvelijan tietokannan. Huomaa, että resurssitietueen tyyppi määrittä miten nimi ja arvo kentät pitää tulkita
@@ -61,8 +59,10 @@ Nimipalvelussa on vain yksi viestirakenne, jota käytetään sekä kyselyissä e
 
 Oheisessa kuvassa, joka on peräisin wikibooksista, on kuvattuna koko viestin rakenne, eikä vai otsaketta. Rakennekuvauksesta käy ilmi, että otsaketietoja viestissä on kaikkiaan 12 tavua. Niitä seuraa kysymysosio, jossa voi olla useita kysymyksiä selvitettäväksi. Kysymysosan ja muiden osien tietuiden lukumäärä on kerrottava otsaketiedoissa, jotta vastaanottaja osaa tulkita saamansa tavujonon oikein. Yleensä kysymyksen viestissä vastauskentät ovat tyhjiä.
 
-<img url="https://en.wikibooks.org/wiki/Communication_Networks/DNS#/media/File:Dns_message.jpg">
-KUVA: Kuva DNS viestistä (lähde wikibooks)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Dns_message.jpg/512px-Dns_message.jpg">
+
+KUVA: Kuva DNS viestistä (lähde <a href="https://en.wikibooks.org/wiki/Communication_Networks/DNS#/media/File:Dns_message.jpg">wikibooks</a>, tekijä Richard.bhuleskar (<a href="https://creativecommons.org/licenses/by-sa/2.5">CC BY-SA 2.5</a>))
+
 
 Yksittäinen solmu voi tehdä useita nimipalvelukyselyjä ilman, että se on vielä saanut vastausta edelliseen.  Kyselyviestissä on viestin tunniste, jolla kysymys ja aikanaan saapuva vastaus voidaan yhdistää toisiinsa. Kyselyyn vastaava nimipalvelija laittaa kyselyssä saamansa tunnisteen mukaan omaan vastausviestiinsä, jolloin vastaus voidaan tällä tunnisteella yhdistää alkuperäiseen kyselyyn.
 
