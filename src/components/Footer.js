@@ -4,8 +4,9 @@ import BackgroundImage from "../images/banner.svg"
 import { Card, CardContent } from "@material-ui/core"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
 import { Link } from "gatsby"
-
+import { withTranslation } from "react-i18next"
 import withSimpleErrorBoundary from "../util/withSimpleErrorBoundary"
+import CourseSettings from "../../course-settings"
 
 import UHLogo from "../images/uh-logo.png"
 import MoocfiLogo from "../images/moocfi-logo-bw.png"
@@ -92,6 +93,10 @@ const BrandsContainer = styled.div`
 `
 
 class Footer extends React.Component {
+  constructor(props) {
+    super(props)
+    this.t = this.props.t
+  }
   render() {
     return (
       <FooterWrapper>
@@ -101,39 +106,39 @@ class Footer extends React.Component {
             <StyledCardContent>
               <GithubContainer>
                 <OutboundLink
-                  href="https://github.com/rage/ohjelmointi-19"
+                  href={CourseSettings.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <StyledIcon
                     icon={faGithub}
                     size="3x"
-                    title="Materiaalin lähdekoodi"
+                    title={this.t("footer-src")}
                   />
-                  <div>Materiaalin lähdekoodi</div>
+                  <div>{this.t("footer-src")}</div>
                 </OutboundLink>
               </GithubContainer>
               <ContentContainer>
-                Kurssin on tehnyt Helsingin yliopiston{" "}
+                {this.t("makers")}{" "}
                 <OutboundLink
                   href="https://www.helsinki.fi/en/researchgroups/data-driven-education"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Agile Education Research -tutkimusryhmä
+                  {this.t("rage")}
                 </OutboundLink>
                 .
               </ContentContainer>
 
               <ContentContainer>
-                <Link to="/credits">Kiitokset ja materiaalista</Link>.
+                <Link to="/credits">{this.t("credits")}</Link>.
               </ContentContainer>
               <SocialContainer>
                 <OutboundLink
                   href="https://twitter.com/moocfi"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Mooc.fi:n Twitter -profiili"
+                  aria-label={this.t("twitter-aria")}
                 >
                   <StyledIcon icon={faTwitter} size="3x" />
                 </OutboundLink>
@@ -141,7 +146,7 @@ class Footer extends React.Component {
                   href="https://www.facebook.com/Moocfi"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Mooc.fi:n Facebook -sivu"
+                  aria-label={this.t("facebook-aria")}
                 >
                   <StyledIcon icon={faFacebook} size="3x" />
                 </OutboundLink>
@@ -149,7 +154,7 @@ class Footer extends React.Component {
                   href="https://www.youtube.com/channel/UCkHoQ5p9skFdyjrV3_tnUrA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Mooc.fi:n YouTube -kanava"
+                  aria-label={this.t("facebook-aria")}
                 >
                   <StyledIcon icon={faYoutube} size="3x" />
                 </OutboundLink>
@@ -178,4 +183,4 @@ class Footer extends React.Component {
   }
 }
 
-export default withSimpleErrorBoundary(Footer)
+export default withTranslation("common")(withSimpleErrorBoundary(Footer))

@@ -6,6 +6,8 @@ import { improveGroupName } from "../../util/strings"
 import CustomTooltip from "./CustomTooltip"
 import { SMALL_MEDIUM_BREAKPOINT } from "../../util/constants"
 import { getCourseVariant } from "../../services/moocfi"
+import { withTranslation } from "react-i18next"
+import CourseSettings from "../../../course-settings"
 
 const PartProgressContainer = styled.div`
   margin-bottom: 0.5rem;
@@ -42,9 +44,9 @@ const CustomLabel = ({ x, y, stroke, value }) => {
   )
 }
 
-const PartProgress = ({ name, data, appliesForStudyRight }) => {
+const PartProgress = ({ name, data, appliesForStudyRight, t }) => {
   var BAR_CHART_WIDTH = 375
-  var BAR_CHART_Y_AXIS_WIDTH = 142
+  var BAR_CHART_Y_AXIS_WIDTH = 152
 
   if (window.innerWidth < SMALL_MEDIUM_BREAKPOINT.slice(0, -2)) {
     BAR_CHART_WIDTH = 300
@@ -67,8 +69,9 @@ const PartProgress = ({ name, data, appliesForStudyRight }) => {
     maxPointsSum += data.max_points
   })
   let totalProgress = Math.floor((nPointsSum / maxPointsSum) * 100) / 100
+  let totalPointsHeader = t("totalPoints")
   allChartData.push({
-    tool: "Tehtäväpisteet yhteensä",
+    tool: totalPointsHeader,
     progress: Math.floor(totalProgress * 100 + 0.000000001),
     n_points: nPointsSum,
     max_points: maxPointsSum,
@@ -98,23 +101,15 @@ const PartProgress = ({ name, data, appliesForStudyRight }) => {
             />
           </Bar>
         </StyledBarChart>
-        <LargeP>
-          Osasta saadut kurssipisteet:{" "}
-          {Math.floor(Math.min(100, totalProgress * 111.112))}
-          /100.
-        </LargeP>
-        {appliesForStudyRight &&
+        {CourseSettings.studyRightEnabled &&
+          appliesForStudyRight &&
           (getCourseVariant() === "nodl" ? (
-            <SmallP>
-              Olet aikatauluttomalla kurssilla, josta ei voi hakea
-              opinto-oikeutta.
-            </SmallP>
+            <SmallP>{t("noTimelimit")}</SmallP>
           ) : (
             <SmallP>
-              Opinto-oikeuteen vaaditaan 90% aikataulutetun kurssin
-              ohjelmointitehtävien pisteistä. Edistymisesi tällä hetkellä:{" "}
+              {t("canApplyForStudyRight")}{" "}
               {
-                allChartData.find(o => o.tool === "Ohjelmointitehtävät")
+                allChartData.find(o => o.tool === t("programmingService"))
                   ?.progress
               }
               %.
@@ -125,4 +120,6 @@ const PartProgress = ({ name, data, appliesForStudyRight }) => {
   )
 }
 
-export default withSimpleErrorBoundary(PartProgress)
+export default withTranslation("points-balloon")(
+  withSimpleErrorBoundary(PartProgress),
+)
