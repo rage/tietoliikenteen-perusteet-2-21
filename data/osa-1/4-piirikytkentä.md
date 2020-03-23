@@ -20,11 +20,13 @@ Toisaalta, koska reitti varataan koko yhteyden ajaksi, on reitti varattuna myös
 
 Yksittäinen linkki voidaan jakaa useampaan kanavaan, jolloin varausvaiheessa yhdelle yhteydelle varataan vain yksi kanava eikä koko linkkiä. Tätä kutsutaan kanavoinniksi (engl. multiplexing). Jokainen yhteys varaa käyttöönsä yhden tai useamman kanavan, ja saa näin kiinteän osan koko linkin kapasiteetista. Muut yhteydet voidaan samanaikaisesti varata käyttöönsä muita kanavia.
 
-Linkin kanavointi voidaan tehdä joko taajuusjakona (engl. frequency-division multiplexing, FDM), aikajakona (time-division multiplexing , TDM) tai niiden yhdistelmänä.
+Linkin kanavointi voidaan tehdä joko taajuusjakona (engl. frequency-division multiplexing, FDM), aikajakona (time-division multiplexing, TDM) tai niiden yhdistelmänä.
 
 Näistä voidaan piirtää havainnekuva x-y akselistoon, kun x akselilla on aika ja y akselilla taajuus. Taajuusjaossa jaamme y-akselin pienempiin osiin ja jokainen osa (eli kanava) on käytettävissä millä tahansa ajanhetkellä. Ne muodostavat havainnekuvaan vaakasuorat kanavat yli ajan. Jokainen kanava voidaan varata toisistaan riippumattomasti. Solmut siis varaavat yhden (tai useamman) kanavan käyttöönsä. Solmuja on kuvassa merkitty eri väreillä. Vastaavasti aikajaossa jaamme x-akselilla olevan ajan pienempiin osiin, jolloin tiettynä aikana kaikki taajuudet ovat yhden kanavan käytössä. Näin saamme pystysuoria kanavia (joissa on siis kaikki taajuudet, mutta rajoitettu aikaviipale). Nytkin voimme värittää eri kanavat eri solmuille. Aikajaossa on huomioitava, että kanavien varaukset toistuvat samassa järjestyksessä tietyn ajanjakson jälkeen.  (Jos yhdistäisimme aikajaon ja taajuusjaon samaan x-y-kuvaan, niin silloin meillä olisi matriisi kanavista, jotka olisi rajoitettu sekä taajuuden että ajan mukaan. Yksi väri kuvastaisi edelleen yhtä solmua, mutta sille varatut kanavat olisit sikin sokin tässä matriisissa.)
 
-KUVA:  Linkin jako kanaviin aikajakona ja taajuusjakona (katso kalvo 2017, luento 1, 28).
+<img src="../img/1-4-aikajako-vs-taajuusjako.svg" alt="">
+
+KUVA:  Linkin jako kanaviin aikajakona ja taajuusjakona.
 
 
 Koska pakettikytkentäisessä verkossa ei varata yhteyttä varmuuden vuoksi, sallii se enemmän samanaikaisia "yhteyksiä". Esimerkiksi linkillä, jonka nopeus on 100 megabittiä sekunnissa voi olla 10 samanaikaista lähettäjää, jos jokainen lähettäjä haluaa käyttöönsä 10 megabittiä sekunnissa. Koska solmut eivät yleenä lähetä koko aikaa, niin tehdään vielä lisäoletus. Oletaan, että jokainen solmu on aktiivisena 10% ajasta eli minuutin aikana se lähettää dataa noin 6 sekuntia. Piirikytkentäisessä verkossa voi silti olla vain 10 solmua samaan aikaan, koska solmulle varataan sen tarvitsema kapasiteetti (10 Mb/s) koko ajaksi.
