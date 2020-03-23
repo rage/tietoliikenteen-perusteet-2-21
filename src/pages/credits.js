@@ -10,40 +10,6 @@ const Credits = () => (
     <Container>
       <Helmet title="Kiitokset ja materiaalista" />
       <h1>Kiitokset ja materiaalista</h1>
-      <p>
-        Kurssin on tehnyt Helsingin yliopiston{" "}
-        <OutboundLink
-          href="https://www.helsinki.fi/en/researchgroups/data-driven-education"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Agile Education Research -tutkimusryhmä
-        </OutboundLink>
-        .
-      </p>
-      <h2>Kurssimateriaali</h2>
-
-      <p>
-        Kurssimateriaalin ovat kirjoittaneet Arto Hellas (né Vihavainen) ja
-        Matti Luukkainen. Kurssin sisältöön ovat myös vaikuttaneet seuraavat
-        henkilöt (listattu aakkosjärjestyksessä):
-      </p>
-
-      <ul>
-        <li>Antti Laaksonen</li>
-        <li>Antti Leinonen</li>
-        <li>Henrik Nygren</li>
-        <li>Joel Kaasinen</li>
-        <li>Juhana Laurinharju</li>
-        <li>Juho Leinonen</li>
-        <li>Martin Pärtel</li>
-        <li>Matti Paksula</li>
-        <li>Mikael Nousiainen</li>
-        <li>Nea Pirttinen</li>
-        <li>Pekka Mikkola</li>
-        <li>Reetta Puska</li>
-        <li>Vilma Kangas</li>
-      </ul>
 
       <p>
         Kurssin materiaali on lisensoitu{" "}

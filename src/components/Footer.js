@@ -118,17 +118,6 @@ class Footer extends React.Component {
                   <div>{this.t("footer-src")}</div>
                 </OutboundLink>
               </GithubContainer>
-              <ContentContainer>
-                {this.t("makers")}{" "}
-                <OutboundLink
-                  href="https://www.helsinki.fi/en/researchgroups/data-driven-education"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {this.t("rage")}
-                </OutboundLink>
-                .
-              </ContentContainer>
 
               <ContentContainer>
                 <Link to="/credits">{this.t("credits")}</Link>.
