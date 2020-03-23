@@ -63,7 +63,6 @@ Oheisessa kuvassa, joka on peräisin wikibooksista, on kuvattuna koko viestin ra
 
 KUVA: Kuva DNS viestistä (lähde <a href="https://en.wikibooks.org/wiki/Communication_Networks/DNS#/media/File:Dns_message.jpg">wikibooks</a>, tekijä Richard.bhuleskar (<a href="https://creativecommons.org/licenses/by-sa/2.5">CC BY-SA 2.5</a>))
 
-
 Yksittäinen solmu voi tehdä useita nimipalvelukyselyjä ilman, että se on vielä saanut vastausta edelliseen.  Kyselyviestissä on viestin tunniste, jolla kysymys ja aikanaan saapuva vastaus voidaan yhdistää toisiinsa. Kyselyyn vastaava nimipalvelija laittaa kyselyssä saamansa tunnisteen mukaan omaan vastausviestiinsä, jolloin vastaus voidaan tällä tunnisteella yhdistää alkuperäiseen kyselyyn.
 
 Vastauksessa on myös mukana lipukkeena tieto siitä, tuleeko vastaus suoraan nimipalveluhierarkiaan kuuluvalta autorisoidulta nimipalvelijalta vai ei.
@@ -82,8 +81,9 @@ Käyttäjän asiakaskoneen tekemiin nimipalvelukyselyihin vastaavat tyypillisest
 
 Oheisessa kuvassa on kuvattuna tyypillisen nimipalvelukyselyn vaiheet ja siihen liittyvät koneet. Seuraavaksi käydään paikallisen nimipalvelijan toimintaa läpi kuvan esimerkin valossa. Kuvassa haetaan www.firma.fi nimeä vastaavaa IP-osoitetta.
 
-<img url="https://fi.wikipedia.org/wiki/DNS#/media/Tiedosto:DNS.png">
-KUVA: Kuvassa on wikipedian esimerkki nimipalvelukyselystä
+<img src="../img/2-3-nimipalvelukysely.svg">
+
+KUVA: Kuvassa on mukailtuna wikipedian esimerkki nimipalvelukyselystä
 
 Käyttäjän tietokone, tai oikeammin sen nimipalvelua käyttävä ohjelmakirjasto aloittaa toiminnon, kun se tekee nimipalvelukyselyn paikalliselle nimipalvelijalla, joka kuvassa on nimetty asiakasnimipalvelija. Nimipalvelija ratkoo nimipalvelukyselyn käyttäjän puolesta ja palauttaa aikanaan vastauksen käyttäjän tietokoneelle. Paikallinen nimipalvelija tekee kyselyjä nimipalveluhierarkian koneille vaiheittain ja näin se saa vähitellen vastauksen kyselyyn. Paikallinen nimipalvelija aloittaa kyselyt aina juurinimipalvelijasta ja eteenee sieltä puussa alaspäin ylätason nimipalvelijaan ja sieltä kyseisen alueen nimistä vastaavaan autoritääriseen nimipalveliljaan.
 
