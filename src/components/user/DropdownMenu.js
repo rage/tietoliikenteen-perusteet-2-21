@@ -28,7 +28,7 @@ const DropdownMenu = ({ selectedVariant, setSelectedVariant, t }) => {
   return (
     <StyledFormControl variant="outlined">
       <InputLabel ref={inputLabelRef} htmlFor="course-variant-select">
-        {t("whichCourse")}
+        Mitä kurssin versiota käyt?
       </InputLabel>
       <Select
         value={selectedVariant}
@@ -41,17 +41,11 @@ const DropdownMenu = ({ selectedVariant, setSelectedVariant, t }) => {
           />
         }
       >
-        <MenuItem value={"dl"}>
-          Aikataulutettu Ohjelmoinnin MOOC, Ohjelmoinnin perusteet
+        <MenuItem value={"TKT20004"}>
+          Tutkinto-opiskelijoiden versio TKT20004
         </MenuItem>
-        <MenuItem value={"nodl"}>
-          Aikatauluton Ohjelmoinnin MOOC, Ohjelmoinnin perusteet
-        </MenuItem>
-        <MenuItem value={"ohja-dl"}>
-          Aikataulutettu Ohjelmoinnin MOOC, Ohjelmoinnin jatkokurssi
-        </MenuItem>
-        <MenuItem value={"ohja-nodl"}>
-          Aikatauluton Ohjelmoinnin MOOC, Ohjelmoinnin jatkokurssi
+        <MenuItem value={"AYTKT20004"}>
+          Avoimen yliopiston versio AYTKT20004
         </MenuItem>
       </Select>
     </StyledFormControl>

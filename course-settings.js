@@ -19,10 +19,6 @@ const courseSettings = {
       title: "Arvostelu ja kokeet",
       path: "/arvostelu-ja-kokeet",
     },
-    {
-      title: "Mahdollisuus opinto-oikeuteen",
-      path: "/opinto-oikeus",
-    },
     { title: "Tukiväylät", path: "/tukivaylat" },
     {
       title: "Opettajille ja opinto-ohjaajille",
@@ -32,6 +28,7 @@ const courseSettings = {
       title: "Usein kysytyt kysymykset",
       path: "/usein-kysytyt-kysymykset",
     },
+    { separator: true },
   ],
   sidebarFuturePages: [], // { title: "Osa 14", tba: "19.4.2019" },
   splitCourses: false,
