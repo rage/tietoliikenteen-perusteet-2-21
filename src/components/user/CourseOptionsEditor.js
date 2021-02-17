@@ -43,6 +43,13 @@ const StyledIcon = styled(FontAwesomeIcon)`
   margin-right: 0.25rem;
 `
 
+const WarningBox = styled(Card)`
+  margin: 2rem 0;
+  background: #f1a9a0;
+  padding: 1rem;
+  font-weight: bold;
+`
+
 class CourseOptionsEditor extends React.Component {
   async componentDidMount() {
     const data = await userDetails()
@@ -52,14 +59,10 @@ class CourseOptionsEditor extends React.Component {
         last_name: data.user_field?.last_name,
         email: data.email,
         student_number: data.user_field?.organizational_id,
-        applies_for_study_right:
-          data.extra_fields?.applies_for_study_right === "t",
-        graduating_next_year: data.extra_fields?.graduating_next_year === "t",
         digital_education_for_all:
           data.extra_fields?.digital_education_for_all === "t",
         marketing: data.extra_fields?.marketing === "t",
         research: data.extra_fields?.research,
-        currentCourseVariant: data.extra_fields?.course_variant,
         loading: false,
       },
       () => {
@@ -68,36 +71,35 @@ class CourseOptionsEditor extends React.Component {
     )
   }
 
-  onClick = async e => {
+  onClick = async (e) => {
     e.preventDefault()
     this.setState({ submitting: true })
     let extraFields = {
-      applies_for_study_right: this.state.applies_for_study_right,
-      graduating_next_year: this.state.graduating_next_year,
       digital_education_for_all: this.state.digital_education_for_all,
       marketing: this.state.marketing,
       research: this.state.research,
-      course_variant: this.state.currentCourseVariant,
     }
     const userField = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       organizational_id: this.state.student_number,
     }
-    await updateUserDetails({
-      extraFields,
-      userField,
-    })
-    this.setState({ submitting: false })
-    this.props.onComplete()
+    try {
+      await updateUserDetails({
+        extraFields,
+        userField,
+      })
+      this.setState({ submitting: false })
+      this.props.onComplete()
+    } catch (err) {
+      this.setState({ errorObj: err, submitting: false })
+    }
   }
 
   state = {
     submitting: false,
     error: true,
-    errorObj: {},
-    applies_for_study_right: false,
-    graduating_next_year: false,
+    errorObj: undefined,
     digital_education_for_all: false,
     marketing: false,
     research: undefined,
@@ -109,7 +111,7 @@ class CourseOptionsEditor extends React.Component {
     focused: null,
   }
 
-  handleInput = e => {
+  handleInput = (e) => {
     const name = e.target.name
     const value = e.target.value
     this.setState({ [name]: value }, () => {
@@ -117,7 +119,7 @@ class CourseOptionsEditor extends React.Component {
     })
   }
 
-  handleCheckboxInput = e => {
+  handleCheckboxInput = (e) => {
     const name = e.target.name
     const value = e.target.checked
     this.setState({ [name]: value }, () => {
@@ -125,7 +127,7 @@ class CourseOptionsEditor extends React.Component {
     })
   }
 
-  handleFocus = e => {
+  handleFocus = (e) => {
     const name = e.target.name
     this.setState({ focused: name })
   }
@@ -135,13 +137,9 @@ class CourseOptionsEditor extends React.Component {
   }
 
   validate = () => {
-    this.setState(prev => ({
+    this.setState((prev) => ({
       error: prev.research === undefined,
     }))
-  }
-
-  setSelectedVariant = value => {
-    this.setState({ currentCourseVariant: value })
   }
 
   render() {
@@ -221,35 +219,6 @@ class CourseOptionsEditor extends React.Component {
                   onBlur={this.handleUnFocus}
                 />
               </Row>
-
-              <Row>
-                <DropdownMenu
-                  selectedVariant={
-                    this.state.currentCourseVariant || "TKT20004"
-                  }
-                  setSelectedVariant={this.setSelectedVariant}
-                />
-              </Row>
-              {!this.props.courseVariant &&
-                (this.state.currentCourseVariant === "nodl" ||
-                  this.state.currentCourseVariant === "ohja-nodl") && (
-                  <Row>
-                    <InfoBox>
-                      <Card>
-                        <CardContent>
-                          <StyledIcon icon={icon} />
-                          Jos olet vaihtamassa aikataulullisesta kurssista
-                          aikatauluttomaan, katso tämä ohje ohjelmointitehtävien
-                          pisteiden siirtämiseksi:{" "}
-                          <Link to="/vaihda-aikatauluttomaan">
-                            Kurssin vaihto aikatauluttomaan versioon
-                          </Link>
-                          .
-                        </CardContent>
-                      </Card>
-                    </InfoBox>
-                  </Row>
-                )}
 
               <Row>
                 <FormControlLabel
@@ -347,6 +316,9 @@ class CourseOptionsEditor extends React.Component {
           <InfoBox>
             <b>{this.props.t("fillRequired")}</b>
           </InfoBox>
+        )}
+        {this.state.errorObj && (
+          <WarningBox>{this.state.errorObj.toString()}</WarningBox>
         )}
       </FormContainer>
     )

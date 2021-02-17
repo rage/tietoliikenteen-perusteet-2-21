@@ -28,7 +28,7 @@ class ExerciseList extends React.Component {
 
   async componentDidMount() {
     const value = this.context
-    const currentPath = value.current.path
+    const currentPath = value.current.frontmatter.path
     let sectionPath = currentPath
     const sectionSeparator = nthIndex(currentPath, "/", 2)
     if (sectionSeparator !== -1) {
@@ -36,7 +36,7 @@ class ExerciseList extends React.Component {
     }
 
     const sectionPages = value.all
-      .filter(o => o.path.startsWith(`${sectionPath}/`))
+      .filter((o) => o.path.startsWith(`${sectionPath}/`))
       .sort((a, b) => {
         a = a.path.toLowerCase()
         b = b.path.toLowerCase()

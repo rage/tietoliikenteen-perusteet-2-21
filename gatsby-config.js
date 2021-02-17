@@ -19,7 +19,7 @@ module.exports = {
 
       }
     },
-
+    `gatsby-plugin-anchor-links`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-catch-links`,
     {
@@ -27,6 +27,13 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-copy-linked-files`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              isIconAfterHeader: true,
+              removeAccents: true,
+            }
+          },
           {
             resolve: "gatsby-remark-smartypants",
             options: {
@@ -78,7 +85,8 @@ module.exports = {
               // base for generating different widths of each image.
               maxWidth: 920,
               withWebp: true,
-              wrapperStyle: "margin-bottom: 1rem;"
+              wrapperStyle: "margin-bottom: 1rem;",
+              backgroundColor: 'transparent'
             }
           },
           {
@@ -150,6 +158,9 @@ module.exports = {
     },
     {
       resolve: "gatsby-transformer-moocfi-exercises"
+    },
+    {
+      resolve: "gatsby-transformer-vocabulary"
     },
     `gatsby-plugin-top-layout`,
     {

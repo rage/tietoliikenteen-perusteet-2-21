@@ -1,36 +1,15 @@
 const courseSettings = {
   language: "fi",
-  name: "Tietoliikenteen perusteet 2 2020",
+  name: "Tietoliikenteen perusteet 2 2021",
   siteUrl: "https://tietoliikenteen-perusteet-2-20.mooc.fi",
   githubUrl: "https://github.com/rage/tietoliikenteen-perusteet-2-20",
-  subtitle: "Ohjelmoinnin alkeet kaikille, ilmaiseksi",
-  slug: "tietoliikenteen-perusteet-2-20",
+  subtitle: "Opi miten internet toimii",
+  slug: "tietoliikenteen-perusteet-2-21",
   tmcCourse: "x",
   quizzesId: "5e304e42-0cea-4403-8ff3-e32dd882bf67",
   tmcOrganization: "mooc",
   bannerPath: "banner.svg",
   studyRightEnabled: false,
-  sidebarEntries: [
-    {
-      title: "Tietoa kurssista",
-      path: "/",
-    },
-    {
-      title: "Arvostelu ja kokeet",
-      path: "/arvostelu-ja-kokeet",
-    },
-    { title: "Tukiväylät", path: "/tukivaylat" },
-    {
-      title: "Opettajille ja opinto-ohjaajille",
-      path: "/opettajille",
-    },
-    {
-      title: "Usein kysytyt kysymykset",
-      path: "/usein-kysytyt-kysymykset",
-    },
-    { separator: true },
-  ],
-  sidebarFuturePages: [], // { title: "Osa 14", tba: "19.4.2019" },
   splitCourses: false,
 }
 

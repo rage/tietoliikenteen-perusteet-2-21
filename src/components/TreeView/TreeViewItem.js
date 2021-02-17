@@ -12,7 +12,7 @@ import Avatar from "@material-ui/core/Avatar"
 import Chip from "@material-ui/core/Chip"
 import Divider from "@material-ui/core/Divider"
 
-import { faCalendarAlt as icon } from "@fortawesome/free-regular-svg-icons"
+import { faUnlockAlt as icon } from "@fortawesome/free-solid-svg-icons"
 import withSimpleErrorBoundary from "../../util/withSimpleErrorBoundary"
 
 const ChildrenList = styled.ul`
@@ -38,7 +38,7 @@ const NavigationLink = styled(GatsbyLink)`
   border-left: 0.5em solid white;
   width: 100%;
   background-color: white;
-  ${props =>
+  ${(props) =>
     props.active === "t" &&
     `
     border-color: #f75b4b !important;
@@ -58,6 +58,26 @@ const DisabledItem = styled.div`
   width: 100%;
   cursor: default !important;
   border-left: 0.5em solid white;
+`
+
+const DisabledItemWithLink = styled(GatsbyLink)`
+  opacity: 0.5;
+  width: 100%;
+  border-left: 0.5em solid white;
+  background-color: white;
+  ${(props) =>
+    props.active === "t" &&
+    `
+    border-color: #f75b4b !important;
+    background-color: #edeaea;
+  `}
+  :hover {
+    text-decoration: none;
+    color: black;
+    background-color: #f5ebeb;
+    border-color: #f5ebeb;
+    //filter: brightness(0.5);
+  }
 `
 
 const ItemTitleWrapper = styled.div`
@@ -88,7 +108,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
 
 const StyledChip = styled(Chip)`
   span {
-    width: 6em;
+    width: 6.5em;
   }
 `
 
@@ -111,7 +131,7 @@ class TreeViewItem extends React.Component {
   }
 
   onClick = () => {
-    this.setState(prev => ({
+    this.setState((prev) => ({
       childrenVisible: !prev.childrenVisible,
     }))
   }
@@ -185,7 +205,7 @@ class TreeViewItem extends React.Component {
                         innerRef={this.childrenListRef}
                         style={{ "--open-ratio": `${openRatio}` }}
                       >
-                        {this.props.item.children.map(i => (
+                        {this.props.item.children.map((i) => (
                           <TreeViewItem key={i.title} item={i} />
                         ))}
                       </ChildrenList>
@@ -203,7 +223,10 @@ class TreeViewItem extends React.Component {
 
 function LinkWrapper(props) {
   if (props.disabled) {
-    return <DisabledItem {...props} />
+    if (process.env.NODE_ENV === "production") {
+      return <DisabledItem {...props} />
+    }
+    return <DisabledItemWithLink {...props} />
   }
   return <NavigationLink {...props} />
 }

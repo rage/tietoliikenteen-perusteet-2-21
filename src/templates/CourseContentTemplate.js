@@ -47,15 +47,6 @@ export default class CourseContentTemplate extends React.Component {
   static contextType = LoginStateContext
 
   async componentDidMount() {
-    if (!loggedIn()) {
-      return
-    }
-
-    let userInfo = await getCachedUserDetails()
-    const research = userInfo?.extra_fields?.research
-    if (research === undefined) {
-      navigate("/missing-info")
-    }
     if (typeof window !== "undefined" && window.location.hash) {
       const selector = window.location.hash
       setTimeout(() => {
@@ -71,12 +62,22 @@ export default class CourseContentTemplate extends React.Component {
         tryToScrollToSelector(selector)
       }, 2000)
     }
+
+    if (!loggedIn()) {
+      return
+    }
+
+    let userInfo = await getCachedUserDetails()
+    const research = userInfo?.extra_fields?.research
+    if (research === undefined) {
+      navigate("/missing-info")
+    }
   }
 
   render() {
     const { data } = this.props
     const { frontmatter, htmlAst } = data.page
-    const allPages = data.allPages.edges.map(o => o.node?.frontmatter)
+    const allPages = data.allPages.edges.map((o) => o.node?.frontmatter)
     const partials = getNamedPartials()
     const renderAst = new rehypeReact({
       createElement: React.createElement,
@@ -87,10 +88,20 @@ export default class CourseContentTemplate extends React.Component {
       `${frontmatter.path.split(/\//g)[1].replace(/-/g, " ")}`,
     )
     const parentSectionPath = `/${frontmatter.path.split(/\//g)[1]}`
+
+    const filePath = data.page.fileAbsolutePath.substring(
+      data.page.fileAbsolutePath.lastIndexOf("/data/"),
+      data.page.fileAbsolutePath.length,
+    )
     return (
       <Fragment>
         <Helmet title={frontmatter.title} />
-        <PagesContext.Provider value={{ all: allPages, current: frontmatter }}>
+        <PagesContext.Provider
+          value={{
+            all: allPages,
+            current: { frontmatter: frontmatter, filePath: filePath },
+          }}
+        >
           <LoginStateContextProvider>
             <Layout>
               <Fragment>
@@ -124,6 +135,7 @@ export const pageQuery = graphql`
         path
         title
       }
+      fileAbsolutePath
     }
     allPages: allMarkdownRemark {
       edges {

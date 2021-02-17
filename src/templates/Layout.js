@@ -6,7 +6,7 @@ import ContentArea from "../components/ContentArea"
 import TopBar from "../components/TopBar"
 import { StaticQuery, graphql } from "gatsby"
 import * as store from "store"
-import Pheromones from "../util/pheromones"
+// import Pheromones from "../util/pheromones"
 import styled from "styled-components"
 import courseMetaData from "../../course-metadata.json"
 import "./reboot.css"
@@ -43,7 +43,7 @@ const layoutQuery = graphql`
 `
 
 const Wrapper = styled.div`
-  ${props =>
+  ${(props) =>
     props.mobileMenuOpen &&
     `
     height: 100vh;
@@ -68,34 +68,34 @@ class Layout extends React.Component {
     mobileMenuOpen: false,
   }
 
-  componentDidMount() {
-    const user = store.get("tmc.user")
-    if (typeof window !== "undefined" && user) {
-      if (canDoResearch()) {
-        setTimeout(() => {
-          this.removePheromones = Pheromones.init({
-            apiUrl: "https://data.pheromones.io/",
-            username: user.username,
-            submitAfter: 20,
-          })
-        }, 1000)
-      }
-    }
-  }
+  // componentDidMount() {
+  //   const user = store.get("tmc.user")
+  //   if (typeof window !== "undefined" && user) {
+  //     if (canDoResearch()) {
+  //       setTimeout(() => {
+  //         this.removePheromones = Pheromones.init({
+  //           apiUrl: "https://data.pheromones.io/",
+  //           username: user.username,
+  //           submitAfter: 20,
+  //         })
+  //       }, 1000)
+  //     }
+  //   }
+  // }
 
-  componentWillUnmount() {
-    if (
-      typeof window === "undefined" ||
-      typeof this.removePheromones === "undefined"
-    ) {
-      return
-    }
-    this.removePheromones()
-    this.removePheromones = undefined
-  }
+  // componentWillUnmount() {
+  //   if (
+  //     typeof window === "undefined" ||
+  //     typeof this.removePheromones === "undefined"
+  //   ) {
+  //     return
+  //   }
+  //   this.removePheromones()
+  //   this.removePheromones = undefined
+  // }
 
   toggleMobileMenu = () => {
-    this.setState(prev => {
+    this.setState((prev) => {
       return {
         mobileMenuOpen: !prev.mobileMenuOpen,
       }
@@ -110,7 +110,7 @@ class Layout extends React.Component {
         {" "}
         <StaticQuery
           query={layoutQuery}
-          render={data => {
+          render={(data) => {
             const siteTitle = data.title.siteMetadata.title
             return (
               <Wrapper mobileMenuOpen={this.state.mobileMenuOpen}>

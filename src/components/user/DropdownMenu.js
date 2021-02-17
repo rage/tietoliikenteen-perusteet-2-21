@@ -21,14 +21,14 @@ const DropdownMenu = ({ selectedVariant, setSelectedVariant, t }) => {
     setLabelWidth(ReactDOM.findDOMNode(inputLabelRef.current).offsetWidth)
   })
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setSelectedVariant(event.target.value)
   }
 
   return (
     <StyledFormControl variant="outlined">
       <InputLabel ref={inputLabelRef} htmlFor="course-variant-select">
-        Mitä kurssin versiota käyt?
+        {t("whichCourse")}
       </InputLabel>
       <Select
         value={selectedVariant}
@@ -41,11 +41,17 @@ const DropdownMenu = ({ selectedVariant, setSelectedVariant, t }) => {
           />
         }
       >
-        <MenuItem value={"TKT20004"}>
-          Tutkinto-opiskelijoiden versio TKT20004
+        <MenuItem value={"dl"}>
+          Aikataulutettu Ohjelmoinnin MOOC, Ohjelmoinnin perusteet
         </MenuItem>
-        <MenuItem value={"AYTKT20004"}>
-          Avoimen yliopiston versio AYTKT20004
+        <MenuItem value={"nodl"}>
+          Aikatauluton Ohjelmoinnin MOOC, Ohjelmoinnin perusteet
+        </MenuItem>
+        <MenuItem value={"ohja-dl"}>
+          Aikataulutettu Ohjelmoinnin MOOC, Ohjelmoinnin jatkokurssi
+        </MenuItem>
+        <MenuItem value={"ohja-nodl"}>
+          Aikatauluton Ohjelmoinnin MOOC, Ohjelmoinnin jatkokurssi
         </MenuItem>
       </Select>
     </StyledFormControl>

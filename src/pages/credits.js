@@ -10,7 +10,24 @@ const Credits = () => (
     <Container>
       <Helmet title="Kiitokset ja materiaalista" />
       <h1>Kiitokset ja materiaalista</h1>
+      <p>
+        Kurssin on tehnyt Helsingin yliopiston{" "}
+        <OutboundLink
+          href="https://www.helsinki.fi/en/researchgroups/data-driven-education"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Agile Education Research -tutkimusryhmä
+        </OutboundLink>
+        .
+      </p>
+      <h2>Kurssimateriaali</h2>
 
+      <p>
+        Kurssimateriaalin ja tehtävien tekijät ovat Erkki Kaila, Antti Laaksonen
+        ja Matti Luukkainen. Muutama kurssin tehtävistä on Arto Hellaksen (né
+        Vihavainen) käsialaa.
+      </p>
       <p>
         Kurssin materiaali on lisensoitu{" "}
         <OutboundLink
@@ -30,7 +47,7 @@ const Credits = () => (
       <h2>Kurssilla käytössä oleva teknologia</h2>
 
       <p>
-        Kurssin sivun ovat tehneet{" "}
+        Kurssisivuston ovat tehneet{" "}
         <OutboundLink
           href="https://github.com/nygrenh"
           target="_blank"
@@ -54,8 +71,7 @@ const Credits = () => (
         >
           Agile Education Research -tutkimusryhmä
         </OutboundLink>{" "}
-        on luonut ja ylläpitää kurssilla käytettyä ohjelmointitehtävien
-        palautusympäristöä{" "}
+        on luonut kurssilla käytetyn ohjelmointitehtävien palautusympäristön (
         <OutboundLink
           href="https://tmc.mooc.fi"
           target="_blank"
@@ -63,9 +79,8 @@ const Credits = () => (
         >
           Test My Code
         </OutboundLink>
-        :a, Test My Coden liitännäisiä ohjelmointiympäristöhin,
-        kurssimateriaalissa olevaa kyselyjärjestelmää ja muita
-        kurssimateriaalissa olevia vempaimia (widgettejä).
+        ) ja sen liitännäiset ohjelmointiympäristöihin, kurssimateriaalissa
+        olevan kyselyjärjestelmän ja muut toiminnot.
       </p>
     </Container>
   </Layout>

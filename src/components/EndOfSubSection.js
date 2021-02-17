@@ -43,15 +43,15 @@ class EndOfSubSection extends React.Component {
   render() {
     return (
       <PagesContext.Consumer>
-        {value => {
-          const currentPath = value.current.path
+        {(value) => {
+          const currentPath = value.current.frontmatter.path
           let sectionPath = currentPath
           const sectionSeparator = nthIndex(currentPath, "/", 2)
           if (sectionSeparator !== -1) {
             sectionPath = currentPath.substr(0, sectionSeparator)
           }
           const sectionPages = value.all
-            .filter(o => o.path.startsWith(`${sectionPath}/`))
+            .filter((o) => o.path.startsWith(`${sectionPath}/`))
             .sort((a, b) => {
               a = a.path.toLowerCase()
               b = b.path.toLowerCase()
