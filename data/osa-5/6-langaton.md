@@ -90,7 +90,7 @@ Kuten monet avoimia Wi-Fi -verkkoja käyttäneet jo tietävätkin, niin monet pa
 
 Laitteen sijaan langattoman verkon haltija voi edellyttää käyttäjän tunnistamista. Tällöin tukiasema käyttää erillistä tunnistuspalvelua, johon käyttäjän pitää tunnistautua esimerkiksi käyttäjätunnuksella ja salasanalla. Tunnistautumisen jälkeen käyttäjän laitteella voi liikennöidä verkossa. Jätämme erilaisten käyttäjän tunnistuksen menetelmien tarkemman tarkastelun tietoturvakursseille, kuten Cyber security.
 
-<quiz id="a6168f17-8442-4c82-b2b5-db8d712e034d"> </quiz>
+<quiz id="de59073c-3506-56e4-95bc-95b0610d2ac0"> </quiz>
 
 ### Lähetysvuorojen jakelu
 
@@ -128,7 +128,7 @@ Taulukosta voi havaita, että osoitteet 1 ja 2 ovat tämän langattoman yhteyden
 Koska kummankin kehyksen lopussa on kehykseen liittyvät tarkistusbitit (Frame Check Sequence, FCS), tukiasema joutuu otsaketietojen muunnoksen vuoksi laskemaan ne uudelleen.
 
 
-<quiz id="b26eac43-8e17-4460-bc99-ebdecef70f2e"> </quiz>
+<quiz id="b2b600cd-270a-5bdc-9c23-46afd8854a25"> </quiz>
 
 
 

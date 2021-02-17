@@ -44,7 +44,7 @@ Luokallisesta osoitteiden hallinnoinnista siirryttiin luokattomiin osoiterajoihi
 
 Organisaatio saa aina käyttöönsä yhtenäisen osoitealueen. Alueen koon kertoo nimenomaan tuo aliverkon peite. Organisaatio saa edelleen jakaa tämän osoitealueen haluamallaan tavalla pienemmiksi aliverkoiksi. Otetaan esimerkiksi tuo yksityisverkon osoitealue 172.16.0.0/12. Voimme jakaa sen kahteen yhtäsuureen alueeseen 172.16.0.0/13 ja 172.24.0.0./13.  Miten nämä alueet on sitten laskettu? Otetaan tarkasteluun vain tuo toinen tavu, jossa muutoksia tapahtuu. 16 on binäärilukuna 10000, mutta koska meillä on kokonainen tavu, niin tavu on silloin 00010000. Kun teemme kaksi yhtä suurta aluetta, niin toinen alue on binäärilukuna 00010000 ja toinen 00011000 eli niiden ero on ykkösbitiä seuraavassa bitissä. Kun nämä muunnetaan takaisin kymmenjärjestelmän luvuiksi, niin saamme luvut 16 ja 24. Samalla myös aliverkon peitteen koko kasvoi yhdellä, koska siirsimme yhden bitin lisää verkkoja erottavaan osioon.  Jos haluamme jakaa sen kahdeksaan yhtä suureen alueeseen, niin silloin niiden osoitelueet ovat 172.16.0.0/15, 172.18.0.0./15, 172.20.0.0/15, ... 172.30.0.0/15. Tee tuo äskeisen kaltainen bittimuunnos itsenäisesti ja varmistu näin, että ymmärrät miten nuo verkkonumerot ja peitteet toimivat.
 
-<quiz id="b51a8df2-9037-4de6-a12c-ef66d593d50c"></quiz>
+<quiz id="72e8cda7-1132-5aa4-90de-a9c7f3132b85"></quiz>
 
 
 ## IPv6
@@ -76,7 +76,7 @@ Ryhmälähetystä käytetään silloin, kun lähettäjä haluaa lähettää vain
 
 Jokulähetys on tavallaan ryhmälähetyksen tai yleislähetyksen erikoistapaus. Siinä mahdollisia viestin vastaanottajia on useita, mutta yksi viesti päätyy kuitenkin vain yhdelle vastaanottajalle. Lähettäjä ei lähettäessään välitä mille ryhmän jäsenelle viesti päätyy, jokainen niistä osaa asian käsitellä. Tämän tyyppinen viestinlähetys sopii sellaiseen tilanteeseen, jossa palvelin on kuormituksen vuoksi monistettu ja kaikki kopiot ovat toiminnassa. Internetin nimipalvelu on hyvä esimerkki tämän kaltaisesta tilanteesta. Lähettäjä haluaa vastauksen nimipalvelukysymykseensä, mutta sitä ei kiinnosta, mikä auktorisoiduista nimipalvelijoista voisi siihen vastata. WWW-palvelu on toinen hyvä esimerkki. Isoilla toimijoilla on palvelimia eri puolilla internetiä ja käyttäjälle riittää, että joku niistä vastaa kyselyyn, mutta käyttäjälle ei ole väliä mistä vastaus tarkemmin ottaen tulee.
 
-<quiz id="a53ea914-8396-4db0-87eb-da700b8d26de"> </quiz>
+<quiz id="57f2a9e5-a119-55ce-ac78-5a41ab0a99c9"> </quiz>
 
 
 

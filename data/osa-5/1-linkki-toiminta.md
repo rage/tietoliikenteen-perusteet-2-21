@@ -99,7 +99,7 @@ Kaikki ethernetin versiot käyttävät saman kokoista kehystä. Ethernet kehykse
 KUVA: Ethernet kehys
 
 
-<quiz id="a62c5c7d-8454-424c-a722-dbaa4342bb8c"> </quiz>
+<quiz id="02d8e9f7-71de-5fa1-b5b9-e983d2d2b01d"> </quiz>
 
 
 

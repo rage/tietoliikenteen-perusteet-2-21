@@ -9,4 +9,4 @@ Tämä ensimmäinen osa täydensi jo edellisellä kurssilla opittuja tietoliiken
 Vastaa alla olevaan kyselyyn oppimistavoitteista, kun olet valmis tämän osan tehtävien kanssa.
 
 
-<quiz id="a2d42512-81aa-4503-a32e-d73e6d4b1619"></quiz>
+<quiz id="eb5b58ca-90cb-562b-a6b8-cd628982ffd0"></quiz>

@@ -29,7 +29,7 @@ Käyttäjän tunnisteet yksilöivät käyttäjät vain yhden sähköpostipalveli
 
 Sähköpostipalvelimen tunniste helsinki.fi ei ole sähköpostipalvelimen oma verkkonimi, vaan sähköpostijärjestelmässä käytettävä tunniste. Sähköpostipalvelimen verkkonimen voi selvittää nimipalvelun avulla. Nimipalvelun resurssitietueessa MX on tieto siitä, mikä sähköpostipalvelin vastaa tietyn verkkoalueen (kuten helsinki.fi) sähköpostipalvelusta. Sähköpostiosoitteet sitoutuvat siis verkkonimiin siten, että tuo sähköpostipalvelimen tunniste on yleensä samalla verkkoalueen nimi. Siksi voimme käyttää aluenimeä sähköpostiosoitteessa varsinaisen palvelimen nimen sijaan.
 
-<quiz id="4c9f0a90-72c1-4219-a4c4-4838a4f859dc"></quiz>
+<quiz id="b0a8acaf-7dda-5498-815f-7023646fd899"></quiz>
 
 ## Sähköpostin lähetys ja vastaanotto
 
@@ -92,11 +92,11 @@ Sähköpostiviestin rakenteesta on hyvä kuvaus [wikipedian sivulla](https://fi.
 
 Useimmat sähköpostiohjelmat käyttävät erillisiä kenttiä sähköpostin otsaketiedoille, kuten vastaanottaja(t) ja viestin otsikko. Näin ne tukevat käyttäjää siinä, että lähtevän sähköpostiviestin otsaketiedot noudattavat sovittuja käytänteitä. Sähköposti on kuitenkin vanha protokolla, jota voisi ihan yhtä hyvin käyttää suoraan komentoriviltä toimivilla tekstipohjaisilla ohjelmilla.
 
-<quiz id="aab49445-87f0-40f3-a919-e1a7f581eb2c"></quiz>
+<quiz id="28ee28b0-df6b-5de5-af55-bcb1cd4e0e14"></quiz>
 
 Katso jonkun saamasi sähköpostiviestin täydet otsaketiedot ja etsi sieltä rivit, jotka alkavat "Received:". Huomaa, että jos viesti on tullut saman postipalvelimen joltain toiselta käyttäjältä, niin tuota received-riviä ei välttämättä ole lainkaan, koska postipalvelin ei ole lähettänyt sitä toiselle postipalvelimelle vaan on vain laittanut viestin kyseisen käyttäjän postilaatikkoon. Valitse siis tarkasteltavaksi viesti, joka on tullut jonkun toisen postipalvelimen käyttäjältä. Miten näet viestin otsaketiedot, riippuu käyttämästäsi sähköpostiohjelmasta. Toiminto voi olla 'view full header', 'view source', 'view original'. Joillakin, erityisesti mobiililaitteiden, sähköpostiohjelmilla tämän tiedon katselu ei välttämättä edes ole mahdollista, kun ohjelmassa ei kyseistä toiminallisuutta ole. Vaihda silloin käyttöösi sellainen käyttöliittymä tai ohjelma, jolla nämä tiedot näet.
 
-<quiz id="a704808e-8500-4435-8b3a-dcc7faed2b3c"></quiz>
+<quiz id="f733c37e-ef14-5175-bebe-53e57afecaf3"></quiz>
 
 Sähköpostiviestiin voi nykyään liittää myös muuta materiaali kuin vain varsinaisen viestin pelkkänä tekstinä. Tällaiset laajennukset on määritelty MIME-standardissa (ks [standardin wikipedia-sivu](https://fi.wikipedia.org/wiki/MIME) ja [sähköpostin koodausohjeistus](https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6posti#MIME)). MIME-muotoisessa sähköpostissa on useita osia ja jokainen osa voidaan koodata eri tavalla. Viestin liitteeksi voi laittaa minkä tahansa tiedoston, jonka tyyppi kerrotaan MIME-standardin mukaisissa tiedoissa.  Koska SMTP-protokolla siirtää varmasti vain 7-bittisiä ASCII-merkkejä, on tyypillistä, että erityisesti liitetiedostot ja kuvat koodataan 7-bittiseksi ASCII-koodiksi. Tunnetuin koodaustapa on base64, jossa kolme 8-bittistä tavua (tai merkkiä) koodataan 4:ksi, jotka eivät voi rikkoa sähköpostin siirtoa. Esimerkiksi merkkiyhdistelmä 'rivinvaihto' 'piste' 'rivinvaihto' ei ole sallittu, koska se on sovittu SMTP-protokollassa sähköpostiviestin päättäväksi merkiksi.
 

@@ -72,5 +72,5 @@ Molemmissa esitteissä esiintyy lyhenne PoE. Aukikirjoitettuna se on [Power-over
 
 Laitteissa puhutaan myös kerrosten 2 ja 3 kytkimistä (engl. Layer 2 and Layer 3 switch). Nämä viittaavat protokollapinoon siten että kerros 2 on linkkikerrosja kerros 3 verkkokerros. Käytännössä tuollainen kerroksen 3 kytkin on reititin, jossa reitityspäätöksiä tehdään ohjelmiston sijasta laitteistolla. Jos asia kiinnostaa, niin lue lisää englanninkielisestä wikipedian artikkelista [Multilayer switch](https://en.wikipedia.org/wiki/Multilayer_switch).
 
-<quiz id="b6e7f93c-91a7-44f7-a66e-f1c8c92e255a"> </quiz>
+<quiz id="e7894197-df2e-5764-b967-59a7b15fb91f"> </quiz>
  

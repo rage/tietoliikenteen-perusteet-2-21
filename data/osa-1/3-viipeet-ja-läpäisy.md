@@ -28,7 +28,7 @@ Siirtoviive (engl. transmission delay) on näistä kaikkein tutuin. Sen laskukaa
 
 Vastaavia laskuja tehtiin edellisellä kurssilla arvioina koko tiedoston siirron kestosta. Tällöin oikeastaan lasketaan vain se, kuinka kauan lähettäjältä kestää laittaa kyseinen tiedosto matkaan eli siirtää se linkkiin. Koska verkossa on useita toimijoita, jotka kaikki siirtävät tietoa seuraavalle, niin yhden solmun siirtoviiveen tarkastelulla saadaan vain karkea alaraja-arvio siirron kokonaiskestosta.
 
-<quiz id="9ad14940-7b49-4277-949c-cca763aa28ba"></quiz>
+<quiz id="e129327d-78ce-5e20-84d0-29707c1b6ee1"></quiz>
 
 
 ### Prosessointiviive
@@ -49,7 +49,7 @@ Etenemisviive (engl. propagation delay) on se aika, joka yhdeltä bitiltä kest�
 
 Valonnopeuden tarkempi selitys löytyy [wikipediasta](https://fi.wikipedia.org/wiki/Valonnopeus). Tämän kurssin tarpeisiin [Ursan hyvin tiivis kuvaus](https://www.ursa.fi/extra/kosmos/v/valon_nopeus.html) on riittävä.
 
-<quiz id="a2261435-811f-4b31-b7a5-d6585422e987"></quiz>
+<quiz id="55e1ff14-aa35-58f2-b3cc-9ca18d17f906"></quiz>
 
 ### Jonotusviive
 
@@ -64,7 +64,7 @@ Todellisuudessa yhden reitittimen osalta emme pysty ennustamaan pakettien saapum
 
 Lisätietoa kiinnostuneille: Jonot ja jonotus on niin tavallista, että niille on ihan oma matematiikan osa-alue, jonoteoria. Wikipedian englanninkielinen sivu [Queueing theory](https://en.wikipedia.org/wiki/Queueing_theory) antaa perustiedot asiasta kiinnostuneelle. Tällä kurssilla jonotusta ja sen vaikutuksia ei käsitellä tämän enempää.
 
-<quiz id="a56e2695-83bc-4ac6-8623-daaed29eca23"></quiz>
+<quiz id="17a8c7a2-8616-557f-b152-be77e46cc91d"></quiz>
 
 ## Läpäisy tai läpimeno
 
@@ -78,7 +78,7 @@ Nyt tarkastelemme paketin (tai oikeammin bittien) kulkua kokonaisuudessaan lähe
 
 KUVA 2: Kuvaan on merkitty eri linkkien maksiminopeudet. Näistä on helppo havaita, että reitittimien välinen linkki (100 Mb/s) on hitain. Näin voidaan olettaa, että se muodostaa tässä verkossa pullonkaulan.
 
-<quiz id="a13067de-805c-4101-95fe-d513928b2598"></quiz>
+<quiz id="f2e319d8-d8a6-5e42-a7f1-8c7f4d9b9c29"></quiz>
 
 
 Paketin koko vaikuttaa viestin kulkuaikaan lähettäjältä vastaanottajalle. Internet on ns. etappivälitteinen (engl. store-and-forward). Perusmallissa paketti vastaanotetaan kokonaisuudessaan ennen kuin sitä käsitellään solmussa sen tarkemmin ja vasta sen jälkeen paketti lähetetään eteenpäin. Uudet reitittimet osaavat käsitellä paketteja jo silloin, kun ne vielä vastaanottavat paketin loppuosaa. Tällainen nopeampi edelleenlähetys (engl. fastforward) nopeuttaa erityisesti isojen pakettien kulkua, kun siirtoviiveen vaikutus pienenee. Vaikutus on samankaltainen kuin paketin pilkkominen pienemmiksi paketeiksi.
@@ -87,7 +87,7 @@ Oletetaan ensin, että yllä olevassa kuvassa B lähettää  1 megatavun kokoise
 
 Oletetaan sitten, että tämä 1 megatavun kokoinen tiedosto pilkotaan 1 kilotavun paketeiksi. Nyt yhden paketin siirtoon kuluu aikaa enää (8 kb / 200 kb/s)+ (8 kb/100 kb/s) + (8kb / 100 kb/s) = 0,2 sekuntia. Näitä paketteja on kaikkiaan 1 megatavu / 1 kilotavu = 1000 kappaletta. Paketit kulkevat kuitenkin lomittain siten, että vain viimeisen (tai ensimmäisen) yhteysvälin osalta pitää ottaa huomioon kaikki paketit. Koko tiedoston siirtoon reitittimeltä C:lle kuluu tuo sama 80 sekuntia (eli 1000 * 8 kb / 100 kb/s) kuin edellisessäkin laskelmassa. Jos nyt laskemme yhteen kaikkien pakettien siirron yhden linkin yli ja yhden paketin kulkuajan lähettäjältä vastaanottajalle tulemme laskeneeksi yhden paketin siirron yhden linkin yli mukaan laskelmaan kahteen kertaan.  Piirrä itsellesi kuva, jonka perusteella voit vakuuttua tästä!  Kokonaissiirtoaika tässä on siis 80 + 0,12 eli 80,12 sekuntia.
 
-<quiz id="a6e2337b-84e4-4f2b-aed1-dc9aa32f7a94"></quiz>
+<quiz id="b8316e56-37d7-54a3-9b1c-8a492d8349b4"></quiz>
 
 ## Muita käsitteitä näihin liittyen
 

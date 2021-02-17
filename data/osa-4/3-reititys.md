@@ -69,7 +69,7 @@ Algoritmin jälkeen meillä on etäisyydet d(A)=0; d(B)=3; d(C)=2; d(D)=4, d(E)=
 | G | C | 7 |
 
 
-<quiz id="a68e9dfc-84a2-4634-8287-dc2c25be5fd3"> </quiz>
+<quiz id="86b6cb85-f186-5f86-a699-851a443ad9dc"> </quiz>
 
 
 ## Etäisyysvektorialgoritmi
@@ -115,7 +115,7 @@ Käytännössä, kun laskee käsin näitä reittejä, niin usein on helpointa te
 
 Tässä tuntemattomat etäisyydet on merkitty viivalla, mutta yhtä hyvin merkintänä olisi voinut olla ääretön. Vastaavasti solmun etäisyys itseensä on merkitty 0:ksi.
 
-<quiz id="aac1f4a7-87fa-4b62-9f30-e1b9a4357330"> </quiz>
+<quiz id="17792628-9bd9-501a-aa2b-a6af3e31a20f"> </quiz>
 
 Etäisyysvektorireititys on näppärä, koska reittitiedot etenevät suhteellisen nopeasti verkossa. Etappivälitteisessä verkossa viestit etenevät muutenkin vain linkkivälin kerrallaan. Nyt reititin päivittää oman tietonsa ja sitten lähettää sen eteenpäin. Tällöin aina kierros kierrokselta tieto eteen verkossa ja tunnetut reitit pitenevät. Vastaavasti myös kustannusmuutokset etenevät tällä samalla nopeudella verkon solmujen välillä. Tästä käytetään joskus termiä "hyvät uutiset etenevät nopeasti" vastakohtana sille, että "huonot uutiset etenevät hitaasti".
 

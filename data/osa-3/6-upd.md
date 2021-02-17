@@ -43,7 +43,7 @@ Lähettäjä siis laskee segmentin kaikkien 16-bittisten sanojen summan poisluet
 Vaikka UDP käsittelee 16 bitin eli kahden tavun mittaisia tarkistussummia, niin käyn tässä esimerkin yhden tavun mittaiselle tarkistussumman laskennalle. Oletetaan, siis että siirrettävänä on 3 tavua dataa 01101101, 10101011 ja 10100110. Lasketaan nyt sitten tarkistussmma näille tavuille. Tavujen 01101101 ja 10101011 summa on 100011000. Tässä on kuitenkin 9 bittiä, joten tuo 9. ylivuotobitti pitää laskea mukaan summaan eli 00011000 +1 = 00011001. Seuraavaksi lasketaan tämän summan ja 3. tavun summa eli 00011001 + 10100110 = 10111111. Tästä yhden komplementti on 01000000, joka siis on näiden kolmen tavun tarkistussumma. Nyt kun lasketaan yhteen tavut 01101101, 10101011, 10100110 ja 01000000, niiin loppputuloksena pitäisi olla luku 11111111.
 
 
-<quiz id="ad5e58f1-8a0e-4f8b-8049-e52d30ea61bb"> </quiz>
+<quiz id="c9cc77ba-8427-54a8-a19a-e1a4e4e82ff8"> </quiz>
 
 
 ## Kuljetuskerroksen pseudo-otsake

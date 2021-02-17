@@ -55,7 +55,7 @@ Käydään läpi esimerkki tähän kuvaan ja sen solmuihin liittyen. Oletetaan e
 
 Jos nyt seuraavaksi E lähettää kehyksen B:lle, niin kehys päätyy kytkimelle keskittimen H2 kautta. Kun kytkin saa viestin, se lisää E:n omaan kytkentätauluunsa ja havaitsee taulusta, että viesti B:lle pitää laittaa porttiin 1. Kytkin siis lähettää viestin vain porttiin 1, jolloin kehys päätyy B:lle keskittimen H1 kautta. Koska B löytyi kytkintaulusta, niin kehystä ei tulviteta, joten sitä ei lähetetä muihin portteihin.
 
-<quiz id="ac60ec2c-8945-4296-be47-e3de30133428"> <quiz>
+<quiz id="facaa14b-3c2b-574b-b094-8db3c77f228c"> <quiz>
 
 Kehysten tulvituksen liittyy aina riski siitä, että kehys jää ikuisesti kiertämään verkossa. Näin voi tapahtua, jos verkon rakenteessa on silmukka. Tehdään tuohon äskeiseen esimerkkiin silmukka esimerkiksi yhdistämällä keskittimet H1 ja H2 toisiinsa joko suoraan tai uuden kytkimen avulla. Nyt jos kytkin lähettää kehyksen A:lle porttiin 1, niin keskittimet toistavat viestin ja se päätyy takaisin kytkimelle portista 3. Kytkin siis lähettää viestin uudelleen porttiin 1 ja näin meillä on ikuisesti verkossa liikkuva viesti. Tällainen silmukka pudottaa tehokkaasti verkon tehokkuutta, kun suurin osa siirrettävistä kehyksistä on näitä turhia jo moneenkertaan lähetettyjä.
 
@@ -67,6 +67,6 @@ Kytkimien ohessa saatetaan joskus puhua myös [silloista](https://fi.wikipedia.o
 
 Tyypillisesti termiin silta tai oikeastaan sen muunnokseen siltaus tai siltaava saattaa törmätä ADSL-modeemin tai muun verkkolaitteen yhteydessä. Tällainen laite voi olla joko reitittävässä tai siltaavassa tilassa. Tällöin käytännössä otetaan kantaa millä protokollapinon kerroksella laitteen halutaan toimivan. Reitittävä tila tarkoittaa sitä, että laite toimii verkkokerroksen reitittimenä ja suorittaa verkkokerroksen tehtäviä. Siltaava tila puolestaan tarkoittaa, että laite toimii kuin linkkikerroksen kytkin eli että se ei käsittele IP-pakettia lainkaan vaan lähettää kaikki verkkokerroksen paketit suoraan laitteen läpi kuten kytkin. Toki siltaavassa tilassa se ohjaa linkkikerroksen kehyksiä kytkimen tavoin oikeaan suuntaan, mutta se ei koske lainkaan verkkokerroksen sisältöön.
 
-<quiz id="ae548f5f-8ad3-409b-9d39-e672a90ddcbe"> <quiz>
+<quiz id="6265a026-4ecf-5f5c-9d0a-a7ae04e668b3"> <quiz>
 
 

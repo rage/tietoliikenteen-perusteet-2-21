@@ -77,7 +77,7 @@ Kun lähettäjä saa kuittauksen tilassa 2 se olettaa kuittauksen koskevan juuri
 Teoreettisessa automaattien analysoinnissa usein edellytetään, että automaatille täytyy kuvata kaikki lailliset tilanteet. Jos jotain tilannetta ei ole kuvattu, niin automaatin toiminta päättyy virhetilaan. Meidän automaatissamme näin voisi käydä, jos lähettäjä saa kuittauksen tilassa L1, jossa se ei sitä odota saavansa. Tällä kurssilla kuitenkin oletamme, että automaatti vain ohittaa odottamattomat tapahtumat. Niitä ei siis jätetä odottamaan myöhempää käsittelyä, vaan automaatti vain purkaa ne pois käsittelyjonosta, kunnes tulee tapahtuma, jonka se osaa käsitellä. Tällä oletuksella saamme malleista vähennettyä siirtymiä tilasta itseensä.
 
 
-<quiz id="b81d7375-929d-4c1a-b1f4-f361e2976178"> </quiz>
+<quiz id="eba8301a-3306-53eb-9bdc-64be4f6076b2"> </quiz>
 
 
 Tämä yksinkertainen automaatti ei toimi oikein, jos viestien kulkuaika voi olla ajastimen laukeamisaikaa pidempi. Mieti hetki miksi näin on. Yritä kehittää tapahtumaketju, jossa yksi lähettäjältä lähtenyt viesti ei koskaan pääse perille, mutta muuten viestien kulku etenee normaalisti. Näin tapahtuu, kun kadotat lähetettyjä m viestejä sopivasti ja viivästytät yhden (tai useamman) ack-viestin siten, että se saapuu vasta ajastimen laukeamisen jälkeen. Tällainen ennenaikainan ajastimen laukeaminen (engl. premature timeout) sekoittaa tämän automaatin toiminnan. Korjaaminen edellyttää lähetettyjen viestien erottamista toisistaan, jolloin lähettäjä voi yhdistää kuittaukset oikeisiin lähetettyihin viesteihin.
@@ -102,7 +102,7 @@ KUVA: Vuorottelevan bitin protokolla. Lähettäjän ja vastaanottajan välillä 
 <br>
 
 
-<quiz id="aaee8959-881e-4366-87e1-e1f492b5b3fc"> </quiz>
+<quiz id="46899944-668d-5ad5-8bad-00a1b1e22183"> </quiz>
 
 Vuorottelevan bitin protokolla ei selvitä tilanteesta, jossa kanava voi vaihtaa lähetettyjen viestien järjestystä. Vuorottelevan bitin protokollassa normaalisti kanavassa on vain yksi viesti, jolloin kanava ei pääse vaihtamaan viestien järjestystä. Jos ajastin laukeaa silloin, kun viesti on vielä matkalla, on mahdollista saada kanavaan useampi viesti samanaikaisesti. Jos viestit menevät perille lähetysjärjestyksessä, niin protokolla toimii suunnitellulla tavalla. Jos kuitenkin viestit pääsevät vaihtamaan järjestystä, niin protokolla ei välttämättä enää toimi oikein. Se voi esimerkiksi jättää jonkun sovelluskerroksen viestin kokonaan välittämättä, mutta jatkaa toimintaansa tai se voi lukkiutua. Protokollien lukkiutuminen muistuttaa rinnakkaisten prosessien lukkiutumista (käsitellään käyttöjärjestelmät -kurssilla) sikäli, että lukkiutunut protokolla ei voi edetä koska kumpikin osapuoli odottaa toisen toimenpidettä. Jätämme lukkiutumisen käsittelyn myöhemmille kursseille.
 

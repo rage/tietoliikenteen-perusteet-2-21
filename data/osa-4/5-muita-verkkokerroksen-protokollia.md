@@ -29,7 +29,7 @@ Reitittimet voivat käyttää ICMP-paketteja kertomaan lähettäjälle, jos reit
 
 Jos protokolla yksityiskohtaisempi toiminta kiinnostaa, niin englanninkielisellä wikipedian sivulla [Internet Control Message Protocol](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) on kuvattuna tarkemmin protokollan erilaiset viestityypit ja niihin liittyvät koodit.
 
-<quiz id="a2588d5b-8147-4e48-bf4e-d69b0c9dc992"> </quiz>
+<quiz id="ab8b2c39-4327-5d98-a2de-b0e0c60198c8"> </quiz>
 
 ## IPsec
 
@@ -64,7 +64,7 @@ alt= " Aliverkossa A on tietokone T1, jonka IP osoite on 158.34.128.78. Verkossa
 KUVA: Kuvassa kaksi aliverkkoa on yhdistetty virtuaaliseksi yksityisverkoksi. Näitä verkkoja yhdistävät reitittimet toimivat yhteistyössä ja tunneloivat kaikki aliverkosta A lähtevät viestit aliverkkoon B.
 
 
-<quiz id="https://quizzes.mooc.fi/quizzes/a9c31430-872f-4bed-8a59-e068b807198f"> </quiz>
+<quiz id="https://quizzes.mooc.fi/quizzes/54e15fff-16f3-5281-88a3-fdfaf553ba65"> </quiz>
 
 Jos et saanut äskeistä tehtävää oikein, niin piirrä itsellesi alkuperäinen laitteen lähettämä IP-paketti ja sen jälkeen reitittimen lähettämä IP-sec paketti ja katso miten nuo lähettäjien ja vastaanottajien osoitteet menevät.
 

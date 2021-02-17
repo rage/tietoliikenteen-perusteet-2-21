@@ -32,7 +32,7 @@ KUVA: Kuvassa on nimipalveluhierarkian puumainen rakenne. Kuvaan on esimerkin om
 
 Juurinimipalvelijoita on itse asiassa useita, koska yksi juurinimipalvelija ei millään ehtisi palvella kaikkia kyselijöitä. Juurinimipalvelijat on nimetty kirjaimilla a-m. Niiden tarkempi osoite on esimerkiksi e.root-servers.org. Niitä on siis kaikkiaan 13 eri kirjainta. Jokaista eri kirjaimella nimettyä juurinimipalvelijaa hallinnoi eri organisaatio.  Näistä jokaisesta on useita täydellisiä kopioita ympäri maailmaa. Verkkosivulla https://root-servers.org/ on kuvattuna kaikki tämän hetkiset juurinimipalvelijoiden ja niiden kopioiden sijainnit. Sen mukaan lokakuussa 2019 Suomessa oli 8 juurinimipalvelijoiden kopiota. Nyt maaliskuussa 2020 niitä on 10.
 
-<quiz id="a1db1c19-80e3-4ffd-857c-d5f53a021dc8"></quiz>
+<quiz id="4643c3c5-f7ab-5b15-b872-8e8f3eb35ca0"></quiz>
 
 Juurinimipalvelijat tietävät niiden alapuolella olevien ylätason palvelijoiden tiedot. Ylätason nimipalvelimet (kuten a.fi, dns2.nic.uk tai f.ns.se) tuntevat oman alueensa (kuten .fi tai .se) osoitteiden autoritääsiset aluepalvelimet (esim. helsinki.fi -alueesta vastaavat nimipalvelijat). Ylätason osoitteet olivat alunperin lähinnä maatunnuksia, mutta nykyisin myös yrityksillä ja erilaisilla organisaatiolla on omia ylätason tunnuksia.
 
@@ -54,7 +54,7 @@ Näistä tyypeistä tuo kanoninen nimi (CNAME) vaatii ehkä pienen lisäselityks
 
 Nimipalvelussa on vain yksi viestirakenne, jota käytetään sekä kyselyissä että vastauksissa. Viestissä on erikseen lipuke (engl. flag), jolla lähettäjä kertoo, onko kysymyksessä kysely vai vastaus. Käy lukemassa viestin otsakkeet ja eri kenttien täsmällinen määrittely alkuperäisesti englanninkielisestä nimipalvelun toiminnan kuvaavasta RFC-dokumentista https://tools.ietf.org/html/rfc1035. Otsakkeen kentät on kuvattu kyseisen dokumentin sivulla 25.
 
-<quiz id="b0fb5330-8cef-48ef-a33a-e9f3ec18c681"></quiz>
+<quiz id="160c7d21-b520-5739-b324-a4b607693202"></quiz>
 
 Oheisessa kuvassa, joka on peräisin wikibooksista, on kuvattuna koko viestin rakenne, eikä vai otsaketta. Rakennekuvauksesta käy ilmi, että otsaketietoja viestissä on kaikkiaan 12 tavua. Niitä seuraa kysymysosio, jossa voi olla useita kysymyksiä selvitettäväksi. Kysymysosan ja muiden osien tietuiden lukumäärä on kerrottava otsaketiedoissa, jotta vastaanottaja osaa tulkita saamansa tavujonon oikein. Yleensä kysymyksen viestissä vastauskentät ovat tyhjiä.
 
@@ -69,7 +69,7 @@ Vastauksessa on myös mukana lipukkeena tieto siitä, tuleeko vastaus suoraan ni
 Nimipalvelutietoja voi kysellä nslookup tai dig -komennoilla. Linuxin komentotulkissa (engl. terminal, command) voit käyttää näitä komentoja suoraan. Sen sijaan windowsin komentotulkissa (engl. command prompt) on käytettävissä näistä vain nslookup. Dig on näistä kahdesta huomattavasti monipuolisempi. Sivulla https://linux.die.net/man/1/dig on sen toiminnan tarkka kuvaus. Nykyään myös verkosta löytyy useita www-palveluja, jotka tarjoavat nämä komennot käyttäjille. Esimerkiksi ping.eu tarjoaa nslookup -komennon sivulla https://ping.eu/nslookup/. Yksinkertainen rajapinta dig-komennolle on esimerkiksi sivulla https://toolbox.googleapps.com/apps/dig/.
 
 
-<quiz id="adea1117-8a7e-43bf-976d-e5e5e2f42f88"></quiz>
+<quiz id="319c6b31-5a5d-50c1-8455-79bc370cb0b5"></quiz>
 
 
 
@@ -103,7 +103,7 @@ Tässä viestien vaihdossa paikalliselle nimipalvelijalle kertyy useita resurssi
 Nimipalveluun on alunperin määritelty myös tuon edellä kuvatun iteratiivisen kyselyprosessin rinnalle myös rekursiivinen kysely, jolloin nimipalveluhierarkiaan kuuluva nimipalvelija ei palauta omaa puutteellista vastaustaan kysyjälle, vaan tekee kyselyn edelleen alemmalle tasolle. Vastaus kulkee sitten aikanaan tämän rekursiivisen ketjun läpi alkuperäiselle kysyjälle. Koska rekursiivinen kysely kuormittaa erityisesti juurinimipalvelijoita, niin ne eivät välttämättä rekursiota kysyjän pyynnöstä huolimatta tee. Sksi tuo iteratiivinen malli on tyypillinen tapa, jolla paikallinen nimipalvelija tiedon selvittää.
 
 
-<quiz id="af7fd745-8bc1-45d3-8f1c-e7fe47eb74e4"></quiz>
+<quiz id="89d45145-24d7-5cc9-860e-ce6f87416861"></quiz>
 
 
 ## Nimipalvelun turvallisuus

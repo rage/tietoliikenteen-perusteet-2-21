@@ -23,7 +23,7 @@ Mitä muistat vielä aiemmasta osiosta:
 
 *ohje tämä kurssin tehtäviin vastaamiseen: Jokaista kysymystä voit yrittää vain kerran, joten mieti huolellisesti vastauksesi. Osa tehtävistä saattaa vaatia lisämateriaalin käyttöä ennen kuin saat ne ratkaistua. Tehtävistä kerätyillä pisteillä voi olla merkitystä kurssin lopulliseen arvosanaan.*
 
-<quiz id="b0dd9db6-8cd7-4e67-bd32-e9cca664b918"></quiz>
+<quiz id="b61b27b1-3a46-544f-9d55-0b83aaebf25b"></quiz>
 
 Seuraavaksi käymme läpi pikakertauksen keskeisimmistä käsitteistä.
 Lisäksi tässä osiossa käymme tarkemmin läpi paketin siirtoon liittyviä yleisiä seikkoja, kuten viiveet. Tutustumme myös vaihtoehtoiseen tapaan, piirikytkentään, muodostaa verkkoyhteys lähettäjän ja vastaanottajan välillä.

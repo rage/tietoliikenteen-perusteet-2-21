@@ -74,7 +74,7 @@ Kun meillä on segmenttejä liikkeellä molempiin suuntiin, niin samassa viestis
 
 KUVA: Kuvassa on pieni jakso A:n ja B:n välillä kulkeneest TCP-liikenteestä. Osa viestien numeroista ja kuittausnumeroista on jätetty pois, koska ne täydennetään seuraavassa tehtävässä. Huomaa, että kuvassa ei ole hyödynnetty liukuvaa ikkunaa, kuten normaalisti TCP-liikenteessä olisi.
 
-<quiz id="a3a732ab-8252-4618-9a6e-d8556b36bc00"></quiz>
+<quiz id="74a9c88c-54fe-5e53-9526-f40af8f27084"></quiz>
 
 
 Kuittaukset pyritään, aina kun mahdollista, lähettämään varsinaisen datasegmentin yhteydessä kylkiäisenä (engl. piggypacked). Näin vähennetään tarpeetonta tietoliikennettä.
@@ -103,7 +103,7 @@ Toisaalta, jos ajastin laukeaa ennen kuin kuittaus ehtii perille, niin lähettä
 TODO:  Pari kuvaa, jossa on a) kuittauksen katoaminen ja seuraavalla kuittaus,  b) kuittauksen katoaminen ja ajastimen laukeaminen. c) ennenaikainen aikakatkaisu  (Katso mallia kirjan kuvista 3.34 - 3.36  (eri segmenttinumerot, mutta vastaavat nuolet ok)
 
 
-<quiz id="aa443c8c-8796-498f-925c-e11373e82ff1"></quiz>
+<quiz id="79211967-19ed-5396-9488-5c3e32b33239"></quiz>
 
 
 ## Yhteyden muodostus ja purku
@@ -132,7 +132,7 @@ TCP:ssä lähettäjä ja vastaanottaja käyttävät puskureita ja liukuhihnoitus
 
 Vuonvalvonta määrää lähettäjän ikkunan koon se mukaan, mikä on vastaanottajan puskurin tilanne. Jokaisessa lähettämässään viestissä solmu kertoo, kuinka paljon sen puskuriin vielä mahtuu tavuja. Huomaa, että tämä tieto säätää ikkunan kokoa, kun taas saapuvat kuittaukset siirtävät ikkunaa.
 
-<quiz id="abbe627e-88c3-4ba6-8a24-e307540f90dd"> </quiz>
+<quiz id="4881968d-b126-5b96-a36d-ffd84ed52e9d"> </quiz>
 
 Jos vuonvalvonta pudottaa lähettäjän ikkunan koon nollaan, niin lähettäjä alkaa lähettää yhden tavun kokoisia segmenttejä. Näillä se kyselee vastaanottajalta, joko on tilaa lähettää enemmän. Vastaanottajan täytyy nämäkin viestit kuitata normaalien kuittaussääntöjen mukaisesti. Vastaanottaja käyttää toistokuittauksia kertomaan, että tilaa ei ole. Se lähettää normaalin kuittauksen vasta, kun se voi samalla kertoa, että tilaa on vähintään yhdelle täydelle TCP-segmentille.
 

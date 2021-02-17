@@ -80,7 +80,7 @@ Miksi vastaanottaja voi kadottaa väärässä järjestyksessä saapuvan viestin?
 
 KUVA: Kuvassa on aikajanalla Paluu-N:ään toiminta, kun ikkunan koko on 4 ja paketti 2 katoaa. Kuvaan on piirretty se mitkä viestit kulloinkin ovat ikkunassa ja mitä viestejä lähettäjän ja vastaanottajan välillä kulkee. Viestit on numeroitu 0:sta alkaen.
 
-<quiz id="9bc750d3-7c0d-4131-ada8-cdec9dd65164">  </quiz>
+<quiz id="ffa8911b-7006-5b1c-9cbe-500bbfa4bf47">  </quiz>
 
 ### Valikoiva uudelleenlähetys (selective repeat)
 
@@ -110,7 +110,7 @@ Vastaanottajan toiminnallisuus:
 
 KUVA: Kuvassa on valikoivan uudelleen lähetyksen toiminta tilanteessa, jossa ikkunan koko on 4 ja viesteistä katoaa järjestysnumerolla 2 varustettu viesti.
 
-<quiz id="ac387454-8924-4ef9-be92-e3a8b157767a"> </quiz>
+<quiz id="6f276783-1e98-5fd7-8df2-a08042d7442e"> </quiz>
 
 
 ## Viestien numeroinnista

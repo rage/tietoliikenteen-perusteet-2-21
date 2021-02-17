@@ -66,5 +66,5 @@ Vastaavasti sovelluskerrokselta kuljetuskerrokselle tulevat viestit saapuvat eri
 KUVA: Kuvassa A:n ja C:n sovelluskerroksen prosessit kommunikoivat keskenään porttien 2476 (A:lla) ja 3614 (C:llä) kautta. Vastaavasti B:n ja C:n sovelluskerroksen prosessit kommunikoivat keskenään porttien 1258 (B:llä) ja  5625 (C:llä) kautta. C:llä on siis kaksi sovellusprosessia (tai yksi, joka kommunikoi useamman portin kautta eri laitteissa olevien sovellusten kanssa), jotka käyttävät eri portteja ja kommunikoivat vastapuoliensa kanssa niiden välityksellä.
 
 
-<quiz id="9631e51f-779a-4c8e-8837-c68b0f5bf08e"></quiz>
+<quiz id="888b75a6-9244-53ec-8f8b-e68f203150ba"></quiz>
 

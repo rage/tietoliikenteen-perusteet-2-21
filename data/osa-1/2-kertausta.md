@@ -15,11 +15,11 @@ Internetin viestinvälitys on pakettikytkentäinen, mikä tarkoittaa, että läh
 
 Internetin protokollat on sijoitettu protokollapinon eri kerroksille. Yhdellä kerroksella olevan protokollan ei tarvitse tietää mitä sen ala- ja yläpuolella on. Sille riittää tarkastella kyseisen protokollan lähettäjän ja vastaanottajan välistä viestien vaihtoa. Tästä automaattisesti seuraa, että kun jokainen kerros laittaa oman viestinsä omaan kirjekuoreen, niin näitä kirjekuoria on useita sisäkkäin.
 
-<quiz id="afbefe02-8bf3-4a73-b71d-e851c2c6b59b"></quiz>
+<quiz id="d8699894-f94e-50b4-ae68-e768d0808018"></quiz>
 
 Eri kerroksilla käytetään eri osoitteita. Kuljetuskerros käyttää porttinumeroa oikean sovelluksen / prosessin tunnistamiseen tämän tietokoneen sisällä. Verkkokerros käyttää IP-osoitetta Internet-verkkoon liitetyn laitteen tunnistamiseen. Linkkikerros käyttää laitteiden MAC-osoitteita niiden tunnistamaan yhden linkin muodostamassa aliverkossa.
 
-<quiz id="ad711046-8a1d-4e03-8b6f-e545ee9bdcd0"></quiz>
+<quiz id="3278b786-eb14-52d2-820f-b04ddc618350"></quiz>
 
 Pakettikytkentäisen verkon yksi keskeinen piirre on, että paketit liikkuvat aina yhden välin eli etapin kerrallaan. Siksi niitä kutsutaan myös etappivälitteisiksi verkoiksi. Jokaisella välipysäkillä täytyy aina päättää, mihin suuntaan paketti seuraavaksi liikahtaa. Tätä kokonaisuutta kutsutaan reititykseksi ja näitä päätöksiä tekeviä laitteita reitittimiksi silloin kun päätöksiä tehdään verkkokerroksella. Reititystä tarkastellaan vielä tällä kurssilla myöhemmin.
 
@@ -34,6 +34,6 @@ Edellisellä kurssilla meillä oli jo esillä HTTP-protokollan ja IP-protokollan
 Asiakkaan lähettämässä HTTP-viestissä ensimmäiselle rivillä on itse pyyntö ja rivi alkaa metodin nimellä. Palvelijan vastauksessa vastaavasti ensimmäinen rivi sisältää viestin statustiedon. Seuraavat rivit sisältävät muita pyyntöön tai vastaukseen liittyviä määrittelyjä. Kaikki nämä rivit yhdessä muodostavat viestin otsakkeen. Huomaa, että rivien lukumäärää ei ole rajoitettu. Siksi emme voikaa käyttää otsakkeen koko tai rivien määrää kertomaan viestin vastaanottajalle milloin viestin sisältö vaihtuu otsaketiedosta vaarsinaiseen sisältöön. HTTP:ssä on määritelty, että varsinainen viestin sisältö alkaa yhden tyhjän rivin jälkeen.
 
 
-<quiz id="b10758e2-8cf9-421c-8e48-ea03d08148a8"></quiz>
+<quiz id="668753b7-34b4-5d81-9abe-816a409cb16f"></quiz>
 
 

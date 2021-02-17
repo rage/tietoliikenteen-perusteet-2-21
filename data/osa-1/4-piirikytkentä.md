@@ -36,7 +36,7 @@ Toisaalta on varsin helppo havaita, että jos varaamme solmulle 10 Mb/s:ssa koko
 Matemaattisesti voidaan arvioida, että pakettikytkentäisen verkon kestäisi noin 35 solmua, ennenkuin linkki ruuhkautuu liian usein. Tämä arvio perustuu siihen, että kun otoskoko N (eli solmujen lukumäärä) on 35, on todennäköisyys, että niistä yli 10 on aktiivisia samanaikaisesti, lähes nolla (tarkasti ottaen se on 0,004). Muista, että 10 samanaikaista ei ole ongelma, koska ne haluavat vain 1/10 osan koko kapasiteestista. Miten tähän tulokseen on päästy? Tulos voidaan laskea [binomijakauman](https://fi.wikipedia.org/wiki/Binomijakauma) kertymäfunktiosta. Binomijakaumaa käsitellään tarkemmin matematiikan ja tilastotieteen opetuksessa. Siksi en käy tällä kurssilla tätä matemaattista perustelua tarkemmin läpi.
 
 
-<quiz id="afdef299-8c0d-419b-8502-e87c00c61a84"></quiz>
+<quiz id="2f4e0ca4-2883-51f9-9384-9fce36e7872f"></quiz>
 
 
 

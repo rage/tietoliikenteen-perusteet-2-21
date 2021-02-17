@@ -75,7 +75,7 @@ Osa porttinumeroista on varattu tietyille tunnetuille palveluille. [Internet Ass
 
 
 
-<quiz id="a9f3871a-8756-453a-84d2-e0a8c37ea170"></quiz>
+<quiz id="258dbf72-cc1b-5ce1-b7da-aa2eb66dc917"></quiz>
 
 
 

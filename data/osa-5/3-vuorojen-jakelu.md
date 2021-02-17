@@ -82,7 +82,7 @@ Alkuperäinen ALOHA ei ollut kovin tehokas, koska jokainen solmu sai lähettää
 
 Koska solmut eivät kuunnelleet etukäteen ja koska viestien pituutta ei ollut rajoitettu, niin alkuperäisessä ALOHAssa törmäyksen todennäköisyys oli niin suuri, että vain noin 18% kanavan koko kapasiteetista saatiin käyttöön. Suurin osa kanavan kapasiteetista kului siis tärmäysten vuoksi hukkaan. Katso tuolta englanninkielisestä wikipediasta kuvia, joista selviää miksi yhteentörmäykset vievät noin suuren osan kanavan kapasiteetista.
 
-<quiz id="b56f937e-907b-492f-8314-efd73978c244"> </quiz>
+<quiz id="3c8523f2-c26c-5ce3-85eb-541b5c2e272d"> </quiz>
 
 
 ALOHAsta tehtiin paranneltu versio, jossa karsittiin osittain päällekkäiset yhteentörmäykset pois. Viipaloidussa ALOHAssa (engl. slotted ALOHA) kaikki siirrettävät kehykset ovat keskenään samankokoisia. Lisäksi kanava jaettiin aikaviipaleisiin siten, että yhdessä aikaviipaleessa voi lähettää yhden kehyksen. Nyt kaikki solmut aloittavat lähetyksensä aina aikaviipaleen alusta eikä kesken toisen solmun lähetystä. Tämä onnistui, kun solmut ja niiden kellot saatiin synkronoitua. Kaikki (lähettävät) solmut havaitsevat yhteentörmäykset.
@@ -95,7 +95,7 @@ Viipaloitua ALOHAa käytetään edelleen tietyissä erikoistilanteissa, koska se
 
 Wikipedian englanninkielisellä [ALOHAnet](https://en.wikipedia.org/wiki/ALOHAnet) sivulla on hyvä kuva viipaloidun ALOHAn toiminnasta useamman lähettäjän kanssa. Kuvassa on sekä yhteentörmäyksiä että onnistuneita lähetyksiä.
 
-<quiz id="ac4463e7-892e-470d-bb03-e3b8788683be"> </quiz>
+<quiz id="f974745d-fb04-594c-a0b6-cc6c10deb640"> </quiz>
 
 
 
@@ -130,5 +130,5 @@ Tuo verkkosovittimien satunnainen odotusaika kasvaa jokaisen peräkkäisen yhtee
 
 Huomaathan, että verkkosovittimien toiminta on täysin riippumatonta aiempien viestien onnistumisesta ja muiden verkkosovittimien toiminnasta. Tällöin on täysin mahdollista, että verkkosovitin, joka juuri sai kehyksen välitettäväksi, saa kehyksensä välitettyä sillä aikaa, kun muut yhteentörmäysten jälkeen odottavat seuraavaa lähetysyritystä.
 
-<quiz id="a349c4e9-8207-4fb2-82cb-d7d9ea386496"> </quiz>
+<quiz id="655b26e6-ddfc-5380-84e0-a55a9fd4d090"> </quiz>
 

@@ -96,17 +96,17 @@ Seuraavassa tehtävässä tarvitset tätä reititystaulua:
 | 140.24.7.192/26 | m3 |
 | 0.0.0.0./0 | m4 |
 
-<quiz id="b2325dad-8de7-43fd-aed5-eb8f16a85487"></quiz>
+<quiz id="ad0bbdae-f2bd-5da5-9564-1f833c18a6d8"></quiz>
 
 Koska osoitteiden tulkinnan periaatteena on tuo pisin yhteinen alkuosa, on mahdollista yhdistellä reitittimen rivejä, jos ne kattavat yhdessä koko osoiteavaruuden. Esimerkiksi äskeisessä tehtävässä olleen reititystaulun osoitteet kaikki yhdessä voidaan kattaa osoitteella 140.24.7.0/24, joka voisi siis olla tälle reitittimelle liikennettä ohjaavan reitittimen reititystaulussa.
 
 Luokaton reititys ja pisimmän yhteisen alkuosan käyttäminen antaa myös mahdollisuuden järjestellä verkon arkkitehtuuria uudelleen ilman, että laitteiden julkisia IP-osoitteita tarvitsee vaihtaa.  Edellä joku noista aliverkoista (vaikkapa 140.24.7.128/26) voitaisiin siirtää tästä reitittimestä jollekin muulle reitittimelle, vaikkapa tätä reititintä edeltävälle reitittimelle, jolloin sen reititystaulussa olisikin molemmat osoitealueet 140.24.7.0./24 ja 140.24.7.128/26, vaikka ne ovat päällekkäisiä. Se osaisi kuitenkin päätellä, että laitteelle 140.24.7.165 lähetetty viesti kuuluu lähettää tuon pienemmän osoitealueen 140.24.7.128/26 suuntaan eikä tuohon 140.24.7.0/24 suuntaan, koska sillä on  pidempi yhteinen alkuosa pienemmän verkon osoitteiden kanssa.  Suosittelen, että muunnat kaikki kolme osoitetta biteiksi ja lasket alkuosan yhteensopivien bittien lukumäärät ja näin varmistut siitä, että reititin oikeasti osaa tuon päätöksen tehdä näiden periaatteiden mukaan.
 
-<quiz id="a1421fd0-806a-42c2-bc75-d52afe982742"></quiz>
+<quiz id="a43971e9-d791-5882-b830-b69555069509"></quiz>
 
 Edellä jo tarkasteltiinkin osoiteavaruuden 140.24.7.0/24 jakamista neljään yhtä suureen osaan, joilla kullakin on 26 bittinen aliverkon peite, eli aliverkot eroavat toisistaan kahden bitin verran (bitit 24 ja 25, kun bitit numeroidaan alkaen nollasta). Olisimme ihan yhtä hyvin voineen jakaa osoiteavaruuden eri suuruisiin osiin esimerkiksi 140.24.7.0/25, 140.24.7.128/26 ja 140.24.7.192/26  tai 140.24.7.0/26, 140.24.7.62/26 ja 140.24.7.128/25. Nyt yksi alue kattaa puolet osoiteavaruudesta. Tarkasta binäärilukujen avulla, miksi emme voi yhdistää kahta keskimmäistä aluetta yhdeksi, vaan isomman yhtenäisen alueen pitää olla joko numeroavaruuden alussa tai lopussa.
 
-<quiz id="a999dbaf-870e-4eb9-a8eb-e0323aa72347"></quiz>
+<quiz id="2982e5c2-af9c-5cb8-8c72-85901735f807"></quiz>
 
 
 
@@ -126,6 +126,6 @@ Yllä on kuvattu niin sanottu [IP-in-IP](https://en.wikipedia.org/wiki/IP_in_IP)
 
 Yleensä tunneli toteutetaan käyttäen salaavaa [IPSec](https://fi.wikipedia.org/wiki/IPsec)-protokollaa, jolloin tunnelissa kulkeva tieto on salattua ja vain tunnelin muodostava kuori on salaamatonta. Se on tyypillisin protokolla myös VPN:n toteutuksessa. Joissakin suosituksissa korostetaan, että tunnelit pitäisi aina tehdä käyttäen salaavaa protokollaa, jolloin viestinnän turvallisuutta saadaan parannettua.
 
-<quiz id="b425e36b-8f75-408b-94e9-ee2368bbc257"></quiz>
+<quiz id="ace37cf7-4ae5-5299-aee8-10439381ae62"></quiz>
 
 

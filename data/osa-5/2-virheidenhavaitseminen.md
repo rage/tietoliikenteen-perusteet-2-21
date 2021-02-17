@@ -51,7 +51,7 @@ CRC:n tarkastusbittien lukumäärä riippuu käytettävästä virittäjäpolynom
 
 Laskennan tehostamiseksi CRC:ssä jätetään yhteen- ja vähennyslaskuista pois muistinumero (engl. carry) ja lainaus, jolloin binäärilukujen aritmetiikassa ne supistuvat yksinkertaiseksi XOR-operaatioksi.
 
-<quiz id="a07cd207-7fcd-40db-982d-d4262d8545ff"> </quiz>
+<quiz id="fd60fd83-4fdc-50a4-a9ec-9f9e4d89765b"> </quiz>
 
 Tällä kurssilla ohitetaan matemaattiset perustelut sille, miksi CRC toimii hyvin virheiden havaitsemissa. Jos aihe kiinnostaa, niin wikipediasta löytyy artikkeli [Mathematics of CRC](http://en.wikipedia.org/wiki/Mathematics_of_CRC), jossa on kattavasti kerrottu menetelmän matemaattiset perusteet.
 
@@ -77,5 +77,5 @@ CRC:ssä käytettävä polynomi kuvaa virheiden jakautumista. Hyvin valittu viri
 
 
 
-<quiz id='a7f4eab5-85bf-4b65-b403-de05c901a730'></quiz>
+<quiz id='eebb801a-fa2d-5c96-812c-3e9707607aa3'></quiz>
 

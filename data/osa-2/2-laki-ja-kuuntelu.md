@@ -33,12 +33,12 @@ Tietoliikenteeseen liittyy useita lakeja, mutta näistä ehkä kaikkien keskeisi
 
 Harjoitellaan hiukan lakien lukemista. Tutustu siis sähköisen viestinnän palvelujen lain lukuun 21 ja lue siitä, mitä laissa sanotaan verkkotunnuksista.
 
-<quiz id="a5c757b9-8403-4b31-b773-db24b9cd7b10"></quiz>
+<quiz id="f67ee532-7e38-5021-8c00-58234ae2b975"></quiz>
 
 
 Kaikenlaiset väärinkäytöksiin, rikoksiin ja niiden valmisteluun liittyvät säännöt ja rangaistukset on koottu [rikoslakiin](https://www.finlex.fi/fi/laki/ajantasa/1889/18890039001). Tietotekniikkaan ja tietoliikenteeseen liittyviä rikoksia on kuvattu erityisesti rikoslain luvussa 38, joka käsittelee tieto- ja viestintärikoksia. Toki lain muissakin luvuissa on kuvattu rikoksia, jotka voivat liittyä tietotekniikkaan ja tietoliikenteeseen.
 
-<quiz id="b0b05e15-8cb3-4de1-bd7b-e990d5fe766a"></quiz>
+<quiz id="b558ab50-4a96-5076-823f-2587fa600992"></quiz>
 
 
 

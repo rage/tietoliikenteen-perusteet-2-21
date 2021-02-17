@@ -43,6 +43,6 @@ Sovelluksen tarpeet yhteyden laadulle liittyvät nimenomaan sovelluksen oman kom
 
 
 
-<quiz id="a672b220-848c-4272-9230-dc073cec5215"></quiz>
+<quiz id="49dd1500-8316-53b9-b7ab-41387ee4efea"></quiz>
 
 
