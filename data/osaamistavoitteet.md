@@ -34,15 +34,14 @@ Tietoliikenteen perusteet -kurssilla on Helsingin yliopiston tietojenkäsittelyt
        osaa selittää toisaalta, miten lähettävän ohjelman viesti saadaan IP-pakettiin ja toisaalta, miten IP-paketti välitetään Internetissä viestin aina vastaanottajalle asti.
         </td>
     </tr>
-
     <tr>
-        <td>5</td>
+        <td>4</td>
         <td>
         osaa selittää reitittimen, keskittimen ja kytkimen toiminnan ja erot. Osaa kuvata pakettien, kehysten ja muiden viestien sisältöjä ja rakenteita.
         </td>
     </tr>
     <tr>
-        <td>6</td>
+        <td>5</td>
         <td>
 osaa kuvata tietoliikenteeseen kohdistuvat riskitekijät ja turvallisuusuhat. Osaa selittää kuinka palomuuri toimii.
         </td>
