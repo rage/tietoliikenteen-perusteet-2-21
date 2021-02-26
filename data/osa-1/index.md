@@ -5,7 +5,7 @@ overview: true
 ---
 
 
-Tässä tämän kurssin ensimmäisessä osassa käydään läpi verkon yleisiä ominaisuuksia tarkemmin kuin edellisellä kurssilla. Opit mm. käsittelemeen siirtoviiveen muitakin osia ja hahmottamaan vaihtoehtoisia tietoverkon toteutusperiaatteita.
+Tässä tämän kurssin ensimmäisessä osassa käydään läpi verkon yleisiä ominaisuuksia tarkemmin kuin edellisellä kurssilla. Opit mm. käsittelemään siirtoviiveen muitakin osia ja hahmottamaan vaihtoehtoisia tietoverkon toteutusperiaatteita.
 
 <please-login></please-login>
 
