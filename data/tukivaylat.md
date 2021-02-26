@@ -13,7 +13,7 @@ Kurssilla on käytössä Telegram-keskusteluhuone. Suosittelemme, että käytät
 
 Pääset kanavalle tästä linkistä: [https://t.me/tkt_tilpe](https://t.me/tkt_tilpe). Pääset Telegrammin selaimessa toimivaan versioon täältä: [https://web.telegram.org](https://web.telegram.org/) .
 
-Kanavan osallistujat ovat kanssaopiskelijoita sekä vapaaehtoisia ohjaajia. Kanavan toiminta perustuu vapaaehtoisuuteen. Autathan muita myös vastavuoroisesti.
+Kanavan osallistujat ovat kanssaopiskelijoita. Myös kurssin opettajat osallistuvat satunnaisesti keskusteuun. Kanavan toiminta perustuu vapaaehtoisuuteen. Autathan muita myös vastavuoroisesti.
 
 
 ## Moodle-foorumi
