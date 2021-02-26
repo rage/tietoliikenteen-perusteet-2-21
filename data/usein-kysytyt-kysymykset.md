@@ -5,19 +5,19 @@ hidden: false
 information_page: true
 ---
 
-Tässä usein kysyttyjä kysymyksiä ja ongelmia. Jos et löydä kysymykseesi vastausta täältä, voit esitttää sen [tukiväylillämme](/tukivaylat).
+Tässä usein kysyttyjä kysymyksiä ja ongelmia. Jos et löydä kysymykseesi vastausta täältä, voit esittää sen [tukiväylillämme](/tukivaylat).
 
 <table-of-contents></table-of-contents>
 
 
 ### Löysin materiaalista virheen
 
-Avaa joko issue tai muutosehdoitus kurssin Github-repossa: https://github.com/rage/tietoliikenteen-perusteet-2-20.
+Avaa joko issue tai muutosehdotus kurssin Github-repossa: https://github.com/rage/tietoliikenteen-perusteet-2-20.
 
 
 ### En voi aloittaa kurssia, koska en tiedä minne ilmoittautua
 
-Kurssin aloittamiseen ei tarvitse ilmoittautumista. Ilmoittautumista tarvitset vain jos haluat kurssisuorituksesta opintopisteitä. Iarkemmat ilmoittautumisohjeet löydät kohdasta "Arvostelu ja kokeet". 
+Kurssin aloittamiseen ei tarvitse ilmoittautumista. Ilmoittautumista tarvitset vain, jos haluat kurssisuorituksesta opintopisteitä. Iarkemmat ilmoittautumisohjeet löydät kohdasta "Kurssin suorittaminen". 
 
 
 ### Työ- ja elinkeinotoimisto haluaa minulta selvityksen kurssista  / Kela haluaa minulta todistuksen opiskelustani
@@ -35,11 +35,11 @@ Sovi asiasta etukäteen TE-toimistosi kanssa. TE-toimistot eivät valitettavasti
 
 ### Saako kursseista jonkinlaisen virallisen opintosuoritusotteen? Ja miten hyväksiluen sen oppilaitoksessani?
 
-Jos et ole Helsingin yliopiston tutkinto-opiskelija, niin ilmoittaudu avoimeen yliopistoon ja tee tarvittavat tentit erillisessä verkkoympäristössä. Jos läpäiset nämä verkkotentit hyväksytysti, niin voit saada Avoimelta yliopistolta virallisen suoritusotteen. Se todennäköisesti kelpaa hyväksilukemista varten, mutta kannattaa varmistaa asia vielä oman oppilaitoksen opintovastaavalta.
+Jos et ole Helsingin yliopiston tutkinto-opiskelija, niin kurssin läpikäymisen jälkeen voit ilmoittautua avoimeen yliopistoon ja tehdä tarvittavat tentit erillisessä verkkoympäristössä. Tarkista ajankohdat osiosta "Kurssin suorittaminen". Jos läpäiset nämä verkkotentit hyväksytysti, niin voit saada Avoimelta yliopistolta virallisen suoritusotteen. Se todennäköisesti kelpaa hyväksilukemista varten, mutta kannattaa varmistaa asia vielä oman oppilaitoksen opintovastaavalta.
 
 ### Tarvitsenko Helsingin yliopiston tunnukset?
 
-Kaikki jotka haluavat osallistua kurssin tentteihin tai pystyä lukemaan Moodlea tarvitsevat Helsingin yliopiston tunnukset. Jos teet urssia täysin omaksi iloksesi, niin silloin tunnuksia ei tarvita. Katso tarkemmat ohjeet kodasta Arvostelu ja kokeet.
+Kurssimateriaalin läpikäyntiin et tarvitse Helsingin yliopiston tunnusta. Jos haluat kurssin läpikäytyäsi osallistua kurssin tentteihin, niin silloin tarvitset Helsingin yliopiston tunnukset. Jos teet kurssia täysin omaksi iloksesi, niin silloin tunnuksia ei tarvita. Katso tarkemmat ohjeet koddasta Kurssin suorittaminen.
 
 
 
