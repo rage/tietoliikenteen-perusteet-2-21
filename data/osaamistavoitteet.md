@@ -31,19 +31,10 @@ Tietoliikenteen perusteet -kurssilla on Helsingin yliopiston tietojenkäsittelyt
     <tr>
         <td>3</td>
         <td>
-       osaa selittää toisaalta miten lähettävän ohjelman viesti saadaan IP-pakettiin ja toisaalta miten IP-paketti välitetään Internetissä viestin vastaanottajalle.
+       osaa selittää toisaalta, miten lähettävän ohjelman viesti saadaan IP-pakettiin ja toisaalta, miten IP-paketti välitetään Internetissä viestin aina vastaanottajalle asti.
         </td>
     </tr>
-    <tr>
-        <td>4</td>
-        <td>
-        Tunnet käsitteet tiedosto ja tiedostojärjestelmä ja osaat lukea
-        merkkijonomuotoista tietoa tiedostosta. Tiedät mitä
-        olio-ohjelmointi tarkoittaa. Tunnet olio-ohjelmointiin liittyvät
-        keskeiset käsitteet kuten luokka ja olio. Osaat luoda luokkia ja
-        olioita sekä käyttää niitä osana toteuttamiasi ohjelmia.
-        </td>
-    </tr>
+
     <tr>
         <td>5</td>
         <td>
