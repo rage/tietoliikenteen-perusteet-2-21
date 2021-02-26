@@ -39,7 +39,7 @@ Jos et ole Helsingin yliopiston tutkinto-opiskelija, niin kurssin läpikäymisen
 
 ### Tarvitsenko Helsingin yliopiston tunnukset?
 
-Kurssimateriaalin läpikäyntiin et tarvitse Helsingin yliopiston tunnusta. Jos haluat kurssin läpikäytyäsi osallistua kurssin tentteihin, niin silloin tarvitset Helsingin yliopiston tunnukset. Jos teet kurssia täysin omaksi iloksesi, niin silloin tunnuksia ei tarvita. Katso tarkemmat ohjeet koddasta Kurssin suorittaminen.
+Kurssimateriaalin läpikäyntiin et tarvitse Helsingin yliopiston tunnusta. Jos haluat kurssin läpikäytyäsi osallistua kurssin tentteihin, niin silloin tarvitset Helsingin yliopiston tunnukset. Jos teet kurssia täysin omaksi iloksesi, niin silloin tunnuksia ei tarvita. Katso tarkemmat ohjeet kohdasta Kurssin suorittaminen.
 
 
 
