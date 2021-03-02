@@ -11,13 +11,13 @@ title: 'Kertausta'
 
 ## Osoitteet ja viestinvälitys
 
-Internetin viestinvälitys on pakettikytkentäinen, mikä tarkoittaa, että lähettäjä aina lähettää yhden paketin (analogiana toimii kirje), jossa on sisällä siirrettävä data ja sen ympärillä (kirjekuorena) vastaanottajan tunnistamiseen tarvittava tieto.
+Internetin viestinvälitys on pakettikytkentäinen, mikä tarkoittaa, että lähettäjä aina lähettää yhden paketin (analogiana toimii kirje), jossa on sisällä siirrettävä data ja sen ympärillä tai edellä otsakkeena (kirjekuorena) vastaanottajan tunnistamiseen tarvittava tieto.
 
-Internetin protokollat on sijoitettu protokollapinon eri kerroksille. Yhdellä kerroksella olevan protokollan ei tarvitse tietää mitä sen ala- ja yläpuolella on. Sille riittää tarkastella kyseisen protokollan lähettäjän ja vastaanottajan välistä viestien vaihtoa. Tästä automaattisesti seuraa, että kun jokainen kerros laittaa oman viestinsä omaan kirjekuoreen, niin näitä kirjekuoria on useita sisäkkäin.
+Internetin protokollat on sijoitettu protokollapinon eri kerroksille. Yhdellä kerroksella olevan protokollan ei tarvitse tietää mitä sen ala- ja yläpuolella on. Sille riittää tarkastella oman protokollansa mukaista lähettäjän ja vastaanottajan välistä viestien vaihtoa. Ylemmän tason protokollan viesti on sille kokonaisuudessaan vain dataa (eli kirjekuoren sisälle laitettava viesti) ja alemman tason protokollan viestiä se ei voi havaita lainkaan (koska alemman tason protokolla poistaa oman kirjekorensa ennenkuin antaa sisällön ylemmälle tasolle). Tästä automaattisesti seuraa, että kun jokainen kerros laittaa oman viestinsä omaan kirjekuoreen, niin näitä kirjekuoria on useita sisäkkäin. Jokaisessa kuoressa on päällä sen kirjekuoren vastaanottajan tiedot.
 
 <quiz id="d8699894-f94e-50b4-ae68-e768d0808018"></quiz>
 
-Eri kerroksilla käytetään eri osoitteita. Kuljetuskerros käyttää porttinumeroa oikean sovelluksen / prosessin tunnistamiseen tämän tietokoneen sisällä. Verkkokerros käyttää IP-osoitetta Internet-verkkoon liitetyn laitteen tunnistamiseen. Linkkikerros käyttää laitteiden MAC-osoitteita niiden tunnistamaan yhden linkin muodostamassa aliverkossa.
+Eri kerroksilla käytetään eri osoitteita. Kuljetuskerros käyttää porttinumeroa oikean sovelluksen / prosessin tunnistamiseen tämän tietokoneen sisällä. Verkkokerros käyttää IP-osoitetta Internet-verkkoon liitetyn laitteen tunnistamiseen. Linkkikerros käyttää laitteiden MAC-osoitteita laitteen (tai oikeastaan sen verkkoliitännän) tunnistamiseen kyseisen linkin muodostamassa aliverkossa.
 
 <quiz id="3278b786-eb14-52d2-820f-b04ddc618350"></quiz>
 
@@ -31,7 +31,11 @@ Kaikilla muillakin protokollilla on omat dokumentaationsa. Viralliset internetis
 
 Edellisellä kurssilla meillä oli jo esillä HTTP-protokollan ja IP-protokollan viestien kuvaukset. Ne ovat keskenään hyvin erilaisia, koska protokollien määrittelyt ovat hyvin erilaisia ja kyseessä on myös eri kerrosten protokollat. IP-protokollan otsake on hyvin määrämuotoinen ja jokaisen bitin merkitys on määritelty tarkasti.  HTTP-protokollan otsake puolestaan on sanallisempi ja sille onkin määritelty lähinnä syntaksi, jolla näitä erilaisia määreitä kuvataan.
 
-Asiakkaan lähettämässä HTTP-viestissä ensimmäiselle rivillä on itse pyyntö ja rivi alkaa metodin nimellä. Palvelijan vastauksessa vastaavasti ensimmäinen rivi sisältää viestin statustiedon. Seuraavat rivit sisältävät muita pyyntöön tai vastaukseen liittyviä määrittelyjä. Kaikki nämä rivit yhdessä muodostavat viestin otsakkeen. Huomaa, että rivien lukumäärää ei ole rajoitettu. Siksi emme voikaa käyttää otsakkeen koko tai rivien määrää kertomaan viestin vastaanottajalle milloin viestin sisältö vaihtuu otsaketiedosta vaarsinaiseen sisältöön. HTTP:ssä on määritelty, että varsinainen viestin sisältö alkaa yhden tyhjän rivin jälkeen.
+Asiakkaan lähettämässä HTTP-viestissä ensimmäisellä rivillä on itse pyyntö ja rivi alkaa metodin nimellä. Palvelijan vastauksessa vastaavasti ensimmäinen rivi sisältää viestin statustiedon. Seuraavat rivit sisältävät muita pyyntöön tai vastaukseen liittyviä määrittelyjä. Kaikki nämä rivit yhdessä muodostavat viestin otsakkeen. Huomaa, että rivien lukumäärää ei ole rajoitettu. Siksi emme voikaan käyttää otsakkeen kokoa tai rivien määrää kertomaan viestin vastaanottajalle milloin viestin sisältö vaihtuu otsaketiedosta vaarsinaiseen sisältöön. Tämä vuoksi HTTP:ssä on määritelty, että varsinainen viestin sisältö alkaa yhden tyhjän rivin jälkeen.
+
+Protokollien määrittelyä säätää aina se, että vastaanottajan ohjelman pitää pystyä päättelemään saamastaan bittijonosta eri kenttien sijainnit ja sisällöt. Sillähän ei ole mitään muuta tietoa lähettäjältä kuin tämä saamansa bittijono. Päätteleminen on helppoa, jos jokainen kenttä on tietyn mittainen ja kentät ovat aina samassa järjestyksessä. Toinen vaihtoehto on käyttää kenttien välillä jotain erotinta (merkki tai merkkiyhdistelmä, tietty bittijono), jolla vastaanottaja voi jäsentää eri kentät saamastaan bittijonosta. Vaikka emme tällä kurssilla opettelemaan protokollien ohjelmointia, niin tämän ominaisuuden ymmärtäminen voi helpottaa eri protokollien suunnittelijoin valitsemia erilaisia ratkaisuja.
+
+
 
 
 <quiz id="668753b7-34b4-5d81-9abe-816a409cb16f"></quiz>
