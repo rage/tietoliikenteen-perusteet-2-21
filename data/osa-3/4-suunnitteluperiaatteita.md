@@ -20,7 +20,7 @@ Nyt kun olemme tutustuneet protokollien mallinnukseen ja kuljetuskerroksen proto
 
 ## Oikeellisuustarkistus
 
-Koska viestin kuljetuksessa lähettäjältä vastaanottajalle on aina riski esimerkiksi bittivirheille, on protokollan tehtävä huolehtia mahdollisesta viestin oikeellisuuden tarkistuksesta. Kuljetuskerroksen protokolla voi toki jättää viestin oikeellisuuden tarkistamisen kerroksen protokollan tehtäväksi, mutta yleensä jokainen kerros vastaa vähintään oman otsakkeensa oikeellisuuden tarkistuksesta.
+Koska viestin kuljetuksessa lähettäjältä vastaanottajalle on aina riski esimerkiksi bittivirheille, on protokollan tehtävä huolehtia mahdollisesta viestin oikeellisuuden tarkistuksesta. Kuljetuskerroksen protokolla voi toki jättää viestin sisällön oikeellisuuden tarkistamisen ylemmän eli sovelluskerroksen protokollan tehtäväksi. Alemman kerroksen protokollan tehtävänä se vastaisi oletusta, että kanava ei vaurioita viestejä. Yleensä jokainen kerros vastaa vähintään oman otsakkeensa oikeellisuuden tarkistuksesta.
 
 Viestin muuttumattomuus voidaan tarkistaa joko pelkästään virheen havaitsevalla menetelmällä tai menetelmällä, joka voi tarvittaessa myös korjata virheen. Lähettäjä laskee tarvittavan lisätiedon osaksi viestiä ja vastaanottaja tarkistaa, että viesti ei ole muuttunut laskemalla tämän tiedon uudelleen ja vertaamalla sitä viestin mukana tulleeseen tietoon.
 
@@ -28,8 +28,8 @@ Viestin tarkistaminen edellyttää aina tämän lisätiedon eli [tarkistussumman
 
 Jos tyydytään virheen havaitsemiseen, niin silloin ainoa vaihtoehto on hävittää vioittunut paketti. Mikä tahansa laite joka vastaanottaa paketin, jonka tarkistussumma ei vastaanottajalla enää vasta viestin sisältöä, hävittää tällaisen paketin. Virheen havaitsemiseen voidaan käyttää ainakin jotain seuraavista:
 * [pariteetti](https://fi.wikipedia.org/wiki/Pariteetti_(tietotekniikka)) on näistä menetelmistä yksinkertaisin ja se voidaan laskea joko bitti tai tavutasolla.
-* yhteenlaskuun perustuva tarkistussumma, kuten UDP:n tarkistussumma.
-* [tiiviste](https://fi.wikipedia.org/wiki/Tiiviste_(tietotekniikka)) voidaan laskea monella erilaisella tiivistefunktiolla tai tiivistealgoritmilla.
+* yhteenlaskuun perustuva tarkistussumma, kuten UDP:n tarkistussumma. (Tästä on esimerkki aliluvussa UDP)
+* [tiiviste](https://fi.wikipedia.org/wiki/Tiiviste_(tietotekniikka)) voidaan laskea monella erilaisella tiivistefunktiolla tai tiivistealgoritmilla. (Tästä tulee esimerkki myöhemmässä osiossa linkkikerros - virheiden havaitseminen)
 
 Jos halutaan havaitsemisen lisäksi myös tarvittaessa korjata vikaantunut viesti, niin viestin mukana täytyy kuljettaa enemmän tarkistusinformaatiota, jotta korjaaminen onnistuu. [Virheenkorjaukseenkin](https://fi.wikipedia.org/wiki/Virheenkorjauskoodi) on tarjolla paljon erilaisia menetelmiä, kuten Hamming-koodi. Näitä ei useinkaan käytetä tietoliikenteen ylemmillä kerroksilla, koska viestit ovat varsin suuria ja virheenkorjauksen vaatima lisätila olisi tarpeettoman suuri hyötyyn nähden.
 
@@ -53,13 +53,13 @@ Esimerkiksi valikoivien kuittausten kanssa vastaanottaja voisi lähettää negat
 
 Järjestelmässä täytyy aina myös varautua ns. tuplakuittauksiin, eli saman kuittauksen lähettämiseen ja vastaanottamiseen useampia kertoja. Tältä ei voi välttyä, koska kun vastaanottaja saa jo saapuneen paketin uudelleen, sen täytyy lähettää kyseiseen pakettiin liittyvä kuittaus uudelleen. Mikäli tätä lähettämistä ei tehtäisi, niin lähettäjä ei ehkä saisi koskaan kuittausta kyseisestä viestistä.
 
-Toisaalta näitä tuplakuittauksia alkuperäinen lähettäjä voi myös pyrkiä hyödyntämään. Esimerkiksi Paluu-N:ään menetelmässä vastaanottaja kuittaa aina samalla kuittauksella kaikki epäjärjestyksessä saapuvat viestit. Lähettäjä voi hyödyntää tätä tietoa ja tehdä uudelleenlähetyksen jo näiden tuplakuittausten perusteella ennen kuin ajastin laukeaa.
+Toisaalta näitä tuplakuittauksia alkuperäinen lähettäjä voi myös pyrkiä hyödyntämään. Esimerkiksi Paluu-N:ään menetelmässä vastaanottaja kuittaa aina samalla kuittausnumerolla kaikki epäjärjestyksessä saapuvat viestit. Lähettäjä voi hyödyntää tätä tietoa ja tehdä uudelleenlähetyksen jo näiden tuplakuittausten perusteella ennen kuin ajastin laukeaa.
 
 Eri protokollat tai niiden eri versiot käyttävät näitä kaikkia vaihtoehtoja.
 
 ##  Järjestysnumero
 
-Protokolla käyttävät viesteissä usein järjestysnumeroa tai tunnistenumeroa, jolla viestit voidaan erottaa toisistaan. Taas protokollan omien tarpeiden mukaan tämän numerointi voi olla vain tunnistamiseen tai myös järjestämiseen.
+Protokollat käyttävät viesteissä usein järjestysnumeroa tai tunnistenumeroa, jolla viestit voidaan erottaa toisistaan. Taas protokollan omien tarpeiden mukaan tämän numerointi voi olla vain tunnistamiseen tai myös järjestämiseen.
 
 Kun numeroa käytetään järjestämiseen, on tärkeää, että numerointi on yhtäjaksoinen, jotta mahdolliset puuttuvat viestit voidaan havaita. Yhtäjaksoisuus ei kuitenkaan aina tarkoita, että viestinumerot olisivat peräkkäisiä kokonaislukuja. Esimerkiksi TCP numeroi viestinsä siten, että kahden peräkkäisen viestin numeroiden erotus on edellisen viestin datan koko tavuina.
 
