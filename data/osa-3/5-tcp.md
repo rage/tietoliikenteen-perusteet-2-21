@@ -20,7 +20,6 @@ hidden: false
 TCP käsittelee sovelluskerrokselta tulevaa dataa (tai viestejä) itse asiassa yhtenäisenä tavuvirtana. TCP ei siis välitä sovelluskerroksen viestirakenteesta millään tavalla. Se vain siirtää tavuvirtapistokkeen kautta saamansa tavut vastaanottajalle, jossa ne päätyvät tavuvirtapistokkeen kautta sovelluskerrokselle. TCP pätkii tämän tavuvirran segmenteiksi, jotka se sitten siirtää verkkokerroksen välityksellä lähettäjältä vastaanottajalle.
 
 <img src="../img/tcp-palveluna.svg" alt="Kuvassa on kolme kerrosta (sovelluskerros, kuljetuskerros ja verkkokerros). Sovelluskerroksen asiakasprosessi syöttää tavuvirtaa TCP:lle välitettäväksi eteenpäin. Kuljetuskerroksella TCP muodostaa tästä tavuvirrasta TCP-otsakkeen kanssa segmentteja, jotka annetaan verkkokerrokselle välitettäväksi. Verkkokerroksen IP muodostaa tästä segmentistä ja omasta otsakkeestaan IP-datasähkeen, jonka se välittää vastaanottajan verkkokerroksen IP:lle. Vastaanottajalla verkkokerros antaa TCP-segmentin kuljetuskerrokselle, josta TCP purkaa tavuja ja välittää ne tavuvirtana sovelluskerroksen prosessille vastaanottajalla."/>
-
 KUVA: Kaavakuvassa on esitetty sovelluskerrokselta tulevan tavuvirran siirto kuljetuskerroksen TCP:n ja verkkokerroksen IP:n välityksellä. Huomaa, että kuvasta on jätetty selvyyden vuoksi pois muut kuin kuljetuskerroksen viereiset kerrokset. Katsotaan siis maailmaa sellaisena, kuin se näkyy kuljetuskerroksen TCP:lle.
 
 
@@ -28,7 +27,7 @@ TCP muodostaa yhteyden segmenttien siirtoa varten lähettäjän ja vastaanottaja
 
 Luotettava kuljetuspalvelu tarvitsee aina kuittauksia, jotta lähettäjä voi varmistua viestien perillemenosta. Perusmuodossaan TCP käyttää kumulatiivista kuittausta kuten äsken käsittelemämme Paluu-N:ään (Go-Back-N).
 
-TCP:hen on vuosien varrella lisätty useita erilaisia piirteitä, jotka muokkaava ja laajentavat protokollan yksityiskohtia ja näin kasvattavat koko protokollan monimuotoisuutta. Tällä kurssilla käymme läpi vain hyvin yksinkertaisen perustoiminnallisuuden. Lisäpiirteitä voi sitten opiskella myöhemmin maisterivaiheen kurssilla [Internet Protocols](https://courses.helsinki.fi/en/csm13102).
+TCP:hen on vuosien varrella lisätty useita erilaisia piirteitä, jotka muokkaavat ja laajentavat protokollan yksityiskohtia ja näin kasvattavat koko protokollan monimuotoisuutta. Tällä kurssilla käymme läpi vain hyvin yksinkertaisen perustoiminnallisuuden. Lisäpiirteitä voi sitten opiskella myöhemmin maisterivaiheen kurssilla [Internet Protocols](https://courses.helsinki.fi/en/csm13102).
 
 Tiivistetysti TCP siis tarjoaa sovelluskerrokselle luotettavan, järjestyksen säilyttävän tavuvirran, jossa ei ole sanomarajoja. TCP käyttää tavunumerointia ja kumulatiivisia kuittauksia.
 
@@ -71,11 +70,11 @@ Kun meillä on segmenttejä liikkeellä molempiin suuntiin, niin samassa viestis
 
 
 <img src="../img/tcp-data-kuittaukset.svg" alt="A lähettää TCPsegmentin (numero 245, pituus 102) B:lle. B lähettää segmentin (no 3546, pituus 200, ack 347) A:lle. A lähettää segmentin (numero puuttuu, pituus 300, ack puuttuu) B:lle. B lähettää 70 tavun mittaisen segmentin, jonka muut tiedot puuttuvat kuvasta. A lähettää vielä kuittauksen, jonka numero puuttuu kuvasta."/>
-
-KUVA: Kuvassa on pieni jakso A:n ja B:n välillä kulkeneest TCP-liikenteestä. Osa viestien numeroista ja kuittausnumeroista on jätetty pois, koska ne täydennetään seuraavassa tehtävässä. Huomaa, että kuvassa ei ole hyödynnetty liukuvaa ikkunaa, kuten normaalisti TCP-liikenteessä olisi.
+KUVA: Kuvassa on pieni jakso A:n ja B:n välillä kulkeneesta TCP-liikenteestä. Osa viestien numeroista ja kuittausnumeroista on jätetty pois, koska ne täydennetään seuraavassa tehtävässä. Huomaa, että kuvassa ei ole hyödynnetty liukuvaa ikkunaa, kuten normaalisti TCP-liikenteessä olisi.
 
 <quiz id="74a9c88c-54fe-5e53-9526-f40af8f27084"></quiz>
 
+## Kuittaukset ja uudelleenlähetys
 
 Kuittaukset pyritään, aina kun mahdollista, lähettämään varsinaisen datasegmentin yhteydessä kylkiäisenä (engl. piggypacked). Näin vähennetään tarpeetonta tietoliikennettä.
 
@@ -83,7 +82,9 @@ Itse asiassa TCP sallii kuittauksen viivästämisen siten, että yksittäistä k
 
 Koska kuittausta saa viivyttää, niin lähettäjän aikakatkaisun viiveen pitää olla riittävän pitkä, jottei tapahdu ennenaikaista aikakatkaisua ja siihen liittyvää tarpeetonta uudelleenlähetystä. Toisaalta pitkä viive aiheuttaa sen, että todellisessa katoamisessa segmentin uudelleenlähetys tapahtuu hyvin pitkän ajan kuluttua.
 
-TCP voi käyttää niin sanottua nopeaa uudelleenlähetystä (engl. fast retransmit), jolloin lähettäjä lähettää segmentin uudelleen jo ennen aikakatkaisua. Tässä lähettäjä käyttää apuna saapuvia kuittausnumeroita. TCP:ssä vastaanottaja lähettää kuittauksen vähintään joka toisesta segmentistä, vaikka siltä puuttuisi aiempia segmenttejä. Tässä kuittauksessa se kertoo, mikä on seuraavaksi odotettava tavu. Kaikki nämä puuttuvaa segmenttiä seuraavat segmentit kuitataan siis samalla kuittausnumerolla, joka on puuttuvan segmentin ensimmäisen tavun numero. Näin alkuperäinen vastaanottaja saa useita kuittauksia, jotka kaikki kuittaavat samaa odotettavaa tavua.
+TCP voi käyttää niin sanottua nopeaa uudelleenlähetystä (engl. fast retransmit), jolloin lähettäjä lähettää segmentin uudelleen jo ennen aikakatkaisua. Tässä lähettäjä käyttää apuna saapuvia kuittausnumeroita. TCP:ssä vastaanottaja lähettää kuittauksen vähintään joka toisesta segmentistä, vaikka siltä puuttuisi aiempia segmenttejä. Tässä kuittauksessa se kertoo, mikä on seuraavaksi odotettava tavu. 
+
+Kaikki puuttuvaa segmenttiä seuraavat saapuvat segmentit kuitataan siis samalla kuittausnumerolla, joka on puuttuvan segmentin ensimmäisen tavun numero. Näin alkuperäinen vastaanottaja saa useita kuittauksia, jotka kaikki kuittaavat samaa odotettavaa tavua.
 
 Näitä aiemman kuittauksen kuittausnumeron sisältäviä viestejä kutsutaan toistokuittauksiksi. Kun lähettäjä saa kolmannen toistokuittauksen, se lähettää segmentin uudelleen, vaikka ajastin ei olisikaan vielä lauennut. Huomaa, että kolmas toistokuittaus on itseasiassa neljäs saman kuittausnumeron sisältävä viesti. Ensimmäinen kuittaus ei ollut toistokuittaus ja toistokuittauksia pitää tulla kolme.
 
@@ -93,9 +94,9 @@ Näitä aiemman kuittauksen kuittausnumeron sisältäviä viestejä kutsutaan to
 
 TCP käyttää liukuvan ikkunan menetelmää ja kumuloituvaa kuittausta. Jos varsinainen datasegmentti katoaa, niin se pitää lähettää uudelleen, koska muuten vastaanottaja ei voi saada dataa. Perusmuodossaan TCP käyttää Paluu-N:ään, mutta koska se tallettaa kaikki saapuvat segmentit puskuriin, niin on mahdollista, että kaikkia kadonnutta segmenttiä seuraavia segmenttejä ei tarvitse lähettää uudelleen.
 
-Lähettäjän kannalta ei ole merkitystä katoaako varsinainen datasegmentti vai siihen liittyvä kuittaus, jos se ei saa tietoa asiasta ennen ajastimen laukeamista. Kun ajastin laukeaa, niin lähettäjä lähettää kyseisen segmentin uudelleen.
+Lähettäjän kannalta ei ole merkitystä katoaako varsinainen datasegmentti vai siihen liittyvä kuittaus, jos se ei saa tietoa asiasta ennen ajastimen laukeamista. Kun ajastin laukeaa, niin lähettäjä lähettää kyseisen segmentin (ja sitä seuraavat segmentit) uudelleen.
 
-Sen sijaa TCP:n toiminnan kannalta on eroa sillä katoaako varsinainen datasegmentti vai kuittaus. Jos datasegementti katoaa, niin se on aina joka tapauksessa lähetettävä uudelleen, koska vastaanottajalla ei sitä ole. Sen sijaan, jos kuittaus katoaa, niin se ei välttämättä ole ongelma, kunhan seuraava kumuloituva kuittaus tulee riittävän nopeasti perille. Sehän kuittaa myös tuon segmentin, jonka oma kuittaus katosi.
+Sen sijaa TCP:n toiminnan kannalta on eroa sillä katoaako varsinainen datasegmentti vai kuittaus. Jos datasegementti katoaa, niin se on aina lähetettävä uudelleen, koska vastaanottajalla ei sitä ole. Sen sijaan, jos kuittaus katoaa, niin se ei välttämättä ole ongelma, kunhan seuraava kumuloituva kuittaus tulee riittävän nopeasti perille. Sehän kuittaa myös tuon segmentin, jonka oma kuittaus katosi.
 
 Toisaalta, jos ajastin laukeaa ennen kuin kuittaus ehtii perille, niin lähettäjä lähettää segmentin uudelleen. Tällaista tilannetta kutsutaan ennenaikaiseksi aikakatkaisuksi (engl. premature timeout). Niitä pyritään välttämään käyttämällä riittävän pitkää aikakatkaisua ajastimessa. Tarpeettomat uudelleenlähetykset kuormittavat verkkoa.
 
