@@ -1,5 +1,5 @@
 ---
-path: '/osa-3/4-vaihtoehtoja'
+path: '/osa-3/4-suunnitteluperiaatteita'
 title: 'Suunnitteluperiaatteita'
 hidden: false
 ---
