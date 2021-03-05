@@ -129,9 +129,11 @@ Koska palvelimilla on käytettävissään vain rajallinen kapasiteetti samanaika
 
 ## TCP:n vuonvalvonta
 
-TCP:ssä lähettäjä ja vastaanottaja käyttävät puskureita ja liukuhihnoitusta.  Lähettäjä voi lähettää useita segmenttejä, jos vastaanottajan puskurissa on tilaa. Vastaanottajahan tallettaa saapuvat segmentit vastaanottopuskuriin ennen kuin se saa ne toimitettua sovelluskerrokselle. Koska puskurin koko on rajallinen, täytyy lähettäjän pitää huolta että se ei lähetä enempää dataa kuin mitä vastaanottajan puskuriin mahtuu. Lähettäjä siis pyrkii sopeuttamaan lähetysnopeutensa vastaanottajan kapasiteettiin. Tähän se käyttää vuonvalvontaa.
+TCP:ssä lähettäjä ja vastaanottaja käyttävät puskureita ja liukuhihnoitusta.  Lähettäjä voi lähettää useita segmenttejä, jos vastaanottajan puskurissa on tilaa. Vastaanottajahan tallettaa saapuvat segmentit vastaanottopuskuriin ennen kuin se saa ne toimitettua sovelluskerrokselle. 
 
-Vuonvalvonta määrää lähettäjän ikkunan koon se mukaan, mikä on vastaanottajan puskurin tilanne. Jokaisessa lähettämässään viestissä solmu kertoo, kuinka paljon sen puskuriin vielä mahtuu tavuja. Huomaa, että tämä tieto säätää ikkunan kokoa, kun taas saapuvat kuittaukset siirtävät ikkunaa.
+Koska vastaanottajan puskurin koko on rajallinen, täytyy lähettäjän pitää huolta, että se ei lähetä enempää dataa kuin mitä vastaanottajan puskuriin mahtuu. Lähettäjä siis pyrkii sopeuttamaan lähetysnopeutensa vastaanottajan kapasiteettiin. Tähän se käyttää vuonvalvontaa.
+
+Vuonvalvonta määrää lähettäjän ikkunan koon se mukaan, mikä on vastaanottajan puskurin tilanne. Jokaisen TCP-segmentin otsakkeessa on kenttä, jolla segmentin (data tai kuittaus) lähettänyt solmu kertoo, kuinka paljon sen puskuriin vielä mahtuu tavuja. Huomaa, että tämä tieto säätää ikkunan kokoa, kun taas saapuvat kuittaukset siirtävät ikkunaa.
 
 <quiz id="4881968d-b126-5b96-a36d-ffd84ed52e9d"> </quiz>
 
@@ -157,7 +159,7 @@ Tilanteesta voidaan toipua vain kun lähettäjä huomaa ongelman ja selkeästi h
 
 Verkko tai siis sen reititin voi kertoa ongelmasta joko erillisellä kontrolliviestillä tai merkitä läpikulkeviin viesteihin lisätietoa ruuhkasta. Erillisellä kontrolliviestillä se siis ilmoittaa lähettäjälle, että "Olen ylikuormittunut" tai "Tukehdun". Lähettäjän odotetaan sitten reagoivan tähän kontrolliviestiin. Jos reititin vain merkitsee välittämiinsä viesteihin tiedon ruuhkautumisesta, niin tämä tieto saavuttaa lähettäjän vasta, kun viestin alkuperäinen vastaanottaja lähettää tiedon ruuhkautumisesta alkuperäiselle lähettäjälle. Me emme tällä kurssilla tarkastele näitä ratkaisuja, vaan keskitymme vain lähettäjän omaan havainnointiin, joka toimii silloinkin, kun verkkolaitteet eivät osaa varoittaa ruuhkasta.
 
-Keskitytään tässä siis yksinkertaiseen lähettäjän tekemään ruuhkanhallintaan. Koska kyseessä on lähettäjän omaan viestien lähetykseen liittyvä toimintaperiaate, niin eri kuljetusprotokollilla on hyvin erilaisia tapoja ratkoa omaa ruuhkanhallintaa. TCP:n ruuhkanhallinta sopii TCP:lle, mutta ei välttämättä kaikille muille kuljetusprotokollille. TCP:ssä on useita erilaisia ruuhkanhallintamenetelmiä, joista tässä tutustumme vain TCP Reno:on.
+Keskitytään tässä siis yksinkertaiseen lähettäjän omiin havaintoihin perustuvaan ruuhkanhallintaan. Koska kyseessä on lähettäjän omaan viestien lähetykseen liittyvä toimintaperiaate, niin eri kuljetusprotokollilla on hyvin erilaisia tapoja ratkoa omaa ruuhkanhallintaa. TCP:n ruuhkanhallinta sopii TCP:lle, mutta ei välttämättä kaikille muille kuljetusprotokollille. TCP:ssä on useita erilaisia ruuhkanhallintamenetelmiä, joista tässä tutustumme vain TCP Reno:on.
 
 TCP:n ruuhkanhallinta tehdään säätämällä ruuhkaikkunan (eng. congestion window) kokoa. Ruuhkaikkuna ei ole sama kuin lähetysikkuna, vaikka ne molemmat säätävätkin kuittaamattomien viestien määrää. Tietyllä ajanhetkellä saa olla kuittaamatta korkeintaan min (lähetysikkunan koko, ruuhkaikkunan koko) eli näistä pienempi on aina määräävä.
 
@@ -168,7 +170,6 @@ Ruuhkaikkuna säätää kuittaamattomien viestien määrän lisäksi myös sitä
 Ruuhkaikkunan koko muuttuu dynaamisesti tilanteen mukaan. TCP:n viestien lähetyksessä on eri vaiheita. Lähetyksen alussa, ns. hidas aloitus (engl. slow start), TCP kasvattaa ikkunan kokoa nopeasti, kunnes se törmää ruuhkaan. Silloin se pienentää ikkunan kokoa merkittävästi ja pyrkii jatkossa välttämään ruuhkaa. Ruuhkan välttely -vaiheessa (engl. congestion avoidance) TCP kasvattaa ikkunan kokoa hyvin maltillisesti.
 
 <img src="../img/tcp-datasiirto.svg" alt="Kuvassa on vain visuaalinen näkymä kuvatekstin selitykselle"/>
-
 KUVA: Kuvassa on esimerkki TCP:n segmenttien lähettämisestä silloin, kun yhdessä viestissä on 1KB eli tuhat tavua dataa, ikkunan koon kynnysarvo on 4 KB ja lähettäjän puskurin koko on riittävän suuri. Jaetaan lähetys kiertoviiveen mittaisiin jaksoihin. Ensimmäisessä jaksossa lähetetään ensimmäinen segmentti. Seuraavan jakson alussa, kun kuittaus1 äskeiseen segmenttiin saapuu voidaan lähettää kaksi segmenttiä, koska ikkunan koko 1 on pienempi kuin kynnysarvo 4. Kolmannen jakson alussa saapuu ensin kuittaus 2, josta aiheutuu kahden viestin lähettäminen. Nyt ikkunan koko on 3. Kun kuittaus 3 saapuu hetken kuluttua saman jakson aikana, niin ikkunan koko on edelleen pienempi kuin kynnysarvo, joten edelleen voidaan lähettää kaksi viestiä. Nyt ikkunan koko on kynnysarvon suuruinen ja protokolla siirtyy hitaasta aloituksesta ruuhkan välttelyyn. Tässä vaiheessa on lähetetty kaikkiaan 7 viestiä. Seuraavan jakson alussa saapuu kuittaus 4. Koska ollaan ruuhkavälttelyssä, niin kuittauksista 4-7 aiheutuu vain yhden segmentin lähettäminen jokaista kuittausta kohti. Lisäksi ruuhkavälttelyssä voidaan lähettää yksi lisäviesti jokaista kiertoviivejaksoa kohti. Lähetetäänkö se heti kuittauksen 4 vai vasta kuittauksen 7 jälkeen ei ole protokollan yleiskuvan kannalta merkityksellistä. Oleellisempaa on, että ruuhkavälttelyssä lähetetään vain yksi segmentti jokaista kuitattua segmenttiä kohti.
 
 Hidas aloitus:
@@ -186,7 +187,7 @@ Jos ajastin laukeaa ja tulee uudelleenlähetys, niin oletetaan, että verkko on 
 
 Jos yksittäinen segmentti on kadonnut, niin vastaanottaja lähettää kuittauksia, joissa on saman kuittausnumero.  Yksittäisen paketin katoaminen voi liittyä ruuhkaan, mutta yhtä hyvin paketin siirrossa on saattanut tapahtua bittivirhe, jonka seurauksena paketti on vaurioitunut ja se on hylätty. Saapuvia toistokuittauksia voidaan käyttää ruuhkanhallinnan apuna. Koska kuittauksia edelleen saapuu, niin verkko pystyy vielä välittämään liikennettä, mutta voisi olla hyvä hiukan rauhoittaa tilannetta.
 
-Kolmen saapuneen toistokuittauksen jälkeen lähettäjä aloittaa sekä nopean toipumisen (engl. fast recovery) että nopean uudelleenlähetyksen (engl. fast retransmit) ja lähettää puuttuvan segmentin. Samalla se puolittaa sekä ruuhkaikkunan koon että asettaa uuden kynnysarvon (kynnysarvo = ruuhkaikkuna / 2). Liikennöinti jatkuu ruuhkanvälttelyllä.
+Kolmen saapuneen toistokuittauksen jälkeen lähettäjä aloittaa sekä nopean toipumisen (engl. fast recovery) että nopean uudelleenlähetyksen (engl. fast retransmit) ja lähettää puuttuvan segmentin. Samalla se asettaa sekä uudeksi kynnysarvoksi että uudeksi ruuhkaikkunan arvoksi puolet nykyisestä (kynnysarvo = ruuhkaikkuna / 2). Liikennöinti jatkuu ruuhkanvälttelyllä.
 
 Internetistä löytyy paljon erilaisia graafisia kuvauksia ruuhkaikkunan koon elämisestä näiden virhetilanteiden mukaan. Esimerkiksi artikkelissa [Decreasing the Hybrid-ARQ bandwidth overhead through the Multiple Packet NAK (MPN) protocol](https://www.researchgate.net/publication/267554658_Decreasing_the_Hybrid-ARQ_bandwidth_overhead_through_the_Multiple_Packet_NAK_MPN_protocol) on hyvät kuvat ajastimen laukeamisesta otsikolla [TCP Tahoe](https://www.researchgate.net/figure/Scenario-in-TCP-Tahoe-where-congestion-control-reacts-to-a-timed-out-ACK-with-a-slow_fig2_267554658) ja kaksoiskuittauksista otsikolla [TCP Reno](https://www.researchgate.net/figure/Scenario-in-TCP-Reno-where-congestion-control-reacts-with-fast-retransmission-as_fig3_267554658).  Nämä Reno ja Tahoe kuvastavat erilaisia TCP:n ruuhkanhallintamentelmiä. Niitä on TCP:lle määritelty useita, mutta me olemme käsitelleet vain näitä kahta eli ajastimen laukeamista ja kaksoiskuittauksia.
 
@@ -209,10 +210,6 @@ DevRTT = (1-&beta;)* DevRTT + &beta;* |SampleRTT-EstimatedRTT|
 * &alpha; ja &beta; ovat painoja, joilla säädetään, kuinka paljon uusi arvo voi muuttaa edellistä arviota. Tyypillisest &alpha; = 1/8 = 0,125 ja  &beta; = 0,25
 
 
-
-
-
-TCP:n yksityiskohtien harjoitteluun tarjolla itsenäisesti tehtäviä lisätehtäviä, jotka luentokurssilla ovat viikottaisia harjoitustehtäviä. Lisätehtävät ovat tarjolla vain ilmoittautuneille moodlessa eli ne on tarkoitettu kokeeseen valmistautumisen tueksi.
 
 
 
