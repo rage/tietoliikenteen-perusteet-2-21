@@ -34,11 +34,11 @@ Bittivirheitä vastaan UDP:ssä (ja TCP:ssä) on tarkistussumma, jolla vastaanot
 
 UDP tarkistussumma perustuu yhteenlaskuun. Koko segmentti jaetaan 16-bittisiin sanoihin ja nämä lasketaan yhteen. Ylivuotobitit lisätään summaan.
 
-Kun vastaanottaja tarkistaa segmentin virheettömyyden, se laskee kaikkien segmentin 16-bittisten sanojen summan (ja lisää summaan ylivuotobitit). Laskussa on mukana myös tarkistussumma. Jos segmentti on virheetön, niin yhteenlaskun tulos on luku, jossa on 16 ykköstä eli luku 11111111 11111111.
-
 Segmentissä kulkeva tarkistussumma on näiden 16-bittisten sanojen summan yhden komplementti (engl. 1s complement).  Binääriluvut ja komplementit on käsitelty [Tietokoneen toiminta -kurssilla](https://courses.helsinki.fi/fi/tkt10005).
 
-Lähettäjä siis laskee segmentin kaikkien 16-bittisten sanojen summan poisluettuna tarkistussumma. Tarkistussummaan sijoitetaan tämän summan yhden komplementti eli summan bitit vaihdettuina toisiksi (0:n sijaan sijoitetaan 1 ja 1:n sijaan 0).
+Lähettäjä siis laskee segmentin kaikkien 16-bittisten sanojen summan. Tarkistussumma ei ole mukana laskussa tai jos on, niin sen kaikki bitit ovat nollia, jolloin se ei vaikuta lopputulokseen. Lähtevän viestin tarkistussummaan sijoitetaan tämän summan yhden komplementti eli summan bitit vaihdettuina toisiksi (0:n sijaan sijoitetaan 1 ja 1:n sijaan 0).
+
+Kun vastaanottaja tarkistaa segmentin virheettömyyden, se laskee kaikkien segmentin 16-bittisten sanojen summan (ja lisää summaan ylivuotobitit). Laskussa on mukana myös tarkistussumma. Jos segmentti on virheetön, niin yhteenlaskun tulos on luku, jossa on 16 ykköstä eli luku 11111111 11111111.
 
 Vaikka UDP käsittelee 16 bitin eli kahden tavun mittaisia tarkistussummia, niin käyn tässä esimerkin yhden tavun mittaiselle tarkistussumman laskennalle. Oletetaan, siis että siirrettävänä on 3 tavua dataa 01101101, 10101011 ja 10100110. Lasketaan nyt sitten tarkistussmma näille tavuille. Tavujen 01101101 ja 10101011 summa on 100011000. Tässä on kuitenkin 9 bittiä, joten tuo 9. ylivuotobitti pitää laskea mukaan summaan eli 00011000 +1 = 00011001. Seuraavaksi lasketaan tämän summan ja 3. tavun summa eli 00011001 + 10100110 = 10111111. Tästä yhden komplementti on 01000000, joka siis on näiden kolmen tavun tarkistussumma. Nyt kun lasketaan yhteen tavut 01101101, 10101011, 10100110 ja 01000000, niiin loppputuloksena pitäisi olla luku 11111111.
 
