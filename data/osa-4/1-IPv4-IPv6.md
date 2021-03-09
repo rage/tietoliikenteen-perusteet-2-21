@@ -15,7 +15,7 @@ hidden: false
 
 ## Verkkokerroksen tehtävät
 
-Verkkokerros huolehtii viestin välittämistä lähettäjältä vastaanottajalle. Verkkokerroksella toimivien laitteiden täytyy siis tietää jotain verkon rakenteesta ja siitä mistä päin verkkoa vastaanottaja löytyy.
+Verkkokerros huolehtii viestin välittämisestä lähettäjältä vastaanottajalle. Verkkokerroksella toimivien laitteiden täytyy siis tietää jotain verkon rakenteesta ja siitä mistä päin verkkoa vastaanottaja löytyy.
 
 Internetin etappivälitteisyys näkyy erityisesti verkkokerroksella. Jokainen verkkokerroksella toimiva laite voi vastaanottaa sille linkkikerroksella osoitettuja viestejä, joiden lopullinen vastaanottaja se ei ole. Kun laitteelle tulee viesti, jonka vastaanottaja se ei ole, on laitteella velvollisuus lähettää viesti edelleen kohti vastaanottajaa.
 
@@ -31,7 +31,11 @@ Nämä versionumerot 4 ja 6 vaikuttavat oudoilta, mutta internetin dokumentaatio
 
 IPv4:ssä [IP-osoitteen](https://fi.wikipedia.org/wiki/IP-osoite) pituus on 32-bittiä eli 4 tavua. Osoite ilmoitetaankin yleensä näiden tavujen numeroarvoina eli muodossa 10.12.34.216. Jokaisella internetiin suoraan liitetyllä laitteella täytyy olla uniikki osoite. Kuten jo tiedämme näitä osoitteita maailmanlaajuisesti hallinnoi IANA.
 
-IP-osoite jaetaan aina kahteen osaan. Osoitteen alkuosa kertoo kyseistä osoiteavaruutta hallinnoivan operaattorin. Operaattori voi sitten jakaa hallitsemansa osoiteavaruuden osoitteet verkkolaitteille haluamallaan tavalla. Tämä rajapinta tunnistetaan verkon peitteen avulla. Verkonpeite on 32-bittinen sana, jonka alkupään bitit ovat ykkösiä ja loppupään bitit nollia. Ykkösbittien osa kertoo operaattorin tunnisteen ja nollabittien osa on sitten se alue osoitteista, joilla operaattorin hallinnoiman verkon laitteet tunnistetaan. Saman verkon laitteilla on aina sama alkuosa, jonka pituuden näkee suoraan tästä verkon peitteestä. Saman verkon laitteilla on kuitenkin oltava eri IP-osoitteet, jotta ne voidaan erottaa toisistaan. Verkon peite merkitään usein kauttaviivalla IP-osoitteen perään. Peite voi olla samassa muodossa kuin IP-osoite tai sitten se voidaan ilmaista kokonaisluvulla 0-32, jolloin kokonaisluku kertoo peitteen alkuosan ykkösbittien lukumäärän.
+IP-osoite jaetaan aina kahteen osaan. Osoitteen alkuosa kertoo kyseistä osoiteavaruutta hallinnoivan operaattorin. Operaattori voi sitten jakaa hallitsemansa osoiteavaruuden osoitteet verkkolaitteille haluamallaan tavalla. Tämä rajapinta tunnistetaan verkonpeitteen avulla. 
+
+Verkonpeite (engl. network mask) on osoitteen kanssa samanpituinen 32-bittinen sana, jonka alkupään bitit ovat ykkösiä ja loppupään bitit nollia. Ykkösbittien osa kertoo operaattorin tunnisteen alueen IP-osoittesta ja nollabittien osa on sitten se alue osoitteesta, jolla yksittäinen laite tässä operaattorin hallinnoimassa (ali)verkossa tunnistetaan. 
+
+Saman verkon laitteiden osoitteissa on aina sama alkuosa, jonka pituuden näkee suoraan verkonpeitteestä. Saman verkon laitteilla on kuitenkin oltava eri IP-osoitteet, jotta ne voidaan erottaa toisistaan. Verkon peite merkitään usein kauttaviivalla IP-osoitteen perään. Peite voi olla samassa muodossa kuin IP-osoite tai sitten se voidaan ilmaista kokonaisluvulla 0-32, jolloin kokonaisluku kertoo peitteen alkuosan ykkösbittien lukumäärän.
 
 Alunperin näitä jakokohtia oli vain tavujen välissä ja silloin puhuttiin luokista A (ensimmäisen tavun jälkeen), B (toisen tavun jälkeen) ja C (kolmannen tavun jälkeen). Näiden perusluokkien lisäksi koko osoiteavaruuden lopusta on varattu osoitteita monilähetykseen (luokka D) ja tulevaan käyttöön (luokka E). Näihin käyttöihin varattuja osoitteita ovat IP-osoite 224.0.0.0 ja sitä suuremmat arvot. Käy katsomassa luokkakohtaiset IP-osoitteet wikipedian sivulta [IP-osoite](https://fi.wikipedia.org/wiki/IP-osoite).
 
