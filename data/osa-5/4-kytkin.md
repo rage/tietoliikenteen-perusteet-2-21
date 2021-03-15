@@ -48,7 +48,7 @@ Kytkin siis käsittelee kytkintauluaan seuraavasti aina kun sille saapuu kehys
     ei:  tulvita (eli lähetä kaikkialle muualle paitsi tuloporttiin)
     on: Jos portti eri kuin tuloportti, niin lähetä ko. porttiin. Jos portti sama kuin tuloportti, niin unohda.
 
- <img src="../img/kytkin.png"/> alt=" Kuvassa on tähtitopologiaan perustuva verkko, jonka keskipisteessä on kytkin. Kytkimeen tulee ainakin neljä yhteyttä, joista kaksi tulee suoraan solmulta ja kahdessa kytkin on ensin liitetty keskittimeen, joista toiseen on liitetty 2 ja toiseen 3 solmua. Näin meillä on verkon reunoilla kaikkiaan 7 laitetta ja keskemmällä kaksi keskitintä ja yksi kytkin. A ja B on kiinni keskittimessä H1. H1 ja C on yhdistetty kytkimeen K, H1 porttiin 1 ja C porttiin 2. Toisella puolella kytkintä portissa 3 on H2, jossa on kiinni solmut E,F ja G. Lisäksi kytkimessä on vielä kiinni solmu I portissa 4.
+ <img src="../img/kytkinstar.svg"/> alt=" Kuvassa on tähtitopologiaan perustuva verkko, jonka keskipisteessä on kytkin. Kytkimeen tulee ainakin neljä yhteyttä, joista kaksi tulee suoraan solmulta ja kahdessa kytkin on ensin liitetty keskittimeen, joista toiseen on liitetty 2 ja toiseen 3 solmua. Näin meillä on verkon reunoilla kaikkiaan 7 laitetta ja keskemmällä kaksi keskitintä ja yksi kytkin. A ja B on kiinni keskittimessä H1. H1 ja C on yhdistetty kytkimeen K, H1 porttiin 1 ja C porttiin 2. Toisella puolella kytkintä portissa 3 on H2, jossa on kiinni solmut E,F ja G. Lisäksi kytkimessä on vielä kiinni solmu I portissa 4.
  
 KUVA: Kuvassa on yksi aliverkko, jossa on 1 kytkin ja 2 keskitintä. Keskittimet välittävät kaiken liikenteen niiden läpi ja kaikkiin niihin liitettyihin laitteisiin. Kytkin osaa eristää liikennettä linkkikerroksella.
  
