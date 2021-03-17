@@ -96,12 +96,19 @@ TCP käyttää liukuvan ikkunan menetelmää ja kumuloituvaa kuittausta. Jos var
 
 Lähettäjän kannalta ei ole merkitystä katoaako varsinainen datasegmentti vai siihen liittyvä kuittaus, jos se ei saa tietoa asiasta ennen ajastimen laukeamista. Kun ajastin laukeaa, niin lähettäjä lähettää kyseisen segmentin (ja sitä seuraavat segmentit) uudelleen.
 
-Sen sijaa TCP:n toiminnan kannalta on eroa sillä katoaako varsinainen datasegmentti vai kuittaus. Jos datasegementti katoaa, niin se on aina lähetettävä uudelleen, koska vastaanottajalla ei sitä ole. Sen sijaan, jos kuittaus katoaa, niin se ei välttämättä ole ongelma, kunhan seuraava kumuloituva kuittaus tulee riittävän nopeasti perille. Sehän kuittaa myös tuon segmentin, jonka oma kuittaus katosi.
+<img src="../img/5-3-tcp-timeout.svg" alt="Kuvassa on lähettäjä ja vastaanottaja ja niiden välinen viestienvaihto. Lähettäjä lähettää ensin segmentin, jonka sekvenssinumero on 78 ja jossa on 50 tavua dataa. Vastaanottaja lähettää vastausviestin, jossa kuittausnumero (ack) on 128. Kuittausviesti katoaa. Jonkun ajan kuluttua lähettäjän ajastin laukeaa ja se lähettää udelleen tuon alkuperäisen viestin, jonka sekvenssinumero on 78."/>
+KUVA: Kuvassa on esitettynä vain yhden datasegmentin osalta kuittauksen katoaminen ja segmentin uudelleenlähetys. Huomaa, että todellisuudessa lähettäjä olisi voinut lähettää useita segmenttejä tämän viestin ja ajastimen laukeamisen välillä.
+
+Sen sijaan TCP:n toiminnan kannalta on eroa sillä katoaako varsinainen datasegmentti vai kuittaus. Jos datasegementti katoaa, niin se on aina lähetettävä uudelleen, koska vastaanottajalla ei sitä ole. Sen sijaan, jos kuittaus katoaa, niin se ei välttämättä ole ongelma, kunhan seuraava kumuloituva kuittaus tulee riittävän nopeasti perille. Sehän kuittaa myös tuon segmentin, jonka oma kuittaus katosi.
+
+<img src="../img/5-3-tcp-cumulativeack.svg" alt="Kuvassa on lähettäjä ja vastaanottaja ja niiden välinen viestienvaihto. Lähettäjä lähettää ensin segmentin, jonka sekvenssinumero on 78 ja jossa on 50 tavua dataa. Sen jälkeen lähettäjä lähettää segmentin (sekvenssinumero 128, 100 tavua dataa). Vastaanottaja lähettää ensimmäiseen segmentiin vastausviestin, jossa kuittausnumero (ack) on 128. Tämä kuittausviesti katoaa. Saatuaan jälkimmäisen segmentin vastaanottaja lähettää kuittausviestin numerolla 228. Tämä saapuu alkuperäiselle lähettäjälle, jolloin lähettjä tietää molempien segmenttien menneen perille, vaikka ensimmäisen segmentin kuittausviesti ei koskaan saapunutkaan lähettäjälle."/>
+KUVA: Kuvassa on esitettynä vain yhden datasegmentin (nro 78) osalta kuittauksen katoaminen ja seuraavan lähetetyn segmentin (nro 128) kuittaus (nro 228), joka siis kuittaa myös kaikki aiemmin lähetetyt segmentit. 
 
 Toisaalta, jos ajastin laukeaa ennen kuin kuittaus ehtii perille, niin lähettäjä lähettää segmentin uudelleen. Tällaista tilannetta kutsutaan ennenaikaiseksi aikakatkaisuksi (engl. premature timeout). Niitä pyritään välttämään käyttämällä riittävän pitkää aikakatkaisua ajastimessa. Tarpeettomat uudelleenlähetykset kuormittavat verkkoa.
 
+<img src="../img/5-3-tcp-premature.svg" alt="Kuvassa on lähettäjä ja vastaanottaja ja niiden välinen viestienvaihto. Lähettäjä lähettää ensin segmentin, jonka sekvenssinumero on 78 ja jossa on 50 tavua dataa. Vastaanottaja lähettää vastausviestin, jossa kuittausnumero (ack) on 128. Ennenkuin Kuittausviesti ehtii saapua lähettäjälle ajastin laukeaa ja lähettäjä lähettää tuon viestin nro 78 uudelleen."/>
+KUVA: Kuvassa on esitettynä ennenaikainen aikakatkaisu vain lähettäjän näkökulmasta. Tästä puuttuu se, että vastaanottajan pitää kuitata tuo uudelleen saapunut viesti, koska sen täytyy olettaa että kuittaus on kadonnut.
 
-TODO:  Pari kuvaa, jossa on a) kuittauksen katoaminen ja seuraavalla kuittaus,  b) kuittauksen katoaminen ja ajastimen laukeaminen. c) ennenaikainen aikakatkaisu  (Katso mallia kirjan kuvista 3.34 - 3.36  (eri segmenttinumerot, mutta vastaavat nuolet ok)
 
 
 <quiz id="79211967-19ed-5396-9488-5c3e32b33239"></quiz>
@@ -114,7 +121,6 @@ TCP:n yhteyden muodostuksessa välitetään kolme viestiä ja siitä käytetää
 Kättelyssä kulkee kolme segmenttiä SYN - SYNACK -ACK. Tuo viimeinen ACK voi myös kulkea jo ensimmäisen datasegmentin mukana.
 
 <img src="../img/tcp-kattely.svg" alt="TCP kättelyssä. Yhteyden muodostaja lähettää ensin SYN-viestin. Tähän kommunikoinnin toinen osapuoli vastaa SYNACK -viestiää. Yhteyden muodostaja lähettää vielä ACK-viestin."/>
-
 KUVA: TCP:n kolmivaiheinen kättely yhteyttä muodostettaessa
 
 Yhteyden muodostuksen voi aloittaa kumpi tahansa osapuoli. Muodostuva yhteys on kaksisuuntainen, joten segmenttejä voi joka tapauksessa lähettää kumpaankin suuntaan.
