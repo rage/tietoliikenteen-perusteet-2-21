@@ -20,6 +20,7 @@ hidden: false
 TCP käsittelee sovelluskerrokselta tulevaa dataa (tai viestejä) itse asiassa yhtenäisenä tavuvirtana. TCP ei siis välitä sovelluskerroksen viestirakenteesta millään tavalla. Se vain siirtää tavuvirtapistokkeen kautta saamansa tavut vastaanottajalle, jossa ne päätyvät tavuvirtapistokkeen kautta sovelluskerrokselle. TCP pätkii tämän tavuvirran segmenteiksi, jotka se sitten siirtää verkkokerroksen välityksellä lähettäjältä vastaanottajalle.
 
 <img src="../img/tcp-palveluna.svg" alt="Kuvassa on kolme kerrosta (sovelluskerros, kuljetuskerros ja verkkokerros). Sovelluskerroksen asiakasprosessi syöttää tavuvirtaa TCP:lle välitettäväksi eteenpäin. Kuljetuskerroksella TCP muodostaa tästä tavuvirrasta TCP-otsakkeen kanssa segmentteja, jotka annetaan verkkokerrokselle välitettäväksi. Verkkokerroksen IP muodostaa tästä segmentistä ja omasta otsakkeestaan IP-datasähkeen, jonka se välittää vastaanottajan verkkokerroksen IP:lle. Vastaanottajalla verkkokerros antaa TCP-segmentin kuljetuskerrokselle, josta TCP purkaa tavuja ja välittää ne tavuvirtana sovelluskerroksen prosessille vastaanottajalla."/>
+
 KUVA: Kaavakuvassa on esitetty sovelluskerrokselta tulevan tavuvirran siirto kuljetuskerroksen TCP:n ja verkkokerroksen IP:n välityksellä. Huomaa, että kuvasta on jätetty selvyyden vuoksi pois muut kuin kuljetuskerroksen viereiset kerrokset. Katsotaan siis maailmaa sellaisena, kuin se näkyy kuljetuskerroksen TCP:lle.
 
 
@@ -70,6 +71,7 @@ Kun meillä on segmenttejä liikkeellä molempiin suuntiin, niin samassa viestis
 
 
 <img src="../img/tcp-data-kuittaukset.svg" alt="A lähettää TCPsegmentin (numero 245, pituus 102) B:lle. B lähettää segmentin (no 3546, pituus 200, ack 347) A:lle. A lähettää segmentin (numero puuttuu, pituus 300, ack puuttuu) B:lle. B lähettää 70 tavun mittaisen segmentin, jonka muut tiedot puuttuvat kuvasta. A lähettää vielä kuittauksen, jonka numero puuttuu kuvasta."/>
+
 KUVA: Kuvassa on pieni jakso A:n ja B:n välillä kulkeneesta TCP-liikenteestä. Osa viestien numeroista ja kuittausnumeroista on jätetty pois, koska ne täydennetään seuraavassa tehtävässä. Huomaa, että kuvassa ei ole hyödynnetty liukuvaa ikkunaa, kuten normaalisti TCP-liikenteessä olisi.
 
 <quiz id="74a9c88c-54fe-5e53-9526-f40af8f27084"></quiz>
@@ -97,16 +99,19 @@ TCP käyttää liukuvan ikkunan menetelmää ja kumuloituvaa kuittausta. Jos var
 Lähettäjän kannalta ei ole merkitystä katoaako varsinainen datasegmentti vai siihen liittyvä kuittaus, jos se ei saa tietoa asiasta ennen ajastimen laukeamista. Kun ajastin laukeaa, niin lähettäjä lähettää kyseisen segmentin (ja sitä seuraavat segmentit) uudelleen.
 
 <img src="../img/5-3-tcp-timeout.svg" alt="Kuvassa on lähettäjä ja vastaanottaja ja niiden välinen viestienvaihto. Lähettäjä lähettää ensin segmentin, jonka sekvenssinumero on 78 ja jossa on 50 tavua dataa. Vastaanottaja lähettää vastausviestin, jossa kuittausnumero (ack) on 128. Kuittausviesti katoaa. Jonkun ajan kuluttua lähettäjän ajastin laukeaa ja se lähettää udelleen tuon alkuperäisen viestin, jonka sekvenssinumero on 78."/>
+
 KUVA: Kuvassa on esitettynä vain yhden datasegmentin osalta kuittauksen katoaminen ja segmentin uudelleenlähetys. Huomaa, että todellisuudessa lähettäjä olisi voinut lähettää useita segmenttejä tämän viestin ja ajastimen laukeamisen välillä.
 
 Sen sijaan TCP:n toiminnan kannalta on eroa sillä katoaako varsinainen datasegmentti vai kuittaus. Jos datasegementti katoaa, niin se on aina lähetettävä uudelleen, koska vastaanottajalla ei sitä ole. Sen sijaan, jos kuittaus katoaa, niin se ei välttämättä ole ongelma, kunhan seuraava kumuloituva kuittaus tulee riittävän nopeasti perille. Sehän kuittaa myös tuon segmentin, jonka oma kuittaus katosi.
 
 <img src="../img/5-3-tcp-cumulativeack.svg" alt="Kuvassa on lähettäjä ja vastaanottaja ja niiden välinen viestienvaihto. Lähettäjä lähettää ensin segmentin, jonka sekvenssinumero on 78 ja jossa on 50 tavua dataa. Sen jälkeen lähettäjä lähettää segmentin (sekvenssinumero 128, 100 tavua dataa). Vastaanottaja lähettää ensimmäiseen segmentiin vastausviestin, jossa kuittausnumero (ack) on 128. Tämä kuittausviesti katoaa. Saatuaan jälkimmäisen segmentin vastaanottaja lähettää kuittausviestin numerolla 228. Tämä saapuu alkuperäiselle lähettäjälle, jolloin lähettjä tietää molempien segmenttien menneen perille, vaikka ensimmäisen segmentin kuittausviesti ei koskaan saapunutkaan lähettäjälle."/>
+
 KUVA: Kuvassa on esitettynä vain yhden datasegmentin (nro 78) osalta kuittauksen katoaminen ja seuraavan lähetetyn segmentin (nro 128) kuittaus (nro 228), joka siis kuittaa myös kaikki aiemmin lähetetyt segmentit. 
 
 Toisaalta, jos ajastin laukeaa ennen kuin kuittaus ehtii perille, niin lähettäjä lähettää segmentin uudelleen. Tällaista tilannetta kutsutaan ennenaikaiseksi aikakatkaisuksi (engl. premature timeout). Niitä pyritään välttämään käyttämällä riittävän pitkää aikakatkaisua ajastimessa. Tarpeettomat uudelleenlähetykset kuormittavat verkkoa.
 
 <img src="../img/5-3-tcp-premature.svg" alt="Kuvassa on lähettäjä ja vastaanottaja ja niiden välinen viestienvaihto. Lähettäjä lähettää ensin segmentin, jonka sekvenssinumero on 78 ja jossa on 50 tavua dataa. Vastaanottaja lähettää vastausviestin, jossa kuittausnumero (ack) on 128. Ennenkuin Kuittausviesti ehtii saapua lähettäjälle ajastin laukeaa ja lähettäjä lähettää tuon viestin nro 78 uudelleen."/>
+
 KUVA: Kuvassa on esitettynä ennenaikainen aikakatkaisu vain lähettäjän näkökulmasta. Tästä puuttuu se, että vastaanottajan pitää kuitata tuo uudelleen saapunut viesti, koska sen täytyy olettaa että kuittaus on kadonnut.
 
 
@@ -121,6 +126,7 @@ TCP:n yhteyden muodostuksessa välitetään kolme viestiä ja siitä käytetää
 Kättelyssä kulkee kolme segmenttiä SYN - SYNACK -ACK. Tuo viimeinen ACK voi myös kulkea jo ensimmäisen datasegmentin mukana.
 
 <img src="../img/tcp-kattely.svg" alt="TCP kättelyssä. Yhteyden muodostaja lähettää ensin SYN-viestin. Tähän kommunikoinnin toinen osapuoli vastaa SYNACK -viestiää. Yhteyden muodostaja lähettää vielä ACK-viestin."/>
+
 KUVA: TCP:n kolmivaiheinen kättely yhteyttä muodostettaessa
 
 Yhteyden muodostuksen voi aloittaa kumpi tahansa osapuoli. Muodostuva yhteys on kaksisuuntainen, joten segmenttejä voi joka tapauksessa lähettää kumpaankin suuntaan.
@@ -176,6 +182,7 @@ Ruuhkaikkuna säätää kuittaamattomien viestien määrän lisäksi myös sitä
 Ruuhkaikkunan koko muuttuu dynaamisesti tilanteen mukaan. TCP:n viestien lähetyksessä on eri vaiheita. Lähetyksen alussa, ns. hidas aloitus (engl. slow start), TCP kasvattaa ikkunan kokoa nopeasti, kunnes se törmää ruuhkaan. Silloin se pienentää ikkunan kokoa merkittävästi ja pyrkii jatkossa välttämään ruuhkaa. Ruuhkan välttely -vaiheessa (engl. congestion avoidance) TCP kasvattaa ikkunan kokoa hyvin maltillisesti.
 
 <img src="../img/tcp-datasiirto.svg" alt="Kuvassa on vain visuaalinen näkymä kuvatekstin selitykselle"/>
+
 KUVA: Kuvassa on esimerkki TCP:n segmenttien lähettämisestä silloin, kun yhdessä viestissä on 1KB eli tuhat tavua dataa, ikkunan koon kynnysarvo on 4 KB ja lähettäjän puskurin koko on riittävän suuri. Jaetaan lähetys kiertoviiveen mittaisiin jaksoihin. Ensimmäisessä jaksossa lähetetään ensimmäinen segmentti. Seuraavan jakson alussa, kun kuittaus1 äskeiseen segmenttiin saapuu voidaan lähettää kaksi segmenttiä, koska ikkunan koko 1 on pienempi kuin kynnysarvo 4. Kolmannen jakson alussa saapuu ensin kuittaus 2, josta aiheutuu kahden viestin lähettäminen. Nyt ikkunan koko on 3. Kun kuittaus 3 saapuu hetken kuluttua saman jakson aikana, niin ikkunan koko on edelleen pienempi kuin kynnysarvo, joten edelleen voidaan lähettää kaksi viestiä. Nyt ikkunan koko on kynnysarvon suuruinen ja protokolla siirtyy hitaasta aloituksesta ruuhkan välttelyyn. Tässä vaiheessa on lähetetty kaikkiaan 7 viestiä. Seuraavan jakson alussa saapuu kuittaus 4. Koska ollaan ruuhkavälttelyssä, niin kuittauksista 4-7 aiheutuu vain yhden segmentin lähettäminen jokaista kuittausta kohti. Lisäksi ruuhkavälttelyssä voidaan lähettää yksi lisäviesti jokaista kiertoviivejaksoa kohti. Lähetetäänkö se heti kuittauksen 4 vai vasta kuittauksen 7 jälkeen ei ole protokollan yleiskuvan kannalta merkityksellistä. Oleellisempaa on, että ruuhkavälttelyssä lähetetään vain yksi segmentti jokaista kuitattua segmenttiä kohti.
 
 Hidas aloitus:
@@ -215,7 +222,7 @@ DevRTT = (1-&beta;)* DevRTT + &beta;* |SampleRTT-EstimatedRTT|
 * DevRTT kuvaa arvojen vaihteluväliä eli poikkeamaa
 * &alpha; ja &beta; ovat painoja, joilla säädetään, kuinka paljon uusi arvo voi muuttaa edellistä arviota. Tyypillisest &alpha; = 1/8 = 0,125 ja  &beta; = 0,25
 
-
+Ajastimen arvon säätäminen on jo varsin yksityiskohtaista tietoa, mutta on hyvä havaita, että tälla tasolla asioita joudutaan määrittelemään, jotta kaikilla kommunikoinnin osapuolilla olisi yhteinen käsitys asioista ja että kaikki toimisivat ennakoitavasti kaikissa tilanteissa.
 
 
 
