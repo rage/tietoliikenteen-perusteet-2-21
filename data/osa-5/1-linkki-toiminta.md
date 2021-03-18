@@ -52,9 +52,9 @@ Verkkokerroksella käytetty IP-osoite täytyy muuntaa MAC-osoitteeksi, aivan kut
 
 Laitteen MAC-osoite on pysyvä (tai ainakin sen oletetaan olevan pysyvä). Sen sijaan laitteen IP-osoite vaihtuu ainakin silloin, kun laite vaihtaa yhden organisaation hallinnoimasta verkosta toisen organisaation verkkoon. MAC-osoitetta tarvitaan vain linkkikerroksella eli yhden aliverkon sisällä liikennöintiin. Aliverkon kannalta MAC-osoitteita ilmaantuu ja katoaa laitteiden mukana. 
 
-Jokainen laite, joka toimii linkkikerroksen lisäksi myös verkkokerroksella, ylläpitää omaa ARP-välimuistia,  ARP-taulua, johon se kokoaa käyttämiään IP-osoite/MAC-osoite pareja. Taulussa on lisäksi jokaiselle osoiteparille oma voimassaoloaika, jonka kuluttua osoitemuunnoksen voi unohtaa. Tyypillinen voimassaoloaika on 20 minuuttia. Jos tietoa myöhemmin tarvitaan eikä muunnostieto enää ole ARP-taulussa, niin ARP-kysely tehdäään uudelleen.
+Jokainen laite, joka toimii vähintään linkkikerroksella, ylläpitää omaa ARP-välimuistia,  ARP-taulua, johon se kokoaa käyttämiään IP-osoite/MAC-osoite pareja. Taulussa on lisäksi jokaiselle osoiteparille oma voimassaoloaika, jonka kuluttua osoitemuunnoksen voi unohtaa. Tyypillinen voimassaoloaika on 20 minuuttia. Jos tietoa myöhemmin tarvitaan eikä muunnostieto enää ole ARP-taulussa, niin ARP-kysely tehdäään uudelleen. Näin ollen, koska kaikissa päätelaitteissa (palvelimet ja käyttäjien tietokoneet), reitittimissä jne. on linkkikerros, on niillä myös ARP-taulu.
 
-Huomaa, että laite selvittää vain samassa aliverkossa olevien laitteiden MAC-osoitteita, eli vain niitä osoitteita, jotka aliverkkopeitteen mukaan kuuluvat samaan aliverkkoon. Vain näille se voi lähettää viestejä suoraan linkkikerroksen avulla. Lähettäessään ARP-kyselyn se tietää, että laite, jonka osoitetta kysytään on samassa aliverkossa. Mieti miksi ja miten se voi tämän tietää!  (Vinkki: aliverkon peite).
+Huomaa, että laite voi selvittää vain samassa aliverkossa olevien laitteiden MAC-osoitteita, eli vain niitä osoitteita, jotka aliverkkopeitteen mukaan kuuluvat samaan aliverkkoon. Vain näille se voi lähettää viestejä suoraan linkkikerroksen avulla. Lähettäessään ARP-kyselyn se tietää, että laite, jonka osoitetta kysytään on samassa aliverkossa. Mieti miksi ja miten se voi tämän tietää!  (Vinkki: aliverkon peite).
 
 ARP-protokollan mukaisesti kysely lähetetään linkkitason yleislähetysosoitteeseen, eli MAC-osoitteeseen FF-FF-FF-FF-FF-FF. Lähettäjä siis lähettää linkkikerroksen kehyksen, jossa vastaanottajana on yleislähetysosoite, lähettäjänä oma MAC-osoite ja datana kysytty IP-osoite ("Kenellä on tämä IP xx.yy.zz.vv?"). 
 
@@ -64,7 +64,7 @@ Koska ARP-taulua käytetään väimuistina, niin kaikkien muiden välimuistien t
 
 ARP-protokollaa käytetään vain IPv4-osoitteita vastaavien MAC-osoitteiden selvittämiseen. IPv6:lle määritelty Neighbour Discovery Protocol (NDP) tarjoaa vastaavan toiminnallisuuden IPv6-osoitteille.
 
-ARP-protokolla on hyvä esimerkki siitä, että jotkut protokollat eivät oikein istu käyttämämme protokollapinon mukaiseen jaotteluun. ARP-prokolla luokitellaan välillä verkkokerroksen ja välillä linkkikerroksen protokollaksi. Se on selkeästi näiden kerrosten rajapinnassa, koska sen avulla voidaan saada kuvaus verkkokerroksen IP-osoitteen ja linkkikerroksen MAC-osoitteen välille. Vastaavia protokollia on muitakin. Kerrosmallin tarkoitus on lähinnä helpottaa asioiden ja kokonaisuuksien hahamottamista. Jotta malli on saatu pysymään yksinkertaisena on vain ollut hyväksyttävä, että osa toiminnallisuudesta on vaikea sijoittaa tiettyyn kerrokseen. 
+ARP-protokolla on hyvä esimerkki siitä, että jotkut protokollat eivät oikein istu käyttämämme protokollapinon mukaiseen jaotteluun. ARP-prokolla luokitellaan välillä verkkokerroksen ja välillä linkkikerroksen protokollaksi. Se on selkeästi näiden kerrosten rajapinnassa, koska sen avulla voidaan saada kuvaus verkkokerroksen IP-osoitteen ja linkkikerroksen MAC-osoitteen välille. Vastaavia protokollia on muitakin. Kerrosmallin tarkoitus onkin lähinnä helpottaa asioiden ja kokonaisuuksien hahamottamista. Jotta malli on saatu pysymään yksinkertaisena on vain ollut hyväksyttävä, että osa toiminnallisuudesta on vaikea sijoittaa tiettyyn kerrokseen. 
 
 
 
@@ -94,13 +94,18 @@ Ethernetin ensimmäiset versiot käyttivät koaksiaalikaapelia ja noudattivat v�
 
 Tämä CSMA/CD on edelleen mukana myös myöhemmissä ethernet-toteutuksissa, joissa verkon topologia on tähti ja käytetään parikaapelia. Yhdessä parikaapelissa ei voi tapahtua yhteentörmäyksiä, koska kumpaankiin suuntaan on oma johdinpari, eikä samassa johdinparissa ole muita lähettäjiä. Tähtiverkossa yhteentörmäyksiä voi tapahtua, jos tähden keskipisteenä on [keskitin](https://fi.wikipedia.org/wiki/Keskitin) (engl. hub) eikä kytkin tai reititin. Toisin kuin kytkin, joka toimii linkkikerroksella ja osaa tarvittaessa tilapäisesti puskuroida kehyksiä, keskitin toimii fyysisellä tasolla ja on vain moniporttinen toistin (engl. repeater), joka toistaa saapuvan liikenteen samantien kaikkiin muihin suuntiin. Keskitin onkin vain usean toistimen muodostama kokonaisuus ja usein näitä termejä käytetäänkin lähes synonyymeinä. 
 
-Kaikki ethernetin versiot käyttävät saman kokoista kehystä. Ethernet kehyksen alussa on ensin tahdistuskuvio, jolla vastaanottaja voi oman signaalinkäsittelynsä tahdistaa lähettäjän määräämään tahtiin. Siksi tahdistuskuvion 7 ensimmäistä tavua sisältävät vuorotellen bittejä 1 ja 0 eli yksi tavu on aina 10101010. Kuvion viimeistä 8. tavua voidaan kutsua kehyksen aloitukseksi (engl. start of frame, SOG) tai kehyksen alun rajoitteeksi (engl. start frame delimiter, SDF). 8. tavu on muuten kuin aiemmat 7 tavua, mutta sen lopussa on kaksi ykköstä, joka kertoo vastaanottajalle, että seuraavaksi tulee kehyksen varsinaista sisältöä. 
-
-Tahdistuskuvion jälkeen kehyksessä on ensin vastaanottajan MAC-osoite ja lähettäjän oma MAC-osoite, joita seuraa kahden tavun pituuskenttä. Pituuskenttä kertoo kehyksen pituuden, mutta joissakin ethernetin versioissa tämän pituuskentän arvoa käytetään välitettävän protokollan tyypin kuvaamiseen. Tätä kenttää seuraa varsinainen data-alue. Ethernet-kehyksessä siirrettävällä data-alueella on minimipituus. Jos siirrettävä data on sitä lyhyempi, niin silloin datan loppuun lisätään täytetavuja (engl. pad byte). Vastaanottaja osaa sivuuttaa nämä täytetavut tyypillisesti data-alueella olevan verkkokerron paketin pituuden avulla. Kehyksen lopussa data-alueen jälkeen on vielä erillinen lopuke, jossa on 4 tavua CRC-menetelmän mukaan laskettuja tarkistusbittejä.
+Kaikki ethernetin versiot käyttävät saman kokoista kehystä. Ethernet-kehyksen alussa on ensin tahdistuskuvio, jolla vastaanottaja voi oman signaalinkäsittelynsä tahdistaa lähettäjän määräämään tahtiin. Siksi tahdistuskuvion 7 ensimmäistä tavua sisältävät vuorotellen bittejä 1 ja 0 eli yksi tavu on aina 10101010. Kuvion viimeistä 8. tavua voidaan kutsua kehyksen aloitukseksi (engl. start of frame, SOG) tai kehyksen alun rajoitteeksi (engl. start frame delimiter, SDF). 8. tavu on muuten kuin aiemmat 7 tavua, mutta sen lopussa on kaksi ykköstä, joka kertoo vastaanottajalle, että seuraavaksi tulee kehyksen varsinaista sisältöä. 
 
 <img src="../img/ethernet-kehys.svg" alt="Ethernet kehyksen rakenne: tahdistuskuvio (preamble 7 tavua ja SOF 1 tavu), vastaanottaja (destination MAC address, 6 tavua), lähettäjä (source MAC address, 6 tavua), pituus (length 2 tavua), data ja täyte (data and pad, 46-1500 tavua, lopuke (FSC, 4 tavua)"/>
 
 KUVA: Ethernet kehys
+
+Tahdistuskuvion jälkeen kehyksessä on ensin vastaanottajan MAC-osoite ja lähettäjän oma MAC-osoite, joita seuraa kahden tavun pituuskenttä. Pituuskenttä kertoo kehyksen pituuden, mutta pituuskentän arvoa voidaan vaihtoehtoisesti käyttää välitettävän protokollan tyypin kuvaamiseen. Tällöin protokollan viestien pitää olla vakiopituisia, jotta kehyken pituus tiedetään kuitenkin. 
+
+Kehyksen pisin kenttä, varsinainen data-alue, on vuorossa otsakketietojen jälkeen. Ethernet-kehyksessä siirrettävällä data-alueella on minimipituus. Jos siirrettävä data on sitä lyhyempi, niin silloin datan loppuun lisätään täytetavuja (engl. pad byte). Vastaanottaja osaa sivuuttaa nämä täytetavut tyypillisesti data-alueella olevan verkkokerron paketin pituuden avulla. 
+
+Kehyksen lopussa data-alueen jälkeen on vielä erillinen lopuke, jossa on 4 tavua CRC-menetelmän mukaan laskettuja tarkistusbittejä.
+
 
 
 <quiz id="02d8e9f7-71de-5fa1-b5b9-e983d2d2b01d"> </quiz>
