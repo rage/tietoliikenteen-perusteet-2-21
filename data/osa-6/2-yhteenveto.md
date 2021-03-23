@@ -1,7 +1,7 @@
 ---
 path: '/osa-6/2-yhteenveto'
 title: 'Yhteenveto'
-hidden: true
+hidden: false
 ---
 
 Olet nyt käynyt läpi koko kurssimateriaalin.
