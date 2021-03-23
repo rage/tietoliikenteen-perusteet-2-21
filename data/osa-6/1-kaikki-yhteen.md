@@ -1,7 +1,7 @@
 ---
 path: '/osa-6/1-kaikki-yhteen'
 title: 'Kaikki yhteen'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
