@@ -10,5 +10,8 @@ hidden: true
 
 </text-box>
 
-Tässä osassa käydään läpi yksi kokoava esimerkki, jonka avulla kurssin paljon pitäisi toimia yhdessä. 
+Tämä osa toimii koko kurssin sisällön osalta yhteenvetona. Käymme tehtävien avulla läpi kurssin keskeisen sisällön ja näin saamme samalla koottua yhteen kurssin yksityiskohdat yhteen isompaan kokonaisuuteen.
+
+### Verkkoon liittyminen
+
 
