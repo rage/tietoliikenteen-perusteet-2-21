@@ -19,7 +19,7 @@ Nämä kaksi kurssia arvostellaan täysin toisistaan riippumatta ja niillä on e
 
 Tee ensin tämä verkkokurssi. Ilmoittaudut kurssille Avoimen yliopiston kautta vasta kun olet opiskellut kurssimateriaalin ja suorittanut kurssitehtävät ja olet valmis kurssin kokeeseen.  
 
-Kurssi tentitään moodlessa ja siellä harjoitustentti, jonka tekemistä suosittelen ennen varsinaisen tenttiajan alkua. Näin voit varmistaa, että osaat käyttää moodlen tenttiä. Tarkemmata arvosteluperusteet on myös moodlessa.
+Kurssi tentitään moodlessa. Tentin kesto on 3 tuntia ja voit yrittää tenttiä vain kerran kullakin tenttijaksolla. Moodlessa on harjoitustentti, jonka avulla voit varmistaa, että osaat käyttää moodlen tenttiä. Tarkemmat arvosteluperusteet on myös moodlessa.
 
 Verkkotentin voit suoritaa Moodlessa seuraavasti:
 - Ensimmäinen tenttimahdollisuus: 3.-4.5.2021
