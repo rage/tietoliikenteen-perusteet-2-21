@@ -23,7 +23,7 @@ Meillä on käytössä useita erilaisia nimipalvelijoita. Paikallinen nimipalvel
 
 ### Paikallinen nimipalvelija
 
-Paikallisia nimipalvelijoita saatetaan niiden ratkaisija roolin vuoksi kutsua myös englanninkielestä johdetulla nimellä resolveri. Paikallisen nimipalvelijan tehtävä on ratkoa sen omilta asiakkailtaan saamia nimipalvelupyyntöjä. Tämän se tekee joko vastaamalla suoraan omien tietojensa perusteella tai lähettämällä pyyntöjä virallisen nimipalveluhierarkian nimipalvelijoille. Katsotaan toimintaa tarkemmin, kun on ensin tutustuttu virallisiin nimipalvelijoihin ja nimipalvelutietueisiin.
+Paikallisia nimipalvelijoita saatetaan niiden ratkaisijaroolin vuoksi kutsua myös englanninkielestä johdetulla nimellä "resolveri". Paikallisen nimipalvelijan tehtävä on ratkoa sen omilta asiakkailtaan saamia nimipalvelupyyntöjä. Tämän se tekee joko vastaamalla suoraan omien tietojensa perusteella tai lähettämällä pyyntöjä virallisen nimipalveluhierarkian nimipalvelijoille. Katsotaan toimintaa tarkemmin, kun on ensin tutustuttu virallisiin nimipalvelijoihin ja nimipalvelutietueisiin.
 
 Koska paikallien nimipalvelija ei vastaa mistään nimialueesta suoraan, niin se ei kuulu viralliseen nimipalvelijahierarkiaan. Sen sijaan paikallinen nimipalvelija säilyttää omassa muistissaan virallisilta nimipalvelijoilta saamiaan vastauksia niiden voimassaolon ajan. Näin se voi suoraan vastata osaan kysymyksistä, kun tieto on jo sen omassa muistissa. Huomaa, että sillä on tiedossaan sekalainen joukko nimipalvelutietoja, joita se on saanut useilta eri nimipalvelijoilta.
 
@@ -37,17 +37,17 @@ Asiakaskone saa nimipalvelijan osoitteen tyypillisesti DHCP-palvelijalta samalla
 
 ### Hierarkiaan kuuluvat viralliset nimipalvelijat
 
-Viralliset, niin sanotut autoritääriset, nimipalvelijat vastaavat vain oman nimialueensa nimitietojen oikeellisuudesta ja kaikki muutokset näissä tiedoissa päivitetään nimenomaan kyseisestä alueesta vastaavan autoritäärisen nimipalvelijan tietoihin. Viralliset nimipalvelijat muodostavat hierarkisen rakenteen, jossa ylemmällä hierarkiatasolla oleva nimipalvelija tietää vain sitä seuraavan alemman tason nimipavelijat. Vasta alimman tason nimipavelijat, autoritääriset aluepalvelijat (engl. authoritative DNS server), tietävät oman nimiavaruutensa IP-osoitteita vastaavat nimet. 
+Viralliset, niin sanotut autoritääriset, nimipalvelijat vastaavat vain oman nimialueensa nimitietojen oikeellisuudesta ja kaikki muutokset näissä tiedoissa päivitetään nimenomaan kyseisestä alueesta vastaavan autoritäärisen nimipalvelijan tietoihin. Viralliset nimipalvelijat muodostavat hierarkisen rakenteen, jossa ylemmällä hierarkiatasolla oleva nimipalvelija tietää vain sitä seuraavan alemman tason nimipalvelijat. Vasta alimman tason nimipalvelijat, autoritääriset aluepalvelijat (engl. authoritative DNS server), tietävät oman nimiavaruutensa IP-osoitteita vastaavat nimet. 
 
 Huomaa, että nämä viralliset autoritääriset nimipalvelijat lähinnä säilyttävät tietoa. Ne osaavat vastata vain omaan vastuualueensa nimiä koskeviin kyselyihin. Paikalliset nimipalvelijat kysyvät virallisilta nimipalvelijoilta tietoja aina silloin, kun ne ratkovat omalta asiakkaaltaan tullutta nimipalvelukyselyä eikä vastaus ole vielä niiden omassa välimuistissa.
 
-Nimipalveluhierarkia ajatellaan yleensä kolmitasoisena puurakenteena, jossa  ylimmällä tasolla oleva juurinimipalvelin (engl. root server) on puun juuri ja sen alapuolelle ovat ylätason nimipalvelijat (engl. top-level domain server, TLD), jotka vastaavat ylimmän tason nimistä kuten .fi, .se, .com, .edu, jne. Näiden alapuolella on kyseisen ylätason sisällä olevien alueiden autoritääriset aluepalvelimet. Jokaisesta tähän autoritääriseen nimipalveluhierarkiaan kuuluvasta nmipalvelijasta vastaa tietty nimetty organisaatio. Esimerkiksi i-juurinimipalvelinta hallinnoi Netdos, .fi ylätasoa liikenne- ja viestintävirasto ja helsinki.fi -aluetta Helsingin yliopisto. Hel.fi on puolestaan Helsingin kaupungin hallinnoima nimialue.
+Nimipalveluhierarkia ajatellaan yleensä kolmitasoisena puurakenteena, jossa  ylimmällä tasolla oleva juurinimipalvelin (engl. root server) on puun juuri ja sen alapuolelle ovat ylätason nimipalvelijat (engl. top-level domain server, TLD), jotka vastaavat ylimmän tason nimistä kuten .fi, .se, .com, .edu, jne. Näiden alapuolella on kyseisen ylätason sisällä olevien alueiden autoritääriset aluepalvelimet. Jokaisesta tähän autoritääriseen nimipalveluhierarkiaan kuuluvasta nimipalvelijasta vastaa tietty nimetty organisaatio. Esimerkiksi i-juurinimipalvelinta hallinnoi Netdos, .fi ylätasoa liikenne- ja viestintävirasto ja helsinki.fi -aluetta Helsingin yliopisto. Hel.fi on puolestaan Helsingin kaupungin hallinnoima nimialue.
 
 <img src="../img/2-3-dns-hierarkia.svg" alt="Kuvassa on nimipalveluhierarkia. Ylimpänä on juurinimipalvelija (eli kirjaimet a-m). Juuren alapuolella on rivi erilaisia ylätason nimipalvelijoita. Kuvassa näistä on .fi, .se, ..., .com, .edu. Alimmalla tasolla on muutaman ylätason nimipalvelijan alapuolella esimerkin omaisesti joitakin autoritäärisiä aluepalvelijoita, kuten fi:n alla helsinki.fi, elisa.fi ja .edu:n alla berkeley.edu, mit.edu.">
 
 KUVA: Kuvassa on nimipalveluhierarkian puumainen rakenne. Kuvaan on esimerkin omaisesti nimetty joitakin nimipalvelijoiden vastuualueita. Kuvassa ei siis ole nimipalvelijoiden omia nimiä vaan alueet, joista ne vastaavat.
 
-Juurinimipalvelijoita on itse asiassa useita, koska yksi juurinimipalvelija ei millään ehtisi palvella kaikkia kyselijöitä ja koska saman tiedon säilyttäminen moneen kertaan ei paikassa vaikeuttaa sen väärentämistä. Juurinimipalvelijat on nimetty kirjaimilla a-m. Niiden tarkempi osoite on esimerkiksi e.root-servers.org. Niitä on siis kaikkiaan 13 eri kirjainta. Jokaista eri kirjaimella nimettyä juurinimipalvelijaa hallinnoi eri organisaatio.  Näistä jokaisesta on useita täydellisiä kopioita ympäri maailmaa. Verkkosivulla https://root-servers.org/ on kuvattuna kaikki tämän hetkiset juurinimipalvelijoiden ja niiden kopioiden sijainnit. Sen mukaan lokakuussa 2019 Suomessa oli 8 juurinimipalvelijoiden kopiota. Nyt maaliskuussa 2021 niitä on 10.
+Juurinimipalvelijoita on itse asiassa useita, koska yksi juurinimipalvelija ei millään ehtisi palvella kaikkia kyselijöitä ja koska saman tiedon säilyttäminen moneen kertaan eri paikassa vaikeuttaa sen väärentämistä. Juurinimipalvelijat on nimetty kirjaimilla a-m. Niiden tarkempi osoite on esimerkiksi e.root-servers.org. Niitä on siis kaikkiaan 13 eri kirjainta. Jokaista eri kirjaimella nimettyä juurinimipalvelijaa hallinnoi eri organisaatio.  Näistä jokaisesta on useita täydellisiä kopioita ympäri maailmaa. Verkkosivulla https://root-servers.org/ on kuvattuna kaikki tämän hetkiset juurinimipalvelijoiden ja niiden kopioiden sijainnit. Sen mukaan lokakuussa 2019 Suomessa oli 8 juurinimipalvelijoiden kopiota. Nyt maaliskuussa 2021 niitä on 10.
 
 <quiz id="4643c3c5-f7ab-5b15-b872-8e8f3eb35ca0"></quiz>
 
@@ -55,7 +55,7 @@ Juurinimipalvelijat tietävät niiden alapuolella olevien ylätason palvelijoide
 
 Kuten varmaan jo huomasitkin, niin jokainen organisaatio voi vapaasti ja itsenäisesti nimetä omat laitteensa ja palvelimensa täysin vapaasti. Vain juurinimipalvelijoiden nimet on sovittu. Muilla tasoilla ei ole maailmanlaajuisesti sovittuja nimikäytäntöjä.
 
-Juurinimipalvelijoilla on keskenään sama sisältö eli tieto ylätason nimipalvelijoiden nimet ja osoitteet sekä tieto siitä mistä ylätasosta kukin ylätason nimipalvelija vastaa. Jokaista eri kirjaimista juurinimipalvelijaa hallinnoi itsenäinen organisaatio. Tämän vuoksi internetin nimijärjestelmää ja siis erityisesti ylätason nimiä koordinoi Internet Corporation for Assigned Names and Numbers (ICANN): https://www.icann.org/. 
+Juurinimipalvelijoilla on keskenään sama sisältö eli tieto ylätason nimipalvelijoiden nimistä ja osoitteista sekä mistä ylätasosta kukin ylätason nimipalvelija vastaa. Jokaista eri kirjaimista juurinimipalvelijaa hallinnoi itsenäinen organisaatio. Tämän vuoksi internetin nimijärjestelmää ja siis erityisesti ylätason nimiä koordinoi Internet Corporation for Assigned Names and Numbers (ICANN): https://www.icann.org/. 
 
 
 ### DNS tietue ja viesti
@@ -106,7 +106,7 @@ KUVA: Kuvassa on mukailtuna wikipedian esimerkki nimipalvelukyselystä
 
 Käyttäjän tietokone, tai oikeammin sen nimipalvelua käyttävä ohjelmakirjasto, kuvassa käyttäjä, aloittaa toiminnon, kun se tekee nimipalvelukyselyn paikalliselle nimipalvelijalla, kuvassa nimipalvelija. Nimipalvelija ratkoo nimipalvelukyselyn käyttäjän puolesta ja palauttaa aikanaan vastauksen käyttäjän tietokoneelle. Paikallinen nimipalvelija tekee kyselyjä nimipalveluhierarkian koneille vaiheittain ja näin se saa vähitellen vastauksen kyselyyn. Paikallinen nimipalvelija etenee kyselyssään aina nimipalvelijoidan hierarkiassa ylhäältä alaspäin. Se aloittaa kyselyt aina ylimmältä tasolta, jonka tietoja sillä ei vielä ole omassa välimuistissaan.
 
-Koska kaikkiin nimipalvelun resurssitietueisiin on liitetty niiden elinaika, niin paikallinen nimipalvelija säilyttää saamiaan tietueita sen aikaa, kun niiden tiedetään olevan käytettävissä. Tyypillisesti nimipalvelutietojen voimassaoloaika on päiviä. Laitteiden nimet ja IP-osoitteet eivät vaihdu koivin usein.
+Koska kaikkiin nimipalvelun resurssitietueisiin on liitetty niiden elinaika, niin paikallinen nimipalvelija säilyttää saamiaan tietueita sen aikaa, kun niiden tiedetään olevan käytettävissä. Tyypillisesti nimipalvelutietojen voimassaoloaika on päiviä. Laitteiden nimet ja IP-osoitteet eivät vaihdu kovin usein.
 
 Jos kysytty tieto (eli kuvassa www.firma.fi:n IP-osoite) on välimuistissa, niin se välitetään saman tien kysyjälle vastauksena, eikä paikallinen nimipalvelija tee kyselyjä virallisille nimipalvelijoille.
 
@@ -114,9 +114,9 @@ Jos mitään kysyttyyn tietoon liittyviä resurssitietueita ei ole paikallisen n
 
 Ensiksi siis paikallinen nimipalvelija kysyy juurinimipalvelijalta, mikä ylätason nimipalvelija vastaa .fi -nimiavaruuden osoitteista. Tämä kysymys on siis DNS-viestin mukainen NS-tyypin kysely juurinimipalvelijalle. Juurinimipalvelijan vastauksessa on vähintään yksi NS-tyyppinen resurssitietue eli ko. nimiavaruutta hallinnoivan ylätason nimipalvelijan nimi.  Mukana on yleensä myös A tai AAAA-tyyppinen resurssitietue, jossa on ko. nimipalvelijan nimeen liittyvä IP-osoite, koska oletetaan, että kysyjä luultavasti tekisi uuden A-tyyppisen kyselyn heti perään.
 
-Seuraavaksi paikallinen nimipalvelija kysyy äskeisessä vastauksessa saadun tiedon mukaiselta ylätason nimipalvelijalta, mikä alemman tason auoritäärinen nimipalvelija vastaa www.firma.fi verkkonimen nimipalvelusta.
+Seuraavaksi paikallinen nimipalvelija kysyy äskeisessä vastauksessa saadun tiedon mukaiselta ylätason nimipalvelijalta, mikä alemman tason autoritäärinen nimipalvelija vastaa www.firma.fi verkkonimen nimipalvelusta.
 
-Vastauksen saatuaan paikallinen nimipalvelija voi vihdoin kysyä tältä autoritääriseltä nimipalvelijalta verkkonimeen www.firma.fi liittyvää IP-osoitetta. Kun vastaus saapuu, niin paikallinen nimipalvelija voi vastata omalle asiakkaalleen ja kertoa, mikä tuo kysytty IP-osoite on.
+Vastauksen saatuaan paikallinen nimipalvelija voi vihdoin kysyä tältä autoritääriseltä nimipalvelijalta verkkonimeen www.firma.fi liittyvää IP-osoitetta. Vastauksen saapuessa paikallinen nimipalvelija voi vastata omalle asiakkaalleen ja ilmoittaa kysytyn IP-osoitteen.
 
 Tässä viestien vaihdossa paikalliselle nimipalvelijalle kertyy useita resurssitietueita. Se varastoi ne kaikki omaan välimuistiinsa ja käyttää näin vähitellen kertyvää tietoa apuna myöhemmissä kyselyissä. Esimerkiksi, jos välimuistista olisi jo löytynyt suoraan joko ylätason palvelijan tai autoritäärisen palvelijan yhteystiedot, niin kyselyketjussa olisi voitu ohittaa tarpeettomat kyselyt ja näin säästää aikaa ja vähentää verkkoliikennettä.
 
