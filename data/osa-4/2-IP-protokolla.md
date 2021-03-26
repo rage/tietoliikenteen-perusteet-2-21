@@ -15,7 +15,7 @@ hidden: false
 ## IP
 
 [IP-protokollan]( https://fi.wikipedia.org/wiki/IP) keskeinen tehtävä on huolehtia viesti lähettäjältä vastaanottajalle siten, että viesti liikkuu verkossa aina yhden linkkivälin kerrallaan ja verkkokerroksen tasolla päätetään mihin linkkiin viesti seuraavaksi lähetetään. Oikeastaan IP ei ole vain yksi protokolla vaan oikeammin protokollaperhe, jonka eri protokollilla on omat tehtävänsä.
-IP:n toimintaan liittyy keskeisenä elementtinä osoitteet, viestin rakenne ja viestin kuljettaminen eli reititys.  Osoitteet olemme jo käsitelleet aiemmin, joten käydään seuraavaksi läpi viestin rakenne
+IP:n toimintaan liittyy keskeisenä elementtinä osoitteet, viestin rakenne ja viestin kuljettaminen eli reititys.  Osoitteet olemme jo käsitelleet aiemmin, joten käydään seuraavaksi läpi viestin rakenne.
 
 
 IP-prokollan mukaista viestiä kutsutaan IP-paketiksi (engl. packet). IP-paketin kuvan voit katsoa wikipediasta IP sivulta kohdasta [IPv4-paketti](https://fi.wikipedia.org/wiki/IP#IPv4-paketti)
@@ -53,7 +53,7 @@ IPv6:ssa suunnittelun lähtökohtana on ollut pakettien uudelleenlähetyksen mah
 
 Internetin toiminnalle keskeistä on, että verkkokerros osaa kuljettaa IP-paketin lähettäjältä vastaanottajalle. Verkkokerroksella pitää siis olla riittävästi toiminnallisuutta, jotta paketti voi edetä etappi kerrallaan kohti vastaanottajaa ja lopulta päästä perille. Tätä verkon toiminnallisuutta kutsutaan reititykseksi. Paketti siis reititetään lähettäjältä vastaanottajalle. Tarkastellaan reitittimien yksityiskohtaisempaa toimintaa seuraavassa aliluvussa.  Koska internetissä ei normaalisti varata reittejä etukäteen, on reitittimillä oltava riittävä tieto verkon rakenteesta, jotta ne osaavat lähettää paketin eteenpäin oikeaan suuntaan. Tätä tietoa säilytetään reititystauluissa. Käymme tällä kurssilla läpi vain IPv4:n mukaiset reititystaulut.
 
-Toisaalta verkossa liikkuu sekä IPv4:n että IPv6:n mukaisia paketteja. Jos reititin osaa käsitellä niitä molempia, niin silloin sille voi lähettää paketteja välitettäväksi kummalla tahansa versiolla. Jos reititin ei osaa käsitellä kuin IPv4:n mukaisia paketteja, niin sille ei kannata lähettää IPv6:n mukaisia paketteja, koska se vain pudottaa ne pois verkosta. Mikäli paketti pitää välittää verkossa tällaisten reitittimien kautta joudutaan tunneloimaan (engl. tunneling) eli rakentamaan tunneli, jossa toisen protokollan viesti kulkee toisen protokollan sisällä. Tällainen tunneli muodostetaan siis kahden sellaisen reitittimen välille, jotka hallitsevat kummankin protokollaversion. Tämä tehdään "piilottamalla" tuntematon protokollaversio tunnetun protokollan sisään.
+Toisaalta verkossa liikkuu sekä IPv4:n että IPv6:n mukaisia paketteja. Jos reititin osaa käsitellä molempia, sille voi lähettää paketteja välitettäväksi kummalla tahansa versiolla. Jos reititin ei osaa käsitellä kuin IPv4:n mukaisia paketteja, niin sille ei kannata lähettää IPv6:n mukaisia paketteja, koska se vain pudottaa ne pois verkosta. Mikäli paketti pitää välittää verkossa tällaisten reitittimien kautta joudutaan tunneloimaan (engl. tunneling) eli rakentamaan tunneli, jossa toisen protokollan viesti kulkee toisen protokollan sisällä. Tällainen tunneli muodostetaan siis kahden sellaisen reitittimen välille, jotka hallitsevat kummankin protokollaversion. Tämä tehdään "piilottamalla" tuntematon protokollaversio tunnetun protokollan sisään.
 
 
 ### IPv4 Reititystaulu

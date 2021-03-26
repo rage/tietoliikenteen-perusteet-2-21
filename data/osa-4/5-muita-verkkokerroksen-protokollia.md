@@ -33,7 +33,7 @@ Jos protokollan yksityiskohtaisempi toiminta kiinnostaa, niin englanninkielisell
 
 ## IPsec
 
-[IPsec](https://fi.wikipedia.org/wiki/IPsec) ei ole vain yksi protokolla vain oikeammin protokollaperhe, kuten sen englanninkielinen nimi IP Security Architecture jo tavallaan kertoo.
+[IPsec](https://fi.wikipedia.org/wiki/IPsec) ei ole vain yksi protokolla vaan oikeammin protokollaperhe, kuten sen englanninkielinen nimi IP Security Architecture jo tavallaan kertoo.
 
 IPsec on kehitetty huomattavasti itse internetiä myöhemmin ja sen tavoitteena on suojata IP-paketissa siirrettävä data salaamalla se. Vastaavaa palvelua tarjoaa kuljetuskerroksella TCP-yhteyksille [TLS](https://fi.wikipedia.org/wiki/TLS).
 
