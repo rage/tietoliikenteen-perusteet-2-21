@@ -18,11 +18,11 @@ hidden: false
 
 Reitittimet käyttävät reititystauluja pakettien edelleenlähetykseen. Jotta reititystaulut pysyvät hyödyllisinä verkon arkkitehtuurin muuttuessa, niitä pitää päivittää. Reitittimen oman reititystaulun päivittäminen on reitittimen vastuulla. Reititin voi joko saada valmiin kokonaisen reititystaulun päivitysviestinä tai muokata reititystaulun sisältöä muilta saamansa tiedon varassa. 
 
-Koko verkon reittien suunnittelu eli reititys voidaan tehdä keskitetysti, jolloin reititin saa valmiin reititystaulun, jonka sen sitten ottaa käyttöön. Tällainen keskitetty reittien laskenta sopii erityisesti staattiseen reititykseen, jolloin reititys päätetään ennalta ja se ei sitten enää muutu. Toki sitä voidaan käyttää dynaamisemmin, jolloin keskitetysti lasketaan aika ajoin uudet reitit ja päivitetään ne reitittimille. Reititin käyttää sitten näitä reittejä, kunnes ne joskus päivitetään sille uudelleen. Reitittimen näkökulmasta tämä on hyvin staattista reititystä, koska se vain noudattaa saamansa reititystaulua eikä tee siihen muutoksia. 
+Koko verkon reittien suunnittelu eli reititys voidaan tehdä keskitetysti, jolloin reititin saa valmiin reititystaulun, jonka se ottaa käyttöön. Tällainen keskitetty reittien laskenta sopii erityisesti staattiseen reititykseen, jolloin reititys päätetään ennalta ja se ei sitten enää muutu. Toki sitä voidaan käyttää dynaamisemmin, jolloin keskitetysti lasketaan aika ajoin uudet reitit ja päivitetään ne reitittimille. Reititin käyttää sitten näitä reittejä, kunnes ne joskus päivitetään sille uudelleen. Reitittimen näkökulmasta tämä on hyvin staattista reititystä, koska se vain noudattaa saamansa reititystaulua eikä tee siihen muutoksia. 
 
 Nykyisessä internetissä kaikkien reittien laskeminen keskitetysti veisi aivan liian paljon aikaa, jolloin reittimuutokset tapahtuisivat todella hitaasti. Nopeampi reititystaulujen päivitys onnistuu vain hajautetuilla ja dynaamisilla reititysalgoritmeilla. Nämä algoritmit ovat hajautettuja, koska kaikki saman verkon reitittimet suorittavat kyseistä algoritmia ja vaihtavat tietoa (eli reititystauluja) toistensa kanssa. Ne ovat dynaamisia, koska reitittimet päättävät itse oman reititystaulunsa sisällön.
 
-Reititys voidaan suunnitella myös hierarkkiseksii siten, että aliverkkojen (eli autonomisten alueiden) välinen reititys ja aliverkkojen sisäinen reititys tehdään erikseen. Niihin voidaan käyttää jopa eri menetelmiä.Internetiin liitetyt aliverkot ovat itsenäisiä ja autonomisia, joten yksittäisen aliverkon sisäinen reititys on täysin aliverkon oma asia. Se voidaan tehdä millä tahansa aliverkolle sopivalla menetelmällä. Internetissä tyypilliset verkon sisäiset reititysprotokollat ovat [Routing Information Protocol](https://fi.wikipedia.org/wiki/Routing_Information_Protocol) (RIP) ja [Open Shortest Path First](https://fi.wikipedia.org/wiki/OSPF) (OSPF). Sen sijaan aliverkkojen välinen reititys, jolla siis huolehditaan viestin kulkeminen eri verkkojen kautta vastaanottajalle, tehdään  samalla tavalla kaikkialla. Internetissä tähän käytetään [Border Gateway Protocol](https://fi.wikipedia.org/wiki/BGP) (BGP) -protokollaa.
+Reititys voidaan suunnitella myös hierarkkiseksi tekemällä erikseen aliverkkojen (eli autonomisten alueiden) välinen reititys ja aliverkkojen sisäinen reititys. Niihin voidaan käyttää jopa eri menetelmiä. Internetiin liitetyt aliverkot ovat itsenäisiä ja autonomisia, joten yksittäisen aliverkon sisäinen reititys on täysin aliverkon oma asia. Se voidaan tehdä millä tahansa aliverkolle sopivalla menetelmällä. Internetissä tyypilliset verkon sisäiset reititysprotokollat ovat [Routing Information Protocol](https://fi.wikipedia.org/wiki/Routing_Information_Protocol) (RIP) ja [Open Shortest Path First](https://fi.wikipedia.org/wiki/OSPF) (OSPF). Sen sijaan aliverkkojen välinen reititys, jolla siis huolehditaan viestin kulkeminen eri verkkojen kautta vastaanottajalle, tehdään  samalla tavalla kaikkialla. Internetissä tähän käytetään [Border Gateway Protocol](https://fi.wikipedia.org/wiki/BGP) (BGP) -protokollaa.
 
 Jätämme nuo internetin varsinaiset reititysalgoritmit niiden monimutkaisten yksityiskohtien vuoksi myöhemmille kursseilla. Tutustutaan sen sijaan kahteen perusreititysalgoritmiin, jotka ovat näiden algoritmien taustalla joko sellaisenaan tai muokattuna. Nämä kaksi reititysalgoritmia eroavat toisistaan erityisesti siinä, miten kattavan tiedon verkosta ja linkkien kustannuksista eli solmujen etäisyyksistä ne tarvitsevat.  Linkkitila-algoritmi (engl. link state algorithm)  tarvitsee täydellisen tiedon verkon rakenteesta, kun taas etäisyysvektorialgoritmille (engl. distance vector algorithm) riittää epätäydellinen kuva verkosta.
 
@@ -49,7 +49,7 @@ Linkkitila-algoritmi käyttää virittävää puuta reititystaulun muodostamises
 
 Käydään nyt läpi algoritmin toiminta äskeisessä kuvassa olleen esimerkkiverkon kanssa, kun puun juureksi valitaan solmu A:
 * juuri s= A; S=tyhjä; Q={A,B,C,D,E,F,G}; d[A]=0; d[muut] voivat olla tässä vaiheessa äärettömiä
-* Kierros yksi: u= A; Q={B,C,D.E,F,G} (valitaan tarkasteluu solmu itse, koska sen etäisyys itseensä on 0 eli lyhin kaikista etäisyyksistä)
+* Kierros yksi: u= A; Q={B,C,D.E,F,G} (valitaan tarkasteluun solmu itse, koska sen etäisyys itseensä on 0 eli lyhin kaikista etäisyyksistä)
 * S={A};  d[B]=3; d[C]=2; previous[B]=A; previous[D]=A
 * Kierros kaksi: u=C; Q={B,D,E,F,G} {Eli seuraava tarkasteltava on C, koska siihen lyhin etäisyys}
 * S={A,C}; d[D]=2+2=4; d[E]=2+6=8; previous[D]=C; previous[E]=C
@@ -83,7 +83,7 @@ Algoritmin jälkeen meillä on etäisyydet d(A)=0; d(B)=3; d(C)=2; d(D)=4, d(E)=
 
 Linkkitila-algoritmit tarvitsevat siis tiedon kaikkien linkkien kustannuksista ennen kuin algoritmia voidaan suorittaa. Niillä pitää olla niin sanotusti täydellinen kuva verkosta ennen suoritusta. Etäisyysvektorialgoritmissa käsitys koko verkon linkkien kustannuksista saa olla epätäydellinen. Algoritmia voidaan siis suorittaa jo samalla, kun selvitetään kauempana olevien verkon osien tietoja.
 
-Etäisyysvektorialgoritmien perusajatus on, että jokainen solmu laskee itsenäisesti sen hetkisillä tiedoilla etäisyyksiä kaikkiin sen tietämiin solmuihin. Sitten se vaihtaa tiedot naapuriensa kanssa ja saa näin tietoonsa etäisyyksiä kauempana oleviin solmuihin. Näin laskenta tapahtuu rinnakkain ja vaiheittain. Ensin kaikkai solmut laskevat itselleen etäisyydet muihi solmuihin, sitten ne vaihtavat vektoreita ja sen jälkeen taas laskevat uudet etäisyydet, vaihtavat vektoreita ja näin toiminta jatkuu syklisesti.
+Etäisyysvektorialgoritmien perusajatus on, että jokainen solmu laskee itsenäisesti sen hetkisillä tiedoilla etäisyyksiä kaikkiin sen tietämiin solmuihin. Sitten se vaihtaa tiedot naapuriensa kanssa ja saa näin tietoonsa etäisyyksiä kauempana oleviin solmuihin. Näin laskenta tapahtuu rinnakkain ja vaiheittain. Ensin kaikki solmut laskevat itselleen etäisyydet muihin solmuihin, sitten ne vaihtavat vektoreita ja sen jälkeen taas laskevat uudet etäisyydet, vaihtavat vektoreita ja näin toiminta jatkuu syklisesti.
 
 Useimmat etäisyysvektoriin perustuvat reititysprotokollat kuten RIP käyttävät Bellman-Fordin algoritmia etäisyysvektorien laskennassa ja tietojen vaihdossa. Myös autonomisten verkkojen reitityksessä käytettävässä BGP protokollassa on muunnelma Bellman-Fordin algoritmista tai vähintäänkin BGP soveltaa vastaavia periaatteita.
 
@@ -94,7 +94,7 @@ Huomaa, että kaikki solmut päivittävät kaikkia tietojaan joka kierroksella. 
 Etäisyysvektorin kaikkien alkioiden uudet arvot lasketaan vektoriaritmetiikan mukaisesti samanaikaisesti yhteisten lähtötietojen varassa. Tämän vuoksi yhdellä kierroksella kaikkien vektorien kaikkien alkioiden arvot lasketaan edellisellä kierroksella saatujen ja muille solmuille lähetettyjen vektorien arvojen perusteella. 
 
 Käydään nyt tämän algoritmin toiminta läpi aiemmin esitellyn esimerkkiverkon kanssa:
-* Kirjaan tähän vain solmun A tilanteen, muut solmut laskevat omia arvojaan vastaavasta joka kierroksella
+* Kirjaan tähän vain solmun A tilanteen, muut solmut laskevat omia arvojaan vastaavasti joka kierroksella
 * Aluksi A:n etäisyysvektori (distance) on [A 0,B 3,C 2,D -,E -,F -,G -] eli A tietää etäisyydet vain naapureihinsa. Tämä on myös A:n oma sisäinen suorien linkkien kustannuksia kuvaava vektori.
 * Kierros yksi
 * Tietojen vaihdossa A lähettää oman vektorinsa B:lle ja C:lle ja
@@ -126,7 +126,7 @@ Tässä tuntemattomat etäisyydet on merkitty viivalla, mutta yhtä hyvin merkin
 
 <quiz id="17792628-9bd9-501a-aa2b-a6af3e31a20f"> </quiz>
 
-Etäisyysvektorireititys on näppärä, koska reittitiedot etenevät suhteellisen nopeasti verkossa. Etappivälitteisessä verkossa viestit etenevät muutenkin vain linkkivälin kerrallaan. Nyt reititin päivittää oman tietonsa ja sitten lähettää sen eteenpäin. Tällöin aina kierros kierrokselta tieto eteen verkossa ja tunnetut reitit pitenevät. Vastaavasti myös kustannusmuutokset etenevät tällä samalla nopeudella verkon solmujen välillä. Tästä käytetään joskus termiä "hyvät uutiset etenevät nopeasti" vastakohtana sille, että "huonot uutiset etenevät hitaasti".
+Etäisyysvektorireititys on näppärä, koska reittitiedot etenevät suhteellisen nopeasti verkossa. Etappivälitteisessä verkossa viestit etenevät muutenkin vain linkkivälin kerrallaan. Nyt reititin päivittää oman tietonsa ja sitten lähettää sen eteenpäin. Tällöin aina kierros kierrokselta tieto etenee verkossa ja tunnetut reitit pitenevät. Vastaavasti myös kustannusmuutokset etenevät tällä samalla nopeudella verkon solmujen välillä. Tästä käytetään joskus termiä "hyvät uutiset etenevät nopeasti" vastakohtana sille, että "huonot uutiset etenevät hitaasti".
 
 Tarkastellaan tuota "huonojen uutisten hidasta etenemistä" pienessä esimerkkiverkossa. Tässä verkossa on vain kolme solmua ja ne on kytketty toisiinsa oheisen kuvan mukaisesti.  A:n ja B:n välinen liikenne kulkee C:n kautta, koska A:n ja B:n välisen yhteyden kustannus on suurempi.
 

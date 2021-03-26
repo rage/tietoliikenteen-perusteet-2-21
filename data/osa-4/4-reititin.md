@@ -54,7 +54,7 @@ Ulosmeno huolehtii saapuneen paketin lähettämisestä seuraavaan linkkiin. Kun 
 
 Reitittimien toteutukselle on olemassa useita arkkitehtuurivaihtoehtoja.  Reititin voidaan toteuttaa ihan tavallisella tietokoneella, mutta tällöin liikennöintinopeus ei ole läheskään niin suuri kuin pelkästään reitititystehtävään suunnitellulla laitteella. Tietokoneen toiminta -kurssilla on käsitelty muutamaa tapaa siirtää tietoa tietokoneen sisällä. Näissä tieto voitiin siirtää oheislaitteiden (tässä sisääntulo ja ulosmeno) välillä joko suoraan väylää pitkin tai niin että se ensin kopioitiin (väli)muistiin ja sitten sieltä seuraavalle laitteelle. Nämä tavat, muistin (engl. memory) välityksellä tai väylän (engl. bus) kautta, ovat käytössä myös varsinaisissa reitittimissä. Koska niiden perusmallissa vain yksi paketti kerrallaan voidaan siirtää jostain sisääntulosta johonkin ulosmenoon, ei niillä saada välttämättä toteutettua riittävän nopeita reitittimiä tilanteisiin, joissa reitittimellä on paljon yhteyksiä, joita sen pitäisi välittää suurella nopeudella. Tällöin voidaan käyttää reitittimen arkkitehtuurina esimerkiksi erityistä kytkentäverkkoa (engl. interconnection network), jolloin eri sisääntuloista voidaan saman aikaisesti siirtää paketteja eri ulosmenoihin, kunhan kaikki sisääntulot ja ulosmenot ovat erillisiä.  Yhteen ulosmenoon voidaan siirtää vain yksi paketti kerrallaan.
 
-Laajemman kuvauksen ja erilaisia kuvia reitittimen sisäisestä arkkitehuurista löydät esim. sivulta http://www2.ic.uff.br/~michael/kr1999/4-network/4_06-inside.htm
+Laajemman kuvauksen ja erilaisia kuvia reitittimen sisäisestä arkkitehtuurista löydät esim. sivulta http://www2.ic.uff.br/~michael/kr1999/4-network/4_06-inside.htm
 
 
 
