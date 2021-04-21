@@ -50,7 +50,7 @@ Linkkitila-algoritmi käyttää virittävää puuta reititystaulun muodostamises
 Käydään nyt läpi algoritmin toiminta äskeisessä kuvassa olleen esimerkkiverkon kanssa, kun puun juureksi valitaan solmu A:
 * juuri s= A; S=tyhjä; Q={A,B,C,D,E,F,G}; d[A]=0; d[muut] voivat olla tässä vaiheessa äärettömiä
 * Kierros yksi: u= A; Q={B,C,D.E,F,G} (valitaan tarkasteluu solmu itse, koska sen etäisyys itseensä on 0 eli lyhin kaikista etäisyyksistä)
-* S={A};  d[B]=3; d[C]=2; previous[B]=A; previous[D]=A
+* S={A};  d[B]=3; d[C]=2; previous[B]=A; previous[C]=A
 * Kierros kaksi: u=C; Q={B,D,E,F,G} {Eli seuraava tarkasteltava on C, koska siihen lyhin etäisyys}
 * S={A,C}; d[D]=2+2=4; d[E]=2+6=8; previous[D]=C; previous[E]=C
 * Kierros kolme: u=B; Q={D,E,F,G} {koska d[B]=3 on pienempi kuin D[D]=4 tai muut etäisyydet}
