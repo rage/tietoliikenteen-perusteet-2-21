@@ -30,9 +30,9 @@ Oletetaan, nyt että A haluaa lähettää yhden paketin D:lle. Tämä voisi olla
 
 KUVA: Kuvassa on A:n lähettämän kehyksen sisältöä. Tämän esimerkin kannalta meitä kiinnostavat erityisesti osoitteet sekä kehyksessä että IP-paketissa. Muut otsakkeen kentät ja data on jätetty tässä tyhjiksi.
 
-Kun tämä A:n D:lle osoittama viesti saapuu reitittimelle R1:lle, niin Re on linkkikerroksen osoittee mukaan kehyksen vastaanottaja, joten kehys otetaan vastaan ja annetaan kehyksen sisällä oleva IP-paketti reitittimen verkkokerroksen tarkasteltavaksi. Tästä IP-paketista reititin voi nähdä lopullisen vastaanottajan IP-osoitteen. Reititin katsoo omasta reititystaulusta, mihin suuntaan kyseiselle IP-osoitteelle lähetettävä paketti pitää ohjata. Tässä tapauksessa siis paketti pitää lähettää edelleen R2:lle, jonka takaa löytyy 10.x osoitteet.
+Kun tämä A:n D:lle osoittama viesti saapuu reitittimelle R1:lle, niin R1 on linkkikerroksen osoitteen mukaan kehyksen vastaanottaja, joten kehys otetaan vastaan ja annetaan kehyksen sisällä oleva IP-paketti reitittimen verkkokerroksen tarkasteltavaksi. Tästä IP-paketista reititin voi nähdä lopullisen vastaanottajan IP-osoitteen. Reititin katsoo omasta reititystaulustaan, mihin suuntaan kyseiselle IP-osoitteelle lähetettävä paketti pitää ohjata. Tässä tapauksessa siis paketti pitää lähettää edelleen R2:lle, jonka takaa löytyy 10.x osoitteet.
 
-R1 lisää nyt tämän IP-paketin, jossa lähettäjänä on A ja vastaanottajana D, ympärille uuden kehyksen. Kehyksessä vastaanottajan osoite on R2:n MAC-osoite ja lähettäjänä on R1:n MAC-osoite. Näin koska linkkikerrokselal tämän kehyksen lähettäjä on R1 ja kehys on menossa R2:lle, joten ne ovat kehyksessä lähettäjänä ja vastaaanottajana. 
+R1 lisää nyt tämän IP-paketin, jossa lähettäjänä on A ja vastaanottajana D, ympärille uuden kehyksen. Kehyksessä vastaanottajan osoite on R2:n MAC-osoite ja lähettäjänä on R1:n MAC-osoite. Näin koska linkkikerroksella tämän kehyksen lähettäjä on R1 ja kehys on menossa R2:lle, joten ne ovat kehyksessä lähettäjänä ja vastaaanottajana.
 
 <img src="../img/5-5-kehys-R1-R2.svg" alt="Kuvassa on kehys, jonka sisällä on IP-paketti. Kehyksessä vastaanottajana on R2:n MAC-osoite ja lähettäjänä R1:n MAC-osoite. Kehyksen sisällä olevassa IP-paketissa lähettäjän on edelleen A:n IP-osoite ja vastaanottajana D:n IP-osoite.">
 

@@ -21,7 +21,7 @@ Kun reititin vastaanottaa paketin se purkaa siitä pois linkkikerroksen kehyksen
 
 [Kytkin](https://fi.wikipedia.org/wiki/Kytkin_(tietoliikenne)) toimii linkkikerroksella, joten se käsittelee aina linkkikerroksen kehystä. Se siis toimii kehyksen otsakkeesta saamiensa tietojen mukaan. Näin ollen kytkin osaa tunnistaa laitteiden MAC-osoitteita, mutta ei IP-osoitteita. Koska kytkin sanana suomenkielessä on käytössä sekä valokytkimissä että auton vaihteistossa, niin tarvittaessa voidaan käyttää termiä tietoliikennekytkin tai verkkokytkin erotuksena näistä sanan muista käyttöyhteyksistä. Tietoliikennealan sisällä kuitenkin puhutaan yksinkertaisesti kytkimistä.
 
-[Keskitin](https://fi.wikipedia.org/wiki/Keskitin) on usemmasta toistimesta muodostettu fyysisen kerroksen laite, joka yksinkertaisimmillaan vain toistaa yhdestä portista saamansa tiedon kaikkiin muihin portteihin. Tällaista viestin toistamista tarvitaan, koska pitkillä siirtoyhteyksillä signaalit vaimenevat, eivätkä ne välttämättä olisi enää perillä tunnistettavia. Matkan varrelle sijoitetut toistimet (engl. repeater) generoivat saamansa signaalin uudelleen ja näin vahvistavat sen tasoja ja samalla poistavat häiritsevää taustakohinaa. 
+[Keskitin](https://fi.wikipedia.org/wiki/Keskitin) on usemmasta toistimesta muodostettu fyysisen kerroksen laite, joka yksinkertaisimmillaan vain toistaa yhdestä portista saamansa tiedon kaikkiin muihin portteihin. Tällaista viestin toistamista tarvitaan, koska pitkillä siirtoyhteyksillä signaalit vaimenevat, eivätkä ne välttämättä olisi enää perillä tunnistettavia. Matkan varrelle sijoitetut toistimet (engl. repeater) generoivat saamansa signaalin uudelleen ja näin vahvistavat sen tasoja sekä samalla poistavat häiritsevää taustakohinaa.
 
 Keskitin siis toistaa saamansa signaalit sellaisenaan kaikkiin ulosmeneviin yhteyksiin. Se ei voi muuttaa signaalin nopeutta, joten se soveltuu yhdistämään vain saman teknologian samalla nopeudella toimivia verkon osia toisiinsa. Keskittimet eivät näy linkkikerrokselle, joten ne voivat pidentää viestin kulkuaikaa kyseisellä yhteydellä ja näin lisätä etenemisviivettä kahden ko. yhteyttä käyttävän solmun välillä.
 
@@ -42,11 +42,11 @@ Tästä vaiheittaisesta kytkitaulun päivityksestä on se hyöty, että kytkimee
 
 Kytkin siis käsittelee kytkintauluaan seuraavasti aina kun sille saapuu kehys
 - Onko lähettäjän MAC-osoite taulussa?
-    on: päivitä aikaleima
-    ei: lisää tauluun (MAC, porttinumero, aikaleima)
+    On: Päivitä aikaleima.
+    Ei: Lisää tauluun (MAC, porttinumero, aikaleima).
 - Onko vastaanottajan MAC-osoite taulussa?
-    ei:  tulvita (eli lähetä kaikkialle muualle paitsi tuloporttiin)
-    on: Jos portti eri kuin tuloportti, niin lähetä ko. porttiin. Jos portti sama kuin tuloportti, niin unohda.
+    Ei: Tulvita (eli lähetä kaikkialle muualle paitsi tuloporttiin).
+    On: Jos portti eri kuin tuloportti, niin lähetä ko. porttiin. Jos portti sama kuin tuloportti, niin unohda.
 
  <img src="../img/kytkinstar.svg" alt="Kuvassa on tähtitopologiaan perustuva verkko, jonka keskipisteessä on kytkin. Kytkimeen tulee ainakin neljä yhteyttä, joista kaksi tulee suoraan solmulta ja kahdessa kytkin on ensin liitetty keskittimeen, joista toiseen on liitetty 2 ja toiseen 3 solmua. Näin meillä on verkon reunoilla kaikkiaan 7 laitetta ja keskemmällä kaksi keskitintä ja yksi kytkin. A ja B on kiinni keskittimessä H1. H1 ja C on yhdistetty kytkimeen K, H1 porttiin 1 ja C porttiin 2. Toisella puolella kytkintä portissa 3 on H2, jossa on kiinni solmut E,F ja G. Lisäksi kytkimessä on vielä kiinni solmu I portissa 4.">
 KUVA: Kuvassa on yksi aliverkko, jossa on 1 kytkin ja 2 keskitintä. Keskittimet välittävät kaiken liikenteen niiden läpi ja kaikkiin niihin liitettyihin laitteisiin. Kytkin osaa eristää liikennettä linkkikerroksella.
@@ -66,7 +66,7 @@ Jos käytössä on puhdas tähtitopologiaan perustuva verkko, niin sellaisessa e
 
 Kytkimien ohessa saatetaan joskus puhua myös [silloista](https://fi.wikipedia.org/wiki/Silta_(tietoliikenne)). Kytkin on internetiin ja erityisesti ethernet-verkkoihin liittyvä termi. Silta on mikä tahansa kahta verkkoa linkkikerroksella yhdistävä laite, mutta nykyisin kun käytetään lähinnä ethernet-verkkoja, niin silta on terminä jäämässä taustalle. Silta-termiä käytetään erityisesti silloin, kun yhdistetään eri teknologioilla toimivia verkkoja toisiinsa nimenomaan linkkikerroksella. Kytkin, joka osaa useita eri ethernet-versioita, on myös silta. 
 
-Tyypillisesti termiin silta tai oikeastaan sen muunnokseen siltaus tai siltaava saattaa törmätä ADSL-modeemin tai muun verkkolaitteen yhteydessä. Tällainen laite voi olla joko reitittävässä tai siltaavassa tilassa. Tällöin käytännössä otetaan kantaa siihen, millä protokollapinon kerroksella laitteen halutaan toimivan. Reitittävä tila tarkoittaa sitä, että laite toimii verkkokerroksen reitittimenä ja suorittaa verkkokerroksen tehtäviä. Siltaava tila puolestaan tarkoittaa, että laite toimii kuin linkkikerroksen kytkin eli että se ei käsittele IP-pakettia lainkaan vaan vain linkkikerroken kehystä. Toki siltaavassa tilassa se ohjaa linkkikerroksen kehyksiä kytkimen tavoin oikeaan suuntaan, mutta se ei siis koske lainkaan verkkokerroksen sisältöön.
+Tyypillisesti termiin silta tai oikeastaan sen muunnokseen siltaus tai siltaava saattaa törmätä ADSL-modeemin tai muun verkkolaitteen yhteydessä. Tällainen laite voi olla joko reitittävässä tai siltaavassa tilassa. Tällöin käytännössä otetaan kantaa siihen, millä protokollapinon kerroksella laitteen halutaan toimivan. Reitittävä tila tarkoittaa sitä, että laite toimii verkkokerroksen reitittimenä ja suorittaa verkkokerroksen tehtäviä. Siltaava tila puolestaan tarkoittaa, että laite toimii kuin linkkikerroksen kytkin eli että se ei käsittele IP-pakettia lainkaan vaan vain linkkikerroksen kehystä. Toki siltaavassa tilassa se ohjaa linkkikerroksen kehyksiä kytkimen tavoin oikeaan suuntaan, mutta se ei siis koske lainkaan verkkokerroksen sisältöön.
 
 <quiz id="6265a026-4ecf-5f5c-9d0a-a7ae04e668b3"> <quiz>
 
