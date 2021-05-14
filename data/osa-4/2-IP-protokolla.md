@@ -104,7 +104,7 @@ Luokaton reititys ja pisimmän yhteisen alkuosan käyttäminen antaa myös mahdo
 
 <quiz id="a43971e9-d791-5882-b830-b69555069509"></quiz>
 
-Edellä jo tarkasteltiinkin osoiteavaruuden 140.24.7.0/24 jakamista neljään yhtä suureen osaan, joilla kullakin on 26 bittinen aliverkon peite, eli aliverkot eroavat toisistaan kahden bitin verran (bitit 24 ja 25, kun bitit numeroidaan alkaen nollasta). Olisimme ihan yhtä hyvin voineen jakaa osoiteavaruuden eri suuruisiin osiin esimerkiksi 140.24.7.0/25, 140.24.7.128/26 ja 140.24.7.192/26  tai 140.24.7.0/26, 140.24.7.62/26 ja 140.24.7.128/25. Nyt yksi alue kattaa puolet osoiteavaruudesta. Tarkasta binäärilukujen avulla, miksi emme voi yhdistää kahta keskimmäistä aluetta yhdeksi, vaan isomman yhtenäisen alueen pitää olla joko numeroavaruuden alussa tai lopussa.
+Edellä jo tarkasteltiinkin osoiteavaruuden 140.24.7.0/24 jakamista neljään yhtä suureen osaan, joilla kullakin on 26 bittinen aliverkon peite, eli aliverkot eroavat toisistaan kahden bitin verran (bitit 24 ja 25, kun bitit numeroidaan alkaen nollasta). Olisimme ihan yhtä hyvin voineen jakaa osoiteavaruuden eri suuruisiin osiin esimerkiksi 140.24.7.0/25, 140.24.7.128/26 ja 140.24.7.192/26  tai 140.24.7.0/26, 140.24.7.64/26 ja 140.24.7.128/25. Nyt yksi alue kattaa puolet osoiteavaruudesta. Tarkasta binäärilukujen avulla, miksi emme voi yhdistää kahta keskimmäistä aluetta yhdeksi, vaan isomman yhtenäisen alueen pitää olla joko numeroavaruuden alussa tai lopussa.
 
 <quiz id="2982e5c2-af9c-5cb8-8c72-85901735f807"></quiz>
 
