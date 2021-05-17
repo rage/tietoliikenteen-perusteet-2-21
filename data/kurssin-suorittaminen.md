@@ -23,28 +23,22 @@ Kurssi tentitään moodlessa. Tentin kesto on 3 tuntia ja voit yrittää tentti�
 
 Verkkotentin voit suoritaa Moodlessa seuraavasti:
 - Ensimmäinen tenttimahdollisuus: 3.-4.5.2021
-- Toinen tenttimahdollisuus: Järjestelmävaihdoksen aikataulusta riippuen JOKO 26.-27.5.2021 TAI 15-16.6.2021 (Ajankohta vahvistetaan kurssisivulla viimeistään järjestelmävaihdoksen alkaessa.)
+- Toinen tenttimahdollisuus: 15-16.6.2021
 - Kurssin uusintatentti järjestetään 28.6-29.6.2021. Tämän tentin jälkeen kurssisuoritusta ei ole mahdollista uusia.
 
-Ilmoittaudu avoimeen yliopistoon viimeistään kaksi päivää ennen tentin alkua, jotta sinulle jää aikaa tehdä harjoitustentti.
+Ilmoittaudu avoimeen yliopistoon viimeistään kaksi päivää ennen tentin alkua, jotta sinulle jää aikaa tehdä harjoitustentti ja saada moodlen käyttöoikeus.
 
 Ilmoittautumisohje:  
-Tulevan järjestelmävaihdoksen vuoksi ilmoittautuminen ei ole mahdollista 14.5.-31.5. välisenä aikana. Jos tämä katkos toteutuu, niin 2. tentin ajankohta siirtyy ilmoitetusti kesäkuulle.
+Kärjestelmävaihdoksen vuoksi ilmoittautuminen ei ole mahdollista 14.5.-31.5.2021 välisenä aikana.
 
-Mikäli ilmoittaudut välillä 29.3.2021 - 14.5.2021: 
-1.  Tee Avoimen yliopiston kurssi-ilmoittautuminen:  https://www.avoin.helsinki.fi/palvelut/esittely.aspx?o=136529489
-2.  Odota 24 tuntia ja aktivoi Helsingin yliopiston käyttäjätunnus. Saat ohjeet aktivointia varten ilmoittautumista seuraavana päivänä. 
-3.  Kirjaudu [Avoimen yliopiston kurssisivulle](https://studies.helsinki.fi/opintotarjonta/cur/hy-CUR-136529489/Avoin_yo_Tietoliikenteen_perusteet_2_kev%C3%A4t_2021), josta saat kurssiavaimen ja linkin Moodleen kirjautumista varten. 
-4.  Kirjaudu kurssin Moodleen Helsingin yliopiston käyttäjätunnuksella ja kurssiavaimella. 
-
-
-Mikäli ilmoittaudut välillä 31.5.2021 - 10.6.2021: 
+Ilmoittautuminen välillä 31.5.2021 - 28.6.2021: 
 1.  Tee Avoimen yliopiston kurssi-ilmoittautuminen: https://www.avoin.helsinki.fi/palvelut/esittely.aspx?o=142141146
 2.  Odota 24 tuntia ja aktivoi Helsingin yliopiston käyttäjätunnus. Saat ohjeet aktivointia varten ilmoittautumista seuraavana päivänä. 
 3.  Kirjaudu [Avoimen yliopiston kurssisivulle v2](https://studies.helsinki.fi/opintotarjonta/cur/hy-CUR-142141146/Avoin_yo_Tietoliikenteen_perusteet_2_kev%C3%A4t_2021), josta saat kurssiavaimen ja linkin Moodleen kirjautumista varten. 
 4.  Kirjaudu kurssin Moodleen Helsingin yliopiston käyttäjätunnuksella ja kurssiavaimella. 
 
 HUOM! Ilmoittautuminen Avoimeen yliopiston on mahdollista vain 28.6.2021 saakka, jolloin uusintatentti avautuu. 
+
 
 
 ### TKT20004 Tietoliikenteen perusteet, 5 op
