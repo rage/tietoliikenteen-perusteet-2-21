@@ -1,8 +1,8 @@
 const courseSettings = {
   language: "fi",
   name: "Tietoliikenteen perusteet 2 2021",
-  siteUrl: "https://tietoliikenteen-perusteet-2-20.mooc.fi",
-  githubUrl: "https://github.com/rage/tietoliikenteen-perusteet-2-20",
+  siteUrl: "https://tietoliikenteen-perusteet-2-21.mooc.fi",
+  githubUrl: "https://github.com/rage/tietoliikenteen-perusteet-2-21",
   subtitle: "Opi miten internet toimii",
   slug: "tietoliikenteen-perusteet-2-21",
   tmcCourse: "x",
