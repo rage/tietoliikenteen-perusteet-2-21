@@ -64,7 +64,7 @@ Wiresharkin sivulta https://wiki.wireshark.org/SampleCaptures löytyy kymmeniä 
 
 Internetissä on myös joitakin ilmaisia verkossa toimivia kaappaustiedostojen katseluohjelmia  (kuten packettotal.com), joten Wiresharkin käyttäminen ei ole millään tavalla pakollista kurssin kuluessa.  Näiden ohjelmien kanssa pitää olla varovainen, koska ne tallettavan kaikki saamansa kaappaukset, joten jos kyseessä on mahdollista yksityistä tietoa sisältävä kaappaus, niin näitä ei pidä käyttää. Wiresharkin valmiiden kaappausten kanssa näiden käyttö on mahdollista.
 
-Osa näistä ohjelmista näyttää vain pakettien otsaketietoja ja niitäkin rajoitetusta, joten kovin kattavaa mahdollisuutta viestien sisältöjen seurantaan ne eivät välttämättä tarjoa. Toisaalta kuten tuosta sähköisiä viestintäpalveluja käsittelevästä laista pystyimme lukemaan, eivät edes verkon ylläpitäjät saa manuaalisesti tutkia viestien sisältöjä.
+Osa näistä ohjelmista näyttää vain pakettien otsaketietoja ja niitäkin rajoitetusti, joten kovin kattavaa mahdollisuutta viestien sisältöjen seurantaan ne eivät välttämättä tarjoa. Toisaalta, kuten sähköisiä viestintäpalveluja käsittelevästä laki määrää, eivät edes verkon ylläpitäjät saa tutkia viestien sisältöjä.
 
 Tyypillisesti liikenteen kaappaaminen ja seuranta on vain ensimmäinen askel verkon laittoman käytön selvittämisessä / estämisessä. Varsinaiset laajemmat [tunkeilijan havaitsemisjärjestelmät](https://fi.wikipedia.org/wiki/Tunkeilijan_havaitsemisj%C3%A4rjestelm%C3%A4) tekevät laajempia analyysejä liikennevirrasta, jotta väärinkäytökset voitaisiin havaita mahdollisimman hyvin. Valitettavasti meillä ei ole tällä kurssilla mahdollisuutta tarkastella näitä järjestelmiä tarkemmin.
 
